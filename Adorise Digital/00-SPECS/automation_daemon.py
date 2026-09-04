@@ -81,3 +81,11 @@ if __name__ == "__main__":
     while True:
         time.sleep(interval)
         run_hourly_pipelines()
+
+        try:
+            subprocess.run(["git", "add", "live_leads_dashboard.md", "pseo_pages/"], check=False)
+            subprocess.run(["git", "commit", "-m", "Auto-sync: Hourly pSEO batch & live leads dashboard"], check=False)
+            subprocess.run(["git", "push", "origin", "main"], check=False)
+            print("[DAEMON] Successfully synced and pushed updates to GitHub.")
+        except Exception as e:
+            print(f"[DAEMON] Git sync warning: {e}")
