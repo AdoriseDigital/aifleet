@@ -1,3 +1,7 @@
 *.log
 __pycache__/
 .kilo/
+book-project/outputs/
+book-project/outputs_global/
+book-project/outputs_indian/
+book-project/tax_kit/
