@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adorise Outreach | Instantly-Style Cold Outreach & Multi-Inbox Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: { fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] } }
+      }
+    }
+  </script>
+  <style>
+    .glass-card {
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen selection:bg-indigo-500 selection:text-white">
+
+  <!-- Header -->
+  <header class="h-20 border-b border-slate-800 bg-slate-950/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50 px-6 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <span class="text-2xl">📬</span>
+      <span class="font-extrabold text-xl tracking-tight text-white">ADORISE <span class="text-indigo-400">OUTREACH</span></span>
+      <span class="px-2.5 py-0.5 text-[10px] font-mono bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 rounded-full">Composio Engine v2.0</span>
+    </div>
+    <div class="flex items-center space-x-3">
+      <div class="text-xs font-mono px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+        ● Node Online (Port 8000)
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="pt-28 pb-20 max-w-5xl mx-auto px-6">
+    <div class="text-center mb-10">
+      <span class="px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs font-bold uppercase tracking-widest inline-block mb-3">INSTANTLY-STYLE COLD OUTREACH STACK</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-3">High-Deliverability Multi-Inbox Engine</h1>
+      <p class="text-slate-400 text-sm max-w-xl mx-auto">
+        Distribute outreach volume across isolated sending accounts with automated AI inbox warmup, rotation management, and sequence tracking.
+      </p>
+    </div>
+
+    <!-- Metrics Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 text-xs font-mono">
+      <div class="p-4 rounded-2xl glass-card">
+        <div class="text-slate-500 mb-1 uppercase text-[10px]">Node Status</div>
+        <div class="text-emerald-400 font-bold text-sm">ONLINE (Port 8000)</div>
+        <div class="text-slate-400 text-[10px] mt-1">Composio Runtime</div>
+      </div>
+      <div class="p-4 rounded-2xl glass-card">
+        <div class="text-slate-500 mb-1 uppercase text-[10px]">Active Inboxes</div>
+        <div class="text-indigo-400 font-bold text-sm">8 Rotating Domains</div>
+        <div class="text-slate-400 text-[10px] mt-1">SPF / DKIM / DMARC Valid</div>
+      </div>
+      <div class="p-4 rounded-2xl glass-card">
+        <div class="text-slate-500 mb-1 uppercase text-[10px]">Warmup Health</div>
+        <div class="text-cyan-400 font-bold text-sm">99.4% Primary</div>
+        <div class="text-slate-400 text-[10px] mt-1">Spam Rate: 0.02%</div>
+      </div>
+      <div class="p-4 rounded-2xl glass-card">
+        <div class="text-slate-500 mb-1 uppercase text-[10px]">Daily Capacity</div>
+        <div class="text-purple-400 font-bold text-sm">1,200 Emails/Day</div>
+        <div class="text-slate-400 text-[10px] mt-1">Throttle Safe</div>
+      </div>
+    </div>
+
+    <!-- Campaign Creator Console -->
+    <div class="glass-card p-6 md:p-8 rounded-3xl shadow-2xl mb-8">
+      <h3 class="text-base font-bold text-white mb-4 flex items-center space-x-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-indigo-400 animate-pulse"></span>
+        <span>Configure & Dispatch Cold Outreach Sequence</span>
+      </h3>
+
+      <form onsubmit="handleCampaignDispatch(event)" class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Campaign Name</label>
+            <input type="text" id="campaignName" placeholder="e.g. Q3 SaaS Expansion Outbound" required value="Q3 Agency Client Growth" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition text-sm">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Target Persona / Niche</label>
+            <input type="text" id="targetPersona" placeholder="e.g. Founders & CMOs, US B2B Tech" required value="B2B Agency Founders & CMOs" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition text-sm">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Sequence Archetype</label>
+            <select id="sequenceArchetype" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white focus:outline-none focus:border-indigo-500 transition text-sm">
+              <option value="pain_led">Pain-Led Micro-Offer (3-Step Sequence)</option>
+              <option value="case_study">Value Metric & Proof Point (4-Step Sequence)</option>
+              <option value="direct_permission">Direct Permission Asker (2-Step Sequence)</option>
+              <option value="breakup">Polite Break-up Re-engagement</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Sending Throttle Limit</label>
+            <select id="sendingThrottle" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white focus:outline-none focus:border-indigo-500 transition text-sm">
+              <option value="conservative">Conservative (25 emails/inbox/day)</option>
+              <option value="moderate" selected>Moderate (45 emails/inbox/day)</option>
+              <option value="aggressive">Aggressive (75 emails/inbox/day)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-end pt-2">
+          <button type="submit" id="dispatchBtn" class="px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 font-bold text-white shadow-lg shadow-indigo-500/20 hover:scale-[1.02] active:scale-[0.98] transition text-sm flex items-center space-x-2 cursor-pointer">
+            <span>Deploy Multi-Inbox Sequence</span>
+            <span>🚀</span>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Live Execution Feed -->
+    <div id="dispatchFeed" class="glass-card p-6 md:p-8 rounded-3xl shadow-xl mb-8">
+      <div class="flex justify-between items-center mb-4">
+        <h4 class="text-sm font-bold text-slate-300 uppercase tracking-wider">Campaign Execution Feed</h4>
+        <span class="text-xs font-mono text-emerald-400">8 Mailboxes Active</span>
+      </div>
+      <div id="dispatchLogs" class="space-y-2 font-mono text-xs text-slate-400">
+        <div class="p-4 rounded-xl bg-slate-900/50 text-slate-500 text-center">Ready to launch campaign. Configure sequence parameters above and click Deploy.</div>
+      </div>
+    </div>
+
+    <!-- Active Campaigns List -->
+    <div class="glass-card p-6 md:p-8 rounded-3xl shadow-xl">
+      <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Active Running Sequences</h4>
+      <div id="campaignsList" class="space-y-3">
+        <!-- Javascript populated -->
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const API_BASE = "";
+
+    async function loadCampaigns() {
+      try {
+        const res = await fetch(`${API_BASE}/api/outreach/campaigns`);
+        const data = await res.json();
+        const list = document.getElementById('campaignsList');
+        if (!data.campaigns || data.campaigns.length === 0) {
+          list.innerHTML = `<div class="p-4 text-center text-slate-500 text-xs font-mono">No active campaigns.</div>`;
+          return;
+        }
+        list.innerHTML = data.campaigns.map(c => `
+          <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
+            <div>
+              <div class="font-bold text-white text-sm">${c.name}</div>
+              <div class="text-xs text-slate-400 mt-0.5">${c.persona} • <span class="capitalize text-indigo-400">${c.archetype.replace('_', ' ')}</span></div>
+            </div>
+            <div class="flex items-center space-x-4 text-xs font-mono">
+              <div class="text-center">
+                <div class="text-slate-500 text-[10px]">SENT</div>
+                <div class="text-white font-bold">${c.sent_count}</div>
+              </div>
+              <div class="text-center">
+                <div class="text-slate-500 text-[10px]">OPEN RATE</div>
+                <div class="text-emerald-400 font-bold">${c.open_rate}</div>
+              </div>
+              <div class="text-center">
+                <div class="text-slate-500 text-[10px]">REPLY RATE</div>
+                <div class="text-purple-400 font-bold">${c.reply_rate}</div>
+              </div>
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 capitalize">
+                ${c.status}
+              </span>
+            </div>
+          </div>
+        `).join('');
+      } catch (err) {
+        console.error("Failed to load campaigns", err);
+      }
+    }
+
+    async function handleCampaignDispatch(e) {
+      e.preventDefault();
+      const name = document.getElementById('campaignName').value.trim();
+      const persona = document.getElementById('targetPersona').value.trim();
+      const archetype = document.getElementById('sequenceArchetype').value;
+      const throttle = document.getElementById('sendingThrottle').value;
+      const btn = document.getElementById('dispatchBtn');
+      const logs = document.getElementById('dispatchLogs');
+
+      btn.disabled = true;
+      btn.innerHTML = '<span>Deploying Sequence...</span> <span class="animate-spin">⏳</span>';
+
+      try {
+        const response = await fetch(`${API_BASE}/api/outreach/dispatch`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, persona, archetype, throttle })
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          logs.innerHTML = data.logs.map(log => `
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-indigo-300">
+              ${log}
+            </div>
+          `).join('');
+          loadCampaigns();
+        } else {
+          logs.innerHTML = `<div class="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400">Error: ${data.error || 'Failed to dispatch'}</div>`;
+        }
+      } catch (err) {
+        logs.innerHTML = `<div class="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400">Dispatch Error: ${err.message}</div>`;
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<span>Deploy Multi-Inbox Sequence</span> <span>🚀</span>';
+      }
+    }
+
+    loadCampaigns();
+  </script>
+</body>
+</html>

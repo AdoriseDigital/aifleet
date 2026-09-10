@@ -1,0 +1,7 @@
+/api/* https://api.adorisedigital.com/api/:splat 301
+/scout/* /scout/index.html 200
+/dearmee/* /dearmee/index.html 200
+/books/* /books/index.html 200
+/outreach/* /outreach/index.html 200
+/social/* /social/index.html 200
+/services/* /services/index.html 200

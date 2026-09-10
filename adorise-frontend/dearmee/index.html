@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DearMee | Proprietary Empathetic Caring AI Companion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: { fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] } }
+      }
+    }
+  </script>
+  <style>
+    .glass-card {
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen selection:bg-pink-500 selection:text-white flex flex-col justify-between">
+
+  <!-- Header -->
+  <header class="h-20 border-b border-slate-800 bg-slate-950/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50 px-6 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <span class="text-2xl">🕊️</span>
+      <span class="font-extrabold text-xl tracking-tight text-white">DEAR<span class="text-pink-400">MEE</span></span>
+      <span class="px-2.5 py-0.5 text-[10px] font-mono bg-pink-500/10 text-pink-400 border border-pink-500/30 rounded-full">Companion v2.0</span>
+    </div>
+    <div class="flex items-center space-x-3">
+      <div class="text-xs font-mono px-3 py-1 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-400">
+        ● Safe Space Active
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="pt-28 pb-6 max-w-4xl w-full mx-auto px-6 flex-1 flex flex-col">
+    <div class="text-center mb-6">
+      <span class="px-4 py-1.5 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-400 text-xs font-bold uppercase tracking-widest inline-block mb-2">NEURAL EMPATHETIC COMPANION</span>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-2">Your Personal Caring AI Co-Pilot</h1>
+      <p class="text-slate-400 text-xs md:text-sm max-w-lg mx-auto">
+        A private, non-judgmental space to reflect on personal burnout, client stress, and decision fatigue.
+      </p>
+    </div>
+
+    <!-- Suggested Reflection Prompts -->
+    <div class="flex flex-wrap items-center justify-center gap-2 mb-6">
+      <button onclick="usePrompt('I am feeling intense founder burnout and overwhelmed with client deadlines.')" class="px-3 py-1.5 rounded-full glass-card hover:border-pink-500/50 text-xs text-slate-300 transition cursor-pointer">
+        🔥 Founder Burnout
+      </button>
+      <button onclick="usePrompt('A client sent an aggressive email and I feel anxious responding.')" class="px-3 py-1.5 rounded-full glass-card hover:border-pink-500/50 text-xs text-slate-300 transition cursor-pointer">
+        ✉️ Difficult Client Anxiety
+      </button>
+      <button onclick="usePrompt('I feel stuck on a big decision and my mind is racing.')" class="px-3 py-1.5 rounded-full glass-card hover:border-pink-500/50 text-xs text-slate-300 transition cursor-pointer">
+        🧠 Decision Overload
+      </button>
+    </div>
+
+    <!-- Chat Console -->
+    <div class="glass-card rounded-3xl p-6 flex-1 flex flex-col shadow-2xl h-[480px]">
+      <div id="chatFeed" class="flex-1 overflow-y-auto space-y-4 pr-2 mb-4">
+        <div class="flex items-start space-x-3">
+          <div class="w-8 h-8 rounded-full bg-pink-500/20 border border-pink-500/40 flex items-center justify-center text-pink-400 font-bold text-xs shrink-0">DM</div>
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 max-w-xl text-sm text-slate-300 leading-relaxed">
+            Hello. I'm DearMee. Take a slow, quiet breath. Whatever pressure, friction, or thoughts are on your mind right now, you are safe to share them. How are you feeling today?
+          </div>
+        </div>
+      </div>
+
+      <!-- Input Bar -->
+      <form onsubmit="handleSendMessage(event)" class="flex items-center space-x-3 pt-3 border-t border-slate-800">
+        <input type="text" id="chatInput" placeholder="Share your thoughts or current stress..." required class="flex-1 px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-pink-500 transition text-sm">
+        <button type="submit" id="sendBtn" class="px-6 py-3 rounded-xl bg-gradient-to-r from-pink-500 to-rose-600 font-bold text-white shadow-lg shadow-pink-500/20 hover:scale-[1.02] active:scale-[0.98] transition text-sm cursor-pointer">
+          Send 🕊️
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    const API_BASE = "";
+
+    function usePrompt(text) {
+      document.getElementById('chatInput').value = text;
+      document.getElementById('sendBtn').click();
+    }
+
+    async function handleSendMessage(e) {
+      e.preventDefault();
+      const input = document.getElementById('chatInput');
+      const msg = input.value.trim();
+      if (!msg) return;
+
+      const feed = document.getElementById('chatFeed');
+      const btn = document.getElementById('sendBtn');
+
+      // Append User message
+      feed.innerHTML += `
+        <div class="flex items-start justify-end space-x-3">
+          <div class="bg-pink-600/30 border border-pink-500/40 rounded-2xl p-4 max-w-xl text-sm text-white leading-relaxed">
+            ${msg}
+          </div>
+        </div>
+      `;
+
+      input.value = '';
+      btn.disabled = true;
+      feed.scrollTop = feed.scrollHeight;
+
+      try {
+        const response = await fetch(`${API_BASE}/api/agent/chat`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: msg, session_id: 'active_session' })
+        });
+
+        const data = await response.json();
+        const reply = data.response || "I hear you completely. Take space to breathe and process.";
+
+        feed.innerHTML += `
+          <div class="flex items-start space-x-3">
+            <div class="w-8 h-8 rounded-full bg-pink-500/20 border border-pink-500/40 flex items-center justify-center text-pink-400 font-bold text-xs shrink-0">DM</div>
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 max-w-xl text-sm text-slate-300 leading-relaxed">
+              ${reply}
+            </div>
+          </div>
+        `;
+      } catch (err) {
+        feed.innerHTML += `
+          <div class="flex items-start space-x-3">
+            <div class="w-8 h-8 rounded-full bg-pink-500/20 border border-pink-500/40 flex items-center justify-center text-pink-400 font-bold text-xs shrink-0">DM</div>
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 max-w-xl text-sm text-slate-300 leading-relaxed">
+              I hear you. Whatever is happening, remember that you are capable of handling it one moment at a time.
+            </div>
+          </div>
+        `;
+      } finally {
+        btn.disabled = false;
+        feed.scrollTop = feed.scrollHeight;
+      }
+    }
+  </script>
+</body>
+</html>

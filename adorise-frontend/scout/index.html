@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adorise Scout | Autonomous AI Client Acquisition Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: { fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] } }
+      }
+    }
+  </script>
+  <style>
+    .glass-card {
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen selection:bg-cyan-500 selection:text-white">
+
+  <!-- Header -->
+  <header class="h-20 border-b border-slate-800 bg-slate-950/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50 px-6 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <span class="text-2xl">🎯</span>
+      <span class="font-extrabold text-xl tracking-tight text-white">ADORISE <span class="text-cyan-400">SCOUT</span></span>
+      <span class="px-2.5 py-0.5 text-[10px] font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 rounded-full">v2.0 End-to-End</span>
+    </div>
+    <div class="flex items-center space-x-3">
+      <div id="authStatus" class="text-xs font-mono px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+        ● Authenticated
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="pt-28 pb-20 max-w-5xl mx-auto px-6">
+    <div class="text-center mb-10">
+      <span class="px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-bold uppercase tracking-widest inline-block mb-3">AUTONOMOUS LEAD ACQUISITION ENGINE</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-3">Programmatic Prospect Intelligence</h1>
+      <p class="text-slate-400 text-sm max-w-xl mx-auto">
+        Scan market signals, extract verified decision-maker emails, and generate personalized value pitches in real time.
+      </p>
+    </div>
+
+    <!-- Query Form -->
+    <div class="glass-card p-6 md:p-8 rounded-3xl shadow-2xl mb-8">
+      <h3 class="text-base font-bold text-white mb-4 flex items-center space-x-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span>
+        <span>Launch Prospecting Query</span>
+      </h3>
+      
+      <form onsubmit="handleScoutSearch(event)" class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Target Niche / Industry</label>
+            <input type="text" id="scoutNiche" placeholder="e.g. B2B SaaS, E-Commerce, Real Estate" required value="B2B SaaS" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500 transition text-sm">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Target Region / Country</label>
+            <input type="text" id="scoutRegion" placeholder="e.g. United States, United Kingdom, Global" required value="United States" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500 transition text-sm">
+          </div>
+        </div>
+
+        <div class="flex items-center justify-end pt-2">
+          <button type="submit" id="scoutBtn" class="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 font-bold text-white shadow-lg shadow-cyan-500/20 hover:scale-[1.02] active:scale-[0.98] transition text-sm flex items-center space-x-2 cursor-pointer">
+            <span>Extract Verified Prospects</span>
+            <span>⚡</span>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Live Results Feed -->
+    <div id="resultsFeed" class="glass-card p-6 md:p-8 rounded-3xl shadow-xl">
+      <div class="flex justify-between items-center mb-4">
+        <h4 class="text-sm font-bold text-slate-300 uppercase tracking-wider">Extracted Prospects Queue</h4>
+        <span id="leadCount" class="text-xs font-mono text-cyan-400">Ready to search</span>
+      </div>
+      <div id="resultsList" class="space-y-4 font-sans text-sm">
+        <div class="p-6 text-center text-slate-500 text-xs">Enter a niche and click Extract Verified Prospects above to run the live scraper engine.</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const API_BASE = "";
+
+    async function handleScoutSearch(e) {
+      e.preventDefault();
+      const niche = document.getElementById('scoutNiche').value.trim();
+      const region = document.getElementById('scoutRegion').value.trim();
+      const btn = document.getElementById('scoutBtn');
+      const list = document.getElementById('resultsList');
+      const count = document.getElementById('leadCount');
+
+      btn.disabled = true;
+      btn.innerHTML = '<span>Querying Intelligence Nodes...</span> <span class="animate-spin">⏳</span>';
+      list.innerHTML = `<div class="p-4 rounded-xl bg-slate-900/60 border border-cyan-500/30 text-cyan-400 text-xs font-mono">[SYSTEM]: Scanning LinkedIn, Twitter/X, and Reddit streams for "${niche}" in "${region}"...</div>`;
+
+      try {
+        const response = await fetch(`${API_BASE}/webhook/scout-hunter`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ niche, region, timestamp: new Date().toISOString() })
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          const posts = data.posts || [];
+          count.textContent = `Found ${posts.length} Verified High-Intent Prospects`;
+
+          if (posts.length === 0) {
+            list.innerHTML = `<div class="p-4 rounded-xl bg-slate-900 border border-amber-500/30 text-amber-300 text-xs font-mono">No matching leads found for this query. Try a broader search term.</div>`;
+          } else {
+            list.innerHTML = posts.map((post, idx) => `
+              <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-slate-700 transition flex flex-col gap-3">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <div class="flex items-center space-x-2">
+                      <span class="font-bold text-white text-base">${post.author_name}</span>
+                      <span class="text-xs text-slate-400 font-mono">@${post.author_handle}</span>
+                      <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">${post.platform}</span>
+                    </div>
+                    <div class="text-xs text-slate-400 mt-0.5">${post.title} • <strong class="text-slate-300">${post.company}</strong> (${post.region})</div>
+                  </div>
+                  <div class="px-3 py-1 rounded-full text-xs font-bold font-mono bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+                    Intent Score: ${post.score}/100
+                  </div>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800/80 text-xs text-slate-300 italic">
+                  "${post.text}"
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-purple-500/5 border border-purple-500/20 text-xs">
+                  <div class="font-bold text-purple-300 uppercase tracking-wider text-[10px] mb-1">⚡ Generated 1:1 Outreach Pitch:</div>
+                  <div class="text-slate-300 leading-relaxed">${post.pitch}</div>
+                </div>
+
+                <div class="flex justify-between items-center pt-2 border-t border-slate-800 text-xs font-mono text-slate-400">
+                  <span>Contact: <strong class="text-cyan-400">${post.email}</strong></span>
+                  <div class="flex items-center space-x-3">
+                    <button onclick="copyToClipboard('${encodeURIComponent(post.pitch)}')" class="px-3 py-1 rounded bg-slate-800 hover:bg-slate-700 text-white text-xs font-medium transition cursor-pointer">
+                      Copy Pitch 📋
+                    </button>
+                    <a href="${post.url}" target="_blank" class="text-cyan-400 hover:underline text-xs">
+                      View Profile ↗
+                    </a>
+                  </div>
+                </div>
+              </div>
+            `).join('');
+          }
+        } else {
+          list.innerHTML = `<div class="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-mono">Error querying scraper API.</div>`;
+        }
+      } catch (err) {
+        list.innerHTML = `<div class="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-mono">Failed to connect: ${err.message}</div>`;
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<span>Extract Verified Prospects</span> <span>⚡</span>';
+      }
+    }
+
+    function copyToClipboard(encodedText) {
+      const text = decodeURIComponent(encodedText);
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Pitch copied to clipboard!");
+      });
+    }
+
+    // Auto trigger initial sample search on load
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('scoutBtn').click();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adorise Social | Blotato-Style AI Social Content Automation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    .glass-card {
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen selection:bg-purple-500 selection:text-white">
+
+  <!-- Header -->
+  <header class="h-20 border-b border-slate-800 bg-slate-950/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50 px-6 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <span class="text-2xl">⚡</span>
+      <span class="font-extrabold text-xl tracking-tight text-white">ADORISE <span class="text-purple-400">SOCIAL</span></span>
+      <span class="px-2.5 py-0.5 text-[10px] font-mono bg-purple-500/10 text-purple-400 border border-purple-500/30 rounded-full">v2.0 End-to-End</span>
+    </div>
+    <div class="flex items-center space-x-3">
+      <div id="statusBadge" class="flex items-center space-x-1.5 text-xs font-mono px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>Engine Online</span>
+      </div>
+      <button id="authBtn" onclick="toggleAuthModal()" class="text-xs font-semibold px-4 py-2 rounded-full bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-purple-500/50 transition">
+        Whop Access
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="pt-28 pb-20 max-w-6xl mx-auto px-6">
+    
+    <!-- Hero Header -->
+    <div class="text-center mb-10">
+      <span class="px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-bold uppercase tracking-widest inline-block mb-3">AUTONOMOUS CONTENT SCHEDULING</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-3">Multi-Platform Video Publishing</h1>
+      <p class="text-slate-400 text-sm max-w-xl mx-auto">
+        Queue, stage, and auto-dispatch short-form video content across TikTok, YouTube Shorts, Instagram Reels, and X/Twitter.
+      </p>
+    </div>
+
+    <!-- Active Social Inboxes Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-8" id="profilesGrid">
+      <div class="p-4 rounded-2xl glass-card text-center animate-pulse"><span class="text-xs text-slate-500">Loading accounts...</span></div>
+    </div>
+
+    <!-- Two-Column Work Area -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      
+      <!-- Column Left: Content Ingestion Form -->
+      <div class="lg:col-span-5">
+        <div class="glass-card p-6 md:p-8 rounded-3xl shadow-xl">
+          <h3 class="text-lg font-bold text-white mb-4 flex items-center space-x-2">
+            <span>✨</span>
+            <span>Schedule New Post</span>
+          </h3>
+
+          <form id="postForm" onsubmit="handleQueuePost(event)" class="space-y-4 text-sm">
+            <div>
+              <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Target Platform</label>
+              <select id="platformSelect" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white focus:outline-none focus:border-purple-500 transition">
+                <option value="tiktok">🎵 TikTok (Short-Form)</option>
+                <option value="youtube">▶️ YouTube Shorts</option>
+                <option value="instagram">📸 Instagram Reels</option>
+                <option value="twitter">𝕏 Twitter / X Video</option>
+                <option value="linkedin">💼 LinkedIn Video</option>
+              </select>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-center mb-1.5">
+                <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Post Caption & Hooks</label>
+                <button type="button" onclick="generateAIHook()" class="text-[11px] text-purple-400 hover:text-purple-300 font-mono">⚡ Suggest AI Hook</button>
+              </div>
+              <textarea id="captionInput" rows="3" required placeholder="Write viral hook, value body, and hashtags..." class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-purple-500 transition text-sm"></textarea>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Video Asset URL (or select sample)</label>
+              <input type="text" id="videoUrlInput" placeholder="https://... or /queue/sample.mp4" value="/queue/demo_clip.mp4" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white text-sm focus:outline-none focus:border-purple-500 transition">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Schedule Time</label>
+              <input type="datetime-local" id="scheduleTimeInput" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white text-sm focus:outline-none focus:border-purple-500 transition">
+            </div>
+
+            <button type="submit" id="queueBtn" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-purple-500 to-indigo-600 font-bold text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 hover:scale-[1.01] active:scale-[0.99] transition cursor-pointer text-sm">
+              Deploy to Content Queue 🚀
+            </button>
+          </form>
+
+          <div id="formFeedback" class="hidden mt-4 p-3 rounded-xl text-xs font-mono"></div>
+        </div>
+      </div>
+
+      <!-- Column Right: Live Queue Stream -->
+      <div class="lg:col-span-7">
+        <div class="glass-card p-6 md:p-8 rounded-3xl shadow-xl">
+          <div class="flex justify-between items-center mb-4">
+            <div>
+              <h3 class="text-lg font-bold text-white flex items-center space-x-2">
+                <span>📋</span>
+                <span>Active Queue Pipeline</span>
+              </h3>
+              <p class="text-xs text-slate-400 mt-0.5">Real-time status of scheduled video dispatches</p>
+            </div>
+            <button onclick="loadQueue()" class="text-xs font-mono text-purple-400 hover:text-purple-300 px-3 py-1.5 rounded-lg bg-purple-500/10 border border-purple-500/20">
+              ↻ Refresh
+            </button>
+          </div>
+
+          <div id="queueList" class="space-y-3">
+            <div class="p-4 rounded-2xl bg-slate-900/50 text-center text-slate-500 text-xs">Loading queue items...</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script>
+    const API_BASE = "";
+
+    // Preset AI hooks
+    const AI_HOOKS = [
+      "Here is the exact 3-step automation we use to scrape 500 decision-maker emails/day without getting banned 🧵👇 #ColdOutreach #B2B",
+      "Most agency founders work 80 hours a week on tasks a $20 VPS can run automatically. Here is the blueprint: #Productivity #AI",
+      "Stop hiring cold callers until you watch this breakdown of self-hosted Composio outreach pipelines 🚀 #SaaS #GrowthHacking",
+      "We tested 1,000 video ad variations using automated 9:16 rendering. The retention difference was insane: #VideoMarketing #Shorts"
+    ];
+
+    function generateAIHook() {
+      const random = AI_HOOKS[Math.floor(Math.random() * AI_HOOKS.length)];
+      document.getElementById('captionInput').value = random;
+    }
+
+    async function loadProfiles() {
+      try {
+        const res = await fetch(`${API_BASE}/api/buffer-profiles`);
+        const data = await res.json();
+        const grid = document.getElementById('profilesGrid');
+        if (data.profiles && data.profiles.length > 0) {
+          grid.innerHTML = data.profiles.map(p => `
+            <div class="p-3.5 rounded-2xl glass-card flex flex-col items-center text-center">
+              <span class="text-xl mb-1">${p.avatar}</span>
+              <span class="text-xs font-bold text-white capitalize">${p.platform}</span>
+              <span class="text-[11px] text-purple-400 font-mono mt-0.5">${p.handle}</span>
+              <span class="text-[10px] text-slate-400 mt-1">${p.followers}</span>
+            </div>
+          `).join('');
+        }
+      } catch (err) {
+        console.error("Failed to load profiles", err);
+      }
+    }
+
+    async function loadQueue() {
+      try {
+        const res = await fetch(`${API_BASE}/api/queue`);
+        const data = await res.json();
+        const list = document.getElementById('queueList');
+        if (!data.posts || data.posts.length === 0) {
+          list.innerHTML = `<div class="p-6 text-center text-slate-500 text-xs">No posts currently in queue. Add one on the left!</div>`;
+          return;
+        }
+        list.innerHTML = data.posts.map(post => {
+          const isPublished = post.status === 'published';
+          const statusBadge = isPublished 
+            ? `<span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Published 🟢</span>`
+            : `<span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">Queued 🟡</span>`;
+
+          return `
+            <div class="p-4 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-slate-700 transition">
+              <div class="flex justify-between items-start mb-2">
+                <div class="flex items-center space-x-2">
+                  <span class="text-xs font-bold text-white uppercase tracking-wider">${post.platform}</span>
+                  <span class="text-slate-600">•</span>
+                  <span class="text-[11px] text-slate-400 font-mono">${post.id}</span>
+                </div>
+                ${statusBadge}
+              </div>
+              <p class="text-xs text-slate-300 mb-3 leading-relaxed">${post.caption}</p>
+              <div class="flex flex-wrap items-center justify-between text-[11px] font-mono text-slate-500 pt-2 border-t border-slate-800/80 gap-2">
+                <span>Scheduled: ${new Date(post.scheduled_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                <div class="flex items-center space-x-2">
+                  ${!isPublished ? `
+                    <button onclick="publishNow('${post.id}')" class="px-2.5 py-1 rounded bg-purple-500/20 text-purple-300 hover:bg-purple-500/30 transition text-[10px] font-bold">
+                      Publish Now ⚡
+                    </button>
+                  ` : `
+                    <a href="${post.live_url || '#'}" target="_blank" class="text-cyan-400 hover:underline text-[10px]">
+                      View Live ↗
+                    </a>
+                  `}
+                  <button onclick="deletePost('${post.id}')" class="text-slate-500 hover:text-red-400 transition text-xs">
+                    ✕
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      } catch (err) {
+        console.error("Failed to load queue", err);
+      }
+    }
+
+    async function handleQueuePost(e) {
+      e.preventDefault();
+      const platform = document.getElementById('platformSelect').value;
+      const caption = document.getElementById('captionInput').value;
+      const video_url = document.getElementById('videoUrlInput').value;
+      const scheduled_at = document.getElementById('scheduleTimeInput').value;
+      const btn = document.getElementById('queueBtn');
+      const fb = document.getElementById('formFeedback');
+
+      btn.disabled = true;
+      btn.innerHTML = 'Queueing Post... ⏳';
+
+      try {
+        const res = await fetch(`${API_BASE}/api/queue-post`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            user_id: 'adorise_ops',
+            platform,
+            caption,
+            video_url,
+            scheduled_at: scheduled_at || new Date().toISOString()
+          })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          fb.className = "mt-4 p-3 rounded-xl text-xs font-mono bg-emerald-500/10 border border-emerald-500/30 text-emerald-400";
+          fb.textContent = "✅ Post queued successfully into publication pipeline!";
+          document.getElementById('captionInput').value = '';
+          loadQueue();
+        } else {
+          fb.className = "mt-4 p-3 rounded-xl text-xs font-mono bg-red-500/10 border border-red-500/30 text-red-400";
+          fb.textContent = `❌ ${data.error || 'Failed to queue'}`;
+        }
+      } catch (err) {
+        fb.className = "mt-4 p-3 rounded-xl text-xs font-mono bg-red-500/10 border border-red-500/30 text-red-400";
+        fb.textContent = `❌ Connection Error: ${err.message}`;
+      } finally {
+        fb.classList.remove('hidden');
+        btn.disabled = false;
+        btn.innerHTML = 'Deploy to Content Queue 🚀';
+      }
+    }
+
+    async function publishNow(id) {
+      try {
+        const res = await fetch(`${API_BASE}/api/queue/${id}/publish-now`, { method: 'POST' });
+        if (res.ok) loadQueue();
+      } catch (err) {
+        alert('Failed to trigger publish: ' + err.message);
+      }
+    }
+
+    async function deletePost(id) {
+      if (!confirm('Remove this post from queue?')) return;
+      try {
+        const res = await fetch(`${API_BASE}/api/queue/${id}`, { method: 'DELETE' });
+        if (res.ok) loadQueue();
+      } catch (err) {
+        alert('Failed to remove: ' + err.message);
+      }
+    }
+
+    // Set default schedule time to +2 hours
+    const defaultTime = new Date(Date.now() + 7200000);
+    document.getElementById('scheduleTimeInput').value = defaultTime.toISOString().slice(0, 16);
+
+    // Initial load
+    loadProfiles();
+    loadQueue();
+    setInterval(loadQueue, 10000);
+  </script>
+</body>
+</html>
