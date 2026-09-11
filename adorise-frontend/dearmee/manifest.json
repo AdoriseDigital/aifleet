@@ -1,0 +1,21 @@
+{
+  "name": "DearMee Companion",
+  "short_name": "DearMee",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#020617",
+  "description": "Empathetic Caring AI Companion & Founder Co-Pilot",
+  "icons": [
+    {
+      "src": "https://api.iconify.design/twemoji:dove.svg?width=192",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "https://api.iconify.design/twemoji:dove.svg?width=512",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

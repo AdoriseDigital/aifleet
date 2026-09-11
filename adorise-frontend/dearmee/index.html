@@ -2,8 +2,17 @@
 <html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DearMee | Proprietary Empathetic Caring AI Companion</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>DearMee | Empathetic Caring AI Companion & Founder Co-Pilot</title>
+  
+  <!-- PWA Meta Tags -->
+  <meta name="theme-color" content="#020617">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="DearMee">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="https://api.iconify.design/twemoji:dove.svg?width=180">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -18,66 +27,204 @@
   </script>
   <style>
     .glass-card {
-      background: rgba(15, 23, 42, 0.65);
+      background: rgba(15, 23, 42, 0.72);
       backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(15, 23, 42, 0.5);
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(244, 114, 182, 0.3);
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: rgba(244, 114, 182, 0.6);
+    }
+    @keyframes gentlePulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.85; transform: scale(1.02); }
+    }
+    .speaking-pulse {
+      animation: gentlePulse 2s infinite ease-in-out;
     }
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen selection:bg-pink-500 selection:text-white flex flex-col justify-between">
 
-  <!-- Header -->
-  <header class="h-20 border-b border-slate-800 bg-slate-950/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50 px-6 flex items-center justify-between">
+  <!-- Mobile PWA Install Guide Banner -->
+  <div id="pwaBanner" class="bg-gradient-to-r from-pink-950/90 via-slate-900 to-rose-950/90 border-b border-pink-500/20 py-2.5 px-4 text-center text-xs text-slate-200 flex items-center justify-between z-50">
+    <div class="flex items-center gap-2 mx-auto">
+      <span class="text-pink-400 text-sm">📲</span>
+      <span><strong>Mobile Access:</strong> Install DearMee on your phone's Home Screen for private, 1-tap support anytime.</span>
+      <button onclick="openPwaModal()" class="underline font-bold text-pink-300 hover:text-white ml-2 cursor-pointer">
+        Install Guide &rarr;
+      </button>
+    </div>
+    <button onclick="document.getElementById('pwaBanner').style.display='none'" class="text-slate-400 hover:text-white text-xs px-2 py-0.5 rounded cursor-pointer" title="Dismiss">✕</button>
+  </div>
+
+  <!-- Navigation Header -->
+  <header class="h-16 md:h-20 border-b border-slate-800 bg-slate-950/85 backdrop-blur-md sticky top-0 left-0 right-0 z-40 px-4 sm:px-6 flex items-center justify-between">
     <div class="flex items-center space-x-3">
       <span class="text-2xl">🕊️</span>
-      <span class="font-extrabold text-xl tracking-tight text-white">DEAR<span class="text-pink-400">MEE</span></span>
-      <span class="px-2.5 py-0.5 text-[10px] font-mono bg-pink-500/10 text-pink-400 border border-pink-500/30 rounded-full">Companion v2.0</span>
+      <span class="font-extrabold text-lg sm:text-xl tracking-tight text-white">DEAR<span class="text-pink-400">MEE</span></span>
+      <span class="px-2.5 py-0.5 text-[10px] font-mono bg-pink-500/10 text-pink-400 border border-pink-500/30 rounded-full hidden sm:inline-block">Companion v2.5</span>
     </div>
-    <div class="flex items-center space-x-3">
-      <div class="text-xs font-mono px-3 py-1 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-400">
-        ● Safe Space Active
+    <div class="flex items-center space-x-2 sm:space-x-3">
+      <button onclick="toggleSettingsModal()" class="px-3 py-1.5 rounded-full glass-card hover:border-pink-500/50 text-xs text-slate-300 flex items-center gap-1.5 transition cursor-pointer">
+        <span>⚙️</span>
+        <span class="hidden sm:inline">Preferences</span>
+      </button>
+      <button onclick="openPwaModal()" class="px-3 py-1.5 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-400 hover:bg-pink-500/20 text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer">
+        <span>📲</span>
+        <span>Add to Home</span>
+      </button>
+      <div class="text-[11px] font-mono px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center gap-1">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="hidden md:inline">Private & Safe</span>
       </div>
     </div>
   </header>
 
   <!-- Main Container -->
-  <main class="pt-28 pb-6 max-w-4xl w-full mx-auto px-6 flex-1 flex flex-col">
-    <div class="text-center mb-6">
-      <span class="px-4 py-1.5 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-400 text-xs font-bold uppercase tracking-widest inline-block mb-2">NEURAL EMPATHETIC COMPANION</span>
-      <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-2">Your Personal Caring AI Co-Pilot</h1>
-      <p class="text-slate-400 text-xs md:text-sm max-w-lg mx-auto">
-        A private, non-judgmental space to reflect on personal burnout, client stress, and decision fatigue.
+  <main class="pt-6 pb-6 max-w-4xl w-full mx-auto px-4 sm:px-6 flex-1 flex flex-col">
+    
+    <!-- Hero / Headline -->
+    <div class="text-center mb-5">
+      <span class="px-3.5 py-1 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-400 text-[11px] font-bold uppercase tracking-widest inline-block mb-2">
+        NEURAL EMPATHETIC COMPANION
+      </span>
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mb-2">
+        Your Caring AI Co-Pilot & Confidant
+      </h1>
+      <p class="text-slate-400 text-xs sm:text-sm max-w-lg mx-auto">
+        A private, non-judgmental space to release founder burnout, work pressure, loneliness, and life stress.
       </p>
     </div>
 
+    <!-- Quick Control Toolbar (Gender, Mode, Language, Persona) -->
+    <div class="glass-card rounded-2xl p-3.5 mb-5 border border-pink-500/20 flex flex-wrap items-center justify-between gap-3 text-xs">
+      
+      <!-- 1. Gender Choice -->
+      <div class="flex items-center gap-1.5 bg-slate-900/80 p-1.5 rounded-xl border border-slate-800">
+        <span class="text-slate-400 font-medium mr-1 text-[11px]">Voice:</span>
+        <label class="flex items-center gap-1 px-2 py-1 rounded-lg cursor-pointer text-slate-300 hover:text-white has-[:checked]:bg-pink-500/20 has-[:checked]:text-pink-300 has-[:checked]:font-semibold transition">
+          <input type="radio" name="companionGender" value="female" checked onchange="updateCompanionConfig()" class="sr-only">
+          <span>👩 Female</span>
+        </label>
+        <label class="flex items-center gap-1 px-2 py-1 rounded-lg cursor-pointer text-slate-300 hover:text-white has-[:checked]:bg-pink-500/20 has-[:checked]:text-pink-300 has-[:checked]:font-semibold transition">
+          <input type="radio" name="companionGender" value="male" onchange="updateCompanionConfig()" class="sr-only">
+          <span>👨 Male</span>
+        </label>
+        <label class="flex items-center gap-1 px-2 py-1 rounded-lg cursor-pointer text-slate-300 hover:text-white has-[:checked]:bg-pink-500/20 has-[:checked]:text-pink-300 has-[:checked]:font-semibold transition">
+          <input type="radio" name="companionGender" value="neutral" onchange="updateCompanionConfig()" class="sr-only">
+          <span>🕊️ Neutral</span>
+        </label>
+      </div>
+
+      <!-- 2. Interaction Mode (Chat vs Voice) -->
+      <div class="flex items-center gap-1.5 bg-slate-900/80 p-1.5 rounded-xl border border-slate-800">
+        <span class="text-slate-400 font-medium mr-1 text-[11px]">Mode:</span>
+        <label class="flex items-center gap-1 px-2.5 py-1 rounded-lg cursor-pointer text-slate-300 hover:text-white has-[:checked]:bg-indigo-500/20 has-[:checked]:text-indigo-300 has-[:checked]:font-semibold transition">
+          <input type="radio" name="interactionMode" value="chat" checked onchange="handleModeSwitch('chat')" class="sr-only">
+          <span>💬 Text Chat</span>
+        </label>
+        <label class="flex items-center gap-1 px-2.5 py-1 rounded-lg cursor-pointer text-slate-300 hover:text-white has-[:checked]:bg-rose-500/20 has-[:checked]:text-rose-300 has-[:checked]:font-semibold transition">
+          <input type="radio" name="interactionMode" value="voice" onchange="handleModeSwitch('voice')" class="sr-only">
+          <span>🎙️ Voice Audio</span>
+        </label>
+      </div>
+
+      <!-- 3. Language Selection -->
+      <div class="flex items-center gap-2 bg-slate-900/80 px-2.5 py-1.5 rounded-xl border border-slate-800">
+        <span class="text-slate-400 text-[11px]">🌐</span>
+        <select id="languageSelect" onchange="updateCompanionConfig()" class="bg-transparent text-slate-200 outline-none cursor-pointer text-xs font-medium">
+          <option value="en" class="bg-slate-900 text-white">English</option>
+          <option value="es" class="bg-slate-900 text-white">Español (Spanish)</option>
+          <option value="hi" class="bg-slate-900 text-white">हिंदी (Hindi)</option>
+          <option value="fr" class="bg-slate-900 text-white">Français (French)</option>
+          <option value="de" class="bg-slate-900 text-white">Deutsch (German)</option>
+          <option value="ja" class="bg-slate-900 text-white">日本語 (Japanese)</option>
+          <option value="pt" class="bg-slate-900 text-white">Português (Portuguese)</option>
+          <option value="ar" class="bg-slate-900 text-white">العربية (Arabic)</option>
+        </select>
+      </div>
+
+      <!-- 4. Age / Personality Persona Selector -->
+      <div class="flex items-center gap-2 bg-slate-900/80 px-2.5 py-1.5 rounded-xl border border-slate-800 w-full sm:w-auto">
+        <span class="text-slate-400 text-[11px]">Persona:</span>
+        <select id="personaSelect" onchange="updateCompanionConfig()" class="bg-transparent text-pink-300 outline-none cursor-pointer text-xs font-semibold flex-1 sm:flex-initial">
+          <option value="mentor" class="bg-slate-900 text-white">🧘 Empathetic Mentor (Warm & Grounding)</option>
+          <option value="healer" class="bg-slate-900 text-white">🌿 Gentle Healer (Compassionate Care)</option>
+          <option value="cofounder" class="bg-slate-900 text-white">💼 Pragmatic Co-founder (Founder Clarity)</option>
+          <option value="coach" class="bg-slate-900 text-white">⚡ Resilient Coach (Mindset & Focus)</option>
+        </select>
+      </div>
+
+    </div>
+
     <!-- Suggested Reflection Prompts -->
-    <div class="flex flex-wrap items-center justify-center gap-2 mb-6">
+    <div class="flex flex-wrap items-center justify-center gap-2 mb-4">
       <button onclick="usePrompt('I am feeling intense founder burnout and overwhelmed with client deadlines.')" class="px-3 py-1.5 rounded-full glass-card hover:border-pink-500/50 text-xs text-slate-300 transition cursor-pointer">
         🔥 Founder Burnout
       </button>
       <button onclick="usePrompt('A client sent an aggressive email and I feel anxious responding.')" class="px-3 py-1.5 rounded-full glass-card hover:border-pink-500/50 text-xs text-slate-300 transition cursor-pointer">
-        ✉️ Difficult Client Anxiety
+        ✉️ Client Anxiety
       </button>
-      <button onclick="usePrompt('I feel stuck on a big decision and my mind is racing.')" class="px-3 py-1.5 rounded-full glass-card hover:border-pink-500/50 text-xs text-slate-300 transition cursor-pointer">
-        🧠 Decision Overload
+      <button onclick="usePrompt('I feel isolated building this company alone, with too much weight on my shoulders.')" class="px-3 py-1.5 rounded-full glass-card hover:border-pink-500/50 text-xs text-slate-300 transition cursor-pointer">
+        🕊️ Founder Loneliness
+      </button>
+      <button onclick="usePrompt('I made an operational mistake today and can\'t quiet my racing mind.')" class="px-3 py-1.5 rounded-full glass-card hover:border-pink-500/50 text-xs text-slate-300 transition cursor-pointer">
+        🧠 Quieting Racing Mind
       </button>
     </div>
 
     <!-- Chat Console -->
-    <div class="glass-card rounded-3xl p-6 flex-1 flex flex-col shadow-2xl h-[480px]">
-      <div id="chatFeed" class="flex-1 overflow-y-auto space-y-4 pr-2 mb-4">
+    <div class="glass-card rounded-3xl p-4 sm:p-6 flex-1 flex flex-col shadow-2xl h-[480px] relative border border-slate-800">
+      
+      <!-- Voice Mode Visualizer Overlay (hidden by default) -->
+      <div id="voiceOverlay" class="hidden absolute inset-0 bg-slate-950/90 backdrop-blur-xl rounded-3xl z-20 flex flex-col items-center justify-center p-6 text-center">
+        <div id="voiceOrb" class="w-28 h-28 rounded-full bg-gradient-to-tr from-pink-500 via-rose-500 to-purple-600 p-1 mb-4 flex items-center justify-center shadow-2xl shadow-pink-500/30 transition-transform duration-500">
+          <div class="w-full h-full bg-slate-950 rounded-full flex items-center justify-center text-3xl">
+            🕊️
+          </div>
+        </div>
+        <div id="voiceStatus" class="text-sm font-bold text-pink-300 mb-1">Voice Mode Active</div>
+        <p id="voiceTranscript" class="text-xs text-slate-300 max-w-md h-12 overflow-hidden italic">
+          "Listening... tap the microphone to speak your thoughts freely."
+        </p>
+        
+        <div class="flex items-center gap-4 mt-6">
+          <button id="micBtn" onclick="toggleVoiceRecording()" class="w-14 h-14 rounded-full bg-pink-500 hover:bg-pink-400 text-white flex items-center justify-center text-2xl shadow-lg shadow-pink-500/40 hover:scale-105 active:scale-95 transition cursor-pointer">
+            🎤
+          </button>
+          <button onclick="handleModeSwitch('chat')" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-300 transition cursor-pointer">
+            Switch to Text
+          </button>
+        </div>
+      </div>
+
+      <!-- Feed -->
+      <div id="chatFeed" class="flex-1 overflow-y-auto space-y-4 pr-2 mb-4 custom-scrollbar">
         <div class="flex items-start space-x-3">
           <div class="w-8 h-8 rounded-full bg-pink-500/20 border border-pink-500/40 flex items-center justify-center text-pink-400 font-bold text-xs shrink-0">DM</div>
-          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 max-w-xl text-sm text-slate-300 leading-relaxed">
-            Hello. I'm DearMee. Take a slow, quiet breath. Whatever pressure, friction, or thoughts are on your mind right now, you are safe to share them. How are you feeling today?
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 max-w-xl text-sm text-slate-300 leading-relaxed shadow-sm">
+            <span id="greetingText">Hello. I'm DearMee, your personal caring companion. Take a slow, quiet breath. Whatever stress, isolation, or friction is on your mind right now—whether in your business or personal life—you are safe here. How are you feeling right now?</span>
           </div>
         </div>
       </div>
 
       <!-- Input Bar -->
-      <form onsubmit="handleSendMessage(event)" class="flex items-center space-x-3 pt-3 border-t border-slate-800">
-        <input type="text" id="chatInput" placeholder="Share your thoughts or current stress..." required class="flex-1 px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-pink-500 transition text-sm">
-        <button type="submit" id="sendBtn" class="px-6 py-3 rounded-xl bg-gradient-to-r from-pink-500 to-rose-600 font-bold text-white shadow-lg shadow-pink-500/20 hover:scale-[1.02] active:scale-[0.98] transition text-sm cursor-pointer">
+      <form onsubmit="handleSendMessage(event)" class="flex items-center space-x-2 sm:space-x-3 pt-3 border-t border-slate-800">
+        <button type="button" onclick="startMicDictation()" class="p-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-400 hover:text-pink-400 transition text-sm cursor-pointer" title="Speak to dictate">
+          🎤
+        </button>
+        <input type="text" id="chatInput" placeholder="Share what is troubling you, or how you feel..." required class="flex-1 px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-pink-500 transition text-xs sm:text-sm">
+        <button type="submit" id="sendBtn" class="px-5 sm:px-6 py-3 rounded-xl bg-gradient-to-r from-pink-500 to-rose-600 font-bold text-white shadow-lg shadow-pink-500/20 hover:scale-[1.02] active:scale-[0.98] transition text-xs sm:text-sm cursor-pointer">
           Send 🕊️
         </button>
       </form>
@@ -89,9 +236,9 @@
         <span class="text-xs font-bold uppercase tracking-widest text-pink-400 bg-pink-500/10 border border-pink-500/20 px-3 py-1 rounded-full inline-block mb-2">
           Human-Centered Emotional Resilience
         </span>
-        <h2 class="text-2xl font-extrabold text-white">Why We Built DearMee: Solving the Silent Founder Crisis</h2>
+        <h2 class="text-2xl font-extrabold text-white">Why We Built DearMee: Protecting Founders & Humans</h2>
         <p class="text-slate-400 text-xs md:text-sm mt-1">
-          Leadership is profoundly isolating. Here is how DearMee and Adorise Digital protect founders and professionals in both spaces.
+          Leadership and modern work are profoundly isolating. Here is how DearMee protects founders in both business and personal realms.
         </p>
       </div>
 
@@ -100,12 +247,12 @@
         <div class="glass-card p-6 rounded-2xl border border-pink-500/20 flex flex-col justify-between">
           <div>
             <div class="text-xs font-bold uppercase text-pink-400 font-mono mb-2">Business Space Impact</div>
-            <h3 class="text-base font-bold text-white mb-2">Eliminate Decision Paralysis & High-Cost Burnout Mistakes</h3>
+            <h3 class="text-base font-bold text-white mb-2">Prevent Catastrophic Founder Burnout & Decision Paralysis</h3>
             <p class="text-xs text-slate-300 leading-relaxed mb-4">
-              When founders and executives operate under chronic, unmanaged stress, cognitive bandwidth collapses. Unaddressed anxiety leads to hasty contract decisions, panicked staff management, and lost operational momentum. DearMee provides an immediate grounding filter that restores executive clarity before you make crucial business moves.
+              When a founder operates under unmanaged chronic anxiety, their executive prefrontal cortex shuts down. Panic reactions cause cancelled contracts, hasty team firings, and lost focus. DearMee provides an instant 2-minute grounding reset that restores objective perspective before irreversible business moves are made.
             </p>
             <div class="text-xs text-cyan-400">
-              Scale operations with: <a href="https://services.adorisedigital.com/#pricing" target="_blank" rel="noopener noreferrer" class="underline font-semibold">Adorise Autonomous AI Services</a>
+              Explore autonomous systems: <a href="https://services.adorisedigital.com/#pricing" target="_blank" rel="noopener noreferrer" class="underline font-semibold">Adorise Digital Services</a>
             </div>
           </div>
         </div>
@@ -114,12 +261,12 @@
         <div class="glass-card p-6 rounded-2xl border border-rose-500/20 flex flex-col justify-between">
           <div>
             <div class="text-xs font-bold uppercase text-rose-400 font-mono mb-2">Personal Space Impact</div>
-            <h3 class="text-base font-bold text-white mb-2">A Safe, Confidential Confidant Available 24/7</h3>
+            <h3 class="text-base font-bold text-white mb-2">A Completely Safe Confidant Available 24 Hours a Day</h3>
             <p class="text-xs text-slate-300 leading-relaxed mb-4">
-              You cannot always vent your deepest doubts to investors, employees, or family without causing alarm. DearMee gives you a completely private, non-judgmental companion powered by empathetic neural models, giving you a safe space to process imposter feelings, release evening stress, and sleep peacefully.
+              You cannot always reveal your deepest panic or vulnerability to co-founders, employees, or family without triggering panic. DearMee offers a confidential companion built around unconditional positive regard, voice and text empathy, and cognitive defusion to help you sleep without a racing chest.
             </p>
             <div class="text-xs text-pink-300">
-              Companion Status: <strong>Safe Space Active (Sub-1s Voice & Text)</strong>
+              Architecture: <strong>Zero-judgment empathetic memory + sub-second response</strong>
             </div>
           </div>
         </div>
@@ -127,16 +274,212 @@
     </div>
   </main>
 
+  <!-- PWA Install Modal -->
+  <div id="pwaModal" class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4">
+    <div class="glass-card max-w-md w-full p-6 rounded-3xl border border-pink-500/30 shadow-2xl relative">
+      <button onclick="closePwaModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-base cursor-pointer">✕</button>
+      
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-2xl bg-pink-500/20 border border-pink-500/40 flex items-center justify-center text-xl text-pink-400">📲</div>
+        <div>
+          <h3 class="text-lg font-bold text-white">Add DearMee to Home Screen</h3>
+          <p class="text-xs text-slate-400">Turn DearMee into an app on your phone</p>
+        </div>
+      </div>
+
+      <div class="space-y-4 text-xs text-slate-300">
+        <div class="p-3.5 rounded-2xl bg-slate-900 border border-slate-800">
+          <div class="font-bold text-pink-400 mb-1 flex items-center gap-1.5">
+            <span>🍏</span>
+            <span>For iPhone & iPad (Safari)</span>
+          </div>
+          <ol class="list-decimal list-inside space-y-1 text-slate-300">
+            <li>Open <strong>Safari</strong> and visit this page</li>
+            <li>Tap the <strong>Share</strong> button (box with an arrow up <span class="font-mono">⎋</span>) at the bottom</li>
+            <li>Scroll down and tap <strong>"Add to Home Screen"</strong></li>
+            <li>Tap <strong>"Add"</strong> in the top-right corner</li>
+          </ol>
+        </div>
+
+        <div class="p-3.5 rounded-2xl bg-slate-900 border border-slate-800">
+          <div class="font-bold text-pink-400 mb-1 flex items-center gap-1.5">
+            <span>🤖</span>
+            <span>For Android (Chrome)</span>
+          </div>
+          <ol class="list-decimal list-inside space-y-1 text-slate-300">
+            <li>Open <strong>Chrome</strong> and visit this page</li>
+            <li>Tap the <strong>three dots</strong> (<span class="font-mono">⋮</span>) menu in the top-right corner</li>
+            <li>Tap <strong>"Install app"</strong> or <strong>"Add to Home screen"</strong></li>
+            <li>Follow the on-screen prompt to confirm</li>
+          </ol>
+        </div>
+      </div>
+
+      <button onclick="closePwaModal()" class="w-full mt-5 py-3 rounded-xl bg-pink-500 hover:bg-pink-400 text-white font-bold text-xs transition cursor-pointer">
+        Got It, Thanks! 🕊️
+      </button>
+    </div>
+  </div>
+
   <script>
     const API_BASE = "";
+    let companionConfig = {
+      gender: "female",
+      mode: "chat",
+      language: "en",
+      persona: "mentor"
+    };
+
+    let recognition = null;
+    let isRecording = false;
+
+    function updateCompanionConfig() {
+      const gender = document.querySelector('input[name="companionGender"]:checked')?.value || 'female';
+      const mode = document.querySelector('input[name="interactionMode"]:checked')?.value || 'chat';
+      const language = document.getElementById('languageSelect').value;
+      const persona = document.getElementById('personaSelect').value;
+
+      companionConfig = { gender, mode, language, persona };
+      console.log("[DearMee] Updated config:", companionConfig);
+    }
+
+    function handleModeSwitch(mode) {
+      const voiceRadio = document.querySelector('input[name="interactionMode"][value="voice"]');
+      const chatRadio = document.querySelector('input[name="interactionMode"][value="chat"]');
+      const overlay = document.getElementById('voiceOverlay');
+
+      if (mode === 'voice') {
+        if (voiceRadio) voiceRadio.checked = true;
+        overlay.classList.remove('hidden');
+        companionConfig.mode = 'voice';
+        speakText("I am here with you. What is on your mind?");
+      } else {
+        if (chatRadio) chatRadio.checked = true;
+        overlay.classList.add('hidden');
+        companionConfig.mode = 'chat';
+        if (window.speechSynthesis) window.speechSynthesis.cancel();
+      }
+      updateCompanionConfig();
+    }
+
+    function speakText(text) {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      
+      // Match voice language
+      const langMap = {
+        en: 'en-US', es: 'es-ES', hi: 'hi-IN', fr: 'fr-FR',
+        de: 'de-DE', ja: 'ja-JP', pt: 'pt-BR', ar: 'ar-SA'
+      };
+      utterance.lang = langMap[companionConfig.language] || 'en-US';
+      
+      // Pitch/rate adjustments based on gender & persona
+      if (companionConfig.gender === 'female') {
+        utterance.pitch = 1.1;
+        utterance.rate = 0.95;
+      } else if (companionConfig.gender === 'male') {
+        utterance.pitch = 0.85;
+        utterance.rate = 0.92;
+      } else {
+        utterance.pitch = 1.0;
+        utterance.rate = 0.95;
+      }
+
+      const orb = document.getElementById('voiceOrb');
+      utterance.onstart = () => orb?.classList.add('speaking-pulse');
+      utterance.onend = () => orb?.classList.remove('speaking-pulse');
+      utterance.onerror = () => orb?.classList.remove('speaking-pulse');
+
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function startMicDictation() {
+      const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRec) {
+        alert("Speech recognition is not supported in this browser. Please use Google Chrome or Safari.");
+        return;
+      }
+      const rec = new SpeechRec();
+      rec.lang = companionConfig.language === 'en' ? 'en-US' : companionConfig.language;
+      rec.onstart = () => {
+        document.getElementById('chatInput').placeholder = "Listening to your voice...";
+      };
+      rec.onresult = (e) => {
+        const transcript = e.results[0][0].transcript;
+        document.getElementById('chatInput').value = transcript;
+        document.getElementById('chatInput').placeholder = "Share what is troubling you, or how you feel...";
+      };
+      rec.onerror = () => {
+        document.getElementById('chatInput').placeholder = "Share what is troubling you, or how you feel...";
+      };
+      rec.start();
+    }
+
+    function toggleVoiceRecording() {
+      const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRec) {
+        alert("Speech recognition is not supported in this browser.");
+        return;
+      }
+
+      if (isRecording) {
+        recognition?.stop();
+        isRecording = false;
+        document.getElementById('micBtn').classList.remove('bg-rose-600', 'animate-pulse');
+        document.getElementById('voiceStatus').innerText = "Processing thought...";
+        return;
+      }
+
+      recognition = new SpeechRec();
+      recognition.lang = companionConfig.language === 'en' ? 'en-US' : companionConfig.language;
+      recognition.continuous = false;
+      recognition.interimResults = true;
+
+      recognition.onstart = () => {
+        isRecording = true;
+        document.getElementById('micBtn').classList.add('bg-rose-600', 'animate-pulse');
+        document.getElementById('voiceStatus').innerText = "Listening to you...";
+      };
+
+      recognition.onresult = (e) => {
+        let interim = "";
+        for (let i = e.resultIndex; i < e.results.length; ++i) {
+          interim += e.results[i][0].transcript;
+        }
+        document.getElementById('voiceTranscript').innerText = `"${interim}"`;
+        if (e.results[0].isFinal) {
+          submitDirectVoiceMessage(interim);
+        }
+      };
+
+      recognition.onerror = () => {
+        isRecording = false;
+        document.getElementById('micBtn').classList.remove('bg-rose-600', 'animate-pulse');
+        document.getElementById('voiceStatus').innerText = "Voice Mode Active";
+      };
+
+      recognition.onend = () => {
+        isRecording = false;
+        document.getElementById('micBtn').classList.remove('bg-rose-600', 'animate-pulse');
+      };
+
+      recognition.start();
+    }
+
+    async function submitDirectVoiceMessage(text) {
+      if (!text.trim()) return;
+      document.getElementById('chatInput').value = text;
+      handleSendMessage(new Event('submit'));
+    }
 
     function usePrompt(text) {
       document.getElementById('chatInput').value = text;
-      document.getElementById('sendBtn').click();
+      handleSendMessage(new Event('submit'));
     }
 
     async function handleSendMessage(e) {
-      e.preventDefault();
+      if (e && e.preventDefault) e.preventDefault();
       const input = document.getElementById('chatInput');
       const msg = input.value.trim();
       if (!msg) return;
@@ -157,37 +500,80 @@
       btn.disabled = true;
       feed.scrollTop = feed.scrollHeight;
 
+      // Update voice overlay transcript if active
+      if (companionConfig.mode === 'voice') {
+        document.getElementById('voiceTranscript').innerText = `"${msg}"`;
+        document.getElementById('voiceStatus').innerText = "DearMee is formulating care...";
+      }
+
       try {
         const response = await fetch(`${API_BASE}/api/agent/chat`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: msg, session_id: 'active_session' })
+          body: JSON.stringify({
+            message: msg,
+            session_id: 'active_session',
+            persona: companionConfig.persona,
+            gender: companionConfig.gender,
+            language: companionConfig.language
+          })
         });
 
         const data = await response.json();
-        const reply = data.response || "I hear you completely. Take space to breathe and process.";
+        const reply = data.response || generateEmpatheticFallback(msg, companionConfig);
 
-        feed.innerHTML += `
-          <div class="flex items-start space-x-3">
-            <div class="w-8 h-8 rounded-full bg-pink-500/20 border border-pink-500/40 flex items-center justify-center text-pink-400 font-bold text-xs shrink-0">DM</div>
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 max-w-xl text-sm text-slate-300 leading-relaxed">
-              ${reply}
-            </div>
-          </div>
-        `;
+        renderBotReply(reply);
       } catch (err) {
-        feed.innerHTML += `
-          <div class="flex items-start space-x-3">
-            <div class="w-8 h-8 rounded-full bg-pink-500/20 border border-pink-500/40 flex items-center justify-center text-pink-400 font-bold text-xs shrink-0">DM</div>
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 max-w-xl text-sm text-slate-300 leading-relaxed">
-              I hear you. Whatever is happening, remember that you are capable of handling it one moment at a time.
-            </div>
-          </div>
-        `;
+        const reply = generateEmpatheticFallback(msg, companionConfig);
+        renderBotReply(reply);
       } finally {
         btn.disabled = false;
         feed.scrollTop = feed.scrollHeight;
       }
+    }
+
+    function renderBotReply(reply) {
+      const feed = document.getElementById('chatFeed');
+      feed.innerHTML += `
+        <div class="flex items-start space-x-3">
+          <div class="w-8 h-8 rounded-full bg-pink-500/20 border border-pink-500/40 flex items-center justify-center text-pink-400 font-bold text-xs shrink-0">DM</div>
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 max-w-xl text-sm text-slate-300 leading-relaxed shadow-sm">
+            ${reply}
+          </div>
+        </div>
+      `;
+
+      if (companionConfig.mode === 'voice') {
+        document.getElementById('voiceTranscript').innerText = `DearMee: "${reply}"`;
+        document.getElementById('voiceStatus').innerText = "DearMee is speaking...";
+        speakText(reply);
+      }
+    }
+
+    function generateEmpatheticFallback(userMsg, config) {
+      const lower = userMsg.toLowerCase();
+      if (lower.includes('burnout') || lower.includes('exhausted') || lower.includes('overwhelm')) {
+        return "I hear the heaviness in what you're carrying. When everything feels like an urgent fire, your nervous system is asking for safety, not more speed. Take one unhurried breath with me right now. You don't have to resolve the entire company or week in this exact minute.";
+      }
+      if (lower.includes('mistake') || lower.includes('fail') || lower.includes('lost')) {
+        return "Mistakes in business and life feel catastrophic in the first hour, but you are not your setbacks. Every founder who built something enduring faced these stomach-dropping moments. What is one small, grounded step you can take after taking a pause?";
+      }
+      if (lower.includes('client') || lower.includes('aggressive') || lower.includes('angry')) {
+        return "Hostile client energy can shock the nervous system into fight-or-flight. Remember: their urgency or tone is about their own anxiety, not your worth. Let's wait a few minutes before replying so you respond from calm clarity, not cortisol.";
+      }
+      return "I hear you deeply. Whatever pressure is weighing on you right now, you don't have to carry it alone in silence. Take a moment to let your shoulders drop. What would bring you even a tiny bit of peace right now?";
+    }
+
+    function openPwaModal() {
+      document.getElementById('pwaModal').classList.remove('hidden');
+    }
+
+    function closePwaModal() {
+      document.getElementById('pwaModal').classList.add('hidden');
+    }
+
+    function toggleSettingsModal() {
+      openPwaModal();
     }
   </script>
 </body>
