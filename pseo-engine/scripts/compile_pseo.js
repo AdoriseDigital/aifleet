@@ -8,6 +8,7 @@ const fs = require('fs');
 const path = require('path');
 
 const matrixData = require('../data/taxonomy_matrix.json');
+const { getHumanValueSolutions } = require('./human_solutions_data.js');
 
 const COMBINATIONS_DATA = {
   'b2b-saas/pseo-engine': {
@@ -849,7 +850,7 @@ const WHOP_PRODUCTS = {
   customer_service: {
     title: 'AI Customer Service',
     price: '$147 / mo',
-    url: 'https://whop.com/adorise-digital-usa/',
+    url: 'https://whop.com/checkout/plan_21oe5wd3V02wL',
     type: 'paid',
     ctaText: 'Deploy AI Customer Support ($147/mo)',
     badge: '24/7 Autonomous Voice & Ticket Agents',
@@ -858,16 +859,16 @@ const WHOP_PRODUCTS = {
   content_automation: {
     title: 'AI Content Automation',
     price: '$197 / mo',
-    url: 'https://whop.com/adorise-digital-usa/',
+    url: 'https://whop.com/checkout/plan_QBEtfMt7tZ437',
     type: 'paid',
     ctaText: 'Automate Content Engine ($197/mo)',
-    badge: 'Multi-Channel Calendar & pSEO Engine',
+    badge: 'Daily LinkedIn & X Omnipresence (30–60 Posts/Mo)',
     intentCluster: 'Social media scheduling, Postiz workflows, automated content calendars'
   },
   lead_generation: {
     title: 'AI Lead Generation',
     price: '$297 / mo',
-    url: 'https://whop.com/adorise-digital-usa/',
+    url: 'https://whop.com/checkout/plan_198GzLV0lFVYz',
     type: 'paid',
     ctaText: 'Launch Lead Generation ($297/mo)',
     badge: 'Multi-Channel Social Intent Radar & Cold Outreach',
@@ -876,7 +877,7 @@ const WHOP_PRODUCTS = {
   automation_suite: {
     title: 'AI Automation Suite',
     price: '$497 / mo',
-    url: 'https://whop.com/adorise-digital-usa/',
+    url: 'https://whop.com/checkout/plan_oPrJAt6X9KDon',
     type: 'paid',
     ctaText: 'Get Complete Automation Suite ($497/mo)',
     badge: 'Enterprise n8n & Composio Orchestration',
@@ -920,6 +921,7 @@ function buildHtmlPage(nicheId, serviceId) {
   }
 
   const whopCta = getProductCTA(serviceId);
+  const humanSolutions = getHumanValueSolutions(key, data);
   const slug = `/solutions/${nicheId}/${serviceId}/`;
   const canonicalUrl = `https://adorisedigital.com${slug}`;
   const title = `${data.service_name} for ${data.niche_name} | Adorise Digital`;
@@ -1190,6 +1192,128 @@ function buildHtmlPage(nicheId, serviceId) {
             </div>
           </div>
           `).join('')}
+        </div>
+      </div>
+    </section>
+
+    <!-- Human-Centered Problem & Solution Architecture (Business & Personal Space) -->
+    <section class="py-20 border-b border-slate-800/60 bg-gradient-to-b from-slate-950 via-slate-900/40 to-slate-950">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-xs font-bold uppercase tracking-wider mb-4">
+            Human-Centered Value Architecture
+          </div>
+          <h2 class="text-3xl md:text-5xl font-extrabold text-white font-display leading-tight">
+            Solving Painful Problems in Both Your Business & Personal Life
+          </h2>
+          <p class="text-slate-300 text-base md:text-lg mt-4 leading-relaxed">
+            Software only matters when it delivers concrete relief to real human beings. We eliminate the grueling operational friction holding back your organization while actively protecting your personal mental peace, evening calm, and creative energy.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+          
+          <!-- Column 1: Business Space Solutions -->
+          <div class="p-8 rounded-3xl bg-slate-900/70 border border-cyan-500/30 flex flex-col justify-between shadow-2xl relative overflow-hidden">
+            <div class="absolute -right-12 -top-12 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <span class="text-xs font-bold px-3 py-1 rounded-full bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 uppercase tracking-wider">
+                  🏢 Operational & Revenue Defense
+                </span>
+                <span class="text-xs text-slate-400 font-mono">BUSINESS SPACE</span>
+              </div>
+
+              <h3 class="text-2xl font-bold text-white font-display mb-3">
+                ${humanSolutions.businessTitle}
+              </h3>
+              <p class="text-sm text-slate-300 leading-relaxed mb-6">
+                ${humanSolutions.businessStory}
+              </p>
+
+              <div class="space-y-4 mb-8">
+                ${humanSolutions.businessPillars.map(b => `
+                <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-800 flex items-start gap-3">
+                  <div class="w-6 h-6 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
+                    ✓
+                  </div>
+                  <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-wide">${b.title}</h4>
+                    <p class="text-xs text-slate-300 mt-1 leading-relaxed">${b.desc}</p>
+                    <div class="mt-2 text-[11px] text-cyan-400 font-medium">Solved by: <strong>${b.product}</strong></div>
+                  </div>
+                </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <div class="pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div>
+                <div class="text-xs text-slate-400">Fixed-price autonomous deployment</div>
+                <div class="text-sm font-bold text-white">${whopCta.title} — ${whopCta.price}</div>
+              </div>
+              <a href="${whopCta.url}" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs transition text-center shadow-md">
+                ${whopCta.ctaText} &rarr;
+              </a>
+            </div>
+          </div>
+
+          <!-- Column 2: Personal Space Solutions -->
+          <div class="p-8 rounded-3xl bg-slate-900/70 border border-purple-500/30 flex flex-col justify-between shadow-2xl relative overflow-hidden">
+            <div class="absolute -right-12 -top-12 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <span class="text-xs font-bold px-3 py-1 rounded-full bg-purple-500/15 text-purple-300 border border-purple-500/30 uppercase tracking-wider">
+                  🕊️ Mental Peace & Well-being
+                </span>
+                <span class="text-xs text-slate-400 font-mono">PERSONAL SPACE</span>
+              </div>
+
+              <h3 class="text-2xl font-bold text-white font-display mb-3">
+                ${humanSolutions.personalTitle}
+              </h3>
+              <p class="text-sm text-slate-300 leading-relaxed mb-6">
+                ${humanSolutions.personalStory}
+              </p>
+
+              <div class="space-y-4 mb-8">
+                ${humanSolutions.personalPillars.map(p => `
+                <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-800 flex items-start gap-3">
+                  <div class="w-6 h-6 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
+                    ${p.icon}
+                  </div>
+                  <div class="flex-1">
+                    <div class="flex items-center justify-between">
+                      <h4 class="text-xs font-bold text-white uppercase tracking-wide">${p.title}</h4>
+                      <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="text-[10px] text-purple-400 hover:underline font-mono">Open App &rarr;</a>
+                    </div>
+                    <p class="text-xs text-slate-300 mt-1 leading-relaxed">${p.desc}</p>
+                    <div class="mt-2 text-[11px] text-purple-300 font-medium">Solved by: <strong>${p.product}</strong></div>
+                  </div>
+                </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <div class="pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div>
+                <div class="text-xs text-slate-400">Specialized executive micro-tools</div>
+                <div class="text-sm font-bold text-white">Free tiers & instant web access</div>
+              </div>
+              <div class="flex items-center gap-2">
+                <a href="https://inboxcalm.adorisedigital.com" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition">
+                  InboxCalm
+                </a>
+                <a href="https://clipcalm.adorisedigital.com" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition">
+                  ClipCalm
+                </a>
+                <a href="https://dearmee.adorisedigital.com" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition">
+                  DearMee
+                </a>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
