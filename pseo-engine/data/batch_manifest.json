@@ -1,0 +1,48 @@
+{
+  "sla_target_daily_pages": 10,
+  "last_batch_date": "2026-09-11",
+  "total_published_pages": 12,
+  "batches": [
+    {
+      "batch_id": 1,
+      "timestamp": "2026-09-11T11:55:00.000Z",
+      "page_count": 12,
+      "slugs": [
+        "/solutions/b2b-saas/pseo-engine",
+        "/solutions/ecommerce-d2c/ai-agents",
+        "/solutions/fintech/outbound-infrastructure",
+        "/solutions/healthtech-biotech/ai-agents",
+        "/solutions/proptech-realestate/pseo-engine",
+        "/solutions/legaltech-professional/ai-agents",
+        "/solutions/venture-capital-private-equity/outbound-infrastructure",
+        "/solutions/edtech/pseo-engine",
+        "/solutions/cybersecurity/cloud-vps-hardening",
+        "/solutions/agency-consultancy/pseo-engine",
+        "/solutions/b2b-saas/outbound-infrastructure",
+        "/solutions/ecommerce-d2c/pseo-engine"
+      ],
+      "sitemap_stats": {
+        "totalUrls": 20,
+        "chunksCount": 1,
+        "lastmod": "2026-09-11T11:55:00.000Z"
+      },
+      "ping_status": [
+        {
+          "engine": "Google Search Console",
+          "success": false,
+          "status": 404
+        },
+        {
+          "engine": "Bing",
+          "success": false,
+          "status": 410
+        },
+        {
+          "engine": "IndexNow",
+          "success": true,
+          "status": 202
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3569 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-09-10",
+  "total_combinations": 77,
+  "author": "Gemini (Execution Agent, Adorise Digital)",
+  "taxonomy_dimensions": {
+    "services": [
+      {
+        "id": "pseo-engine",
+        "name": "Programmatic SEO Engine & Automated Content Architecture",
+        "short_name": "Programmatic SEO Engine",
+        "slug_part": "programmatic-seo-engine",
+        "description": "Automated organic search scaling engine generating hundreds of structured, schema-compliant, high-intent landing pages.",
+        "target_buyers": [
+          "VP of Growth",
+          "Head of Marketing",
+          "Founder & CEO"
+        ],
+        "core_deliverables": [
+          "Dynamic Template Engine",
+          "Automated Data Ingestion Matrix",
+          "Schema.org Automation",
+          "Edge Caching & Indexing Pipeline"
+        ]
+      },
+      {
+        "id": "ai-agents",
+        "name": "Autonomous AI Agents & Agentic Workflow Engineering",
+        "short_name": "Autonomous AI Agents",
+        "slug_part": "ai-agent-development",
+        "description": "Custom multi-agent workflows, autonomous background task execution, and deterministic LLM tool-calling integrations.",
+        "target_buyers": [
+          "CTO",
+          "Head of AI / Automation",
+          "VP of Engineering"
+        ],
+        "core_deliverables": [
+          "Multi-Agent Orchestration",
+          "Tool Calling Architecture",
+          "Human-in-the-Loop Review Gates",
+          "Self-Hosted Runtimes"
+        ]
+      },
+      {
+        "id": "web-app-engineering",
+        "name": "Full-Stack Next.js & React Web Application Engineering",
+        "short_name": "Next.js Web Engineering",
+        "slug_part": "nextjs-web-development",
+        "description": "High-performance web applications built on React Server Components, Next.js App Router, and serverless edge backends.",
+        "target_buyers": [
+          "VP of Product",
+          "Chief Technology Officer",
+          "Technical Founder"
+        ],
+        "core_deliverables": [
+          "Production Next.js App Router",
+          "Serverless API Endpoints",
+          "Optimized UI/UX Components",
+          "Edge SSR & Database Integration"
+        ]
+      },
+      {
+        "id": "outbound-infrastructure",
+        "name": "Automated Cold Outbound & Social Lead Generation Engine",
+        "short_name": "Cold Outbound & Lead Engine",
+        "slug_part": "outbound-lead-engine",
+        "description": "Multi-channel intent scraping, social signal listening, AI-personalized sequence generation, and deliverability infrastructure.",
+        "target_buyers": [
+          "Chief Revenue Officer",
+          "Head of Business Development",
+          "Growth Marketing Director"
+        ],
+        "core_deliverables": [
+          "Intent-Based Scraping",
+          "Mailbox Warmup & DNS Rotation",
+          "AI Copy Personalization",
+          "CRM Webhook Ingestion"
+        ]
+      },
+      {
+        "id": "composio-integrations",
+        "name": "Self-Hosted Composio API Tool Calling & Agentic Integrations",
+        "short_name": "Composio Agent Integrations",
+        "slug_part": "composio-api-integrations",
+        "description": "Hardened self-hosted Composio execution environment connecting LLM agents directly to external APIs, SaaS tools, and databases.",
+        "target_buyers": [
+          "Head of Automation",
+          "Enterprise Solutions Architect",
+          "Director of IT Operations"
+        ],
+        "core_deliverables": [
+          "Self-Hosted Composio API Runtime",
+          "Custom OAuth Tool Connectors",
+          "Dockerized Bridge Network",
+          "Audit Logging & Token Vault"
+        ]
+      },
+      {
+        "id": "whop-monetization",
+        "name": "Whop Store Membership, Gating & Digital Product Infrastructure",
+        "short_name": "Whop Monetization Systems",
+        "slug_part": "whop-monetization-systems",
+        "description": "End-to-end monetization architecture, tier entitlement logic, community access gating, and payment webhooks on Whop.",
+        "target_buyers": [
+          "Creator Economy Founder",
+          "Community Director",
+          "Digital Product Manager"
+        ],
+        "core_deliverables": [
+          "Whop Product & Tier Mapping",
+          "Webhook License Verification",
+          "Automated Onboarding Funnel",
+          "Member Portal Integration"
+        ]
+      },
+      {
+        "id": "cloud-vps-hardening",
+        "name": "Cloudflare Edge Architecture & Hardened Docker VPS Infrastructure",
+        "short_name": "Cloudflare & VPS Infrastructure",
+        "slug_part": "cloudflare-vps-infrastructure",
+        "description": "Isolated multi-container production environments on Ubuntu VPS behind Cloudflare WAF, automated SSL, and reverse proxies.",
+        "target_buyers": [
+          "Head of Infrastructure",
+          "DevOps Lead",
+          "Security Operations Manager"
+        ],
+        "core_deliverables": [
+          "Docker Compose Orchestration",
+          "UFW & Fail2ban Server Hardening",
+          "Cloudflare WAF & Edge Rules",
+          "Automated Backup Daemon"
+        ]
+      }
+    ],
+    "niches": [
+      {
+        "id": "b2b-saas",
+        "name": "B2B SaaS & Enterprise Software",
+        "slug_part": "b2b-saas",
+        "typical_acv": "$12,000 - $60,000/yr",
+        "critical_pain_points": [
+          "High customer acquisition cost (CAC) on paid ads",
+          "Slow feature delivery and engineering bottlenecks",
+          "Inefficient lead qualification workflows"
+        ]
+      },
+      {
+        "id": "ecommerce-d2c",
+        "name": "High-Volume E-Commerce & D2C Brands",
+        "slug_part": "ecommerce-d2c",
+        "typical_acv": "$500,000 - $10M GMV",
+        "critical_pain_points": [
+          "Rising Meta/Google ad costs eating margins",
+          "Catalog SEO fragmentation and duplicate content penalties",
+          "Manual customer support and refund processing"
+        ]
+      },
+      {
+        "id": "fintech",
+        "name": "FinTech & Digital Financial Services",
+        "slug_part": "fintech",
+        "typical_acv": "$25,000 - $150,000/yr",
+        "critical_pain_points": [
+          "Strict regulatory compliance and security audit burdens",
+          "Complex API orchestration across legacy banking networks",
+          "High cost of manual fraud and risk underwriting"
+        ]
+      },
+      {
+        "id": "healthtech-biotech",
+        "name": "HealthTech & Digital Health Platforms",
+        "slug_part": "healthtech",
+        "typical_acv": "$30,000 - $120,000/yr",
+        "critical_pain_points": [
+          "HIPAA compliance and PHI data containment",
+          "Friction in patient onboarding and provider matching",
+          "Lack of organic search authority for specialized clinical terms"
+        ]
+      },
+      {
+        "id": "proptech-realestate",
+        "name": "PropTech & Commercial Real Estate Platforms",
+        "slug_part": "proptech",
+        "typical_acv": "$15,000 - $80,000/yr",
+        "critical_pain_points": [
+          "Fragmented MLS and property listing ingestion",
+          "Local geo-targeted landing page scaling limitations",
+          "Slow manual tenant and investor lead qualification"
+        ]
+      },
+      {
+        "id": "legaltech-professional",
+        "name": "LegalTech & High-Ticket Professional Services",
+        "slug_part": "legaltech",
+        "typical_acv": "$20,000 - $100,000/yr",
+        "critical_pain_points": [
+          "Extremely high CPC on search ads ($50-$200/click)",
+          "Strict ethical compliance rules on outbound solicitation",
+          "Time-consuming client intake and conflict checking"
+        ]
+      },
+      {
+        "id": "venture-capital-private-equity",
+        "name": "Venture Capital & Private Equity Firms",
+        "slug_part": "vc-pe-firms",
+        "typical_acv": "$50M - $1B AUM",
+        "critical_pain_points": [
+          "Manual deal sourcing and inbound portfolio evaluation",
+          "Fragmented portfolio ops and reporting across holdings",
+          "Weak digital presence for attracting top-tier founders"
+        ]
+      },
+      {
+        "id": "edtech",
+        "name": "EdTech & Online Learning Platforms",
+        "slug_part": "edtech",
+        "typical_acv": "$10,000 - $50,000/yr",
+        "critical_pain_points": [
+          "Student churn after introductory modules",
+          "Manual course catalog SEO and taxonomy maintenance",
+          "Weak community monetization and retention funnels"
+        ]
+      },
+      {
+        "id": "cybersecurity",
+        "name": "Enterprise Cybersecurity & DevSecOps",
+        "slug_part": "cybersecurity",
+        "typical_acv": "$40,000 - $200,000/yr",
+        "critical_pain_points": [
+          "Long enterprise sales cycles and technical evaluation gates",
+          "High barrier to conveying complex architecture to non-technical buyers",
+          "Need for zero-trust client-facing infrastructure"
+        ]
+      },
+      {
+        "id": "agency-consultancy",
+        "name": "Digital Agencies & High-Growth Consultancies",
+        "slug_part": "agencies",
+        "typical_acv": "$5,000 - $30,000/mo",
+        "critical_pain_points": [
+          "Feast-or-famine client acquisition cycles",
+          "Capacity bottlenecks due to unautomated fulfillment",
+          "Difficulty scaling organic search footprint across client domains"
+        ]
+      }
+    ],
+    "tech_stacks": [
+      {
+        "id": "nextjs-typescript",
+        "name": "Next.js & TypeScript",
+        "slug_part": "nextjs-typescript",
+        "category": "Frontend & Full-Stack",
+        "key_benefits": "Zero-bundle-size React Server Components, instant page loads, and native Vercel/Cloudflare edge execution."
+      },
+      {
+        "id": "python-fastapi",
+        "name": "Python & FastAPI",
+        "slug_part": "python-fastapi",
+        "category": "Backend & AI Runtimes",
+        "key_benefits": "Async performance, native Pydantic validation, and deep integration with LLM orchestration frameworks."
+      },
+      {
+        "id": "supabase-postgresql",
+        "name": "Supabase & PostgreSQL",
+        "slug_part": "supabase-postgres",
+        "category": "Database & Auth",
+        "key_benefits": "Row-level security, instant REST/GraphQL APIs, pgvector support, and real-time database webhooks."
+      },
+      {
+        "id": "cloudflare-workers",
+        "name": "Cloudflare Workers & Edge WAF",
+        "slug_part": "cloudflare-edge",
+        "category": "Edge & Security",
+        "key_benefits": "Sub-10ms global edge compute, DDoS mitigation, web application firewall, and programmable routing."
+      },
+      {
+        "id": "docker-vps",
+        "name": "Docker Compose on Linux VPS",
+        "slug_part": "docker-vps",
+        "category": "Infrastructure & Hosting",
+        "key_benefits": "Isolated bridge networks, zero vendor lock-in, reproducible environments, and single-tenant data isolation."
+      },
+      {
+        "id": "composio-tools",
+        "name": "Self-Hosted Composio API",
+        "slug_part": "composio-api",
+        "category": "Agent Tool Calling",
+        "key_benefits": "Secure OAuth tool execution, rate-limit governance, and programmatic connectors to 250+ enterprise services."
+      },
+      {
+        "id": "tailwind-shadcn",
+        "name": "Tailwind CSS & Shadcn UI",
+        "slug_part": "tailwind-shadcn",
+        "category": "UI Design Systems",
+        "key_benefits": "Accessible Radix primitives, atomic utility styling, and copy-paste ownership with zero bloat."
+      },
+      {
+        "id": "langchain-crewai",
+        "name": "LangChain & CrewAI",
+        "slug_part": "langchain-crewai",
+        "category": "Multi-Agent Frameworks",
+        "key_benefits": "Role-based agent collaboration, task decomposition, and memory-managed hierarchical execution."
+      }
+    ],
+    "locations": [
+      {
+        "id": "global",
+        "name": "Global / Remote",
+        "city": "Worldwide",
+        "country": "Global",
+        "slug_part": "global",
+        "commercial_score": 95
+      },
+      {
+        "id": "san-francisco",
+        "name": "San Francisco, CA",
+        "city": "San Francisco",
+        "state": "CA",
+        "country": "United States",
+        "slug_part": "san-francisco",
+        "commercial_score": 98
+      },
+      {
+        "id": "new-york",
+        "name": "New York City, NY",
+        "city": "New York",
+        "state": "NY",
+        "country": "United States",
+        "slug_part": "new-york",
+        "commercial_score": 99
+      },
+      {
+        "id": "austin",
+        "name": "Austin, TX",
+        "city": "Austin",
+        "state": "TX",
+        "country": "United States",
+        "slug_part": "austin",
+        "commercial_score": 92
+      },
+      {
+        "id": "london",
+        "name": "London, UK",
+        "city": "London",
+        "country": "United Kingdom",
+        "slug_part": "london",
+        "commercial_score": 96
+      },
+      {
+        "id": "toronto",
+        "name": "Toronto, Canada",
+        "city": "Toronto",
+        "country": "Canada",
+        "slug_part": "toronto",
+        "commercial_score": 90
+      },
+      {
+        "id": "miami",
+        "name": "Miami, FL",
+        "city": "Miami",
+        "state": "FL",
+        "country": "United States",
+        "slug_part": "miami",
+        "commercial_score": 89
+      },
+      {
+        "id": "sydney",
+        "name": "Sydney, Australia",
+        "city": "Sydney",
+        "country": "Australia",
+        "slug_part": "sydney",
+        "commercial_score": 88
+      },
+      {
+        "id": "singapore",
+        "name": "Singapore",
+        "city": "Singapore",
+        "country": "Singapore",
+        "slug_part": "singapore",
+        "commercial_score": 93
+      },
+      {
+        "id": "berlin",
+        "name": "Berlin, Germany",
+        "city": "Berlin",
+        "country": "Germany",
+        "slug_part": "berlin",
+        "commercial_score": 87
+      },
+      {
+        "id": "boston",
+        "name": "Boston, MA",
+        "city": "Boston",
+        "state": "MA",
+        "country": "United States",
+        "slug_part": "boston",
+        "commercial_score": 91
+      },
+      {
+        "id": "seattle",
+        "name": "Seattle, WA",
+        "city": "Seattle",
+        "state": "WA",
+        "country": "United States",
+        "slug_part": "seattle",
+        "commercial_score": 92
+      }
+    ]
+  },
+  "combinations": [
+    {
+      "id": "PSEO-001",
+      "slug": "/services/programmatic-seo-engine-for-b2b-saas",
+      "primary_keyword": "programmatic seo agency for b2b saas",
+      "secondary_keywords": [
+        "b2b saas programmatic seo",
+        "automated landing page generator nextjs",
+        "saas programmatic content engine",
+        "scalable inbound saas seo"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$28 - $55",
+      "priority": "P1",
+      "service": {
+        "id": "pseo-engine",
+        "name": "Programmatic SEO Engine & Automated Content Architecture",
+        "short_name": "Programmatic SEO Engine"
+      },
+      "niche": {
+        "id": "b2b-saas",
+        "name": "B2B SaaS & Enterprise Software",
+        "typical_acv": "$12,000 - $60,000/yr"
+      },
+      "tech_stack": {
+        "id": "nextjs-typescript",
+        "name": "Next.js & TypeScript",
+        "category": "Frontend & Full-Stack"
+      },
+      "location": {
+        "id": "global",
+        "name": "Global / Remote",
+        "city": "Worldwide",
+        "country": "Global"
+      },
+      "value_proposition_hook": "Scale organic inbound demo requests with an automated Next.js programmatic SEO engine built specifically for B2B SaaS product matrices.",
+      "target_buyer_roles": [
+        "VP of Growth",
+        "Head of Marketing",
+        "Founder & CEO"
+      ]
+    },
+    {
+      "id": "PSEO-002",
+      "slug": "/services/programmatic-seo-engine-ecommerce-d2c-new-york",
+      "primary_keyword": "programmatic seo agency ecommerce new york",
+      "secondary_keywords": [
+        "d2c programmatic seo new york",
+        "catalog seo automation",
+        "ecommerce programmatic landing pages",
+        "retail product matrix seo"
+      ],
+      "search_intent": "transactional",
+      "cpc_tier": "$22 - $48",
+      "priority": "P1",
+      "service": {
+        "id": "pseo-engine",
+        "name": "Programmatic SEO Engine & Automated Content Architecture",
+        "short_name": "Programmatic SEO Engine"
+      },
+      "niche": {
+        "id": "ecommerce-d2c",
+        "name": "High-Volume E-Commerce & D2C Brands",
+        "typical_acv": "$500,000 - $10M GMV"
+      },
+      "tech_stack": {
+        "id": "nextjs-typescript",
+        "name": "Next.js & TypeScript",
+        "category": "Frontend & Full-Stack"
+      },
+      "location": {
+        "id": "new-york",
+        "name": "New York City, NY",
+        "city": "New York",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Dominate long-tail product queries and capture commercial shoppers in New York and nationwide without manual page authoring.",
+      "target_buyer_roles": [
+        "VP of Growth",
+        "Head of Marketing",
+        "Founder & CEO"
+      ]
+    },
+    {
+      "id": "PSEO-003",
+      "slug": "/services/programmatic-seo-engine-proptech-miami",
+      "primary_keyword": "proptech programmatic seo agency miami",
+      "secondary_keywords": [
+        "real estate programmatic landing pages",
+        "proptech geo page generator",
+        "miami property portal seo",
+        "automated mls neighborhood pages"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$18 - $42",
+      "priority": "P1",
+      "service": {
+        "id": "pseo-engine",
+        "name": "Programmatic SEO Engine & Automated Content Architecture",
+        "short_name": "Programmatic SEO Engine"
+      },
+      "niche": {
+        "id": "proptech-realestate",
+        "name": "PropTech & Commercial Real Estate Platforms",
+        "typical_acv": "$15,000 - $80,000/yr"
+      },
+      "tech_stack": {
+        "id": "supabase-postgresql",
+        "name": "Supabase & PostgreSQL",
+        "category": "Database & Auth"
+      },
+      "location": {
+        "id": "miami",
+        "name": "Miami, FL",
+        "city": "Miami",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Deploy thousands of neighborhood, property type, and market data landing pages powered by Supabase and automated schema markup.",
+      "target_buyer_roles": [
+        "VP of Growth",
+        "Head of Marketing",
+        "Founder & CEO"
+      ]
+    },
+    {
+      "id": "PSEO-004",
+      "slug": "/services/programmatic-seo-engine-fintech-london",
+      "primary_keyword": "fintech programmatic seo agency london",
+      "secondary_keywords": [
+        "financial services programmatic seo",
+        "fintech search intent engine",
+        "london fintech organic acquisition",
+        "compliant programmatic landing pages"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$35 - $75",
+      "priority": "P1",
+      "service": {
+        "id": "pseo-engine",
+        "name": "Programmatic SEO Engine & Automated Content Architecture",
+        "short_name": "Programmatic SEO Engine"
+      },
+      "niche": {
+        "id": "fintech",
+        "name": "FinTech & Digital Financial Services",
+        "typical_acv": "$25,000 - $150,000/yr"
+      },
+      "tech_stack": {
+        "id": "nextjs-typescript",
+        "name": "Next.js & TypeScript",
+        "category": "Frontend & Full-Stack"
+      },
+      "location": {
+        "id": "london",
+        "name": "London, UK",
+        "city": "London",
+        "country": "United Kingdom"
+      },
+      "value_proposition_hook": "Capture high-LTV institutional and consumer finance queries across London and Europe with compliant, data-driven programmatic pages.",
+      "target_buyer_roles": [
+        "VP of Growth",
+        "Head of Marketing",
+        "Founder & CEO"
+      ]
+    },
+    {
+      "id": "PSEO-005",
+      "slug": "/services/programmatic-seo-engine-healthtech-boston",
+      "primary_keyword": "healthtech programmatic seo agency boston",
+      "secondary_keywords": [
+        "digital health programmatic landing pages",
+        "clinical condition seo matrix",
+        "boston biotech inbound seo",
+        "medical practice directory seo"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$26 - $52",
+      "priority": "P2",
+      "service": {
+        "id": "pseo-engine",
+        "name": "Programmatic SEO Engine & Automated Content Architecture",
+        "short_name": "Programmatic SEO Engine"
+      },
+      "niche": {
+        "id": "healthtech-biotech",
+        "name": "HealthTech & Digital Health Platforms",
+        "typical_acv": "$30,000 - $120,000/yr"
+      },
+      "tech_stack": {
+        "id": "nextjs-typescript",
+        "name": "Next.js & TypeScript",
+        "category": "Frontend & Full-Stack"
+      },
+      "location": {
+        "id": "boston",
+        "name": "Boston, MA",
+        "city": "Boston",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Rank for thousands of specialized diagnostic, provider, and clinical search terms with medically accurate, schema-verified templates.",
+      "target_buyer_roles": [
+        "VP of Growth",
+        "Head of Marketing",
+        "Founder & CEO"
+      ]
+    },
+    {
+      "id": "PSEO-006",
+      "slug": "/services/programmatic-seo-engine-legaltech-san-francisco",
+      "primary_keyword": "legaltech programmatic seo agency",
+      "secondary_keywords": [
+        "law firm programmatic landing pages",
+        "legal directory programmatic seo",
+        "practice area geo page automation",
+        "high cpc legal seo replacement"
+      ],
+      "search_intent": "transactional",
+      "cpc_tier": "$45 - $110",
+      "priority": "P1",
+      "service": {
+        "id": "pseo-engine",
+        "name": "Programmatic SEO Engine & Automated Content Architecture",
+        "short_name": "Programmatic SEO Engine"
+      },
+      "niche": {
+        "id": "legaltech-professional",
+        "name": "LegalTech & High-Ticket Professional Services",
+        "typical_acv": "$20,000 - $100,000/yr"
+      },
+      "tech_stack": {
+        "id": "nextjs-typescript",
+        "name": "Next.js & TypeScript",
+        "category": "Frontend & Full-Stack"
+      },
+      "location": {
+        "id": "san-francisco",
+        "name": "San Francisco, CA",
+        "city": "San Francisco",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Replace $100+/click Google Ads with an organic programmatic search engine covering every jurisdiction, legal specialty, and case archetype.",
+      "target_buyer_roles": [
+        "VP of Growth",
+        "Head of Marketing",
+        "Founder & CEO"
+      ]
+    },
+    {
+      "id": "PSEO-007",
+      "slug": "/services/programmatic-seo-engine-agencies-austin",
+      "primary_keyword": "programmatic seo consultants austin",
+      "secondary_keywords": [
+        "agency programmatic seo services",
+        "pSEO template development austin",
+        "consultancy organic traffic engine",
+        "automated lead gen pages"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$19 - $40",
+      "priority": "P2",
+      "service": {
+        "id": "pseo-engine",
+        "name": "Programmatic SEO Engine & Automated Content Architecture",
+        "short_name": "Programmatic SEO Engine"
+      },
+      "niche": {
+        "id": "agency-consultancy",
+        "name": "Digital Agencies & High-Growth Consultancies",
+        "typical_acv": "$5,000 - $30,000/mo"
+      },
+      "tech_stack": {
+        "id": "tailwind-shadcn",
+        "name": "Tailwind CSS & Shadcn UI",
+        "category": "UI Design Systems"
+      },
+      "location": {
+        "id": "austin",
+        "name": "Austin, TX",
+        "city": "Austin",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Engineer a high-converting inbound engine that turns agency capabilities and tech specializations into ranking programmatic assets.",
+      "target_buyer_roles": [
+        "VP of Growth",
+        "Head of Marketing",
+        "Founder & CEO"
+      ]
+    },
+    {
+      "id": "PSEO-008",
+      "slug": "/services/programmatic-seo-engine-edtech-toronto",
+      "primary_keyword": "edtech programmatic seo agency toronto",
+      "secondary_keywords": [
+        "course catalog programmatic seo",
+        "online certification landing page engine",
+        "edtech organic scaling toronto",
+        "skill matrix pSEO"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$16 - $36",
+      "priority": "P2",
+      "service": {
+        "id": "pseo-engine",
+        "name": "Programmatic SEO Engine & Automated Content Architecture",
+        "short_name": "Programmatic SEO Engine"
+      },
+      "niche": {
+        "id": "edtech",
+        "name": "EdTech & Online Learning Platforms",
+        "typical_acv": "$10,000 - $50,000/yr"
+      },
+      "tech_stack": {
+        "id": "supabase-postgresql",
+        "name": "Supabase & PostgreSQL",
+        "category": "Database & Auth"
+      },
+      "location": {
+        "id": "toronto",
+        "name": "Toronto, Canada",
+        "city": "Toronto",
+        "country": "Canada"
+      },
+      "value_proposition_hook": "Auto-generate curriculum, skill comparison, and certification landing pages that convert prospective students across North America.",
+      "target_buyer_roles": [
+        "VP of Growth",
+        "Head of Marketing",
+        "Founder & CEO"
+      ]
+    },
+    {
+      "id": "PSEO-009",
+      "slug": "/services/programmatic-seo-engine-cybersecurity-seattle",
+      "primary_keyword": "cybersecurity programmatic seo engine seattle",
+      "secondary_keywords": [
+        "cve database programmatic seo",
+        "infosec compliance landing pages",
+        "seattle cybersecurity inbound marketing",
+        "devsecops comparison engine"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$30 - $65",
+      "priority": "P2",
+      "service": {
+        "id": "pseo-engine",
+        "name": "Programmatic SEO Engine & Automated Content Architecture",
+        "short_name": "Programmatic SEO Engine"
+      },
+      "niche": {
+        "id": "cybersecurity",
+        "name": "Enterprise Cybersecurity & DevSecOps",
+        "typical_acv": "$40,000 - $200,000/yr"
+      },
+      "tech_stack": {
+        "id": "cloudflare-workers",
+        "name": "Cloudflare Workers & Edge WAF",
+        "category": "Edge & Security"
+      },
+      "location": {
+        "id": "seattle",
+        "name": "Seattle, WA",
+        "city": "Seattle",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Index hundreds of regulatory framework (SOC2, HIPAA, ISO) and vulnerability comparison pages to capture enterprise security buyers.",
+      "target_buyer_roles": [
+        "VP of Growth",
+        "Head of Marketing",
+        "Founder & CEO"
+      ]
+    },
+    {
+      "id": "PSEO-010",
+      "slug": "/services/ai-agent-development-b2b-saas-san-francisco",
+      "primary_keyword": "autonomous ai agent development san francisco",
+      "secondary_keywords": [
+        "b2b saas ai agents sf",
+        "custom agentic workflows san francisco",
+        "crewai development agency",
+        "enterprise llm tool calling"
+      ],
+      "search_intent": "transactional",
+      "cpc_tier": "$40 - $90",
+      "priority": "P1",
+      "service": {
+        "id": "ai-agents",
+        "name": "Autonomous AI Agents & Agentic Workflow Engineering",
+        "short_name": "Autonomous AI Agents"
+      },
+      "niche": {
+        "id": "b2b-saas",
+        "name": "B2B SaaS & Enterprise Software",
+        "typical_acv": "$12,000 - $60,000/yr"
+      },
+      "tech_stack": {
+        "id": "langchain-crewai",
+        "name": "LangChain & CrewAI",
+        "category": "Multi-Agent Frameworks"
+      },
+      "location": {
+        "id": "san-francisco",
+        "name": "San Francisco, CA",
+        "city": "San Francisco",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Deploy production-grade autonomous agent squads in San Francisco that automate end-to-end customer onboarding, data enrichment, and back-office ops.",
+      "target_buyer_roles": [
+        "CTO",
+        "Head of AI / Automation",
+        "VP of Engineering"
+      ]
+    },
+    {
+      "id": "PSEO-011",
+      "slug": "/services/ai-agent-development-fintech-new-york",
+      "primary_keyword": "fintech ai agent development new york",
+      "secondary_keywords": [
+        "nyc financial ai agents",
+        "autonomous underwriting agents",
+        "fintech workflow automation new york",
+        "financial llm agent engineering"
+      ],
+      "search_intent": "transactional",
+      "cpc_tier": "$48 - $95",
+      "priority": "P1",
+      "service": {
+        "id": "ai-agents",
+        "name": "Autonomous AI Agents & Agentic Workflow Engineering",
+        "short_name": "Autonomous AI Agents"
+      },
+      "niche": {
+        "id": "fintech",
+        "name": "FinTech & Digital Financial Services",
+        "typical_acv": "$25,000 - $150,000/yr"
+      },
+      "tech_stack": {
+        "id": "python-fastapi",
+        "name": "Python & FastAPI",
+        "category": "Backend & AI Runtimes"
+      },
+      "location": {
+        "id": "new-york",
+        "name": "New York City, NY",
+        "city": "New York",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Build audit-logged, deterministic AI agents in New York for financial reconciliation, portfolio analytics, and automated credit assessment.",
+      "target_buyer_roles": [
+        "CTO",
+        "Head of AI / Automation",
+        "VP of Engineering"
+      ]
+    },
+    {
+      "id": "PSEO-012",
+      "slug": "/services/ai-agent-development-vc-pe-firms-london",
+      "primary_keyword": "ai agents for venture capital london",
+      "secondary_keywords": [
+        "vc deal sourcing ai agents",
+        "private equity automation london",
+        "fund ops autonomous agents",
+        "portfolio intelligence workflows"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$38 - $85",
+      "priority": "P1",
+      "service": {
+        "id": "ai-agents",
+        "name": "Autonomous AI Agents & Agentic Workflow Engineering",
+        "short_name": "Autonomous AI Agents"
+      },
+      "niche": {
+        "id": "venture-capital-private-equity",
+        "name": "Venture Capital & Private Equity Firms",
+        "typical_acv": "$50M - $1B AUM"
+      },
+      "tech_stack": {
+        "id": "python-fastapi",
+        "name": "Python & FastAPI",
+        "category": "Backend & AI Runtimes"
+      },
+      "location": {
+        "id": "london",
+        "name": "London, UK",
+        "city": "London",
+        "country": "United Kingdom"
+      },
+      "value_proposition_hook": "Automate deal memo drafting, company pitch deck parsing, and founder pipeline tracking with custom agentic workflows for London funds.",
+      "target_buyer_roles": [
+        "CTO",
+        "Head of AI / Automation",
+        "VP of Engineering"
+      ]
+    },
+    {
+      "id": "PSEO-013",
+      "slug": "/services/ai-agent-development-legaltech-boston",
+      "primary_keyword": "legal ai agent development boston",
+      "secondary_keywords": [
+        "legal document review agents",
+        "law firm agentic workflows boston",
+        "autonomous contract analysis",
+        "legaltech ai consultants"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$35 - $80",
+      "priority": "P1",
+      "service": {
+        "id": "ai-agents",
+        "name": "Autonomous AI Agents & Agentic Workflow Engineering",
+        "short_name": "Autonomous AI Agents"
+      },
+      "niche": {
+        "id": "legaltech-professional",
+        "name": "LegalTech & High-Ticket Professional Services",
+        "typical_acv": "$20,000 - $100,000/yr"
+      },
+      "tech_stack": {
+        "id": "langchain-crewai",
+        "name": "LangChain & CrewAI",
+        "category": "Multi-Agent Frameworks"
+      },
+      "location": {
+        "id": "boston",
+        "name": "Boston, MA",
+        "city": "Boston",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Eliminate repetitive paralegal bottlenecks with safe, human-in-the-loop contract extraction and citation verification agent squads.",
+      "target_buyer_roles": [
+        "CTO",
+        "Head of AI / Automation",
+        "VP of Engineering"
+      ]
+    },
+    {
+      "id": "PSEO-014",
+      "slug": "/services/ai-agent-development-ecommerce-d2c-austin",
+      "primary_keyword": "ecommerce ai agent automation austin",
+      "secondary_keywords": [
+        "d2c support ai agents austin",
+        "inventory replenishment agent workflows",
+        "autonomous catalog tagging",
+        "ecommerce customer ops agents"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$24 - $55",
+      "priority": "P2",
+      "service": {
+        "id": "ai-agents",
+        "name": "Autonomous AI Agents & Agentic Workflow Engineering",
+        "short_name": "Autonomous AI Agents"
+      },
+      "niche": {
+        "id": "ecommerce-d2c",
+        "name": "High-Volume E-Commerce & D2C Brands",
+        "typical_acv": "$500,000 - $10M GMV"
+      },
+      "tech_stack": {
+        "id": "python-fastapi",
+        "name": "Python & FastAPI",
+        "category": "Backend & AI Runtimes"
+      },
+      "location": {
+        "id": "austin",
+        "name": "Austin, TX",
+        "city": "Austin",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Deploy 24/7 autonomous agents handling order tracking, return approvals, and supplier restocking coordination for high-volume retail brands.",
+      "target_buyer_roles": [
+        "CTO",
+        "Head of AI / Automation",
+        "VP of Engineering"
+      ]
+    },
+    {
+      "id": "PSEO-015",
+      "slug": "/services/ai-agent-development-healthtech-singapore",
+      "primary_keyword": "healthtech ai agent development singapore",
+      "secondary_keywords": [
+        "clinical workflow ai agents",
+        "singapore healthtech automation",
+        "telehealth triage agents",
+        "biotech literature research agents"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$32 - $70",
+      "priority": "P2",
+      "service": {
+        "id": "ai-agents",
+        "name": "Autonomous AI Agents & Agentic Workflow Engineering",
+        "short_name": "Autonomous AI Agents"
+      },
+      "niche": {
+        "id": "healthtech-biotech",
+        "name": "HealthTech & Digital Health Platforms",
+        "typical_acv": "$30,000 - $120,000/yr"
+      },
+      "tech_stack": {
+        "id": "python-fastapi",
+        "name": "Python & FastAPI",
+        "category": "Backend & AI Runtimes"
+      },
+      "location": {
+        "id": "singapore",
+        "name": "Singapore",
+        "city": "Singapore",
+        "country": "Singapore"
+      },
+      "value_proposition_hook": "Build localized, secure clinical note summarization and triage agents compliant with APAC healthcare data standards.",
+      "target_buyer_roles": [
+        "CTO",
+        "Head of AI / Automation",
+        "VP of Engineering"
+      ]
+    },
+    {
+      "id": "PSEO-016",
+      "slug": "/services/ai-agent-development-cybersecurity-seattle",
+      "primary_keyword": "cybersecurity ai agent engineering seattle",
+      "secondary_keywords": [
+        "automated soc alert triage",
+        "threat intelligence ai agents seattle",
+        "devsecops autonomous agent workflows",
+        "incident response agent orchestration"
+      ],
+      "search_intent": "transactional",
+      "cpc_tier": "$42 - $90",
+      "priority": "P1",
+      "service": {
+        "id": "ai-agents",
+        "name": "Autonomous AI Agents & Agentic Workflow Engineering",
+        "short_name": "Autonomous AI Agents"
+      },
+      "niche": {
+        "id": "cybersecurity",
+        "name": "Enterprise Cybersecurity & DevSecOps",
+        "typical_acv": "$40,000 - $200,000/yr"
+      },
+      "tech_stack": {
+        "id": "docker-vps",
+        "name": "Docker Compose on Linux VPS",
+        "category": "Infrastructure & Hosting"
+      },
+      "location": {
+        "id": "seattle",
+        "name": "Seattle, WA",
+        "city": "Seattle",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Harden your security operations center with containerized agents that parse telemetry, correlate logs, and draft containment plans.",
+      "target_buyer_roles": [
+        "CTO",
+        "Head of AI / Automation",
+        "VP of Engineering"
+      ]
+    },
+    {
+      "id": "PSEO-017",
+      "slug": "/services/ai-agent-development-agencies-sydney",
+      "primary_keyword": "ai agent agency sydney",
+      "secondary_keywords": [
+        "agency delivery automation sydney",
+        "custom ai workflow developers australia",
+        "client fulfillment agents",
+        "autonomous task execution"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$26 - $58",
+      "priority": "P2",
+      "service": {
+        "id": "ai-agents",
+        "name": "Autonomous AI Agents & Agentic Workflow Engineering",
+        "short_name": "Autonomous AI Agents"
+      },
+      "niche": {
+        "id": "agency-consultancy",
+        "name": "Digital Agencies & High-Growth Consultancies",
+        "typical_acv": "$5,000 - $30,000/mo"
+      },
+      "tech_stack": {
+        "id": "langchain-crewai",
+        "name": "LangChain & CrewAI",
+        "category": "Multi-Agent Frameworks"
+      },
+      "location": {
+        "id": "sydney",
+        "name": "Sydney, Australia",
+        "city": "Sydney",
+        "country": "Australia"
+      },
+      "value_proposition_hook": "Multiply agency output without headcount growth by engineering autonomous client fulfillment and reporting agents.",
+      "target_buyer_roles": [
+        "CTO",
+        "Head of AI / Automation",
+        "VP of Engineering"
+      ]
+    },
+    {
+      "id": "PSEO-018",
+      "slug": "/services/ai-agent-development-proptech-toronto",
+      "primary_keyword": "proptech ai agent development toronto",
+      "secondary_keywords": [
+        "real estate lead triage agents",
+        "property management automation toronto",
+        "tenant screening ai workflows",
+        "automated lease audit"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$22 - $48",
+      "priority": "P2",
+      "service": {
+        "id": "ai-agents",
+        "name": "Autonomous AI Agents & Agentic Workflow Engineering",
+        "short_name": "Autonomous AI Agents"
+      },
+      "niche": {
+        "id": "proptech-realestate",
+        "name": "PropTech & Commercial Real Estate Platforms",
+        "typical_acv": "$15,000 - $80,000/yr"
+      },
+      "tech_stack": {
+        "id": "python-fastapi",
+        "name": "Python & FastAPI",
+        "category": "Backend & AI Runtimes"
+      },
+      "location": {
+        "id": "toronto",
+        "name": "Toronto, Canada",
+        "city": "Toronto",
+        "country": "Canada"
+      },
+      "value_proposition_hook": "Automate commercial lease abstraction, tenant inquiry triage, and maintenance dispatching with custom Python FastAPI agents.",
+      "target_buyer_roles": [
+        "CTO",
+        "Head of AI / Automation",
+        "VP of Engineering"
+      ]
+    },
+    {
+      "id": "PSEO-019",
+      "slug": "/services/nextjs-web-development-b2b-saas-san-francisco",
+      "primary_keyword": "nextjs development agency san francisco",
+      "secondary_keywords": [
+        "b2b saas nextjs engineering sf",
+        "react server components agency",
+        "typescript web application developers san francisco",
+        "enterprise nextjs consultants"
+      ],
+      "search_intent": "transactional",
+      "cpc_tier": "$36 - $80",
+      "priority": "P1",
+      "service": {
+        "id": "web-app-engineering",
+        "name": "Full-Stack Next.js & React Web Application Engineering",
+        "short_name": "Next.js Web Engineering"
+      },
+      "niche": {
+        "id": "b2b-saas",
+        "name": "B2B SaaS & Enterprise Software",
+        "typical_acv": "$12,000 - $60,000/yr"
+      },
+      "tech_stack": {
+        "id": "nextjs-typescript",
+        "name": "Next.js & TypeScript",
+        "category": "Frontend & Full-Stack"
+      },
+      "location": {
+        "id": "san-francisco",
+        "name": "San Francisco, CA",
+        "city": "San Francisco",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Architect production Next.js App Router applications with sub-second performance, strict TypeScript guarantees, and enterprise scalability in San Francisco.",
+      "target_buyer_roles": [
+        "VP of Product",
+        "Chief Technology Officer",
+        "Technical Founder"
+      ]
+    },
+    {
+      "id": "PSEO-020",
+      "slug": "/services/nextjs-web-development-fintech-new-york",
+      "primary_keyword": "fintech nextjs web development new york",
+      "secondary_keywords": [
+        "nyc fintech web app agency",
+        "nextjs financial dashboard developers",
+        "secure react fintech application",
+        "high frequency trading ui new york"
+      ],
+      "search_intent": "transactional",
+      "cpc_tier": "$45 - $92",
+      "priority": "P1",
+      "service": {
+        "id": "web-app-engineering",
+        "name": "Full-Stack Next.js & React Web Application Engineering",
+        "short_name": "Next.js Web Engineering"
+      },
+      "niche": {
+        "id": "fintech",
+        "name": "FinTech & Digital Financial Services",
+        "typical_acv": "$25,000 - $150,000/yr"
+      },
+      "tech_stack": {
+        "id": "nextjs-typescript",
+        "name": "Next.js & TypeScript",
+        "category": "Frontend & Full-Stack"
+      },
+      "location": {
+        "id": "new-york",
+        "name": "New York City, NY",
+        "city": "New York",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Build high-throughput financial dashboards, real-time portfolio monitors, and bank-grade web applications in New York City.",
+      "target_buyer_roles": [
+        "VP of Product",
+        "Chief Technology Officer",
+        "Technical Founder"
+      ]
+    },
+    {
+      "id": "PSEO-021",
+      "slug": "/services/nextjs-web-development-healthtech-boston",
+      "primary_keyword": "healthtech web application development boston",
+      "secondary_keywords": [
+        "hipaa compliant nextjs development",
+        "boston digital health portal developers",
+        "patient portal web agency boston",
+        "telehealth application engineering"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$34 - $72",
+      "priority": "P1",
+      "service": {
+        "id": "web-app-engineering",
+        "name": "Full-Stack Next.js & React Web Application Engineering",
+        "short_name": "Next.js Web Engineering"
+      },
+      "niche": {
+        "id": "healthtech-biotech",
+        "name": "HealthTech & Digital Health Platforms",
+        "typical_acv": "$30,000 - $120,000/yr"
+      },
+      "tech_stack": {
+        "id": "supabase-postgresql",
+        "name": "Supabase & PostgreSQL",
+        "category": "Database & Auth"
+      },
+      "location": {
+        "id": "boston",
+        "name": "Boston, MA",
+        "city": "Boston",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Engineer HIPAA-ready patient portals, telemedicine dashboards, and clinical data interfaces with Next.js and Supabase in Boston.",
+      "target_buyer_roles": [
+        "VP of Product",
+        "Chief Technology Officer",
+        "Technical Founder"
+      ]
+    },
+    {
+      "id": "PSEO-022",
+      "slug": "/services/nextjs-web-development-ecommerce-d2c-miami",
+      "primary_keyword": "headless ecommerce development agency miami",
+      "secondary_keywords": [
+        "nextjs commerce agency miami",
+        "d2c headless storefront developers",
+        "high conversion web apps miami",
+        "tailwind ecommerce engineering"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$25 - $55",
+      "priority": "P1",
+      "service": {
+        "id": "web-app-engineering",
+        "name": "Full-Stack Next.js & React Web Application Engineering",
+        "short_name": "Next.js Web Engineering"
+      },
+      "niche": {
+        "id": "ecommerce-d2c",
+        "name": "High-Volume E-Commerce & D2C Brands",
+        "typical_acv": "$500,000 - $10M GMV"
+      },
+      "tech_stack": {
+        "id": "tailwind-shadcn",
+        "name": "Tailwind CSS & Shadcn UI",
+        "category": "UI Design Systems"
+      },
+      "location": {
+        "id": "miami",
+        "name": "Miami, FL",
+        "city": "Miami",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Deliver ultra-fast headless storefronts with 99+ Core Web Vitals that double mobile checkout conversions for scaling D2C brands.",
+      "target_buyer_roles": [
+        "VP of Product",
+        "Chief Technology Officer",
+        "Technical Founder"
+      ]
+    },
+    {
+      "id": "PSEO-023",
+      "slug": "/services/nextjs-web-development-proptech-austin",
+      "primary_keyword": "proptech web development agency austin",
+      "secondary_keywords": [
+        "real estate portal development austin",
+        "interactive map nextjs application",
+        "property management web engineering",
+        "texas proptech developers"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$24 - $50",
+      "priority": "P2",
+      "service": {
+        "id": "web-app-engineering",
+        "name": "Full-Stack Next.js & React Web Application Engineering",
+        "short_name": "Next.js Web Engineering"
+      },
+      "niche": {
+        "id": "proptech-realestate",
+        "name": "PropTech & Commercial Real Estate Platforms",
+        "typical_acv": "$15,000 - $80,000/yr"
+      },
+      "tech_stack": {
+        "id": "nextjs-typescript",
+        "name": "Next.js & TypeScript",
+        "category": "Frontend & Full-Stack"
+      },
+      "location": {
+        "id": "austin",
+        "name": "Austin, TX",
+        "city": "Austin",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Build property search engines featuring dynamic vector maps, real-time availability filters, and instant listing updates in Austin.",
+      "target_buyer_roles": [
+        "VP of Product",
+        "Chief Technology Officer",
+        "Technical Founder"
+      ]
+    },
+    {
+      "id": "PSEO-024",
+      "slug": "/services/nextjs-web-development-vc-pe-firms-london",
+      "primary_keyword": "private equity portal development london",
+      "secondary_keywords": [
+        "vc fund portal developers london",
+        "lp investor dashboard nextjs",
+        "deal room web application engineering",
+        "financial analytics web app"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$32 - $68",
+      "priority": "P2",
+      "service": {
+        "id": "web-app-engineering",
+        "name": "Full-Stack Next.js & React Web Application Engineering",
+        "short_name": "Next.js Web Engineering"
+      },
+      "niche": {
+        "id": "venture-capital-private-equity",
+        "name": "Venture Capital & Private Equity Firms",
+        "typical_acv": "$50M - $1B AUM"
+      },
+      "tech_stack": {
+        "id": "supabase-postgresql",
+        "name": "Supabase & PostgreSQL",
+        "category": "Database & Auth"
+      },
+      "location": {
+        "id": "london",
+        "name": "London, UK",
+        "city": "London",
+        "country": "United Kingdom"
+      },
+      "value_proposition_hook": "Create institutional LP reporting portals, secure deal rooms, and capital call management interfaces with granular role-based access.",
+      "target_buyer_roles": [
+        "VP of Product",
+        "Chief Technology Officer",
+        "Technical Founder"
+      ]
+    },
+    {
+      "id": "PSEO-025",
+      "slug": "/services/nextjs-web-development-edtech-toronto",
+      "primary_keyword": "edtech lms development agency toronto",
+      "secondary_keywords": [
+        "custom learning management system developers",
+        "interactive education web app toronto",
+        "nextjs course platform engineering",
+        "edtech frontend consultants"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$20 - $44",
+      "priority": "P2",
+      "service": {
+        "id": "web-app-engineering",
+        "name": "Full-Stack Next.js & React Web Application Engineering",
+        "short_name": "Next.js Web Engineering"
+      },
+      "niche": {
+        "id": "edtech",
+        "name": "EdTech & Online Learning Platforms",
+        "typical_acv": "$10,000 - $50,000/yr"
+      },
+      "tech_stack": {
+        "id": "nextjs-typescript",
+        "name": "Next.js & TypeScript",
+        "category": "Frontend & Full-Stack"
+      },
+      "location": {
+        "id": "toronto",
+        "name": "Toronto, Canada",
+        "city": "Toronto",
+        "country": "Canada"
+      },
+      "value_proposition_hook": "Develop engaging, interactive learning platforms with real-time video streaming, quiz engines, and student progress tracking.",
+      "target_buyer_roles": [
+        "VP of Product",
+        "Chief Technology Officer",
+        "Technical Founder"
+      ]
+    },
+    {
+      "id": "PSEO-026",
+      "slug": "/services/nextjs-web-development-cybersecurity-berlin",
+      "primary_keyword": "cybersecurity web application engineering berlin",
+      "secondary_keywords": [
+        "security dashboard nextjs developers",
+        "berlin devsecops ui agency",
+        "infosec frontend engineering germany",
+        "zero trust web application"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$28 - $60",
+      "priority": "P2",
+      "service": {
+        "id": "web-app-engineering",
+        "name": "Full-Stack Next.js & React Web Application Engineering",
+        "short_name": "Next.js Web Engineering"
+      },
+      "niche": {
+        "id": "cybersecurity",
+        "name": "Enterprise Cybersecurity & DevSecOps",
+        "typical_acv": "$40,000 - $200,000/yr"
+      },
+      "tech_stack": {
+        "id": "nextjs-typescript",
+        "name": "Next.js & TypeScript",
+        "category": "Frontend & Full-Stack"
+      },
+      "location": {
+        "id": "berlin",
+        "name": "Berlin, Germany",
+        "city": "Berlin",
+        "country": "Germany"
+      },
+      "value_proposition_hook": "Build intuitive, low-latency telemetry consoles, policy builders, and compliance auditing interfaces across the European Union.",
+      "target_buyer_roles": [
+        "VP of Product",
+        "Chief Technology Officer",
+        "Technical Founder"
+      ]
+    },
+    {
+      "id": "PSEO-027",
+      "slug": "/services/nextjs-web-development-legaltech-singapore",
+      "primary_keyword": "legaltech web development agency singapore",
+      "secondary_keywords": [
+        "law firm client portal singapore",
+        "legal matter management web app",
+        "singapore legaltech engineers",
+        "secure legal document portal"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$27 - $58",
+      "priority": "P2",
+      "service": {
+        "id": "web-app-engineering",
+        "name": "Full-Stack Next.js & React Web Application Engineering",
+        "short_name": "Next.js Web Engineering"
+      },
+      "niche": {
+        "id": "legaltech-professional",
+        "name": "LegalTech & High-Ticket Professional Services",
+        "typical_acv": "$20,000 - $100,000/yr"
+      },
+      "tech_stack": {
+        "id": "tailwind-shadcn",
+        "name": "Tailwind CSS & Shadcn UI",
+        "category": "UI Design Systems"
+      },
+      "location": {
+        "id": "singapore",
+        "name": "Singapore",
+        "city": "Singapore",
+        "country": "Singapore"
+      },
+      "value_proposition_hook": "Develop enterprise legal client portals with encrypted document sharing, timestamped audit trails, and integrated billing in Singapore.",
+      "target_buyer_roles": [
+        "VP of Product",
+        "Chief Technology Officer",
+        "Technical Founder"
+      ]
+    },
+    {
+      "id": "PSEO-028",
+      "slug": "/services/outbound-lead-engine-for-b2b-saas",
+      "primary_keyword": "b2b saas cold outbound infrastructure agency",
+      "secondary_keywords": [
+        "automated outbound lead engine",
+        "intent-based cold email infrastructure",
+        "b2b sales pipeline automation",
+        "ai personalized outreach engine"
+      ],
+      "search_intent": "transactional",
+      "cpc_tier": "$30 - $68",
+      "priority": "P1",
+      "service": {
+        "id": "outbound-infrastructure",
+        "name": "Automated Cold Outbound & Social Lead Generation Engine",
+        "short_name": "Cold Outbound & Lead Engine"
+      },
+      "niche": {
+        "id": "b2b-saas",
+        "name": "B2B SaaS & Enterprise Software",
+        "typical_acv": "$12,000 - $60,000/yr"
+      },
+      "tech_stack": {
+        "id": "python-fastapi",
+        "name": "Python & FastAPI",
+        "category": "Backend & AI Runtimes"
+      },
+      "location": {
+        "id": "global",
+        "name": "Global / Remote",
+        "city": "Worldwide",
+        "country": "Global"
+      },
+      "value_proposition_hook": "Scale qualified sales pipeline with a private outbound engine: domain clustering, inbox warmup, social intent capture, and hyper-personalized AI copy.",
+      "target_buyer_roles": [
+        "Chief Revenue Officer",
+        "Head of Business Development",
+        "Growth Marketing Director"
+      ]
+    },
+    {
+      "id": "PSEO-029",
+      "slug": "/services/outbound-lead-engine-agencies-new-york",
+      "primary_keyword": "agency outbound lead generation system new york",
+      "secondary_keywords": [
+        "b2b appointment setting system nyc",
+        "agency cold outreach infrastructure",
+        "automated client acquisition system",
+        "linkedin outreach automation nyc"
+      ],
+      "search_intent": "transactional",
+      "cpc_tier": "$35 - $75",
+      "priority": "P1",
+      "service": {
+        "id": "outbound-infrastructure",
+        "name": "Automated Cold Outbound & Social Lead Generation Engine",
+        "short_name": "Cold Outbound & Lead Engine"
+      },
+      "niche": {
+        "id": "agency-consultancy",
+        "name": "Digital Agencies & High-Growth Consultancies",
+        "typical_acv": "$5,000 - $30,000/mo"
+      },
+      "tech_stack": {
+        "id": "docker-vps",
+        "name": "Docker Compose on Linux VPS",
+        "category": "Infrastructure & Hosting"
+      },
+      "location": {
+        "id": "new-york",
+        "name": "New York City, NY",
+        "city": "New York",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Fill your agency sales calendar with Fortune 500 brand decision-makers using a multi-channel outbound infrastructure operating on autopilot.",
+      "target_buyer_roles": [
+        "Chief Revenue Officer",
+        "Head of Business Development",
+        "Growth Marketing Director"
+      ]
+    },
+    {
+      "id": "PSEO-030",
+      "slug": "/services/outbound-lead-engine-vc-pe-firms-san-francisco",
+      "primary_keyword": "automated deal sourcing infrastructure san francisco",
+      "secondary_keywords": [
+        "vc outbound deal sourcing engine",
+        "private equity proprietary deal flow automation",
+        "stealth startup intent scraper sf",
+        "founder outreach automation"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$42 - $88",
+      "priority": "P1",
+      "service": {
+        "id": "outbound-infrastructure",
+        "name": "Automated Cold Outbound & Social Lead Generation Engine",
+        "short_name": "Cold Outbound & Lead Engine"
+      },
+      "niche": {
+        "id": "venture-capital-private-equity",
+        "name": "Venture Capital & Private Equity Firms",
+        "typical_acv": "$50M - $1B AUM"
+      },
+      "tech_stack": {
+        "id": "python-fastapi",
+        "name": "Python & FastAPI",
+        "category": "Backend & AI Runtimes"
+      },
+      "location": {
+        "id": "san-francisco",
+        "name": "San Francisco, CA",
+        "city": "San Francisco",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Detect stealth fundraises, executive hiring surges, and product launches to contact promising founders 3 weeks before competing funds.",
+      "target_buyer_roles": [
+        "Chief Revenue Officer",
+        "Head of Business Development",
+        "Growth Marketing Director"
+      ]
+    },
+    {
+      "id": "PSEO-031",
+      "slug": "/services/outbound-lead-engine-fintech-london",
+      "primary_keyword": "fintech b2b outbound infrastructure london",
+      "secondary_keywords": [
+        "financial enterprise sales automation",
+        "london fintech lead generation engine",
+        "compliant b2b cold email system",
+        "uk fintech outbound pipeline"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$32 - $70",
+      "priority": "P1",
+      "service": {
+        "id": "outbound-infrastructure",
+        "name": "Automated Cold Outbound & Social Lead Generation Engine",
+        "short_name": "Cold Outbound & Lead Engine"
+      },
+      "niche": {
+        "id": "fintech",
+        "name": "FinTech & Digital Financial Services",
+        "typical_acv": "$25,000 - $150,000/yr"
+      },
+      "tech_stack": {
+        "id": "docker-vps",
+        "name": "Docker Compose on Linux VPS",
+        "category": "Infrastructure & Hosting"
+      },
+      "location": {
+        "id": "london",
+        "name": "London, UK",
+        "city": "London",
+        "country": "United Kingdom"
+      },
+      "value_proposition_hook": "Generate high-value institutional banking and fintech partnerships through GDPR-compliant automated email, phone, and LinkedIn touchpoints.",
+      "target_buyer_roles": [
+        "Chief Revenue Officer",
+        "Head of Business Development",
+        "Growth Marketing Director"
+      ]
+    },
+    {
+      "id": "PSEO-032",
+      "slug": "/services/outbound-lead-engine-cybersecurity-austin",
+      "primary_keyword": "cybersecurity sales pipeline automation austin",
+      "secondary_keywords": [
+        "infosec outbound lead generation",
+        "ciso intent scraping austin",
+        "security software sales engine",
+        "technical enterprise outbound"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$36 - $78",
+      "priority": "P2",
+      "service": {
+        "id": "outbound-infrastructure",
+        "name": "Automated Cold Outbound & Social Lead Generation Engine",
+        "short_name": "Cold Outbound & Lead Engine"
+      },
+      "niche": {
+        "id": "cybersecurity",
+        "name": "Enterprise Cybersecurity & DevSecOps",
+        "typical_acv": "$40,000 - $200,000/yr"
+      },
+      "tech_stack": {
+        "id": "python-fastapi",
+        "name": "Python & FastAPI",
+        "category": "Backend & AI Runtimes"
+      },
+      "location": {
+        "id": "austin",
+        "name": "Austin, TX",
+        "city": "Austin",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Reach CISOs and security directors at the exact moment their public repositories or job boards indicate a critical architecture shift.",
+      "target_buyer_roles": [
+        "Chief Revenue Officer",
+        "Head of Business Development",
+        "Growth Marketing Director"
+      ]
+    },
+    {
+      "id": "PSEO-033",
+      "slug": "/services/outbound-lead-engine-proptech-miami",
+      "primary_keyword": "real estate investor outbound lead engine miami",
+      "secondary_keywords": [
+        "proptech broker acquisition automation",
+        "commercial real estate cold email system",
+        "miami investor outreach infrastructure",
+        "land acquisition scraper"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$25 - $55",
+      "priority": "P2",
+      "service": {
+        "id": "outbound-infrastructure",
+        "name": "Automated Cold Outbound & Social Lead Generation Engine",
+        "short_name": "Cold Outbound & Lead Engine"
+      },
+      "niche": {
+        "id": "proptech-realestate",
+        "name": "PropTech & Commercial Real Estate Platforms",
+        "typical_acv": "$15,000 - $80,000/yr"
+      },
+      "tech_stack": {
+        "id": "docker-vps",
+        "name": "Docker Compose on Linux VPS",
+        "category": "Infrastructure & Hosting"
+      },
+      "location": {
+        "id": "miami",
+        "name": "Miami, FL",
+        "city": "Miami",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Source off-market real estate assets, institutional LPs, and tenant acquisitions with an automated scraping and multi-inbox outreach system.",
+      "target_buyer_roles": [
+        "Chief Revenue Officer",
+        "Head of Business Development",
+        "Growth Marketing Director"
+      ]
+    },
+    {
+      "id": "PSEO-034",
+      "slug": "/services/outbound-lead-engine-healthtech-boston",
+      "primary_keyword": "healthtech provider outbound acquisition boston",
+      "secondary_keywords": [
+        "physician outreach automation system",
+        "medical practice lead generation engine",
+        "boston digital health outbound",
+        "telehealth provider onboarding"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$28 - $62",
+      "priority": "P2",
+      "service": {
+        "id": "outbound-infrastructure",
+        "name": "Automated Cold Outbound & Social Lead Generation Engine",
+        "short_name": "Cold Outbound & Lead Engine"
+      },
+      "niche": {
+        "id": "healthtech-biotech",
+        "name": "HealthTech & Digital Health Platforms",
+        "typical_acv": "$30,000 - $120,000/yr"
+      },
+      "tech_stack": {
+        "id": "python-fastapi",
+        "name": "Python & FastAPI",
+        "category": "Backend & AI Runtimes"
+      },
+      "location": {
+        "id": "boston",
+        "name": "Boston, MA",
+        "city": "Boston",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Acquire licensed medical practitioners, clinic directors, and specialized researchers with verified clinical email deliverability workflows.",
+      "target_buyer_roles": [
+        "Chief Revenue Officer",
+        "Head of Business Development",
+        "Growth Marketing Director"
+      ]
+    },
+    {
+      "id": "PSEO-035",
+      "slug": "/services/outbound-lead-engine-edtech-sydney",
+      "primary_keyword": "edtech b2b outbound sales infrastructure sydney",
+      "secondary_keywords": [
+        "university lead generation automation",
+        "k12 school district outbound engine",
+        "australian edtech sales automation",
+        "corporate l&d lead generation"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$22 - $48",
+      "priority": "P2",
+      "service": {
+        "id": "outbound-infrastructure",
+        "name": "Automated Cold Outbound & Social Lead Generation Engine",
+        "short_name": "Cold Outbound & Lead Engine"
+      },
+      "niche": {
+        "id": "edtech",
+        "name": "EdTech & Online Learning Platforms",
+        "typical_acv": "$10,000 - $50,000/yr"
+      },
+      "tech_stack": {
+        "id": "python-fastapi",
+        "name": "Python & FastAPI",
+        "category": "Backend & AI Runtimes"
+      },
+      "location": {
+        "id": "sydney",
+        "name": "Sydney, Australia",
+        "city": "Sydney",
+        "country": "Australia"
+      },
+      "value_proposition_hook": "Connect with university deans, corporate L&D executives, and school administrators with personalized pitch angles and automated follow-ups.",
+      "target_buyer_roles": [
+        "Chief Revenue Officer",
+        "Head of Business Development",
+        "Growth Marketing Director"
+      ]
+    },
+    {
+      "id": "PSEO-036",
+      "slug": "/services/composio-api-integrations-for-b2b-saas",
+      "primary_keyword": "self-hosted composio api integration agency",
+      "secondary_keywords": [
+        "composio tool calling architecture",
+        "self-hosted composio developers",
+        "ai agent tool execution framework",
+        "composio api integration consultants"
+      ],
+      "search_intent": "transactional",
+      "cpc_tier": "$35 - $80",
+      "priority": "P1",
+      "service": {
+        "id": "composio-integrations",
+        "name": "Self-Hosted Composio API Tool Calling & Agentic Integrations",
+        "short_name": "Composio Agent Integrations"
+      },
+      "niche": {
+        "id": "b2b-saas",
+        "name": "B2B SaaS & Enterprise Software",
+        "typical_acv": "$12,000 - $60,000/yr"
+      },
+      "tech_stack": {
+        "id": "composio-tools",
+        "name": "Self-Hosted Composio API",
+        "category": "Agent Tool Calling"
+      },
+      "location": {
+        "id": "global",
+        "name": "Global / Remote",
+        "city": "Worldwide",
+        "country": "Global"
+      },
+      "value_proposition_hook": "Deploy a private, self-hosted Composio API environment that empowers your AI agents to execute actions across GitHub, Slack, Jira, and CRM tools securely.",
+      "target_buyer_roles": [
+        "Head of Automation",
+        "Enterprise Solutions Architect",
+        "Director of IT Operations"
+      ]
+    },
+    {
+      "id": "PSEO-037",
+      "slug": "/services/composio-api-integrations-fintech-new-york",
+      "primary_keyword": "financial composio api integration consultants new york",
+      "secondary_keywords": [
+        "secure agentic tool execution fintech",
+        "composio oauth banking connectors",
+        "new york enterprise composio deployment",
+        "isolated ai tool calling runtime"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$44 - $95",
+      "priority": "P1",
+      "service": {
+        "id": "composio-integrations",
+        "name": "Self-Hosted Composio API Tool Calling & Agentic Integrations",
+        "short_name": "Composio Agent Integrations"
+      },
+      "niche": {
+        "id": "fintech",
+        "name": "FinTech & Digital Financial Services",
+        "typical_acv": "$25,000 - $150,000/yr"
+      },
+      "tech_stack": {
+        "id": "composio-tools",
+        "name": "Self-Hosted Composio API",
+        "category": "Agent Tool Calling"
+      },
+      "location": {
+        "id": "new-york",
+        "name": "New York City, NY",
+        "city": "New York",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Guarantee strict data sovereignty and zero token leaks by deploying self-hosted Composio tool execution gateways behind VPC firewalls.",
+      "target_buyer_roles": [
+        "Head of Automation",
+        "Enterprise Solutions Architect",
+        "Director of IT Operations"
+      ]
+    },
+    {
+      "id": "PSEO-038",
+      "slug": "/services/composio-api-integrations-cybersecurity-san-francisco",
+      "primary_keyword": "secure composio api architecture san francisco",
+      "secondary_keywords": [
+        "self-hosted agentic tooling security",
+        "composio rate limiting and token vault",
+        "san francisco composio consultants",
+        "enterprise tool call audit logging"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$40 - $88",
+      "priority": "P1",
+      "service": {
+        "id": "composio-integrations",
+        "name": "Self-Hosted Composio API Tool Calling & Agentic Integrations",
+        "short_name": "Composio Agent Integrations"
+      },
+      "niche": {
+        "id": "cybersecurity",
+        "name": "Enterprise Cybersecurity & DevSecOps",
+        "typical_acv": "$40,000 - $200,000/yr"
+      },
+      "tech_stack": {
+        "id": "composio-tools",
+        "name": "Self-Hosted Composio API",
+        "category": "Agent Tool Calling"
+      },
+      "location": {
+        "id": "san-francisco",
+        "name": "San Francisco, CA",
+        "city": "San Francisco",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Safeguard enterprise API keys with local token vaults, automated secret rotation, and immutable tool-call audit logs for autonomous LLM runs.",
+      "target_buyer_roles": [
+        "Head of Automation",
+        "Enterprise Solutions Architect",
+        "Director of IT Operations"
+      ]
+    },
+    {
+      "id": "PSEO-039",
+      "slug": "/services/composio-api-integrations-agencies-austin",
+      "primary_keyword": "composio agent integration agency austin",
+      "secondary_keywords": [
+        "multi-tool agent orchestration austin",
+        "composio workflow automation developers",
+        "custom composio tool builders",
+        "agency agentic tool deployment"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$28 - $60",
+      "priority": "P2",
+      "service": {
+        "id": "composio-integrations",
+        "name": "Self-Hosted Composio API Tool Calling & Agentic Integrations",
+        "short_name": "Composio Agent Integrations"
+      },
+      "niche": {
+        "id": "agency-consultancy",
+        "name": "Digital Agencies & High-Growth Consultancies",
+        "typical_acv": "$5,000 - $30,000/mo"
+      },
+      "tech_stack": {
+        "id": "composio-tools",
+        "name": "Self-Hosted Composio API",
+        "category": "Agent Tool Calling"
+      },
+      "location": {
+        "id": "austin",
+        "name": "Austin, TX",
+        "city": "Austin",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Connect your custom client fulfillment agents directly into 250+ cloud apps with battle-tested OAuth callbacks and sandbox testing.",
+      "target_buyer_roles": [
+        "Head of Automation",
+        "Enterprise Solutions Architect",
+        "Director of IT Operations"
+      ]
+    },
+    {
+      "id": "PSEO-040",
+      "slug": "/services/composio-api-integrations-ecommerce-d2c-london",
+      "primary_keyword": "ecommerce composio automation developers london",
+      "secondary_keywords": [
+        "shopify composio tool integration",
+        "ecommerce agent order fulfillment tools",
+        "london retail composio engineering",
+        "agentic warehouse connectors"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$27 - $58",
+      "priority": "P2",
+      "service": {
+        "id": "composio-integrations",
+        "name": "Self-Hosted Composio API Tool Calling & Agentic Integrations",
+        "short_name": "Composio Agent Integrations"
+      },
+      "niche": {
+        "id": "ecommerce-d2c",
+        "name": "High-Volume E-Commerce & D2C Brands",
+        "typical_acv": "$500,000 - $10M GMV"
+      },
+      "tech_stack": {
+        "id": "composio-tools",
+        "name": "Self-Hosted Composio API",
+        "category": "Agent Tool Calling"
+      },
+      "location": {
+        "id": "london",
+        "name": "London, UK",
+        "city": "London",
+        "country": "United Kingdom"
+      },
+      "value_proposition_hook": "Empower LLM customer support and logistics agents to modify Shopify orders, initiate refunds, and query warehouse ERPs securely.",
+      "target_buyer_roles": [
+        "Head of Automation",
+        "Enterprise Solutions Architect",
+        "Director of IT Operations"
+      ]
+    },
+    {
+      "id": "PSEO-041",
+      "slug": "/services/composio-api-integrations-vc-pe-firms-singapore",
+      "primary_keyword": "composio api integration consultants singapore",
+      "secondary_keywords": [
+        "fund ops tool calling architecture",
+        "singapore ai agent tool integration",
+        "composio crunchbase pitchbook connectors",
+        "private equity composio runtime"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$30 - $66",
+      "priority": "P2",
+      "service": {
+        "id": "composio-integrations",
+        "name": "Self-Hosted Composio API Tool Calling & Agentic Integrations",
+        "short_name": "Composio Agent Integrations"
+      },
+      "niche": {
+        "id": "venture-capital-private-equity",
+        "name": "Venture Capital & Private Equity Firms",
+        "typical_acv": "$50M - $1B AUM"
+      },
+      "tech_stack": {
+        "id": "composio-tools",
+        "name": "Self-Hosted Composio API",
+        "category": "Agent Tool Calling"
+      },
+      "location": {
+        "id": "singapore",
+        "name": "Singapore",
+        "city": "Singapore",
+        "country": "Singapore"
+      },
+      "value_proposition_hook": "Enable investment research agents to query Crunchbase, send PitchBook alerts, and populate Airtable CRM pipelines without manual API coding.",
+      "target_buyer_roles": [
+        "Head of Automation",
+        "Enterprise Solutions Architect",
+        "Director of IT Operations"
+      ]
+    },
+    {
+      "id": "PSEO-042",
+      "slug": "/services/composio-api-integrations-legaltech-toronto",
+      "primary_keyword": "legal composio integration specialists toronto",
+      "secondary_keywords": [
+        "legal clm composio tool connectors",
+        "docusign composio automation",
+        "toronto legaltech agent tooling",
+        "secure legal document tool execution"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$32 - $70",
+      "priority": "P2",
+      "service": {
+        "id": "composio-integrations",
+        "name": "Self-Hosted Composio API Tool Calling & Agentic Integrations",
+        "short_name": "Composio Agent Integrations"
+      },
+      "niche": {
+        "id": "legaltech-professional",
+        "name": "LegalTech & High-Ticket Professional Services",
+        "typical_acv": "$20,000 - $100,000/yr"
+      },
+      "tech_stack": {
+        "id": "composio-tools",
+        "name": "Self-Hosted Composio API",
+        "category": "Agent Tool Calling"
+      },
+      "location": {
+        "id": "toronto",
+        "name": "Toronto, Canada",
+        "city": "Toronto",
+        "country": "Canada"
+      },
+      "value_proposition_hook": "Bridge LLM review agents directly with Clio, DocuSign, and NetDocuments through self-hosted, authenticated Composio tool calling.",
+      "target_buyer_roles": [
+        "Head of Automation",
+        "Enterprise Solutions Architect",
+        "Director of IT Operations"
+      ]
+    },
+    {
+      "id": "PSEO-043",
+      "slug": "/services/composio-api-integrations-edtech-berlin",
+      "primary_keyword": "edtech composio tool integration developers berlin",
+      "secondary_keywords": [
+        "lms composio connectors germany",
+        "canvas blackboard agent tools",
+        "berlin edtech ai automation",
+        "student engagement tool calling"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$24 - $50",
+      "priority": "P2",
+      "service": {
+        "id": "composio-integrations",
+        "name": "Self-Hosted Composio API Tool Calling & Agentic Integrations",
+        "short_name": "Composio Agent Integrations"
+      },
+      "niche": {
+        "id": "edtech",
+        "name": "EdTech & Online Learning Platforms",
+        "typical_acv": "$10,000 - $50,000/yr"
+      },
+      "tech_stack": {
+        "id": "composio-tools",
+        "name": "Self-Hosted Composio API",
+        "category": "Agent Tool Calling"
+      },
+      "location": {
+        "id": "berlin",
+        "name": "Berlin, Germany",
+        "city": "Berlin",
+        "country": "Germany"
+      },
+      "value_proposition_hook": "Link AI tutor agents into Canvas, Discord, and Google Classroom via self-hosted Composio execution bridges with GDPR-compliant data masking.",
+      "target_buyer_roles": [
+        "Head of Automation",
+        "Enterprise Solutions Architect",
+        "Director of IT Operations"
+      ]
+    },
+    {
+      "id": "PSEO-044",
+      "slug": "/services/whop-monetization-systems-for-b2b-saas",
+      "primary_keyword": "whop store development agency for b2b saas",
+      "secondary_keywords": [
+        "whop api integration developers",
+        "whop membership gating system",
+        "b2b saas monetization whop",
+        "whop custom checkout architecture"
+      ],
+      "search_intent": "transactional",
+      "cpc_tier": "$26 - $58",
+      "priority": "P1",
+      "service": {
+        "id": "whop-monetization",
+        "name": "Whop Store Membership, Gating & Digital Product Infrastructure",
+        "short_name": "Whop Monetization Systems"
+      },
+      "niche": {
+        "id": "b2b-saas",
+        "name": "B2B SaaS & Enterprise Software",
+        "typical_acv": "$12,000 - $60,000/yr"
+      },
+      "tech_stack": {
+        "id": "nextjs-typescript",
+        "name": "Next.js & TypeScript",
+        "category": "Frontend & Full-Stack"
+      },
+      "location": {
+        "id": "global",
+        "name": "Global / Remote",
+        "city": "Worldwide",
+        "country": "Global"
+      },
+      "value_proposition_hook": "Turn enterprise software templates, private developer APIs, and premium compute access into recurring revenue using custom Whop store integrations.",
+      "target_buyer_roles": [
+        "Creator Economy Founder",
+        "Community Director",
+        "Digital Product Manager"
+      ]
+    },
+    {
+      "id": "PSEO-045",
+      "slug": "/services/whop-monetization-systems-agencies-new-york",
+      "primary_keyword": "whop agency monetization consultants new york",
+      "secondary_keywords": [
+        "productized service whop setup nyc",
+        "agency recurring revenue whop",
+        "whop digital product delivery new york",
+        "whop membership architecture"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$28 - $62",
+      "priority": "P1",
+      "service": {
+        "id": "whop-monetization",
+        "name": "Whop Store Membership, Gating & Digital Product Infrastructure",
+        "short_name": "Whop Monetization Systems"
+      },
+      "niche": {
+        "id": "agency-consultancy",
+        "name": "Digital Agencies & High-Growth Consultancies",
+        "typical_acv": "$5,000 - $30,000/mo"
+      },
+      "tech_stack": {
+        "id": "nextjs-typescript",
+        "name": "Next.js & TypeScript",
+        "category": "Frontend & Full-Stack"
+      },
+      "location": {
+        "id": "new-york",
+        "name": "New York City, NY",
+        "city": "New York",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Productize high-ticket agency services into automated recurring retainers, paid mastermind portals, and private asset vaults on Whop.",
+      "target_buyer_roles": [
+        "Creator Economy Founder",
+        "Community Director",
+        "Digital Product Manager"
+      ]
+    },
+    {
+      "id": "PSEO-046",
+      "slug": "/services/whop-monetization-systems-edtech-austin",
+      "primary_keyword": "whop course and community setup agency austin",
+      "secondary_keywords": [
+        "whop education monetization austin",
+        "paid community gating whop",
+        "course creator whop developers",
+        "whop digital downloads delivery"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$20 - $45",
+      "priority": "P1",
+      "service": {
+        "id": "whop-monetization",
+        "name": "Whop Store Membership, Gating & Digital Product Infrastructure",
+        "short_name": "Whop Monetization Systems"
+      },
+      "niche": {
+        "id": "edtech",
+        "name": "EdTech & Online Learning Platforms",
+        "typical_acv": "$10,000 - $50,000/yr"
+      },
+      "tech_stack": {
+        "id": "tailwind-shadcn",
+        "name": "Tailwind CSS & Shadcn UI",
+        "category": "UI Design Systems"
+      },
+      "location": {
+        "id": "austin",
+        "name": "Austin, TX",
+        "city": "Austin",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Architect frictionless student checkout, tier-gated Discord/Telegram access, and automated curriculum unlocking through Whop's robust API.",
+      "target_buyer_roles": [
+        "Creator Economy Founder",
+        "Community Director",
+        "Digital Product Manager"
+      ]
+    },
+    {
+      "id": "PSEO-047",
+      "slug": "/services/whop-monetization-systems-fintech-london",
+      "primary_keyword": "fintech trading community whop setup london",
+      "secondary_keywords": [
+        "paid financial research whop gating",
+        "whop tier entitlements fintech",
+        "london financial community monetization",
+        "whop webhook verification"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$30 - $65",
+      "priority": "P1",
+      "service": {
+        "id": "whop-monetization",
+        "name": "Whop Store Membership, Gating & Digital Product Infrastructure",
+        "short_name": "Whop Monetization Systems"
+      },
+      "niche": {
+        "id": "fintech",
+        "name": "FinTech & Digital Financial Services",
+        "typical_acv": "$25,000 - $150,000/yr"
+      },
+      "tech_stack": {
+        "id": "supabase-postgresql",
+        "name": "Supabase & PostgreSQL",
+        "category": "Database & Auth"
+      },
+      "location": {
+        "id": "london",
+        "name": "London, UK",
+        "city": "London",
+        "country": "United Kingdom"
+      },
+      "value_proposition_hook": "Gate proprietary quantitative trading algorithms, market reports, and private investor Discord channels with tamper-proof Whop license checks.",
+      "target_buyer_roles": [
+        "Creator Economy Founder",
+        "Community Director",
+        "Digital Product Manager"
+      ]
+    },
+    {
+      "id": "PSEO-048",
+      "slug": "/services/whop-monetization-systems-ecommerce-d2c-miami",
+      "primary_keyword": "whop vip membership club developers miami",
+      "secondary_keywords": [
+        "d2c brand vip club whop",
+        "whop loyalty program integration",
+        "miami creator brand monetization",
+        "exclusive drops gating whop"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$22 - $48",
+      "priority": "P2",
+      "service": {
+        "id": "whop-monetization",
+        "name": "Whop Store Membership, Gating & Digital Product Infrastructure",
+        "short_name": "Whop Monetization Systems"
+      },
+      "niche": {
+        "id": "ecommerce-d2c",
+        "name": "High-Volume E-Commerce & D2C Brands",
+        "typical_acv": "$500,000 - $10M GMV"
+      },
+      "tech_stack": {
+        "id": "nextjs-typescript",
+        "name": "Next.js & TypeScript",
+        "category": "Frontend & Full-Stack"
+      },
+      "location": {
+        "id": "miami",
+        "name": "Miami, FL",
+        "city": "Miami",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Launch exclusive VIP buyer clubs, secret discount vaults, and early-access drop portals powered by Whop membership entitlements.",
+      "target_buyer_roles": [
+        "Creator Economy Founder",
+        "Community Director",
+        "Digital Product Manager"
+      ]
+    },
+    {
+      "id": "PSEO-049",
+      "slug": "/services/whop-monetization-systems-vc-pe-firms-san-francisco",
+      "primary_keyword": "angel syndicate membership portal whop sf",
+      "secondary_keywords": [
+        "syndicate deal gating whop",
+        "private investor network monetization",
+        "san francisco angel portal whop",
+        "whop accredited investor access"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$35 - $75",
+      "priority": "P2",
+      "service": {
+        "id": "whop-monetization",
+        "name": "Whop Store Membership, Gating & Digital Product Infrastructure",
+        "short_name": "Whop Monetization Systems"
+      },
+      "niche": {
+        "id": "venture-capital-private-equity",
+        "name": "Venture Capital & Private Equity Firms",
+        "typical_acv": "$50M - $1B AUM"
+      },
+      "tech_stack": {
+        "id": "supabase-postgresql",
+        "name": "Supabase & PostgreSQL",
+        "category": "Database & Auth"
+      },
+      "location": {
+        "id": "san-francisco",
+        "name": "San Francisco, CA",
+        "city": "San Francisco",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Manage angel community subscriptions, carry agreements, and diligence room access passes with automated Whop license issuance.",
+      "target_buyer_roles": [
+        "Creator Economy Founder",
+        "Community Director",
+        "Digital Product Manager"
+      ]
+    },
+    {
+      "id": "PSEO-050",
+      "slug": "/services/whop-monetization-systems-legaltech-toronto",
+      "primary_keyword": "legal document subscription whop setup toronto",
+      "secondary_keywords": [
+        "paid legal template portal whop",
+        "professional services subscription gating",
+        "toronto legaltech monetization",
+        "whop digital legal downloads"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$25 - $52",
+      "priority": "P2",
+      "service": {
+        "id": "whop-monetization",
+        "name": "Whop Store Membership, Gating & Digital Product Infrastructure",
+        "short_name": "Whop Monetization Systems"
+      },
+      "niche": {
+        "id": "legaltech-professional",
+        "name": "LegalTech & High-Ticket Professional Services",
+        "typical_acv": "$20,000 - $100,000/yr"
+      },
+      "tech_stack": {
+        "id": "nextjs-typescript",
+        "name": "Next.js & TypeScript",
+        "category": "Frontend & Full-Stack"
+      },
+      "location": {
+        "id": "toronto",
+        "name": "Toronto, Canada",
+        "city": "Toronto",
+        "country": "Canada"
+      },
+      "value_proposition_hook": "Monetize standardized legal contracts, compliance checklists, and corporate filing templates through frictionless Whop digital delivery.",
+      "target_buyer_roles": [
+        "Creator Economy Founder",
+        "Community Director",
+        "Digital Product Manager"
+      ]
+    },
+    {
+      "id": "PSEO-051",
+      "slug": "/services/whop-monetization-systems-cybersecurity-seattle",
+      "primary_keyword": "threat intelligence subscription whop seattle",
+      "secondary_keywords": [
+        "infosec feed monetization whop",
+        "paid security advisory portal",
+        "seattle cybersecurity whop setup",
+        "api key gating whop"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$32 - $70",
+      "priority": "P2",
+      "service": {
+        "id": "whop-monetization",
+        "name": "Whop Store Membership, Gating & Digital Product Infrastructure",
+        "short_name": "Whop Monetization Systems"
+      },
+      "niche": {
+        "id": "cybersecurity",
+        "name": "Enterprise Cybersecurity & DevSecOps",
+        "typical_acv": "$40,000 - $200,000/yr"
+      },
+      "tech_stack": {
+        "id": "cloudflare-workers",
+        "name": "Cloudflare Workers & Edge WAF",
+        "category": "Edge & Security"
+      },
+      "location": {
+        "id": "seattle",
+        "name": "Seattle, WA",
+        "city": "Seattle",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Distribute commercial threat feeds, zero-day alerts, and compliance runbooks via automated Whop API key provisioning and revoking.",
+      "target_buyer_roles": [
+        "Creator Economy Founder",
+        "Community Director",
+        "Digital Product Manager"
+      ]
+    },
+    {
+      "id": "PSEO-052",
+      "slug": "/services/cloudflare-vps-infrastructure-for-b2b-saas",
+      "primary_keyword": "hardened docker vps deployment agency for saas",
+      "secondary_keywords": [
+        "self-hosted saas infrastructure",
+        "vps hardening and container orchestration",
+        "b2b saas devops consultancy",
+        "docker compose production deployment"
+      ],
+      "search_intent": "transactional",
+      "cpc_tier": "$32 - $72",
+      "priority": "P1",
+      "service": {
+        "id": "cloud-vps-hardening",
+        "name": "Cloudflare Edge Architecture & Hardened Docker VPS Infrastructure",
+        "short_name": "Cloudflare & VPS Infrastructure"
+      },
+      "niche": {
+        "id": "b2b-saas",
+        "name": "B2B SaaS & Enterprise Software",
+        "typical_acv": "$12,000 - $60,000/yr"
+      },
+      "tech_stack": {
+        "id": "docker-vps",
+        "name": "Docker Compose on Linux VPS",
+        "category": "Infrastructure & Hosting"
+      },
+      "location": {
+        "id": "global",
+        "name": "Global / Remote",
+        "city": "Worldwide",
+        "country": "Global"
+      },
+      "value_proposition_hook": "Slash AWS/GCP bills by 70% with hardened single-tenant Ubuntu VPS environments running isolated Docker Compose topologies and automated backups.",
+      "target_buyer_roles": [
+        "Head of Infrastructure",
+        "DevOps Lead",
+        "Security Operations Manager"
+      ]
+    },
+    {
+      "id": "PSEO-053",
+      "slug": "/services/cloudflare-vps-infrastructure-fintech-new-york",
+      "primary_keyword": "cloudflare waf and edge security agency new york",
+      "secondary_keywords": [
+        "nyc fintech ddos mitigation",
+        "cloudflare zero trust deployment new york",
+        "financial api edge security",
+        "pci-dss cloudflare hardening"
+      ],
+      "search_intent": "transactional",
+      "cpc_tier": "$46 - $98",
+      "priority": "P1",
+      "service": {
+        "id": "cloud-vps-hardening",
+        "name": "Cloudflare Edge Architecture & Hardened Docker VPS Infrastructure",
+        "short_name": "Cloudflare & VPS Infrastructure"
+      },
+      "niche": {
+        "id": "fintech",
+        "name": "FinTech & Digital Financial Services",
+        "typical_acv": "$25,000 - $150,000/yr"
+      },
+      "tech_stack": {
+        "id": "cloudflare-workers",
+        "name": "Cloudflare Workers & Edge WAF",
+        "category": "Edge & Security"
+      },
+      "location": {
+        "id": "new-york",
+        "name": "New York City, NY",
+        "city": "New York",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Protect financial APIs against zero-day exploits, credential stuffing, and volumetric DDoS attacks with enterprise Cloudflare WAF engineering.",
+      "target_buyer_roles": [
+        "Head of Infrastructure",
+        "DevOps Lead",
+        "Security Operations Manager"
+      ]
+    },
+    {
+      "id": "PSEO-054",
+      "slug": "/services/cloudflare-vps-infrastructure-healthtech-boston",
+      "primary_keyword": "hipaa compliant vps hardening consultants boston",
+      "secondary_keywords": [
+        "isolated healthcare docker compose",
+        "boston healthtech server hardening",
+        "ufw fail2ban healthcare deployment",
+        "phi data containment infrastructure"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$38 - $84",
+      "priority": "P1",
+      "service": {
+        "id": "cloud-vps-hardening",
+        "name": "Cloudflare Edge Architecture & Hardened Docker VPS Infrastructure",
+        "short_name": "Cloudflare & VPS Infrastructure"
+      },
+      "niche": {
+        "id": "healthtech-biotech",
+        "name": "HealthTech & Digital Health Platforms",
+        "typical_acv": "$30,000 - $120,000/yr"
+      },
+      "tech_stack": {
+        "id": "docker-vps",
+        "name": "Docker Compose on Linux VPS",
+        "category": "Infrastructure & Hosting"
+      },
+      "location": {
+        "id": "boston",
+        "name": "Boston, MA",
+        "city": "Boston",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Architect private, air-gapped Docker Compose database and backend topologies on isolated VPS hosts that satisfy strict HIPAA auditing rules.",
+      "target_buyer_roles": [
+        "Head of Infrastructure",
+        "DevOps Lead",
+        "Security Operations Manager"
+      ]
+    },
+    {
+      "id": "PSEO-055",
+      "slug": "/services/cloudflare-vps-infrastructure-cybersecurity-san-francisco",
+      "primary_keyword": "vps server hardening and container isolation sf",
+      "secondary_keywords": [
+        "linux vps security runbook san francisco",
+        "docker bridge network isolation",
+        "automated ssl reverse proxy setup",
+        "fail2ban ufw server hardening"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$35 - $80",
+      "priority": "P1",
+      "service": {
+        "id": "cloud-vps-hardening",
+        "name": "Cloudflare Edge Architecture & Hardened Docker VPS Infrastructure",
+        "short_name": "Cloudflare & VPS Infrastructure"
+      },
+      "niche": {
+        "id": "cybersecurity",
+        "name": "Enterprise Cybersecurity & DevSecOps",
+        "typical_acv": "$40,000 - $200,000/yr"
+      },
+      "tech_stack": {
+        "id": "docker-vps",
+        "name": "Docker Compose on Linux VPS",
+        "category": "Infrastructure & Hosting"
+      },
+      "location": {
+        "id": "san-francisco",
+        "name": "San Francisco, CA",
+        "city": "San Francisco",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Lock down production Linux hosts with SSH key-only access, non-root daemons, automated kernel patches, and encrypted daily offsite snapshots.",
+      "target_buyer_roles": [
+        "Head of Infrastructure",
+        "DevOps Lead",
+        "Security Operations Manager"
+      ]
+    },
+    {
+      "id": "PSEO-056",
+      "slug": "/services/cloudflare-vps-infrastructure-ecommerce-d2c-austin",
+      "primary_keyword": "cloudflare edge caching agency for ecommerce austin",
+      "secondary_keywords": [
+        "high traffic d2c cloudflare tuning",
+        "edge worker cache optimization austin",
+        "bot management for ecommerce",
+        "flash sale server scaling"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$26 - $55",
+      "priority": "P2",
+      "service": {
+        "id": "cloud-vps-hardening",
+        "name": "Cloudflare Edge Architecture & Hardened Docker VPS Infrastructure",
+        "short_name": "Cloudflare & VPS Infrastructure"
+      },
+      "niche": {
+        "id": "ecommerce-d2c",
+        "name": "High-Volume E-Commerce & D2C Brands",
+        "typical_acv": "$500,000 - $10M GMV"
+      },
+      "tech_stack": {
+        "id": "cloudflare-workers",
+        "name": "Cloudflare Workers & Edge WAF",
+        "category": "Edge & Security"
+      },
+      "location": {
+        "id": "austin",
+        "name": "Austin, TX",
+        "city": "Austin",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Absorb 50,000+ concurrent flash-sale shoppers without crashing your backend using Cloudflare Edge Workers and stale-while-revalidate caching.",
+      "target_buyer_roles": [
+        "Head of Infrastructure",
+        "DevOps Lead",
+        "Security Operations Manager"
+      ]
+    },
+    {
+      "id": "PSEO-057",
+      "slug": "/services/cloudflare-vps-infrastructure-legaltech-london",
+      "primary_keyword": "secure law firm vps hosting architecture london",
+      "secondary_keywords": [
+        "gdpr compliant vps hosting london",
+        "isolated legal cloud deployment",
+        "uk professional services devops",
+        "caddy automated ssl docker vps"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$30 - $65",
+      "priority": "P2",
+      "service": {
+        "id": "cloud-vps-hardening",
+        "name": "Cloudflare Edge Architecture & Hardened Docker VPS Infrastructure",
+        "short_name": "Cloudflare & VPS Infrastructure"
+      },
+      "niche": {
+        "id": "legaltech-professional",
+        "name": "LegalTech & High-Ticket Professional Services",
+        "typical_acv": "$20,000 - $100,000/yr"
+      },
+      "tech_stack": {
+        "id": "docker-vps",
+        "name": "Docker Compose on Linux VPS",
+        "category": "Infrastructure & Hosting"
+      },
+      "location": {
+        "id": "london",
+        "name": "London, UK",
+        "city": "London",
+        "country": "United Kingdom"
+      },
+      "value_proposition_hook": "Deploy sovereign, UK-hosted legal applications on hardened Linux VPS instances behind Caddy reverse proxies with automated TLS certificates.",
+      "target_buyer_roles": [
+        "Head of Infrastructure",
+        "DevOps Lead",
+        "Security Operations Manager"
+      ]
+    },
+    {
+      "id": "PSEO-058",
+      "slug": "/services/cloudflare-vps-infrastructure-proptech-toronto",
+      "primary_keyword": "proptech devops and vps deployment toronto",
+      "secondary_keywords": [
+        "real estate platform server scaling",
+        "canadian data residency vps setup",
+        "toronto proptech infrastructure",
+        "docker postgres optimization"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$24 - $50",
+      "priority": "P2",
+      "service": {
+        "id": "cloud-vps-hardening",
+        "name": "Cloudflare Edge Architecture & Hardened Docker VPS Infrastructure",
+        "short_name": "Cloudflare & VPS Infrastructure"
+      },
+      "niche": {
+        "id": "proptech-realestate",
+        "name": "PropTech & Commercial Real Estate Platforms",
+        "typical_acv": "$15,000 - $80,000/yr"
+      },
+      "tech_stack": {
+        "id": "docker-vps",
+        "name": "Docker Compose on Linux VPS",
+        "category": "Infrastructure & Hosting"
+      },
+      "location": {
+        "id": "toronto",
+        "name": "Toronto, Canada",
+        "city": "Toronto",
+        "country": "Canada"
+      },
+      "value_proposition_hook": "Ensure Canadian data residency and high availability for property database clusters with containerized Redis, Postgres, and automated failover.",
+      "target_buyer_roles": [
+        "Head of Infrastructure",
+        "DevOps Lead",
+        "Security Operations Manager"
+      ]
+    },
+    {
+      "id": "PSEO-059",
+      "slug": "/services/cloudflare-vps-infrastructure-vc-pe-firms-singapore",
+      "primary_keyword": "private equity secure hosting infrastructure singapore",
+      "secondary_keywords": [
+        "fund ops server security singapore",
+        "isolated investment platform vps",
+        "apac private equity devops",
+        "zero trust vps access"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$34 - $72",
+      "priority": "P2",
+      "service": {
+        "id": "cloud-vps-hardening",
+        "name": "Cloudflare Edge Architecture & Hardened Docker VPS Infrastructure",
+        "short_name": "Cloudflare & VPS Infrastructure"
+      },
+      "niche": {
+        "id": "venture-capital-private-equity",
+        "name": "Venture Capital & Private Equity Firms",
+        "typical_acv": "$50M - $1B AUM"
+      },
+      "tech_stack": {
+        "id": "docker-vps",
+        "name": "Docker Compose on Linux VPS",
+        "category": "Infrastructure & Hosting"
+      },
+      "location": {
+        "id": "singapore",
+        "name": "Singapore",
+        "city": "Singapore",
+        "country": "Singapore"
+      },
+      "value_proposition_hook": "Safeguard sensitive M&A and portfolio financials with isolated VPC infrastructure, WireGuard VPN tunnels, and encrypted volume snapshots.",
+      "target_buyer_roles": [
+        "Head of Infrastructure",
+        "DevOps Lead",
+        "Security Operations Manager"
+      ]
+    },
+    {
+      "id": "PSEO-060",
+      "slug": "/services/programmatic-seo-engine-b2b-saas-austin",
+      "primary_keyword": "python programmatic seo automation austin",
+      "secondary_keywords": [
+        "fastapi programmatic page builder",
+        "saas automated seo pipeline austin",
+        "dynamic sitemap generator b2b",
+        "automated content ingestion"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$24 - $50",
+      "priority": "P2",
+      "service": {
+        "id": "pseo-engine",
+        "name": "Programmatic SEO Engine & Automated Content Architecture",
+        "short_name": "Programmatic SEO Engine"
+      },
+      "niche": {
+        "id": "b2b-saas",
+        "name": "B2B SaaS & Enterprise Software",
+        "typical_acv": "$12,000 - $60,000/yr"
+      },
+      "tech_stack": {
+        "id": "python-fastapi",
+        "name": "Python & FastAPI",
+        "category": "Backend & AI Runtimes"
+      },
+      "location": {
+        "id": "austin",
+        "name": "Austin, TX",
+        "city": "Austin",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Build headless content generation pipelines in Python FastAPI that output static JSON for instant frontend rendering and zero latency.",
+      "target_buyer_roles": [
+        "VP of Growth",
+        "Head of Marketing",
+        "Founder & CEO"
+      ]
+    },
+    {
+      "id": "PSEO-061",
+      "slug": "/services/programmatic-seo-engine-vc-pe-firms-san-francisco",
+      "primary_keyword": "vc portfolio programmatic directory agency sf",
+      "secondary_keywords": [
+        "venture capital programmatic website",
+        "portfolio directory seo san francisco",
+        "angel fund seo automation",
+        "syndicate deal showcase pages"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$36 - $78",
+      "priority": "P2",
+      "service": {
+        "id": "pseo-engine",
+        "name": "Programmatic SEO Engine & Automated Content Architecture",
+        "short_name": "Programmatic SEO Engine"
+      },
+      "niche": {
+        "id": "venture-capital-private-equity",
+        "name": "Venture Capital & Private Equity Firms",
+        "typical_acv": "$50M - $1B AUM"
+      },
+      "tech_stack": {
+        "id": "nextjs-typescript",
+        "name": "Next.js & TypeScript",
+        "category": "Frontend & Full-Stack"
+      },
+      "location": {
+        "id": "san-francisco",
+        "name": "San Francisco, CA",
+        "city": "San Francisco",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Transform fund portfolio investments into high-ranking programmatic profile pages that drive top-tier inbound founder applications.",
+      "target_buyer_roles": [
+        "VP of Growth",
+        "Head of Marketing",
+        "Founder & CEO"
+      ]
+    },
+    {
+      "id": "PSEO-062",
+      "slug": "/services/ai-agent-development-b2b-saas-london",
+      "primary_keyword": "saas customer onboarding ai agents london",
+      "secondary_keywords": [
+        "automated saas product activation agents",
+        "london b2b agentic onboarding",
+        "ai workflow orchestration uk",
+        "composio customer ops agents"
+      ],
+      "search_intent": "transactional",
+      "cpc_tier": "$38 - $82",
+      "priority": "P1",
+      "service": {
+        "id": "ai-agents",
+        "name": "Autonomous AI Agents & Agentic Workflow Engineering",
+        "short_name": "Autonomous AI Agents"
+      },
+      "niche": {
+        "id": "b2b-saas",
+        "name": "B2B SaaS & Enterprise Software",
+        "typical_acv": "$12,000 - $60,000/yr"
+      },
+      "tech_stack": {
+        "id": "composio-tools",
+        "name": "Self-Hosted Composio API",
+        "category": "Agent Tool Calling"
+      },
+      "location": {
+        "id": "london",
+        "name": "London, UK",
+        "city": "London",
+        "country": "United Kingdom"
+      },
+      "value_proposition_hook": "Reduce time-to-value for B2B SaaS users with autonomous onboarding agents that configure user settings, invite teammates, and verify integrations.",
+      "target_buyer_roles": [
+        "CTO",
+        "Head of AI / Automation",
+        "VP of Engineering"
+      ]
+    },
+    {
+      "id": "PSEO-063",
+      "slug": "/services/nextjs-web-development-agencies-new-york",
+      "primary_keyword": "nextjs web development agency new york",
+      "secondary_keywords": [
+        "custom web application developers nyc",
+        "nextjs app router experts new york",
+        "react digital agency nyc",
+        "high performance web agency"
+      ],
+      "search_intent": "transactional",
+      "cpc_tier": "$40 - $85",
+      "priority": "P1",
+      "service": {
+        "id": "web-app-engineering",
+        "name": "Full-Stack Next.js & React Web Application Engineering",
+        "short_name": "Next.js Web Engineering"
+      },
+      "niche": {
+        "id": "agency-consultancy",
+        "name": "Digital Agencies & High-Growth Consultancies",
+        "typical_acv": "$5,000 - $30,000/mo"
+      },
+      "tech_stack": {
+        "id": "nextjs-typescript",
+        "name": "Next.js & TypeScript",
+        "category": "Frontend & Full-Stack"
+      },
+      "location": {
+        "id": "new-york",
+        "name": "New York City, NY",
+        "city": "New York",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Partner with elite Next.js App Router engineers in New York to build bespoke, mission-critical web applications for high-growth enterprises.",
+      "target_buyer_roles": [
+        "VP of Product",
+        "Chief Technology Officer",
+        "Technical Founder"
+      ]
+    },
+    {
+      "id": "PSEO-064",
+      "slug": "/services/outbound-lead-engine-b2b-saas-austin",
+      "primary_keyword": "cold email infrastructure agency austin",
+      "secondary_keywords": [
+        "austin b2b outbound lead generation",
+        "private smtp and mailbox rotation",
+        "high volume b2b cold outreach",
+        "outbound pipeline agency austin"
+      ],
+      "search_intent": "transactional",
+      "cpc_tier": "$28 - $60",
+      "priority": "P1",
+      "service": {
+        "id": "outbound-infrastructure",
+        "name": "Automated Cold Outbound & Social Lead Generation Engine",
+        "short_name": "Cold Outbound & Lead Engine"
+      },
+      "niche": {
+        "id": "b2b-saas",
+        "name": "B2B SaaS & Enterprise Software",
+        "typical_acv": "$12,000 - $60,000/yr"
+      },
+      "tech_stack": {
+        "id": "docker-vps",
+        "name": "Docker Compose on Linux VPS",
+        "category": "Infrastructure & Hosting"
+      },
+      "location": {
+        "id": "austin",
+        "name": "Austin, TX",
+        "city": "Austin",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Build dedicated, secondary-domain email infrastructure that guarantees 99%+ primary inbox placement for high-growth Austin SaaS teams.",
+      "target_buyer_roles": [
+        "Chief Revenue Officer",
+        "Head of Business Development",
+        "Growth Marketing Director"
+      ]
+    },
+    {
+      "id": "PSEO-065",
+      "slug": "/services/whop-monetization-systems-agencies-london",
+      "primary_keyword": "agency client portal whop development london",
+      "secondary_keywords": [
+        "london agency retainer whop setup",
+        "whop billing integration agency uk",
+        "paid digital product studio london",
+        "whop developer agency uk"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$26 - $56",
+      "priority": "P2",
+      "service": {
+        "id": "whop-monetization",
+        "name": "Whop Store Membership, Gating & Digital Product Infrastructure",
+        "short_name": "Whop Monetization Systems"
+      },
+      "niche": {
+        "id": "agency-consultancy",
+        "name": "Digital Agencies & High-Growth Consultancies",
+        "typical_acv": "$5,000 - $30,000/mo"
+      },
+      "tech_stack": {
+        "id": "tailwind-shadcn",
+        "name": "Tailwind CSS & Shadcn UI",
+        "category": "UI Design Systems"
+      },
+      "location": {
+        "id": "london",
+        "name": "London, UK",
+        "city": "London",
+        "country": "United Kingdom"
+      },
+      "value_proposition_hook": "Deliver branded client onboarding portals with seamless Whop subscription billing, milestone unlocks, and automatic deliverables distribution.",
+      "target_buyer_roles": [
+        "Creator Economy Founder",
+        "Community Director",
+        "Digital Product Manager"
+      ]
+    },
+    {
+      "id": "PSEO-066",
+      "slug": "/services/cloudflare-vps-infrastructure-agencies-san-francisco",
+      "primary_keyword": "agency multi-tenant vps hosting san francisco",
+      "secondary_keywords": [
+        "docker compose agency devops sf",
+        "client hosting infrastructure hardening",
+        "bay area agency server management",
+        "caddy reverse proxy multi site"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$30 - $68",
+      "priority": "P2",
+      "service": {
+        "id": "cloud-vps-hardening",
+        "name": "Cloudflare Edge Architecture & Hardened Docker VPS Infrastructure",
+        "short_name": "Cloudflare & VPS Infrastructure"
+      },
+      "niche": {
+        "id": "agency-consultancy",
+        "name": "Digital Agencies & High-Growth Consultancies",
+        "typical_acv": "$5,000 - $30,000/mo"
+      },
+      "tech_stack": {
+        "id": "docker-vps",
+        "name": "Docker Compose on Linux VPS",
+        "category": "Infrastructure & Hosting"
+      },
+      "location": {
+        "id": "san-francisco",
+        "name": "San Francisco, CA",
+        "city": "San Francisco",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Host 50+ client web applications and backends on secure, containerized VPS clusters with automated SSL and 99.99% uptime.",
+      "target_buyer_roles": [
+        "Head of Infrastructure",
+        "DevOps Lead",
+        "Security Operations Manager"
+      ]
+    },
+    {
+      "id": "PSEO-067",
+      "slug": "/services/ai-agent-development-edtech-boston",
+      "primary_keyword": "ai tutor agent engineering boston",
+      "secondary_keywords": [
+        "autonomous educational agents boston",
+        "adaptive learning ai agents",
+        "crewai edtech development",
+        "personalized tutoring workflow"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$28 - $60",
+      "priority": "P2",
+      "service": {
+        "id": "ai-agents",
+        "name": "Autonomous AI Agents & Agentic Workflow Engineering",
+        "short_name": "Autonomous AI Agents"
+      },
+      "niche": {
+        "id": "edtech",
+        "name": "EdTech & Online Learning Platforms",
+        "typical_acv": "$10,000 - $50,000/yr"
+      },
+      "tech_stack": {
+        "id": "langchain-crewai",
+        "name": "LangChain & CrewAI",
+        "category": "Multi-Agent Frameworks"
+      },
+      "location": {
+        "id": "boston",
+        "name": "Boston, MA",
+        "city": "Boston",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Engineer autonomous AI tutoring squads that evaluate student code submissions, provide step-by-step Socratic hints, and adapt to individual pace.",
+      "target_buyer_roles": [
+        "CTO",
+        "Head of AI / Automation",
+        "VP of Engineering"
+      ]
+    },
+    {
+      "id": "PSEO-068",
+      "slug": "/services/programmatic-seo-engine-for-ecommerce-d2c",
+      "primary_keyword": "edge programmatic seo ecommerce",
+      "secondary_keywords": [
+        "cloudflare workers seo ecommerce",
+        "instant edge rendering pseo",
+        "headless catalog seo automation",
+        "edge cached product landing pages"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$24 - $52",
+      "priority": "P2",
+      "service": {
+        "id": "pseo-engine",
+        "name": "Programmatic SEO Engine & Automated Content Architecture",
+        "short_name": "Programmatic SEO Engine"
+      },
+      "niche": {
+        "id": "ecommerce-d2c",
+        "name": "High-Volume E-Commerce & D2C Brands",
+        "typical_acv": "$500,000 - $10M GMV"
+      },
+      "tech_stack": {
+        "id": "cloudflare-workers",
+        "name": "Cloudflare Workers & Edge WAF",
+        "category": "Edge & Security"
+      },
+      "location": {
+        "id": "global",
+        "name": "Global / Remote",
+        "city": "Worldwide",
+        "country": "Global"
+      },
+      "value_proposition_hook": "Serve hundreds of programmatic shopping category pages globally with sub-20ms edge response times via Cloudflare Workers.",
+      "target_buyer_roles": [
+        "VP of Growth",
+        "Head of Marketing",
+        "Founder & CEO"
+      ]
+    },
+    {
+      "id": "PSEO-069",
+      "slug": "/services/composio-api-integrations-healthtech-san-francisco",
+      "primary_keyword": "healthtech composio tool integration san francisco",
+      "secondary_keywords": [
+        "ehr api agent tool calling",
+        "hipaa compliant tool execution sf",
+        "san francisco clinical ai integrations",
+        "agentic electronic health records"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$42 - $90",
+      "priority": "P1",
+      "service": {
+        "id": "composio-integrations",
+        "name": "Self-Hosted Composio API Tool Calling & Agentic Integrations",
+        "short_name": "Composio Agent Integrations"
+      },
+      "niche": {
+        "id": "healthtech-biotech",
+        "name": "HealthTech & Digital Health Platforms",
+        "typical_acv": "$30,000 - $120,000/yr"
+      },
+      "tech_stack": {
+        "id": "composio-tools",
+        "name": "Self-Hosted Composio API",
+        "category": "Agent Tool Calling"
+      },
+      "location": {
+        "id": "san-francisco",
+        "name": "San Francisco, CA",
+        "city": "San Francisco",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Integrate EHR and telemedicine APIs into secure autonomous agent workflows with strict cryptographic token storage and zero PHI leakage.",
+      "target_buyer_roles": [
+        "Head of Automation",
+        "Enterprise Solutions Architect",
+        "Director of IT Operations"
+      ]
+    },
+    {
+      "id": "PSEO-070",
+      "slug": "/services/nextjs-web-development-b2b-saas-london",
+      "primary_keyword": "edge web application development london",
+      "secondary_keywords": [
+        "cloudflare pages nextjs developers london",
+        "serverless edge web engineering uk",
+        "london nextjs edge architects",
+        "high speed b2b web apps"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$34 - $75",
+      "priority": "P2",
+      "service": {
+        "id": "web-app-engineering",
+        "name": "Full-Stack Next.js & React Web Application Engineering",
+        "short_name": "Next.js Web Engineering"
+      },
+      "niche": {
+        "id": "b2b-saas",
+        "name": "B2B SaaS & Enterprise Software",
+        "typical_acv": "$12,000 - $60,000/yr"
+      },
+      "tech_stack": {
+        "id": "cloudflare-workers",
+        "name": "Cloudflare Workers & Edge WAF",
+        "category": "Edge & Security"
+      },
+      "location": {
+        "id": "london",
+        "name": "London, UK",
+        "city": "London",
+        "country": "United Kingdom"
+      },
+      "value_proposition_hook": "Architect globally distributed Next.js applications deployed to Cloudflare edge nodes with instant SSR and zero cold starts.",
+      "target_buyer_roles": [
+        "VP of Product",
+        "Chief Technology Officer",
+        "Technical Founder"
+      ]
+    },
+    {
+      "id": "PSEO-071",
+      "slug": "/services/outbound-lead-engine-legaltech-new-york",
+      "primary_keyword": "legal b2b business development automation new york",
+      "secondary_keywords": [
+        "law firm corporate outbound engine nyc",
+        "general counsel intent targeting",
+        "new york legaltech sales automation",
+        "corporate litigation lead engine"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$45 - $95",
+      "priority": "P1",
+      "service": {
+        "id": "outbound-infrastructure",
+        "name": "Automated Cold Outbound & Social Lead Generation Engine",
+        "short_name": "Cold Outbound & Lead Engine"
+      },
+      "niche": {
+        "id": "legaltech-professional",
+        "name": "LegalTech & High-Ticket Professional Services",
+        "typical_acv": "$20,000 - $100,000/yr"
+      },
+      "tech_stack": {
+        "id": "python-fastapi",
+        "name": "Python & FastAPI",
+        "category": "Backend & AI Runtimes"
+      },
+      "location": {
+        "id": "new-york",
+        "name": "New York City, NY",
+        "city": "New York",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Target General Counsels and compliance chiefs when federal court dockets or regulatory filings indicate active commercial litigation.",
+      "target_buyer_roles": [
+        "Chief Revenue Officer",
+        "Head of Business Development",
+        "Growth Marketing Director"
+      ]
+    },
+    {
+      "id": "PSEO-072",
+      "slug": "/services/whop-monetization-systems-proptech-austin",
+      "primary_keyword": "real estate syndication whop portal austin",
+      "secondary_keywords": [
+        "proptech membership gating whop",
+        "private real estate investor club austin",
+        "whop investor tier monetization",
+        "commercial property deal gating"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$26 - $55",
+      "priority": "P2",
+      "service": {
+        "id": "whop-monetization",
+        "name": "Whop Store Membership, Gating & Digital Product Infrastructure",
+        "short_name": "Whop Monetization Systems"
+      },
+      "niche": {
+        "id": "proptech-realestate",
+        "name": "PropTech & Commercial Real Estate Platforms",
+        "typical_acv": "$15,000 - $80,000/yr"
+      },
+      "tech_stack": {
+        "id": "supabase-postgresql",
+        "name": "Supabase & PostgreSQL",
+        "category": "Database & Auth"
+      },
+      "location": {
+        "id": "austin",
+        "name": "Austin, TX",
+        "city": "Austin",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Automate accreditation vetting and monthly membership subscription billing for commercial real estate syndicate networks.",
+      "target_buyer_roles": [
+        "Creator Economy Founder",
+        "Community Director",
+        "Digital Product Manager"
+      ]
+    },
+    {
+      "id": "PSEO-073",
+      "slug": "/services/ai-agent-development-proptech-austin",
+      "primary_keyword": "real estate ai agent development austin",
+      "secondary_keywords": [
+        "property lead qualification agents",
+        "austin proptech agentic automation",
+        "commercial real estate lease agents",
+        "autonomous tenant matching"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$25 - $54",
+      "priority": "P2",
+      "service": {
+        "id": "ai-agents",
+        "name": "Autonomous AI Agents & Agentic Workflow Engineering",
+        "short_name": "Autonomous AI Agents"
+      },
+      "niche": {
+        "id": "proptech-realestate",
+        "name": "PropTech & Commercial Real Estate Platforms",
+        "typical_acv": "$15,000 - $80,000/yr"
+      },
+      "tech_stack": {
+        "id": "docker-vps",
+        "name": "Docker Compose on Linux VPS",
+        "category": "Infrastructure & Hosting"
+      },
+      "location": {
+        "id": "austin",
+        "name": "Austin, TX",
+        "city": "Austin",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Deploy autonomous leasing agents that schedule in-person tours, check tenant credit thresholds, and draft initial lease agreements.",
+      "target_buyer_roles": [
+        "CTO",
+        "Head of AI / Automation",
+        "VP of Engineering"
+      ]
+    },
+    {
+      "id": "PSEO-074",
+      "slug": "/services/cloudflare-vps-infrastructure-edtech-berlin",
+      "primary_keyword": "edtech vps infrastructure deployment berlin",
+      "secondary_keywords": [
+        "european edtech server hardening",
+        "moodle canvas docker vps germany",
+        "gdpr edtech cloud architecture",
+        "berlin lms devops"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$22 - $46",
+      "priority": "P2",
+      "service": {
+        "id": "cloud-vps-hardening",
+        "name": "Cloudflare Edge Architecture & Hardened Docker VPS Infrastructure",
+        "short_name": "Cloudflare & VPS Infrastructure"
+      },
+      "niche": {
+        "id": "edtech",
+        "name": "EdTech & Online Learning Platforms",
+        "typical_acv": "$10,000 - $50,000/yr"
+      },
+      "tech_stack": {
+        "id": "docker-vps",
+        "name": "Docker Compose on Linux VPS",
+        "category": "Infrastructure & Hosting"
+      },
+      "location": {
+        "id": "berlin",
+        "name": "Berlin, Germany",
+        "city": "Berlin",
+        "country": "Germany"
+      },
+      "value_proposition_hook": "Deploy scalable, GDPR-compliant learning management backends on dedicated Linux VPS nodes in Frankfurt and Berlin.",
+      "target_buyer_roles": [
+        "Head of Infrastructure",
+        "DevOps Lead",
+        "Security Operations Manager"
+      ]
+    },
+    {
+      "id": "PSEO-075",
+      "slug": "/services/programmatic-seo-engine-fintech-singapore",
+      "primary_keyword": "fintech programmatic seo agency singapore",
+      "secondary_keywords": [
+        "apac fintech organic acquisition",
+        "singapore banking programmatic landing pages",
+        "wealth management seo engine",
+        "singapore programmatic content"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$35 - $75",
+      "priority": "P1",
+      "service": {
+        "id": "pseo-engine",
+        "name": "Programmatic SEO Engine & Automated Content Architecture",
+        "short_name": "Programmatic SEO Engine"
+      },
+      "niche": {
+        "id": "fintech",
+        "name": "FinTech & Digital Financial Services",
+        "typical_acv": "$25,000 - $150,000/yr"
+      },
+      "tech_stack": {
+        "id": "cloudflare-workers",
+        "name": "Cloudflare Workers & Edge WAF",
+        "category": "Edge & Security"
+      },
+      "location": {
+        "id": "singapore",
+        "name": "Singapore",
+        "city": "Singapore",
+        "country": "Singapore"
+      },
+      "value_proposition_hook": "Scale organic inbound leads across Southeast Asia and global wealth hubs with ultra-low-latency edge-rendered landing pages.",
+      "target_buyer_roles": [
+        "VP of Growth",
+        "Head of Marketing",
+        "Founder & CEO"
+      ]
+    },
+    {
+      "id": "PSEO-076",
+      "slug": "/services/nextjs-web-development-proptech-new-york",
+      "primary_keyword": "luxury real estate web development new york",
+      "secondary_keywords": [
+        "manhattan real estate portal agency",
+        "proptech web engineering nyc",
+        "high end listing website developers",
+        "luxury architectural web apps"
+      ],
+      "search_intent": "transactional",
+      "cpc_tier": "$38 - $85",
+      "priority": "P1",
+      "service": {
+        "id": "web-app-engineering",
+        "name": "Full-Stack Next.js & React Web Application Engineering",
+        "short_name": "Next.js Web Engineering"
+      },
+      "niche": {
+        "id": "proptech-realestate",
+        "name": "PropTech & Commercial Real Estate Platforms",
+        "typical_acv": "$15,000 - $80,000/yr"
+      },
+      "tech_stack": {
+        "id": "tailwind-shadcn",
+        "name": "Tailwind CSS & Shadcn UI",
+        "category": "UI Design Systems"
+      },
+      "location": {
+        "id": "new-york",
+        "name": "New York City, NY",
+        "city": "New York",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Design and build ultra-luxury property showcase platforms in New York featuring interactive 3D floorplans and instant virtual walkthroughs.",
+      "target_buyer_roles": [
+        "VP of Product",
+        "Chief Technology Officer",
+        "Technical Founder"
+      ]
+    },
+    {
+      "id": "PSEO-077",
+      "slug": "/services/ai-agent-development-cybersecurity-boston",
+      "primary_keyword": "automated threat analysis ai agents boston",
+      "secondary_keywords": [
+        "boston cybersecurity ai agency",
+        "autonomous vulnerability triage",
+        "incident response agent workflows",
+        "infosec llm agent development"
+      ],
+      "search_intent": "commercial_investigation",
+      "cpc_tier": "$38 - $85",
+      "priority": "P1",
+      "service": {
+        "id": "ai-agents",
+        "name": "Autonomous AI Agents & Agentic Workflow Engineering",
+        "short_name": "Autonomous AI Agents"
+      },
+      "niche": {
+        "id": "cybersecurity",
+        "name": "Enterprise Cybersecurity & DevSecOps",
+        "typical_acv": "$40,000 - $200,000/yr"
+      },
+      "tech_stack": {
+        "id": "python-fastapi",
+        "name": "Python & FastAPI",
+        "category": "Backend & AI Runtimes"
+      },
+      "location": {
+        "id": "boston",
+        "name": "Boston, MA",
+        "city": "Boston",
+        "country": "United States"
+      },
+      "value_proposition_hook": "Accelerate incident response times from hours to seconds with autonomous agents that parse incoming CVEs and map against your live infrastructure.",
+      "target_buyer_roles": [
+        "CTO",
+        "Head of AI / Automation",
+        "VP of Engineering"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-09-11T11:45:34.742Z",
+  "sitemap_url": "https://adorisedigital.com/sitemap.xml",
+  "pings": [
+    {
+      "engine": "Google Search Console",
+      "url": "https://www.google.com/ping?sitemap=https%3A%2F%2Fadorisedigital.com%2Fsitemap.xml",
+      "statusCode": 404,
+      "success": false,
+      "responseSnippet": "<HTML>\n<HEAD>\n<TITLE>Sitemaps ping is deprecated. See https://developers.google.com/search/blog/2023/06/sitemaps-lastmod"
+    },
+    {
+      "engine": "Bing",
+      "url": "https://www.bing.com/ping?sitemap=https%3A%2F%2Fadorisedigital.com%2Fsitemap.xml",
+      "statusCode": 410,
+      "success": false,
+      "responseSnippet": ""
+    },
+    {
+      "engine": "IndexNow",
+      "endpoint": "https://api.indexnow.org/indexnow",
+      "statusCode": 202,
+      "success": true,
+      "response": "",
+      "submitted_urls": 12
+    }
+  ]
+}

@@ -1,0 +1,529 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://adorise.digital/schemas/pseo/page-data-schema.v1.json",
+  "title": "AdoriseDigitalPseoPageDataSchema",
+  "description": "Comprehensive specification for programmatic SEO page generation across Adorise Digital services, customer verticals, technology stacks, and regional markets.",
+  "type": "object",
+  "required": [
+    "page_metadata",
+    "taxonomy_context",
+    "hero_section",
+    "problem_section",
+    "solution_section",
+    "faq_section",
+    "cta_section",
+    "structured_data",
+    "fallback_rules"
+  ],
+  "properties": {
+    "page_metadata": {
+      "type": "object",
+      "description": "Core HTML head and crawler indexing metadata.",
+      "required": ["slug", "canonical_url", "meta_title", "meta_description", "robots", "open_graph", "twitter_card"],
+      "properties": {
+        "slug": {
+          "type": "string",
+          "pattern": "^/services/[a-z0-9-]+$",
+          "description": "Clean URL slug prefixed with /services/."
+        },
+        "canonical_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Absolute canonical URL pointing to this specific programmatic page."
+        },
+        "meta_title": {
+          "type": "string",
+          "minLength": 30,
+          "maxLength": 65,
+          "description": "SEO title tag optimized for 50-60 characters to avoid SERP truncation."
+        },
+        "meta_description": {
+          "type": "string",
+          "minLength": 120,
+          "maxLength": 165,
+          "description": "High-CTR meta description containing primary keyword and explicit value hook (145-160 chars)."
+        },
+        "robots": {
+          "type": "string",
+          "enum": ["index, follow", "noindex, follow", "noindex, nofollow"],
+          "default": "index, follow"
+        },
+        "open_graph": {
+          "type": "object",
+          "required": ["title", "description", "url", "type", "site_name", "image_url"],
+          "properties": {
+            "title": { "type": "string" },
+            "description": { "type": "string" },
+            "url": { "type": "string", "format": "uri" },
+            "type": { "type": "string", "default": "website" },
+            "site_name": { "type": "string", "default": "Adorise Digital" },
+            "image_url": { "type": "string", "format": "uri" }
+          }
+        },
+        "twitter_card": {
+          "type": "object",
+          "required": ["card", "title", "description", "image_url"],
+          "properties": {
+            "card": { "type": "string", "default": "summary_large_image" },
+            "title": { "type": "string" },
+            "description": { "type": "string" },
+            "image_url": { "type": "string", "format": "uri" }
+          }
+        }
+      }
+    },
+    "taxonomy_context": {
+      "type": "object",
+      "description": "Dynamic variable bindings establishing programmatic context.",
+      "required": ["service", "niche", "tech_stack", "location", "commercial_intent"],
+      "properties": {
+        "service": {
+          "type": "object",
+          "required": ["id", "name", "short_name"],
+          "properties": {
+            "id": { "type": "string" },
+            "name": { "type": "string" },
+            "short_name": { "type": "string" }
+          }
+        },
+        "niche": {
+          "type": "object",
+          "required": ["id", "name"],
+          "properties": {
+            "id": { "type": "string" },
+            "name": { "type": "string" },
+            "typical_acv": { "type": "string" }
+          }
+        },
+        "tech_stack": {
+          "type": "object",
+          "required": ["id", "name"],
+          "properties": {
+            "id": { "type": "string" },
+            "name": { "type": "string" },
+            "category": { "type": "string" }
+          }
+        },
+        "location": {
+          "type": "object",
+          "required": ["id", "name", "is_global"],
+          "properties": {
+            "id": { "type": "string" },
+            "name": { "type": "string" },
+            "city": { "type": "string" },
+            "state": { "type": "string" },
+            "country": { "type": "string" },
+            "is_global": { "type": "boolean" }
+          }
+        },
+        "commercial_intent": {
+          "type": "object",
+          "required": ["primary_keyword", "secondary_keywords", "intent_type", "cpc_tier", "priority"],
+          "properties": {
+            "primary_keyword": { "type": "string" },
+            "secondary_keywords": {
+              "type": "array",
+              "items": { "type": "string" },
+              "minItems": 2
+            },
+            "intent_type": {
+              "type": "string",
+              "enum": ["commercial_investigation", "transactional"]
+            },
+            "cpc_tier": { "type": "string" },
+            "priority": { "type": "string", "enum": ["P1", "P2"] }
+          }
+        }
+      }
+    },
+    "hero_section": {
+      "type": "object",
+      "description": "Above-the-fold value proposition and primary conversion hook.",
+      "required": ["badge", "h1_heading", "subheadline", "primary_cta", "secondary_cta", "trust_metrics"],
+      "properties": {
+        "badge": {
+          "type": "string",
+          "description": "Pill badge highlighting service capability or location."
+        },
+        "h1_heading": {
+          "type": "string",
+          "description": "H1 heading strictly incorporating primary keyword and value hook."
+        },
+        "subheadline": {
+          "type": "string",
+          "description": "Concise 2-3 sentence technical description of the deliverable and business outcome."
+        },
+        "primary_cta": {
+          "type": "object",
+          "required": ["label", "href", "tracking_id"],
+          "properties": {
+            "label": { "type": "string" },
+            "href": { "type": "string" },
+            "tracking_id": { "type": "string" }
+          }
+        },
+        "secondary_cta": {
+          "type": "object",
+          "required": ["label", "href", "tracking_id"],
+          "properties": {
+            "label": { "type": "string" },
+            "href": { "type": "string" },
+            "tracking_id": { "type": "string" }
+          }
+        },
+        "trust_metrics": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "required": ["value", "label", "subtext"],
+            "properties": {
+              "value": { "type": "string" },
+              "label": { "type": "string" },
+              "subtext": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "problem_section": {
+      "type": "object",
+      "description": "Domain-specific pain points, technical friction, and economic cost of inaction.",
+      "required": ["eyebrow", "heading", "context_prose", "pain_points"],
+      "properties": {
+        "eyebrow": { "type": "string" },
+        "heading": { "type": "string" },
+        "context_prose": { "type": "string" },
+        "pain_points": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "required": ["title", "description", "business_impact"],
+            "properties": {
+              "title": { "type": "string" },
+              "description": { "type": "string" },
+              "business_impact": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "solution_section": {
+      "type": "object",
+      "description": "Technical system architecture, deliverables, and engineering workflow.",
+      "required": ["eyebrow", "heading", "architecture_prose", "core_capabilities", "workflow_phases"],
+      "properties": {
+        "eyebrow": { "type": "string" },
+        "heading": { "type": "string" },
+        "architecture_prose": { "type": "string" },
+        "core_capabilities": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "required": ["title", "specification", "deliverable_output"],
+            "properties": {
+              "title": { "type": "string" },
+              "specification": { "type": "string" },
+              "deliverable_output": { "type": "string" }
+            }
+          }
+        },
+        "workflow_phases": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "required": ["phase_number", "title", "description", "timeframe"],
+            "properties": {
+              "phase_number": { "type": "integer" },
+              "title": { "type": "string" },
+              "description": { "type": "string" },
+              "timeframe": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "faq_section": {
+      "type": "object",
+      "description": "Structured Q&A addressing commercial evaluation, pricing, timeline, and IP ownership.",
+      "required": ["heading", "questions"],
+      "properties": {
+        "heading": { "type": "string", "default": "Frequently Asked Questions" },
+        "questions": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "type": "object",
+            "required": ["question", "answer", "category"],
+            "properties": {
+              "question": { "type": "string" },
+              "answer": { "type": "string" },
+              "category": { "type": "string", "enum": ["technical", "commercial", "timeline", "operations"] }
+            }
+          }
+        }
+      }
+    },
+    "cta_section": {
+      "type": "object",
+      "description": "Final high-conversion booking and audit engagement section.",
+      "required": ["eyebrow", "heading", "subtext", "primary_action_label", "primary_action_href", "trust_note"],
+      "properties": {
+        "eyebrow": { "type": "string" },
+        "heading": { "type": "string" },
+        "subtext": { "type": "string" },
+        "primary_action_label": { "type": "string" },
+        "primary_action_href": { "type": "string" },
+        "trust_note": { "type": "string" }
+      }
+    },
+    "structured_data": {
+      "type": "object",
+      "description": "Validated schema.org JSON-LD compliant data structures.",
+      "required": ["professional_service", "web_page", "breadcrumb_list", "faq_page"],
+      "properties": {
+        "professional_service": {
+          "type": "object",
+          "required": ["@context", "@type", "name", "description", "url", "parentOrganization", "areaServed", "priceRange"],
+          "properties": {
+            "@context": { "type": "string", "const": "https://schema.org" },
+            "@type": { "type": "string", "enum": ["ProfessionalService", "LocalBusiness"] },
+            "name": { "type": "string" },
+            "description": { "type": "string" },
+            "url": { "type": "string", "format": "uri" },
+            "parentOrganization": {
+              "type": "object",
+              "required": ["@type", "name", "url"],
+              "properties": {
+                "@type": { "type": "string", "const": "Organization" },
+                "name": { "type": "string", "default": "Adorise Digital" },
+                "url": { "type": "string", "format": "uri" }
+              }
+            },
+            "areaServed": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "required": ["@type", "name"],
+                  "properties": {
+                    "@type": { "type": "string", "enum": ["City", "Country", "AdministrativeArea"] },
+                    "name": { "type": "string" }
+                  }
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "address": {
+              "type": "object",
+              "properties": {
+                "@type": { "type": "string", "const": "PostalAddress" },
+                "addressLocality": { "type": "string" },
+                "addressRegion": { "type": "string" },
+                "addressCountry": { "type": "string" }
+              }
+            },
+            "priceRange": { "type": "string" },
+            "hasOfferCatalog": {
+              "type": "object",
+              "required": ["@type", "name", "itemListElement"],
+              "properties": {
+                "@type": { "type": "string", "const": "OfferCatalog" },
+                "name": { "type": "string" },
+                "itemListElement": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": ["@type", "name", "description"],
+                    "properties": {
+                      "@type": { "type": "string", "const": "Offer" },
+                      "name": { "type": "string" },
+                      "description": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "web_page": {
+          "type": "object",
+          "required": ["@context", "@type", "name", "description", "url", "isPartOf"],
+          "properties": {
+            "@context": { "type": "string", "const": "https://schema.org" },
+            "@type": { "type": "string", "const": "WebPage" },
+            "name": { "type": "string" },
+            "description": { "type": "string" },
+            "url": { "type": "string", "format": "uri" },
+            "isPartOf": {
+              "type": "object",
+              "required": ["@type", "name", "url"],
+              "properties": {
+                "@type": { "type": "string", "const": "WebSite" },
+                "name": { "type": "string", "default": "Adorise Digital" },
+                "url": { "type": "string", "format": "uri" }
+              }
+            },
+            "datePublished": { "type": "string" },
+            "dateModified": { "type": "string" }
+          }
+        },
+        "breadcrumb_list": {
+          "type": "object",
+          "required": ["@context", "@type", "itemListElement"],
+          "properties": {
+            "@context": { "type": "string", "const": "https://schema.org" },
+            "@type": { "type": "string", "const": "BreadcrumbList" },
+            "itemListElement": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["@type", "position", "name", "item"],
+                "properties": {
+                  "@type": { "type": "string", "const": "ListItem" },
+                  "position": { "type": "integer" },
+                  "name": { "type": "string" },
+                  "item": { "type": "string", "format": "uri" }
+                }
+              }
+            }
+          }
+        },
+        "faq_page": {
+          "type": "object",
+          "required": ["@context", "@type", "mainEntity"],
+          "properties": {
+            "@context": { "type": "string", "const": "https://schema.org" },
+            "@type": { "type": "string", "const": "FAQPage" },
+            "mainEntity": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["@type", "name", "acceptedAnswer"],
+                "properties": {
+                  "@type": { "type": "string", "const": "Question" },
+                  "name": { "type": "string" },
+                  "acceptedAnswer": {
+                    "type": "object",
+                    "required": ["@type", "text"],
+                    "properties": {
+                      "@type": { "type": "string", "const": "Answer" },
+                      "text": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "fallback_rules": {
+      "type": "object",
+      "description": "Deterministic fallback specifications for missing, empty, or undefined dynamic variables.",
+      "required": ["variable_fallbacks", "grammatical_joiner_rules", "template_interpolation_safety"],
+      "properties": {
+        "variable_fallbacks": {
+          "type": "object",
+          "description": "Hierarchical fallbacks for each dynamic variable.",
+          "required": ["location", "tech_stack", "niche", "cpc_tier", "metrics"],
+          "properties": {
+            "location": {
+              "type": "object",
+              "required": ["default_value", "fallback_strategy", "template_token"],
+              "properties": {
+                "default_value": { "type": "string", "default": "Global / Remote" },
+                "fallback_strategy": {
+                  "type": "string",
+                  "description": "When location is empty or undefined, drop geographical prepositions ('in San Francisco' -> 'for Global Teams') rather than leaving dangling grammar."
+                },
+                "template_token": { "type": "string", "default": "{{location.name | fallback: 'Worldwide'}}" }
+              }
+            },
+            "tech_stack": {
+              "type": "object",
+              "required": ["default_value", "fallback_strategy"],
+              "properties": {
+                "default_value": { "type": "string", "default": "Modern Edge & AI Architecture" },
+                "fallback_strategy": {
+                  "type": "string",
+                  "description": "Substitutes general cloud/AI engineering framework when specific tech stack is unspecified."
+                }
+              }
+            },
+            "niche": {
+              "type": "object",
+              "required": ["default_value", "fallback_strategy"],
+              "properties": {
+                "default_value": { "type": "string", "default": "High-Growth Companies & Modern Digital Enterprises" },
+                "fallback_strategy": {
+                  "type": "string",
+                  "description": "Broadens pain point context to general scaling, CAC reduction, and system automation."
+                }
+              }
+            },
+            "cpc_tier": {
+              "type": "object",
+              "required": ["default_value"],
+              "properties": {
+                "default_value": { "type": "string", "default": "$25 - $65" }
+              }
+            },
+            "metrics": {
+              "type": "object",
+              "required": ["default_trust_metrics"],
+              "properties": {
+                "default_trust_metrics": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "value": { "type": "string" },
+                      "label": { "type": "string" },
+                      "subtext": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "grammatical_joiner_rules": {
+          "type": "array",
+          "description": "Regex patterns and transformation rules applied to prevent broken syntax.",
+          "items": {
+            "type": "object",
+            "required": ["condition", "pattern", "replacement"],
+            "properties": {
+              "condition": { "type": "string" },
+              "pattern": { "type": "string" },
+              "replacement": { "type": "string" }
+            }
+          }
+        },
+        "template_interpolation_safety": {
+          "type": "object",
+          "required": ["unrendered_tag_action", "null_coalescing_operator", "max_recursion_depth"],
+          "properties": {
+            "unrendered_tag_action": {
+              "type": "string",
+              "enum": ["fail_build", "replace_with_fallback", "strip_tag"],
+              "default": "fail_build",
+              "description": "Never allow unrendered template tags (e.g. {{undefined}} or {location}) into production HTML."
+            },
+            "null_coalescing_operator": { "type": "string", "default": "??" },
+            "max_recursion_depth": { "type": "integer", "default": 3 }
+          }
+        }
+      }
+    }
+  }
+}
