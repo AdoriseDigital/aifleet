@@ -16,7 +16,7 @@ const path = require('path');
 const HOST = 'adorisedigital.com';
 const BASE_URL = `https://${HOST}`;
 const SITEMAP_URL = `${BASE_URL}/sitemap.xml`;
-const INDEXNOW_KEY = 'adorise-indexnow-key-2026';
+const INDEXNOW_KEY = 'c94a7e18b52f4c3da1608d27e9f3b145';
 const INDEXNOW_KEY_LOCATION = `${BASE_URL}/${INDEXNOW_KEY}.txt`;
 const SLA_DAILY_TARGET = 10;
 

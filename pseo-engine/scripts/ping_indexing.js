@@ -10,7 +10,7 @@ const path = require('path');
 
 const SITEMAP_URL = 'https://adorisedigital.com/sitemap.xml';
 const HOST = 'adorisedigital.com';
-const INDEXNOW_KEY = 'adorise-indexnow-key-2026';
+const INDEXNOW_KEY = 'c94a7e18b52f4c3da1608d27e9f3b145';
 
 function sendGetRequest(urlStr) {
   return new Promise((resolve) => {

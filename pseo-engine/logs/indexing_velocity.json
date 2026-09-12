@@ -1,17 +1,85 @@
 {
   "sla_target_daily_pages": 10,
-  "total_lifetime_submitted": 0,
+  "total_lifetime_submitted": 24,
   "daily_history": {
     "2026-09-12": {
       "date": "2026-09-12",
-      "pages_submitted": 0,
+      "pages_submitted": 24,
       "sla_target": 10,
-      "sla_met": false,
+      "sla_met": true,
       "error_count": 0,
       "status": "active"
     }
   },
   "recent_submissions": [
+    {
+      "timestamp": "2026-09-12T11:17:21.717Z",
+      "mode": "live_submission",
+      "batch_count": 12,
+      "slugs": [
+        "/solutions/b2b-saas/pseo-engine",
+        "/solutions/ecommerce-d2c/ai-agents",
+        "/solutions/fintech/outbound-infrastructure",
+        "/solutions/healthtech-biotech/ai-agents",
+        "/solutions/proptech-realestate/pseo-engine",
+        "/solutions/legaltech-professional/ai-agents",
+        "/solutions/venture-capital-private-equity/outbound-infrastructure",
+        "/solutions/edtech/pseo-engine",
+        "/solutions/cybersecurity/cloud-vps-hardening",
+        "/solutions/agency-consultancy/pseo-engine",
+        "/solutions/b2b-saas/outbound-infrastructure",
+        "/solutions/ecommerce-d2c/pseo-engine"
+      ],
+      "sla_met": true,
+      "index_now_summary": [
+        {
+          "endpoint": "IndexNow.org",
+          "statusCode": 200,
+          "success": true,
+          "response": ""
+        },
+        {
+          "endpoint": "Bing IndexNow",
+          "statusCode": 200,
+          "success": true,
+          "response": ""
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-09-12T11:16:06.676Z",
+      "mode": "live_submission",
+      "batch_count": 12,
+      "slugs": [
+        "/solutions/b2b-saas/pseo-engine",
+        "/solutions/ecommerce-d2c/ai-agents",
+        "/solutions/fintech/outbound-infrastructure",
+        "/solutions/healthtech-biotech/ai-agents",
+        "/solutions/proptech-realestate/pseo-engine",
+        "/solutions/legaltech-professional/ai-agents",
+        "/solutions/venture-capital-private-equity/outbound-infrastructure",
+        "/solutions/edtech/pseo-engine",
+        "/solutions/cybersecurity/cloud-vps-hardening",
+        "/solutions/agency-consultancy/pseo-engine",
+        "/solutions/b2b-saas/outbound-infrastructure",
+        "/solutions/ecommerce-d2c/pseo-engine"
+      ],
+      "sla_met": true,
+      "index_now_summary": [
+        {
+          "endpoint": "IndexNow.org",
+          "statusCode": 403,
+          "success": false,
+          "response": "{\"errorCode\":\"UserForbiddedToAccessSite\",\"message\":\"User is unauthorized to access the site. Please "
+        },
+        {
+          "endpoint": "Bing IndexNow",
+          "statusCode": 403,
+          "success": false,
+          "response": "{\"errorCode\":\"UserForbiddedToAccessSite\",\"message\":\"User is unauthorized to access the site. Please "
+        }
+      ]
+    },
     {
       "timestamp": "2026-09-12T11:04:24.905Z",
       "mode": "preflight_founder_gate",
