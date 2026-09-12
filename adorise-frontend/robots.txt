@@ -1,0 +1,59 @@
+# ==============================================================================
+# Adorise Digital — Search Engine Crawler Governance & Optimization
+# Enforces crawl-delay, route allowances, and dynamic XML sitemap discovery.
+# ==============================================================================
+
+# 1. Global Crawler Rules
+User-agent: *
+Allow: /
+Allow: /solutions/
+Allow: /solutions/*
+Allow: /services/
+Allow: /services/*
+Allow: /scout/
+Allow: /dearmee/
+Allow: /clipcalm/
+Allow: /inboxcalm/
+Allow: /books/
+Allow: /social/
+Disallow: /api/
+Disallow: /private/
+Disallow: /*?*
+
+# 2. Bingbot Optimization (IndexNow Partner Engine)
+User-agent: Bingbot
+Crawl-delay: 1
+Allow: /
+Allow: /solutions/
+Allow: /solutions/*
+
+# 3. YandexBot Optimization
+User-agent: YandexBot
+Crawl-delay: 2
+Allow: /
+Allow: /solutions/
+Allow: /solutions/*
+
+# 4. Googlebot & Inspection Tools
+User-agent: Googlebot
+User-agent: Googlebot-Image
+User-agent: Googlebot-Mobile
+User-agent: Google-InspectionTool
+Allow: /
+Allow: /solutions/
+Allow: /solutions/*
+Disallow: /api/
+Disallow: /*?*
+
+# 5. AI Search & Discovery Bots
+User-agent: GPTBot
+User-agent: PerplexityBot
+User-agent: ClaudeBot
+User-agent: Applebot
+User-agent: DuckDuckBot
+Allow: /
+Allow: /solutions/
+Allow: /solutions/*
+
+# 6. XML Sitemap Index Directive
+Sitemap: https://adorisedigital.com/sitemap.xml

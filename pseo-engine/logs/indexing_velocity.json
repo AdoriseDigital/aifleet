@@ -1,0 +1,63 @@
+{
+  "sla_target_daily_pages": 10,
+  "total_lifetime_submitted": 0,
+  "daily_history": {
+    "2026-09-12": {
+      "date": "2026-09-12",
+      "pages_submitted": 0,
+      "sla_target": 10,
+      "sla_met": false,
+      "error_count": 0,
+      "status": "active"
+    }
+  },
+  "recent_submissions": [
+    {
+      "timestamp": "2026-09-12T11:04:24.905Z",
+      "mode": "preflight_founder_gate",
+      "batch_count": 12,
+      "slugs": [
+        "/solutions/b2b-saas/pseo-engine",
+        "/solutions/ecommerce-d2c/ai-agents",
+        "/solutions/fintech/outbound-infrastructure",
+        "/solutions/healthtech-biotech/ai-agents",
+        "/solutions/proptech-realestate/pseo-engine",
+        "/solutions/legaltech-professional/ai-agents",
+        "/solutions/venture-capital-private-equity/outbound-infrastructure",
+        "/solutions/edtech/pseo-engine",
+        "/solutions/cybersecurity/cloud-vps-hardening",
+        "/solutions/agency-consultancy/pseo-engine",
+        "/solutions/b2b-saas/outbound-infrastructure",
+        "/solutions/ecommerce-d2c/pseo-engine"
+      ],
+      "sla_met": true,
+      "index_now_summary": {
+        "mode": "preflight_dry_run",
+        "target_endpoints": [
+          "https://api.indexnow.org/indexnow",
+          "https://www.bing.com/indexnow"
+        ],
+        "payload": {
+          "host": "adorisedigital.com",
+          "key": "adorise-indexnow-key-2026",
+          "keyLocation": "https://adorisedigital.com/adorise-indexnow-key-2026.txt",
+          "urlList": [
+            "https://adorisedigital.com/solutions/b2b-saas/pseo-engine",
+            "https://adorisedigital.com/solutions/ecommerce-d2c/ai-agents",
+            "https://adorisedigital.com/solutions/fintech/outbound-infrastructure",
+            "https://adorisedigital.com/solutions/healthtech-biotech/ai-agents",
+            "https://adorisedigital.com/solutions/proptech-realestate/pseo-engine",
+            "https://adorisedigital.com/solutions/legaltech-professional/ai-agents",
+            "https://adorisedigital.com/solutions/venture-capital-private-equity/outbound-infrastructure",
+            "https://adorisedigital.com/solutions/edtech/pseo-engine",
+            "https://adorisedigital.com/solutions/cybersecurity/cloud-vps-hardening",
+            "https://adorisedigital.com/solutions/agency-consultancy/pseo-engine",
+            "https://adorisedigital.com/solutions/b2b-saas/outbound-infrastructure",
+            "https://adorisedigital.com/solutions/ecommerce-d2c/pseo-engine"
+          ]
+        },
+        "validated": true
+      }
+    }
+  ]
+}

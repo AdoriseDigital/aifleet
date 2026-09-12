@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-09-12T11:04:08.741Z",
+  "sitemap_index_url": "https://adorisedigital.com/sitemap.xml",
+  "checks": [
+    "[PASS] Content-Type is valid: application/xml; charset=utf-8",
+    "[PASS] Well-formed <sitemapindex> root element identified"
+  ],
+  "errors": [],
+  "warnings": [],
+  "stats": {
+    "total_sitemaps": 1,
+    "total_urls": 20,
+    "successful_urls": 20,
+    "failed_urls": 0,
+    "json_ld_verified": 12
+  }
+}
