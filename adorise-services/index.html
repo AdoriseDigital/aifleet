@@ -299,10 +299,10 @@
                             </ul>
                         </div>
 
-                        <a href="https://whop.com/checkout/plan_21oe5wd3V02wL" target="_blank" rel="noopener noreferrer" class="w-full py-3 px-4 rounded-xl bg-slate-800 hover:bg-cyan-500 hover:text-slate-950 text-white font-bold text-center text-xs transition flex items-center justify-center gap-2">
+                        <button onclick="openWhopCheckout('plan_21oe5wd3V02wL', 'AI Customer Service ($147/mo)')" class="w-full py-3 px-4 rounded-xl bg-slate-800 hover:bg-cyan-500 hover:text-slate-950 text-white font-bold text-center text-xs transition flex items-center justify-center gap-2">
                             <span>Deploy Support Bot</span>
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                        </a>
+                        </button>
                     </div>
 
                     <!-- 2. AI Content Automation ($197/mo) -->
@@ -348,10 +348,10 @@
                             </ul>
                         </div>
 
-                        <a href="https://whop.com/checkout/plan_QBEtfMt7tZ437" target="_blank" rel="noopener noreferrer" class="w-full py-3 px-4 rounded-xl bg-slate-800 hover:bg-indigo-500 hover:text-white text-white font-bold text-center text-xs transition flex items-center justify-center gap-2">
+                        <button onclick="openWhopCheckout('plan_QBEtfMt7tZ437', 'AI Content Automation ($197/mo)')" class="w-full py-3 px-4 rounded-xl bg-slate-800 hover:bg-indigo-500 hover:text-white text-white font-bold text-center text-xs transition flex items-center justify-center gap-2">
                             <span>Launch Content Engine</span>
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                        </a>
+                        </button>
                     </div>
 
                     <!-- 3. AI Lead Generation ($297/mo) -->
@@ -397,10 +397,10 @@
                             </ul>
                         </div>
 
-                        <a href="https://whop.com/checkout/plan_198GzLV0lFVYz" target="_blank" rel="noopener noreferrer" class="w-full py-3 px-4 rounded-xl bg-slate-800 hover:bg-cyan-500 hover:text-slate-950 text-white font-bold text-center text-xs transition flex items-center justify-center gap-2">
+                        <button onclick="openWhopCheckout('plan_198GzLV0lFVYz', 'AI Lead Generation ($297/mo)')" class="w-full py-3 px-4 rounded-xl bg-slate-800 hover:bg-cyan-500 hover:text-slate-950 text-white font-bold text-center text-xs transition flex items-center justify-center gap-2">
                             <span>Deploy Lead Pipeline</span>
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                        </a>
+                        </button>
                     </div>
 
                     <!-- 4. AI Automation Suite ($497/mo or $1,247/qtr) - FLAGSHIP -->
@@ -455,10 +455,10 @@
                             </ul>
                         </div>
 
-                        <a href="https://whop.com/checkout/plan_oPrJAt6X9KDon" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-cyan-400 via-cyan-500 to-blue-600 hover:from-cyan-300 hover:to-blue-500 text-slate-950 font-extrabold text-center text-xs shadow-lg shadow-cyan-500/30 hover:scale-[1.02] transition flex items-center justify-center gap-2">
+                        <button onclick="openWhopCheckout('plan_oPrJAt6X9KDon', 'AI Automation Suite ($497/mo)')" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-cyan-400 via-cyan-500 to-blue-600 hover:from-cyan-300 hover:to-blue-500 text-slate-950 font-extrabold text-center text-xs shadow-lg shadow-cyan-500/30 hover:scale-[1.02] transition flex items-center justify-center gap-2">
                             <span>Deploy Full Automation Suite</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                        </a>
+                        </button>
                     </div>
 
                 </div>
@@ -1063,5 +1063,83 @@
         calculateROI();
     </script>
 <script src="/concierge.js"></script>
+
+    <!-- NATIVE ON-SITE WHOP CHECKOUT MODAL (ZERO BRAND CONFLICT) -->
+    <div id="checkout-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden items-center justify-center p-3 sm:p-4">
+        <div class="relative w-full max-w-2xl bg-slate-900 border border-slate-700/80 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between px-5 py-3.5 border-b border-slate-800 bg-slate-950/90">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center font-bold text-white text-sm">
+                        A
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-bold text-white font-display" id="modal-plan-name">Adorise Digital — Secure Checkout</h3>
+                        <p class="text-[11px] text-cyan-400 font-mono">100% Encrypted • 7-Day Onboarding Turnaround</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <span class="hidden sm:inline-block text-[11px] px-2.5 py-1 rounded bg-rose-500/10 border border-rose-500/30 text-rose-300 font-mono">
+                        Code: FOUNDERFREE ($0 Setup)
+                    </span>
+                    <button onclick="closeCheckoutModal()" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center text-sm transition font-bold">✕</button>
+                </div>
+            </div>
+
+            <!-- Iframe Container -->
+            <div class="relative flex-1 min-h-[500px] sm:min-h-[550px] bg-slate-950">
+                <iframe id="checkout-iframe" src="" class="w-full h-full min-h-[500px] sm:min-h-[550px] border-0" allow="payment"></iframe>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="px-5 py-3 border-t border-slate-800 bg-slate-950/95 flex items-center justify-between text-xs text-slate-400">
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="text-[11px]">Sovereign VPS & n8n Orchestration Connected</span>
+                </div>
+                <a id="checkout-fallback-link" href="#" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline text-[11px]">
+                    Open in new tab ↗
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Native On-Site Whop Checkout Modal Logic
+        function openWhopCheckout(planId, planName) {
+            const modal = document.getElementById('checkout-modal');
+            const iframe = document.getElementById('checkout-iframe');
+            const planTitle = document.getElementById('modal-plan-name');
+            const fallbackLink = document.getElementById('checkout-fallback-link');
+
+            if (planTitle) planTitle.textContent = planName + ' — Secure Checkout';
+            const checkoutUrl = 'https://whop.com/checkout/' + planId + '?theme=dark';
+            
+            if (iframe) iframe.src = checkoutUrl;
+            if (fallbackLink) fallbackLink.href = checkoutUrl;
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCheckoutModal() {
+            const modal = document.getElementById('checkout-modal');
+            const iframe = document.getElementById('checkout-iframe');
+            if (iframe) iframe.src = '';
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close checkout modal on Escape key or outside click
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeCheckoutModal();
+        });
+        document.addEventListener('click', (e) => {
+            const modal = document.getElementById('checkout-modal');
+            if (modal && e.target === modal) closeCheckoutModal();
+        });
+</script>
 </body>
 </html>
