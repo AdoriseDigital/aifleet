@@ -46,10 +46,9 @@
     email: null,
     phone: null,
     requirement: null,
-    step: "greeting" // 'greeting', 'asked_contact', 'suggested', 'closing'
+    step: "greeting"
   };
 
-  // Helper to extract email and phone from input
   function extractContact(text) {
     const emailMatch = text.match(/([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/);
     const phoneMatch = text.match(/(\+?[0-9]{1,4}?[-.\s]?\(?[0-9]{2,4}?\)?[-.\s]?[0-9]{3,4}[-.\s]?[0-9]{3,4})/);
@@ -97,7 +96,7 @@
       if (conversationState.requirement) {
         return "Thank you! I've noted your email (**" + conversationState.email + "**) and reserved your **$49 setup fee waiver** (code: `FOUNDERFREE`).\n\n" +
                "Based on your requirements, here is your recommended package:\n\n" +
-               getRecommendationText(conversationState.requirement) +
+               buildRequirementDetails(conversationState.requirement) +
                "\n\nWould you like me to connect you with an engineer, or proceed directly to checkout?";
       } else {
         return "Thank you! I've noted your email (**" + conversationState.email + "**) and reserved your **$49 setup fee waiver** (code: `FOUNDERFREE`).\n\n" +
@@ -106,7 +105,7 @@
       }
     }
 
-    // 2. Check for explicit requirement selection
+    // 2. Check for requirement selection
     if (lower.includes("lead") || lower.includes("prospect") || lower.includes("outreach") || lower.includes("cold email") || lower.includes("client")) {
       conversationState.requirement = "leads";
       return buildRequirementResponse("leads");
@@ -120,7 +119,7 @@
       conversationState.requirement = "suite";
       return buildRequirementResponse("suite");
     } else if (lower.includes("burnout") || lower.includes("calm") || lower.includes("email stress") || lower.includes("dearmee")) {
-      return "For personal burnout and high-stress client emails, we recommend:\n\n" +
+      return "For personal burnout and stressful client emails, we recommend:\n\n" +
              "• **InboxCalm**: Automated firewall that de-escalates stressful emails in 3 minutes ([inboxcalm.adorisedigital.com](https://inboxcalm.adorisedigital.com/)).\n" +
              "• **DearMee**: Empathetic AI personal companion ([dearmee.adorisedigital.com](https://dearmee.adorisedigital.com/)).\n\n" +
              askEmailClosing();
@@ -130,16 +129,15 @@
              renderRequirementChips();
     } else if (lower.includes("pricing") || lower.includes("price") || lower.includes("cost")) {
       return "Here are our 4 fixed-price Done-For-You packages (all include 100% Free Setup with code `FOUNDERFREE`):\n\n" +
-             "1. **AI Content Automation**: $197/mo (30-60 posts/mo)\n" +
-             "2. **Cold Outreach Engine**: $497/mo (1,500 emails/mo)\n" +
+             "1. **AI Content Automation**: $197/mo (30-60 authority posts/mo)\n" +
+             "2. **Cold Outreach Engine**: $497/mo (1,500 targeted emails/mo)\n" +
              "3. **Autonomous Lead Hunter**: $797/mo (500 Scout leads + 3,000 touches)\n" +
-             "4. **Full Autonomous AI Suite**: $997/mo (End-to-end growth fleet)\n\n" +
-             "Which of these matches your current goal?\n\n" +
+             "4. **Full Autonomous AI Suite**: $997/mo (Complete end-to-end fleet)\n\n" +
+             "Which matches your current goal?\n\n" +
              renderRequirementChips();
     }
 
-    // Default fallback: concise consultation
-    return "Got it! To tailor the exact system for your business:\n\n" +
+    return "Got it! To match the exact solution for your business:\n\n" +
            "What is your #1 priority right now?\n\n" +
            renderRequirementChips() +
            "\n\n*(Feel free to drop your business email below to receive our full pricing & architecture deck)*";
@@ -154,44 +152,46 @@
            "</div>";
   }
 
-  function buildRequirementResponse(reqType) {
-    let rec = "";
+  function buildRequirementDetails(reqType) {
     if (reqType === "leads") {
-      rec = "For acquiring clients reliably, we suggest the **Cold Outreach Engine ($497/mo)** or **Autonomous Lead Hunter ($797/mo)**.\n\n" +
-            "• 500-1,500 verified B2B leads/mo with zero bounced emails.\n" +
-            "• High-deliverability multi-inbox rotation landing in primary inboxes.\n" +
-            "• Setup fee waived ($0 setup) with code `FOUNDERFREE`.\n\n" +
-            "👉 [View Outreach Packages](/services/#pricing)";
+      return "• **Cold Outreach Engine ($497/mo)** or **Autonomous Lead Hunter ($797/mo)**\n" +
+             "• 500-1,500 verified B2B leads/mo with zero bounced emails.\n" +
+             "• High-deliverability multi-inbox rotation landing in primary inboxes.\n" +
+             "• 100% Free Setup ($0 fee) with code `FOUNDERFREE`.\n\n" +
+             "👉 [View Outreach Packages](/services/#pricing)";
     } else if (reqType === "content") {
-      rec = "For building audience and daily brand authority, we recommend **AI Content Automation ($197/mo)**.\n\n" +
-            "• 30-60 high-impact posts/mo across LinkedIn, X & Instagram.\n" +
-            "• Multi-channel AI scheduling completely replacing expensive SaaS.\n" +
-            "• Setup fee waived ($0 setup) with code `FOUNDERFREE`.\n\n" +
-            "👉 [View Content Package](/services/#pricing)";
+      return "• **AI Content Automation ($197/mo)**\n" +
+             "• 30-60 high-impact posts/mo across LinkedIn, X & Instagram.\n" +
+             "• Multi-channel AI scheduling completely replacing expensive SaaS.\n" +
+             "• 100% Free Setup ($0 fee) with code `FOUNDERFREE`.\n\n" +
+             "👉 [View Content Package](/services/#pricing)";
     } else if (reqType === "support") {
-      rec = "For customer inquiries, we deploy our **Autonomous Customer Support Bot** (included in our $997/mo suite or custom setup).\n\n" +
-            "• 24/7 instant ticket resolution across web, email, and social.\n" +
-            "• Escalates complex inquiries to your team automatically.\n\n" +
-            "👉 [View Support Packages](/services/#pricing)";
+      return "• **Autonomous Customer Support Bot**\n" +
+             "• 24/7 instant ticket resolution across web, email, and social.\n" +
+             "• Escalates complex inquiries to your team automatically.\n\n" +
+             "👉 [View Support Packages](/services/#pricing)";
     } else {
-      rec = "For complete operational leverage, the **Full Autonomous AI Operations Suite ($997/mo)** is our flagship.\n\n" +
-            "• 1,000 verified leads + 5,000 outreach touches/mo.\n" +
-            "• 60 authority social posts + 24/7 AI Customer Support.\n" +
-            "• Dedicated account architect & priority execution.\n\n" +
-            "👉 [View Full Suite](/services/#pricing)";
+      return "• **Full Autonomous AI Operations Suite ($997/mo)**\n" +
+             "• 1,000 verified leads + 5,000 outreach touches/mo.\n" +
+             "• 60 authority social posts + 24/7 AI Customer Support.\n" +
+             "• Dedicated account architect & priority execution.\n\n" +
+             "👉 [View Full Suite](/services/#pricing)";
     }
+  }
 
+  function buildRequirementResponse(reqType) {
+    let rec = buildRequirementDetails(reqType);
     if (!conversationState.email) {
       rec += "\n\n" + askEmailClosing();
     } else {
-      rec += "\n\nReady to proceed? Use code **FOUNDERFREE** at checkout on our [Services Page](/services/#pricing), or message support at **support@adorisedigital.com**.";
+      rec += "\n\nReady to proceed? Use code **FOUNDERFREE** at checkout on our [Services Page](/services/#pricing), or message support at **[support@adorisedigital.com](mailto:support@adorisedigital.com)**.";
     }
     return rec;
   }
 
   function askEmailClosing() {
     return "💡 **Where should I send your proposal & lock in your $49 setup waiver?**\n\n" +
-           "Drop your **business email** below *(phone is optional)*, or reach us on Telegram at **[@AdoriseSupportBot](https://t.me/AdoriseSupportBot)**.";
+           "Drop your **business email** below *(phone is optional)*, or contact our team directly at **[support@adorisedigital.com](mailto:support@adorisedigital.com)**.";
   }
 
   function initWidget() {
@@ -225,9 +225,9 @@
         position: fixed;
         bottom: 90px;
         right: 24px;
-        width: 390px;
+        width: 395px;
         max-width: calc(100vw - 32px);
-        height: 570px;
+        height: 580px;
         max-height: calc(100vh - 120px);
         background: #090d16;
         border: 1px solid rgba(100, 116, 139, 0.3);
@@ -303,8 +303,8 @@
         background: rgba(255, 255, 255, 0.06);
         border: 1px solid rgba(255, 255, 255, 0.1);
         color: #cbd5e1;
-        width: 30px;
-        height: 30px;
+        width: 32px;
+        height: 32px;
         border-radius: 8px;
         cursor: pointer;
         display: flex;
@@ -387,6 +387,44 @@
         gap: 8px;
         align-items: center;
       }
+      /* Highly Visible Microphone / Talk Button */
+      .ac-mic-btn {
+        background: linear-gradient(135deg, rgba(6, 182, 212, 0.25), rgba(99, 102, 241, 0.25));
+        color: #22d3ee;
+        border: 1.5px solid rgba(6, 182, 212, 0.6);
+        height: 38px;
+        padding: 0 12px;
+        border-radius: 12px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        font-weight: 700;
+        font-family: inherit;
+        box-shadow: 0 0 12px rgba(6, 182, 212, 0.25);
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .ac-mic-btn:hover {
+        background: linear-gradient(135deg, rgba(6, 182, 212, 0.45), rgba(99, 102, 241, 0.45));
+        border-color: #38bdf8;
+        color: #ffffff;
+        box-shadow: 0 0 18px rgba(6, 182, 212, 0.5);
+        transform: translateY(-1px);
+      }
+      .ac-mic-btn.listening {
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+        color: #ffffff;
+        border-color: #fca5a5;
+        box-shadow: 0 0 20px rgba(239, 68, 68, 0.7);
+        animation: acPulse 1s infinite;
+      }
+      .ac-mic-svg {
+        display: inline-block;
+        vertical-align: middle;
+      }
       .ac-input {
         flex: 1;
         background: #111827;
@@ -417,28 +455,9 @@
       .ac-send-btn:hover {
         background: #22d3ee;
       }
-      .ac-mic-btn {
-        background: #1e293b;
-        color: #94a3b8;
-        border: 1px solid rgba(148, 163, 184, 0.2);
-        width: 36px;
-        height: 36px;
-        border-radius: 10px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 15px;
-        transition: all 0.2s;
-      }
-      .ac-mic-btn.listening {
-        background: #ef4444;
-        color: white;
-        animation: acPulse 1s infinite;
-      }
       @keyframes acPulse {
         0% { transform: scale(1); }
-        50% { transform: scale(1.08); }
+        50% { transform: scale(1.06); }
         100% { transform: scale(1); }
       }
     `;
@@ -469,7 +488,6 @@
         </div>
         <div class="ac-header-actions">
           <button class="ac-icon-btn" id="ac-voice-toggle" title="Toggle Voice (Text-to-Speech)">🔊</button>
-          <a href="https://t.me/AdoriseSupportBot" target="_blank" rel="noopener" class="ac-icon-btn" title="Open Telegram Support">✈️</a>
           <button class="ac-icon-btn" id="ac-close-btn" title="Close Chat">✕</button>
         </div>
       </div>
@@ -486,9 +504,17 @@
         </div>
       </div>
       <div class="ac-footer">
-        <button class="ac-mic-btn" id="ac-mic-btn" title="Click to speak">🎙️</button>
-        <input type="text" class="ac-input" id="ac-input" placeholder="State your goal or enter email...">
-        <button class="ac-send-btn" id="ac-send-btn">➤</button>
+        <button class="ac-mic-btn" id="ac-mic-btn" title="Click to speak with Adorise Mika">
+          <svg class="ac-mic-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+            <line x1="12" y1="19" x2="12" y2="23"></line>
+            <line x1="8" y1="23" x2="16" y2="23"></line>
+          </svg>
+          <span class="ac-mic-text">Talk</span>
+        </button>
+        <input type="text" class="ac-input" id="ac-input" placeholder="Type requirement or enter email...">
+        <button class="ac-send-btn" id="ac-send-btn" title="Send message">➤</button>
       </div>
     `;
     document.body.appendChild(modal);
@@ -497,6 +523,7 @@
     const inputEl = document.getElementById('ac-input');
     const sendBtn = document.getElementById('ac-send-btn');
     const micBtn = document.getElementById('ac-mic-btn');
+    const micText = micBtn.querySelector('.ac-mic-text');
     const voiceToggle = document.getElementById('ac-voice-toggle');
     const closeBtn = document.getElementById('ac-close-btn');
 
@@ -567,6 +594,7 @@
       recognition.onstart = () => {
         isListening = true;
         micBtn.classList.add('listening');
+        if (micText) micText.textContent = "Listening...";
       };
       recognition.onresult = (event) => {
         const transcript = event.results[0][0].transcript;
@@ -575,10 +603,12 @@
       recognition.onerror = () => {
         isListening = false;
         micBtn.classList.remove('listening');
+        if (micText) micText.textContent = "Talk";
       };
       recognition.onend = () => {
         isListening = false;
         micBtn.classList.remove('listening');
+        if (micText) micText.textContent = "Talk";
       };
 
       micBtn.addEventListener('click', () => {
