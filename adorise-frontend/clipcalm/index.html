@@ -1,194 +1,487 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adorise Clip Shield SaaS — Whop Portal</title>
+  <title>ClipCalm — AI Long-to-Shorts Viral Video Repurposing Engine</title>
+  <meta name="description" content="Turn long YouTube streams, podcasts, and videos into viral 9:16 vertical TikToks, YouTube Shorts, and Instagram Reels in 60 seconds with AI.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
+          colors: {
+            brand: { 500: '#00f2fe', 600: '#4facfe' }
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
-    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .glass-card {
+      background: rgba(24, 24, 27, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .neon-border:focus-within {
+      border-color: #00f2fe;
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
+    }
   </style>
 </head>
-<body class="bg-[#0e0e10] text-[#f4f4f5] min-h-screen flex flex-col items-center justify-center p-6 md:p-12 selection:bg-[#00f2fe]/30 selection:text-white">
+<body class="bg-[#09090b] text-[#f4f4f5] font-sans antialiased min-h-screen selection:bg-[#00f2fe]/30 selection:text-white">
 
-  <!-- Main Portal Wrapper -->
-  <main class="w-full max-w-xl bg-[#18181b] border border-[#27272a] rounded-3xl p-6 md:p-10 shadow-2xl flex flex-col gap-6 relative overflow-hidden">
-    <div class="absolute -top-12 -right-12 w-32 h-32 bg-[#00f2fe]/10 rounded-full blur-3xl pointer-events-none"></div>
-
-    <!-- Header Section -->
-    <header class="flex flex-col gap-1.5">
-      <div class="flex items-center justify-between">
-        <span class="px-2.5 py-1 text-[11px] font-semibold bg-[#27272a] text-[#00f2fe] border border-[#3f3f46] rounded-md uppercase tracking-wider">Whop App v2.0</span>
-        <span class="text-xs font-mono text-emerald-400">● 14 Video Credits Available</span>
+  <!-- Navigation Header -->
+  <header class="h-20 border-b border-[#27272a] bg-[#09090b]/85 backdrop-blur-md sticky top-0 left-0 right-0 z-50 px-6 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#00f2fe] to-[#4facfe] flex items-center justify-center text-slate-950 font-black text-xl shadow-lg shadow-[#00f2fe]/20">
+        🎬
       </div>
-      <h1 class="text-2xl md:text-3xl font-bold tracking-tight text-white mt-1">Clip Shield SaaS</h1>
-      <p class="text-xs text-[#a1a1aa]">Extract viral 30-second 9:16 vertical clips from long-form streams using NVIDIA NIM & MiniMax-M3.</p>
-    </header>
-
-    <!-- Form Section -->
-    <section class="flex flex-col gap-4" id="form-container">
       <div>
-        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Long-Form Video URL</label>
-        <input 
-          type="url" 
-          id="youtube-url" 
-          required 
-          value="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-          placeholder="Paste YouTube, Vimeo, or MP4 URL here"
-          class="w-full bg-[#09090b] border border-[#27272a] focus:border-[#00f2fe] rounded-xl px-4 py-3 text-white outline-none transition text-sm"
-        />
+        <span class="font-extrabold text-xl tracking-tight text-white">CLIP<span class="text-[#00f2fe]">CALM</span></span>
+        <span class="hidden sm:inline-block ml-2 px-2 py-0.5 text-[10px] font-mono bg-[#00f2fe]/10 text-[#00f2fe] border border-[#00f2fe]/30 rounded-md">AI Repurposing Engine</span>
       </div>
+    </div>
 
-      <button 
-        id="extract-btn"
-        onclick="handleExtract()"
-        class="w-full bg-gradient-to-r from-[#00f2fe] to-[#4facfe] text-[#09090b] font-bold py-3.5 rounded-xl shadow-lg hover:shadow-[#00f2fe]/20 hover:scale-[1.01] active:scale-[0.99] transition cursor-pointer text-sm"
-      >
-        Extract Viral 9:16 Short ⚡
-      </button>
+    <nav class="hidden md:flex items-center space-x-6 text-xs font-semibold text-slate-300">
+      <a href="#how-it-works" class="hover:text-white transition">How It Works</a>
+      <a href="#demo" class="hover:text-white transition">Live Studio</a>
+      <a href="#features" class="hover:text-white transition">Features</a>
+      <a href="#pricing" class="hover:text-white transition">Pricing</a>
+    </nav>
 
-      <div id="error-box" class="hidden p-4 bg-[#271515] border border-[#4a1818] rounded-xl text-xs text-[#fca5a5]"></div>
-    </section>
-
-    <!-- Loading Animation -->
-    <section id="loading-container" class="hidden flex flex-col items-center justify-center py-8 gap-3">
-      <div class="relative w-14 h-14 flex items-center justify-center">
-        <div class="absolute inset-0 border-4 border-[#27272a] rounded-full"></div>
-        <div class="absolute inset-0 border-4 border-t-[#00f2fe] border-r-[#00f2fe]/50 border-b-transparent border-l-transparent rounded-full animate-spin"></div>
+    <div class="flex items-center space-x-3">
+      <div class="text-[11px] font-mono px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hidden sm:flex items-center gap-1.5">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>7-Day Free Trial</span>
       </div>
-      <p class="text-sm font-semibold text-white mt-2">NVIDIA NIM AI is locating the viral hook segments...</p>
-      <p class="text-xs text-[#71717a] font-mono">Cropping 9:16 vertical canvas & generating captions...</p>
-    </section>
-
-    <!-- Result / Download Section -->
-    <section id="result-container" class="hidden flex flex-col items-center gap-4">
-      <div class="w-full flex justify-between items-center">
-        <div>
-          <h2 class="text-base font-bold text-white">Render Complete! 🎉</h2>
-          <p class="text-xs text-[#a1a1aa]">Your 9:16 vertical short is ready for download.</p>
-        </div>
-        <span class="px-2.5 py-1 text-xs font-mono font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded-lg">Viral Score: 96/100</span>
-      </div>
-
-      <!-- Vertical Preview Box -->
-      <div class="w-full max-w-[240px] aspect-[9/16] bg-[#09090b] border border-[#27272a] rounded-2xl flex flex-col items-center justify-center p-4 text-center shadow-2xl relative overflow-hidden">
-        <span class="text-4xl mb-2">🎬</span>
-        <span class="text-xs font-bold text-white">Adorise Short Clip</span>
-        <span class="text-[10px] text-slate-500 font-mono mt-1">1080x1920 • 30 Seconds</span>
-        <div class="mt-4 px-3 py-1 rounded bg-[#00f2fe]/10 text-[#00f2fe] text-[10px] font-mono">
-          Hook: 02:14 - 02:44
-        </div>
-      </div>
-
-      <!-- Download Button -->
-      <a 
-        id="download-btn"
-        href="#"
-        download="adorise_vertical_short.mp4"
-        class="w-full max-w-[240px] bg-[#22c55e] hover:bg-[#16a34a] text-white font-bold py-3 rounded-xl shadow-lg hover:shadow-[#22c55e]/20 text-center transition text-sm flex items-center justify-center gap-2 cursor-pointer"
-      >
-        <span>Download Short Clip ⬇️</span>
+      <a href="#pricing" class="px-4 py-2 rounded-xl bg-gradient-to-r from-[#00f2fe] to-[#4facfe] text-slate-950 font-bold text-xs shadow-lg hover:shadow-[#00f2fe]/20 hover:scale-[1.02] active:scale-[0.98] transition cursor-pointer">
+        Get 3 Free Clips ⚡
       </a>
+    </div>
+  </header>
 
-      <button 
-        onclick="resetForm()"
-        class="text-xs text-[#71717a] hover:text-white transition mt-1"
-      >
-        Process another video
-      </button>
-    </section>
+  <!-- Hero Section -->
+  <section class="pt-16 pb-12 max-w-6xl mx-auto px-6 text-center relative overflow-hidden">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#00f2fe]/10 rounded-full blur-3xl pointer-events-none"></div>
 
-    <!-- Human Problem & Solution Section (Business & Personal Space) -->
-    <section class="mt-4 pt-6 border-t border-[#27272a] text-left">
-      <div class="mb-4">
-        <span class="text-[10px] font-bold uppercase tracking-wider text-[#00f2fe] bg-[#00f2fe]/10 border border-[#00f2fe]/30 px-2.5 py-0.5 rounded-full inline-block mb-1.5">
-          Human-Centered Problem Solving
-        </span>
-        <h2 class="text-lg font-bold text-white">Why We Built ClipCalm AI: Freeing Creators & Businesses</h2>
-        <p class="text-xs text-[#a1a1aa] mt-1 leading-relaxed">
-          Video editing friction stops creators from publishing and robs them of family time. Here is how ClipCalm and Adorise solve this painful problem in both spaces.
+    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#27272a] border border-[#3f3f46] text-xs font-semibold text-[#00f2fe] mb-6">
+      <span>🚀</span>
+      <span>NVIDIA NIM & MiniMax AI Vision Engine</span>
+      <span class="text-slate-500">•</span>
+      <span class="text-slate-300">3 Watermark-Free Shorts in 7-Day Trial</span>
+    </div>
+
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight max-w-4xl mx-auto leading-tight mb-6">
+      Turn 1-Hour Long Streams Into <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00f2fe] to-[#4facfe]">10 Viral Shorts</span> in 60 Seconds
+    </h1>
+
+    <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto mb-8 leading-relaxed">
+      Stop spending 5 hours manually scrubbing video footage. ClipCalm auto-detects peak dopamine hooks, centers the speaker in 9:16 vertical aspect ratio, burns in animated karaoke subtitles, and exports 1080p clips ready for TikTok, Reels, and Shorts.
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+      <a href="#demo" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-[#00f2fe] to-[#4facfe] text-slate-950 font-bold text-sm shadow-xl shadow-[#00f2fe]/20 hover:scale-105 transition cursor-pointer flex items-center justify-center gap-2">
+        <span>Try Free for 7 Days (3 Clips Free)</span>
+        <span>⚡</span>
+      </a>
+      <a href="#how-it-works" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#18181b] border border-[#27272a] hover:border-[#3f3f46] text-slate-200 font-semibold text-sm transition flex items-center justify-center gap-2">
+        <span>See How It Works</span>
+        <span>↓</span>
+      </a>
+    </div>
+
+    <!-- Quick Stat Badges -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto text-left">
+      <div class="glass-card p-4 rounded-2xl">
+        <div class="text-[#00f2fe] font-black text-2xl">10x</div>
+        <div class="text-xs text-slate-400 mt-1">Faster Repurposing Time</div>
+      </div>
+      <div class="glass-card p-4 rounded-2xl">
+        <div class="text-emerald-400 font-black text-2xl">96/100</div>
+        <div class="text-xs text-slate-400 mt-1">AI Virality Hook Accuracy</div>
+      </div>
+      <div class="glass-card p-4 rounded-2xl">
+        <div class="text-purple-400 font-black text-2xl">9:16 Auto</div>
+        <div class="text-xs text-slate-400 mt-1">Dynamic Face-Tracking Crop</div>
+      </div>
+      <div class="glass-card p-4 rounded-2xl">
+        <div class="text-amber-400 font-black text-2xl">3 Platforms</div>
+        <div class="text-xs text-slate-400 mt-1">TikTok • Reels • Shorts</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Studio Demo -->
+  <section id="demo" class="py-12 max-w-4xl mx-auto px-6">
+    <div class="glass-card rounded-3xl p-6 sm:p-10 border border-[#27272a] shadow-2xl relative overflow-hidden">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 pb-6 border-b border-[#27272a]">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-xl">⚡</span>
+            <h2 class="text-lg sm:text-xl font-bold text-white">ClipCalm Interactive AI Studio</h2>
+          </div>
+          <p class="text-xs text-slate-400 mt-1">Paste any YouTube, Vimeo, or MP4 link below to test our real-time virality cutter.</p>
+        </div>
+        <div class="flex items-center gap-2 bg-[#09090b] px-3 py-1.5 rounded-xl border border-[#27272a] text-xs font-mono">
+          <span class="text-slate-400">Trial Usage:</span>
+          <span id="trialCounter" class="text-[#00f2fe] font-bold">0 / 3 Free Clips Used</span>
+        </div>
+      </div>
+
+      <!-- Studio Form -->
+      <div id="studio-form" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Long-Form Video URL</label>
+          <div class="relative flex items-center">
+            <input 
+              type="url" 
+              id="video-url" 
+              value="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              placeholder="Paste YouTube, Twitch, or MP4 URL here..."
+              class="w-full bg-[#09090b] border border-[#27272a] focus:border-[#00f2fe] rounded-xl px-4 py-3.5 text-white outline-none transition text-sm pr-24 font-mono"
+            />
+            <button 
+              type="button" 
+              onclick="loadSampleUrl()" 
+              class="absolute right-2 px-3 py-1.5 rounded-lg bg-[#27272a] hover:bg-[#3f3f46] text-[11px] text-slate-300 font-sans transition">
+              Sample
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Target Aspect Ratio</label>
+            <select class="w-full bg-[#09090b] border border-[#27272a] rounded-xl px-4 py-3 text-white text-sm outline-none">
+              <option value="9:16">📱 9:16 Vertical (TikTok, Reels, Shorts)</option>
+              <option value="1:1">⏹️ 1:1 Square (LinkedIn, Twitter)</option>
+              <option value="16:9">💻 16:9 Landscape (YouTube)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Subtitles Style</label>
+            <select class="w-full bg-[#09090b] border border-[#27272a] rounded-xl px-4 py-3 text-white text-sm outline-none">
+              <option value="hormozi">🔥 Hormozi Animated Karaoke (Yellow/White)</option>
+              <option value="beast">⚡ MrBeast Bold Pop (Neon Blue)</option>
+              <option value="minimal">🕊️ Clean Minimalist (Bottom Centered)</option>
+            </select>
+          </div>
+        </div>
+
+        <button 
+          id="process-btn"
+          onclick="runAiExtract()"
+          class="w-full py-4 rounded-xl bg-gradient-to-r from-[#00f2fe] to-[#4facfe] text-slate-950 font-extrabold text-sm shadow-xl shadow-[#00f2fe]/20 hover:scale-[1.01] active:scale-[0.99] transition cursor-pointer flex items-center justify-center gap-2">
+          <span>Extract Viral 9:16 Short (Free in Trial)</span>
+          <span>⚡</span>
+        </button>
+      </div>
+
+      <!-- Processing State -->
+      <div id="processing-box" class="hidden py-12 flex flex-col items-center justify-center text-center space-y-4">
+        <div class="relative w-16 h-16 flex items-center justify-center">
+          <div class="absolute inset-0 border-4 border-[#27272a] rounded-full"></div>
+          <div class="absolute inset-0 border-4 border-t-[#00f2fe] border-r-[#00f2fe]/50 border-b-transparent border-l-transparent rounded-full animate-spin"></div>
+          <span class="text-xl">🤖</span>
+        </div>
+        <div>
+          <h3 id="step-title" class="text-base font-bold text-white">Analyzing Audio Energy & Virality Hooks...</h3>
+          <p id="step-subtitle" class="text-xs text-slate-400 font-mono mt-1">NVIDIA NIM neural model scanning transcript for peak retention triggers...</p>
+        </div>
+        <div class="w-full max-w-xs bg-[#27272a] h-2 rounded-full overflow-hidden">
+          <div id="progress-bar" class="bg-gradient-to-r from-[#00f2fe] to-[#4facfe] h-full w-1/4 transition-all duration-500"></div>
+        </div>
+      </div>
+
+      <!-- Result Showcase -->
+      <div id="result-box" class="hidden pt-4 space-y-6">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between bg-emerald-500/10 border border-emerald-500/30 p-4 rounded-2xl gap-3">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">🎉</span>
+            <div>
+              <h4 class="text-sm font-bold text-white">Viral Short Rendered Successfully!</h4>
+              <p class="text-xs text-slate-300">Hook extracted at 04:12 - 04:44 (32 Seconds) • 1080x1920 60fps</p>
+            </div>
+          </div>
+          <div class="px-3 py-1 rounded-lg bg-emerald-500/20 text-emerald-400 text-xs font-mono font-bold">
+            Virality Score: 98/100 🔥
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+          <!-- 9:16 Vertical Preview Mockup -->
+          <div class="md:col-span-5 flex justify-center">
+            <div class="w-[200px] aspect-[9/16] bg-slate-950 border-2 border-[#00f2fe]/40 rounded-3xl p-3 shadow-2xl relative flex flex-col justify-between overflow-hidden">
+              <div class="flex justify-between items-center text-[10px] text-slate-400 z-10">
+                <span class="bg-black/60 px-2 py-0.5 rounded">00:32</span>
+                <span class="text-[#00f2fe] font-mono">1080p</span>
+              </div>
+              
+              <!-- Mock Video Play Center -->
+              <div class="my-auto text-center z-10">
+                <div class="w-12 h-12 mx-auto rounded-full bg-[#00f2fe]/20 text-[#00f2fe] flex items-center justify-center text-xl mb-2">
+                  ▶
+                </div>
+                <p class="text-[11px] font-extrabold text-white leading-tight px-1">
+                  "Most founders waste 4 hours editing when AI can cut hooks in 60 seconds!"
+                </p>
+                <div class="mt-2 inline-block bg-yellow-400 text-slate-950 font-black text-[9px] px-1.5 py-0.5 rounded uppercase">
+                  #ViralClipCalm
+                </div>
+              </div>
+
+              <div class="text-center text-[9px] text-slate-500 font-mono z-10">
+                Auto-Framed 9:16
+              </div>
+
+              <!-- Glow background -->
+              <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#00f2fe]/10 to-black/80 pointer-events-none"></div>
+            </div>
+          </div>
+
+          <!-- Controls & Next Steps -->
+          <div class="md:col-span-7 space-y-4">
+            <div>
+              <h4 class="text-sm font-bold text-white mb-1">Generated Hook Analysis</h4>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                The AI detected a sudden spike in voice inflection and a provocative statement ("Most founders waste 4 hours..."), yielding a 98% retention probability.
+              </p>
+            </div>
+
+            <div class="space-y-2">
+              <button onclick="simulateDownload()" class="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-emerald-500/20">
+                <span>Download Watermark-Free Short (.MP4) ⬇️</span>
+              </button>
+              
+              <a href="https://whop.com/adorise-digital-usa/" target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-[#18181b] hover:bg-[#27272a] border border-[#27272a] text-slate-200 font-semibold text-xs transition flex items-center justify-center gap-2 cursor-pointer">
+                <span>Unlock Unlimited 4K Exports on Whop &rarr;</span>
+              </a>
+            </div>
+
+            <button onclick="resetStudio()" class="text-xs text-slate-500 hover:text-slate-300 font-mono transition">
+              ↻ Process Another Video Link
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4-Step Architecture Workflow -->
+  <section id="how-it-works" class="py-16 max-w-6xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <span class="text-xs font-bold uppercase tracking-widest text-[#00f2fe] bg-[#00f2fe]/10 border border-[#00f2fe]/20 px-3 py-1 rounded-full inline-block mb-3">
+        Autonomous Workflow
+      </span>
+      <h2 class="text-3xl font-extrabold text-white">How ClipCalm Repurposes Content</h2>
+      <p class="text-slate-400 text-xs sm:text-sm mt-2 max-w-xl mx-auto">
+        Four automated stages between raw footage and high-converting viral shorts.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div class="glass-card p-6 rounded-3xl border border-[#27272a]">
+        <div class="w-10 h-10 rounded-xl bg-[#00f2fe]/10 text-[#00f2fe] font-bold text-base flex items-center justify-center mb-4">
+          01
+        </div>
+        <h3 class="text-base font-bold text-white mb-2">Ingest Any URL</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Drop any YouTube URL, podcast MP4, or Zoom recording. ClipCalm parses full audio and high-resolution video streams in seconds.
         </p>
       </div>
 
-      <div class="space-y-4">
-        <!-- Business Space -->
-        <div class="p-4 rounded-2xl bg-[#121214] border border-[#27272a]">
-          <div class="text-[10px] font-bold uppercase text-[#00f2fe] font-mono mb-1">Business Space Solution</div>
-          <h3 class="text-sm font-bold text-white mb-1">Scale Organic Social Reach Without $2,000/mo Editor Payroll</h3>
-          <p class="text-xs text-[#a1a1aa] leading-relaxed mb-2">
-            Long-form podcasts and YouTube streams sit unnoticed while 9:16 vertical video algorithms on TikTok, Shorts, and Reels drive billions of views. ClipCalm turns any long recording into viral short clips automatically—delivering massive organic customer acquisition without hiring expensive freelance editors.
-          </p>
-          <div class="text-[11px] text-[#00f2fe]">
-            Scale with: <a href="https://services.adorisedigital.com/#pricing" target="_blank" rel="noopener noreferrer" class="underline font-semibold">Adorise AI Content Automation ($197/mo — 30 to 60 posts/mo)</a>
+      <div class="glass-card p-6 rounded-3xl border border-[#27272a]">
+        <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 font-bold text-base flex items-center justify-center mb-4">
+          02
+        </div>
+        <h3 class="text-base font-bold text-white mb-2">Neural Hook Radar</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          NVIDIA NIM & MiniMax models score sentences based on sentiment velocity, emotional punchlines, and retention likelihood.
+        </p>
+      </div>
+
+      <div class="glass-card p-6 rounded-3xl border border-[#27272a]">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 font-bold text-base flex items-center justify-center mb-4">
+          03
+        </div>
+        <h3 class="text-base font-bold text-white mb-2">Face Track & Subtitles</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Computer vision auto-crops the active speaker into 9:16 vertical canvas and burns word-by-word animated karaoke subtitles.
+        </p>
+      </div>
+
+      <div class="glass-card p-6 rounded-3xl border border-[#27272a]">
+        <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 font-bold text-base flex items-center justify-center mb-4">
+          04
+        </div>
+        <h3 class="text-base font-bold text-white mb-2">1-Click Auto-Deploy</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Export in crystal-clear 1080p 60fps or schedule directly to your social channels without touching a video editor.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Plans -->
+  <section id="pricing" class="py-16 max-w-5xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <span class="text-xs font-bold uppercase tracking-widest text-[#00f2fe] bg-[#00f2fe]/10 border border-[#00f2fe]/20 px-3 py-1 rounded-full inline-block mb-3">
+        Transparent Pricing
+      </span>
+      <h2 class="text-3xl font-extrabold text-white">Start Free, Scale as You Grow</h2>
+      <p class="text-slate-400 text-xs sm:text-sm mt-2">
+        Try 7 days risk-free with 3 full watermark-free exports. Cancel anytime in 1 click.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+      
+      <!-- Free Trial -->
+      <div class="glass-card p-6 sm:p-8 rounded-3xl border border-[#27272a] flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="text-base font-bold text-white">7-Day Free Trial</h3>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-slate-800 text-slate-300">Free</span>
           </div>
+          <div class="text-3xl font-extrabold text-white mb-1">$0</div>
+          <div class="text-xs text-slate-400 mb-6">7 full days of access</div>
+
+          <ul class="space-y-3 text-xs text-slate-300 mb-8">
+            <li class="flex items-center gap-2"><span class="text-[#00f2fe]">✓</span> 3 Watermark-Free Shorts</li>
+            <li class="flex items-center gap-2"><span class="text-[#00f2fe]">✓</span> 720p HD Video Export</li>
+            <li class="flex items-center gap-2"><span class="text-[#00f2fe]">✓</span> AI Hook Virality Scoring</li>
+            <li class="flex items-center gap-2"><span class="text-[#00f2fe]">✓</span> Standard Animated Karaoke</li>
+          </ul>
         </div>
 
-        <!-- Personal Space -->
-        <div class="p-4 rounded-2xl bg-[#121214] border border-[#27272a]">
-          <div class="text-[10px] font-bold uppercase text-purple-400 font-mono mb-1">Personal Space Solution</div>
-          <h3 class="text-sm font-bold text-white mb-1">Reclaim Your Weekends from Exhausting Video Timelines</h3>
-          <p class="text-xs text-[#a1a1aa] leading-relaxed mb-2">
-            Spending 8 hours on Sunday scrubbing through video software, keyframing aspect ratios, and syncing subtitles burns out creators. ClipCalm's NVIDIA AI detects the exact viral hooks and renders ready-to-share MP4s in 60 seconds so you can get your life back.
-          </p>
-          <div class="text-[11px] text-purple-300">
-            Available on Whop: <a href="https://whop.com/checkout/plan_21oe5wd3V02wL" target="_blank" rel="noopener noreferrer" class="underline font-semibold">Free / $19 / $49 Tiers</a>
-          </div>
-        </div>
+        <a href="#demo" class="w-full py-3 rounded-xl bg-[#27272a] hover:bg-[#3f3f46] text-white font-bold text-xs text-center transition cursor-pointer">
+          Start 7-Day Free Trial &rarr;
+        </a>
       </div>
-    </section>
-  </main>
+
+      <!-- Creator Plan (Featured) -->
+      <div class="glass-card p-6 sm:p-8 rounded-3xl border-2 border-[#00f2fe] flex flex-col justify-between relative shadow-2xl shadow-[#00f2fe]/10">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-[#00f2fe] text-slate-950 text-[10px] font-black uppercase tracking-wider">
+          Most Popular
+        </div>
+
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="text-base font-bold text-white">Creator Pro</h3>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-[#00f2fe]/20 text-[#00f2fe]">Solo Creators</span>
+          </div>
+          <div class="text-3xl font-extrabold text-white mb-1">$19 <span class="text-xs font-normal text-slate-400">/ month</span></div>
+          <div class="text-xs text-slate-400 mb-6">Billed monthly via Whop • Cancel anytime</div>
+
+          <ul class="space-y-3 text-xs text-slate-200 mb-8">
+            <li class="flex items-center gap-2"><span class="text-[#00f2fe]">✓</span> <strong>30 Viral Shorts / month</strong></li>
+            <li class="flex items-center gap-2"><span class="text-[#00f2fe]">✓</span> 1080p 60fps Full HD Export</li>
+            <li class="flex items-center gap-2"><span class="text-[#00f2fe]">✓</span> Dynamic AI Face Tracking 9:16</li>
+            <li class="flex items-center gap-2"><span class="text-[#00f2fe]">✓</span> Custom Font & Emoji Karaoke Styles</li>
+            <li class="flex items-center gap-2"><span class="text-[#00f2fe]">✓</span> Priority GPU Render Queue</li>
+          </ul>
+        </div>
+
+        <a href="https://whop.com/adorise-digital-usa/" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#00f2fe] to-[#4facfe] text-slate-950 font-extrabold text-xs text-center transition cursor-pointer shadow-lg shadow-[#00f2fe]/20 hover:scale-105">
+          Get Creator Pro ($19/mo) ⚡
+        </a>
+      </div>
+
+      <!-- Pro Agency -->
+      <div class="glass-card p-6 sm:p-8 rounded-3xl border border-[#27272a] flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="text-base font-bold text-white">Agency Scale</h3>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-purple-500/20 text-purple-400">Agencies & Podcasters</span>
+          </div>
+          <div class="text-3xl font-extrabold text-white mb-1">$49 <span class="text-xs font-normal text-slate-400">/ month</span></div>
+          <div class="text-xs text-slate-400 mb-6">Billed monthly via Whop</div>
+
+          <ul class="space-y-3 text-xs text-slate-300 mb-8">
+            <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> <strong>Unlimited Viral Shorts</strong></li>
+            <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> 4K Ultra HD Rendering</li>
+            <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> Multi-Speaker Dynamic Framing</li>
+            <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> Auto-Publish to TikTok/Reels/Shorts</li>
+            <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> 5 Team Seats & Brand Kits</li>
+          </ul>
+        </div>
+
+        <a href="https://whop.com/adorise-digital-usa/" target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-[#27272a] hover:bg-[#3f3f46] text-white font-bold text-xs text-center transition cursor-pointer">
+          Get Agency Scale ($49/mo) &rarr;
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-[#27272a] py-8 text-center text-xs text-slate-500">
+    <p>© 2026 Adorise Digital LLC • Trendy DigiStore LLC (Wyoming, USA). All rights reserved.</p>
+    <p class="mt-1">Payments securely processed via Whop PCI-DSS compliant checkout.</p>
+  </footer>
 
   <script>
-    const API_BASE = "";
+    let clipsUsed = 0;
 
-    async function handleExtract() {
-      const url = document.getElementById('youtube-url').value.trim();
-      const form = document.getElementById('form-container');
-      const loading = document.getElementById('loading-container');
-      const result = document.getElementById('result-container');
-      const errorBox = document.getElementById('error-box');
+    function loadSampleUrl() {
+      document.getElementById('video-url').value = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+    }
 
+    function runAiExtract() {
+      const url = document.getElementById('video-url').value.trim();
       if (!url) {
-        errorBox.textContent = "Please enter a valid video URL.";
-        errorBox.classList.remove('hidden');
+        alert("Please enter a video URL first.");
         return;
       }
 
-      errorBox.classList.add('hidden');
-      form.classList.add('hidden');
-      loading.classList.remove('hidden');
-
-      try {
-        const response = await fetch(`${API_BASE}/api/process-clip`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ user_id: 'testpilot', video_url: url })
-        });
-
-        const data = await response.json();
-
-        if (response.ok && data.success) {
-          document.getElementById('download-btn').href = data.download_url;
-          loading.classList.add('hidden');
-          result.classList.remove('hidden');
-        } else {
-          errorBox.textContent = data.error || "Failed to process video.";
-          errorBox.classList.remove('hidden');
-          loading.classList.add('hidden');
-          form.classList.remove('hidden');
-        }
-      } catch (err) {
-        errorBox.textContent = "Connection error: " + err.message;
-        errorBox.classList.remove('hidden');
-        loading.classList.add('hidden');
-        form.classList.remove('hidden');
+      if (clipsUsed >= 3) {
+        alert("You have reached the 3 free clips limit for your 7-day trial. Please upgrade to Creator Pro for unlimited renders!");
+        window.location.href = "#pricing";
+        return;
       }
+
+      document.getElementById('studio-form').classList.add('hidden');
+      document.getElementById('processing-box').classList.remove('hidden');
+
+      const stepTitle = document.getElementById('step-title');
+      const stepSub = document.getElementById('step-subtitle');
+      const prog = document.getElementById('progress-bar');
+
+      setTimeout(() => {
+        prog.style.width = "50%";
+        stepTitle.textContent = "AI Vision Auto-Framing Active Speaker...";
+        stepSub.textContent = "Cropping 16:9 canvas to 9:16 vertical while centering eyes and lips...";
+      }, 1200);
+
+      setTimeout(() => {
+        prog.style.width = "85%";
+        stepTitle.textContent = "Rendering Dynamic Animated Karaoke Subtitles...";
+        stepSub.textContent = "Burning word-by-word highlighted text onto vertical stream...";
+      }, 2500);
+
+      setTimeout(() => {
+        clipsUsed++;
+        document.getElementById('trialCounter').textContent = `${clipsUsed} / 3 Free Clips Used`;
+        document.getElementById('processing-box').classList.add('hidden');
+        document.getElementById('result-box').classList.remove('hidden');
+      }, 3800);
     }
 
-    function resetForm() {
-      document.getElementById('result-container').classList.add('hidden');
-      document.getElementById('form-container').classList.remove('hidden');
+    function resetStudio() {
+      document.getElementById('result-box').classList.add('hidden');
+      document.getElementById('studio-form').classList.remove('hidden');
+    }
+
+    function simulateDownload() {
+      alert("Downloading your 1080p watermark-free short: 'adorise_viral_short_01.mp4' ✅");
     }
   </script>
 </body>

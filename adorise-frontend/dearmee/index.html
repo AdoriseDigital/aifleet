@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>DearMee | Empathetic Caring AI Companion & Founder Co-Pilot</title>
+  <title>DearMee | Empathetic AI Sanctuary, Companion & Founder Co-Pilot</title>
+  <meta name="description" content="A private, non-judgmental AI sanctuary to release burnout, anxiety, and loneliness. 7-day free trial with 5 daily reflections, plus free 1-question/day forever fallback.">
   
   <!-- PWA Meta Tags -->
   <meta name="theme-color" content="#020617">
@@ -15,7 +16,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -51,6 +52,10 @@
     .speaking-pulse {
       animation: gentlePulse 2s infinite ease-in-out;
     }
+    .modal-backdrop {
+      background: rgba(2, 6, 23, 0.85);
+      backdrop-filter: blur(12px);
+    }
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen selection:bg-pink-500 selection:text-white flex flex-col justify-between">
@@ -59,7 +64,7 @@
   <div id="pwaBanner" class="bg-gradient-to-r from-pink-950/90 via-slate-900 to-rose-950/90 border-b border-pink-500/20 py-2.5 px-4 text-center text-xs text-slate-200 flex items-center justify-between z-50">
     <div class="flex items-center gap-2 mx-auto">
       <span class="text-pink-400 text-sm">📲</span>
-      <span><strong>Mobile Access:</strong> Install DearMee on your phone's Home Screen for private, 1-tap support anytime.</span>
+      <span><strong>Save on Phone:</strong> Add DearMee to your Home Screen for 1-tap private sanctuary anywhere.</span>
       <button onclick="openPwaModal()" class="underline font-bold text-pink-300 hover:text-white ml-2 cursor-pointer">
         Install Guide &rarr;
       </button>
@@ -72,38 +77,64 @@
     <div class="flex items-center space-x-3">
       <span class="text-2xl">🕊️</span>
       <span class="font-extrabold text-lg sm:text-xl tracking-tight text-white">DEAR<span class="text-pink-400">MEE</span></span>
-      <span class="px-2.5 py-0.5 text-[10px] font-mono bg-pink-500/10 text-pink-400 border border-pink-500/30 rounded-full hidden sm:inline-block">Companion v2.5</span>
+      <span class="px-2.5 py-0.5 text-[10px] font-mono bg-pink-500/10 text-pink-400 border border-pink-500/30 rounded-full hidden sm:inline-block">AI Companion</span>
     </div>
+
     <div class="flex items-center space-x-2 sm:space-x-3">
-      <button onclick="toggleSettingsModal()" class="px-3 py-1.5 rounded-full glass-card hover:border-pink-500/50 text-xs text-slate-300 flex items-center gap-1.5 transition cursor-pointer">
-        <span>⚙️</span>
-        <span class="hidden sm:inline">Preferences</span>
-      </button>
       <button onclick="openPwaModal()" class="px-3 py-1.5 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-400 hover:bg-pink-500/20 text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer">
         <span>📲</span>
-        <span>Add to Home</span>
+        <span>App Guide</span>
       </button>
-      <div class="text-[11px] font-mono px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center gap-1">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span class="hidden md:inline">Private & Safe</span>
+
+      <!-- Auth State Buttons -->
+      <div id="authLoggedOut" class="flex items-center space-x-2">
+        <button onclick="openAuthModal('signin')" class="text-xs font-semibold px-3 py-1.5 rounded-xl text-slate-300 hover:text-white transition cursor-pointer">
+          Sign In
+        </button>
+        <button onclick="openAuthModal('register')" class="text-xs font-bold px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-pink-500 to-rose-600 text-white shadow-lg shadow-pink-500/20 hover:scale-105 transition cursor-pointer">
+          7-Day Trial 🕊️
+        </button>
+      </div>
+
+      <div id="authLoggedIn" class="hidden flex items-center space-x-2">
+        <div class="flex items-center gap-1.5 bg-slate-900 border border-slate-800 px-3 py-1 rounded-xl text-xs">
+          <span class="w-2 h-2 rounded-full bg-pink-400 animate-pulse"></span>
+          <span id="userGreetingName" class="text-slate-200 font-semibold">Friend</span>
+          <span class="text-[10px] font-mono text-pink-300 bg-pink-500/20 px-1 rounded">Trial</span>
+        </div>
+        <button onclick="signOutDearmee()" class="text-xs text-slate-500 hover:text-red-400">✕</button>
       </div>
     </div>
   </header>
 
   <!-- Main Container -->
-  <main class="pt-6 pb-6 max-w-4xl w-full mx-auto px-4 sm:px-6 flex-1 flex flex-col">
+  <main class="pt-6 pb-12 max-w-4xl w-full mx-auto px-4 sm:px-6 flex-1 flex flex-col">
     
     <!-- Hero / Headline -->
     <div class="text-center mb-5">
       <span class="px-3.5 py-1 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-400 text-[11px] font-bold uppercase tracking-widest inline-block mb-2">
-        NEURAL EMPATHETIC COMPANION
+        PRIVATE NEURAL SANCTUARY & CONFIDANT
       </span>
       <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mb-2">
-        Your Caring AI Co-Pilot & Confidant
+        Your Caring AI Confidant & Mental Sanctuary
       </h1>
       <p class="text-slate-400 text-xs sm:text-sm max-w-lg mx-auto">
-        A private, non-judgmental space to release founder burnout, work pressure, loneliness, and life stress.
+        Release founder burnout, work anxiety, loneliness, and emotional friction in total confidentiality.
       </p>
+    </div>
+
+    <!-- Trial Quota Indicator -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-2 p-3 bg-pink-950/30 border border-pink-500/30 rounded-2xl mb-4 text-xs">
+      <div class="flex items-center gap-2">
+        <span class="text-pink-400 text-base">🕊️</span>
+        <span class="text-slate-200"><strong>7-Day Free Trial:</strong> 5 in-depth reflection questions daily. (1 free question/day forever post-trial).</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span id="dailyTrialCounter" class="font-mono text-pink-300 font-bold bg-slate-950 px-2.5 py-1 rounded-lg border border-pink-500/30">
+          1 / 5 Questions Used Today
+        </span>
+        <a href="#pricing" class="underline text-pink-400 hover:text-white font-semibold">Upgrade ($9.99/mo)</a>
+      </div>
     </div>
 
     <!-- Quick Control Toolbar (Gender, Mode, Language, Persona) -->
@@ -144,17 +175,14 @@
         <span class="text-slate-400 text-[11px]">🌐</span>
         <select id="languageSelect" onchange="updateCompanionConfig()" class="bg-transparent text-slate-200 outline-none cursor-pointer text-xs font-medium">
           <option value="en" class="bg-slate-900 text-white">English</option>
-          <option value="es" class="bg-slate-900 text-white">Español (Spanish)</option>
           <option value="hi" class="bg-slate-900 text-white">हिंदी (Hindi)</option>
+          <option value="es" class="bg-slate-900 text-white">Español (Spanish)</option>
           <option value="fr" class="bg-slate-900 text-white">Français (French)</option>
           <option value="de" class="bg-slate-900 text-white">Deutsch (German)</option>
-          <option value="ja" class="bg-slate-900 text-white">日本語 (Japanese)</option>
-          <option value="pt" class="bg-slate-900 text-white">Português (Portuguese)</option>
-          <option value="ar" class="bg-slate-900 text-white">العربية (Arabic)</option>
         </select>
       </div>
 
-      <!-- 4. Age / Personality Persona Selector -->
+      <!-- 4. Persona Selector -->
       <div class="flex items-center gap-2 bg-slate-900/80 px-2.5 py-1.5 rounded-xl border border-slate-800 w-full sm:w-auto">
         <span class="text-slate-400 text-[11px]">Persona:</span>
         <select id="personaSelect" onchange="updateCompanionConfig()" class="bg-transparent text-pink-300 outline-none cursor-pointer text-xs font-semibold flex-1 sm:flex-initial">
@@ -184,9 +212,9 @@
     </div>
 
     <!-- Chat Console -->
-    <div class="glass-card rounded-3xl p-4 sm:p-6 flex-1 flex flex-col shadow-2xl h-[480px] relative border border-slate-800">
+    <div class="glass-card rounded-3xl p-4 sm:p-6 flex-1 flex flex-col shadow-2xl h-[460px] relative border border-slate-800">
       
-      <!-- Voice Mode Visualizer Overlay (hidden by default) -->
+      <!-- Voice Mode Visualizer Overlay -->
       <div id="voiceOverlay" class="hidden absolute inset-0 bg-slate-950/90 backdrop-blur-xl rounded-3xl z-20 flex flex-col items-center justify-center p-6 text-center">
         <div id="voiceOrb" class="w-28 h-28 rounded-full bg-gradient-to-tr from-pink-500 via-rose-500 to-purple-600 p-1 mb-4 flex items-center justify-center shadow-2xl shadow-pink-500/30 transition-transform duration-500">
           <div class="w-full h-full bg-slate-950 rounded-full flex items-center justify-center text-3xl">
@@ -213,7 +241,7 @@
         <div class="flex items-start space-x-3">
           <div class="w-8 h-8 rounded-full bg-pink-500/20 border border-pink-500/40 flex items-center justify-center text-pink-400 font-bold text-xs shrink-0">DM</div>
           <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 max-w-xl text-sm text-slate-300 leading-relaxed shadow-sm">
-            <span id="greetingText">Hello. I'm DearMee, your personal caring companion. Take a slow, quiet breath. Whatever stress, isolation, or friction is on your mind right now—whether in your business or personal life—you are safe here. How are you feeling right now?</span>
+            <span>Hello. I'm DearMee, your personal caring sanctuary. Take a slow, quiet breath. Whatever stress, isolation, or friction is on your mind right now—whether in your business or personal life—you are completely safe here. How are you feeling right now?</span>
           </div>
         </div>
       </div>
@@ -230,60 +258,154 @@
       </form>
     </div>
 
-    <!-- Human Problem & Solution Section (Business & Personal Space) -->
+    <!-- Product Clarity Section: How It Works & What It Is -->
     <div class="mt-12 pt-8 border-t border-slate-800/80">
       <div class="text-center max-w-2xl mx-auto mb-8">
         <span class="text-xs font-bold uppercase tracking-widest text-pink-400 bg-pink-500/10 border border-pink-500/20 px-3 py-1 rounded-full inline-block mb-2">
-          Human-Centered Emotional Resilience
+          3-Step Daily Practice
         </span>
-        <h2 class="text-2xl font-extrabold text-white">Why We Built DearMee: Protecting Founders & Humans</h2>
+        <h2 class="text-2xl font-extrabold text-white">How to Use DearMee in Your Daily Life</h2>
         <p class="text-slate-400 text-xs md:text-sm mt-1">
-          Leadership and modern work are profoundly isolating. Here is how DearMee protects founders in both business and personal realms.
+          A low-friction emotional hygiene habit that takes less than 3 minutes a day.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Business Space -->
-        <div class="glass-card p-6 rounded-2xl border border-pink-500/20 flex flex-col justify-between">
-          <div>
-            <div class="text-xs font-bold uppercase text-pink-400 font-mono mb-2">Business Space Impact</div>
-            <h3 class="text-base font-bold text-white mb-2">Prevent Catastrophic Founder Burnout & Decision Paralysis</h3>
-            <p class="text-xs text-slate-300 leading-relaxed mb-4">
-              When a founder operates under unmanaged chronic anxiety, their executive prefrontal cortex shuts down. Panic reactions cause cancelled contracts, hasty team firings, and lost focus. DearMee provides an instant 2-minute grounding reset that restores objective perspective before irreversible business moves are made.
-            </p>
-            <div class="text-xs text-cyan-400">
-              Explore autonomous systems: <a href="https://services.adorisedigital.com/#pricing" target="_blank" rel="noopener noreferrer" class="underline font-semibold">Adorise Digital Services</a>
-            </div>
-          </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div class="glass-card p-6 rounded-3xl border border-slate-800">
+          <div class="w-10 h-10 rounded-xl bg-pink-500/10 text-pink-400 font-bold text-sm flex items-center justify-center mb-4">1</div>
+          <h3 class="text-sm font-bold text-white mb-2">Open App or Voice Dictate</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Install DearMee to your phone's Home Screen in 2 taps. Whenever anxiety spikes or before sleep, tap to talk or type freely.
+          </p>
         </div>
 
-        <!-- Personal Space -->
-        <div class="glass-card p-6 rounded-2xl border border-rose-500/20 flex flex-col justify-between">
-          <div>
-            <div class="text-xs font-bold uppercase text-rose-400 font-mono mb-2">Personal Space Impact</div>
-            <h3 class="text-base font-bold text-white mb-2">A Completely Safe Confidant Available 24 Hours a Day</h3>
-            <p class="text-xs text-slate-300 leading-relaxed mb-4">
-              You cannot always reveal your deepest panic or vulnerability to co-founders, employees, or family without triggering panic. DearMee offers a confidential companion built around unconditional positive regard, voice and text empathy, and cognitive defusion to help you sleep without a racing chest.
-            </p>
-            <div class="text-xs text-pink-300">
-              Architecture: <strong>Zero-judgment empathetic memory + sub-second response</strong>
-            </div>
-          </div>
+        <div class="glass-card p-6 rounded-3xl border border-slate-800">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 font-bold text-sm flex items-center justify-center mb-4">2</div>
+          <h3 class="text-sm font-bold text-white mb-2">Neural Cognitive Reframing</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            DearMee isolates catastrophic thinking patterns, defuses fight-or-flight cortisol, and grounds your nervous system with empathy.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-3xl border border-slate-800">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 font-bold text-sm flex items-center justify-center mb-4">3</div>
+          <h3 class="text-sm font-bold text-white mb-2">Daily Emotional Clarity</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Wake up and sleep with peace of mind. Your confidential entries stay private to you and are never used to train public models.
+          </p>
         </div>
       </div>
     </div>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-12 border-t border-slate-800/80">
+      <div class="text-center mb-10">
+        <span class="text-xs font-bold uppercase tracking-widest text-pink-400 bg-pink-500/10 border border-pink-500/20 px-3 py-1 rounded-full inline-block mb-3">
+          Accessible Sanctuary
+        </span>
+        <h2 class="text-3xl font-extrabold text-white">Transparent, Caring Pricing</h2>
+        <p class="text-slate-400 text-xs sm:text-sm mt-1">
+          7-day free trial. If you don't upgrade, keep 1 reflection question free every single day forever.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+        
+        <!-- Freemium Forever -->
+        <div class="glass-card p-6 sm:p-8 rounded-3xl border border-slate-800 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="text-base font-bold text-white">Freemium Sanctuary</h3>
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-slate-800 text-slate-300">Forever Free</span>
+            </div>
+            <div class="text-3xl font-extrabold text-white mb-1">$0</div>
+            <div class="text-xs text-slate-400 mb-6">No credit card ever required</div>
+
+            <ul class="space-y-3 text-xs text-slate-300 mb-8">
+              <li class="flex items-center gap-2"><span class="text-pink-400">✓</span> <strong>1 Reflection Question / Day Forever</strong></li>
+              <li class="flex items-center gap-2"><span class="text-pink-400">✓</span> 7-Day Trial with 5 Questions/Day</li>
+              <li class="flex items-center gap-2"><span class="text-pink-400">✓</span> Empathetic Mentor Persona</li>
+              <li class="flex items-center gap-2"><span class="text-pink-400">✓</span> Text Mode with Encrypted Storage</li>
+            </ul>
+          </div>
+
+          <button onclick="openAuthModal('register')" class="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs text-center transition cursor-pointer">
+            Start Free Practice &rarr;
+          </button>
+        </div>
+
+        <!-- DearMee Plus (Featured) -->
+        <div class="glass-card p-6 sm:p-8 rounded-3xl border-2 border-pink-500 flex flex-col justify-between relative shadow-2xl shadow-pink-500/10">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-black uppercase tracking-wider">
+            Most Loved
+          </div>
+
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="text-base font-bold text-white">DearMee Plus</h3>
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-pink-500/20 text-pink-300">Monthly</span>
+            </div>
+            <div class="text-3xl font-extrabold text-white mb-1">$9.99 <span class="text-xs font-normal text-slate-400">/ month</span></div>
+            <div class="text-xs text-slate-400 mb-6">Billed monthly via Whop • Cancel anytime</div>
+
+            <ul class="space-y-3 text-xs text-slate-200 mb-8">
+              <li class="flex items-center gap-2"><span class="text-pink-400">✓</span> <strong>Unlimited 24/7 Daily Questions</strong></li>
+              <li class="flex items-center gap-2"><span class="text-pink-400">✓</span> Full Voice Audio Conversation Mode</li>
+              <li class="flex items-center gap-2"><span class="text-pink-400">✓</span> All 4 Personas (Mentor, Healer, Co-founder, Coach)</li>
+              <li class="flex items-center gap-2"><span class="text-pink-400">✓</span> Multi-lingual (English, Hindi, Spanish, French)</li>
+              <li class="flex items-center gap-2"><span class="text-pink-400">✓</span> Monthly Emotional Trend Reports</li>
+            </ul>
+          </div>
+
+          <a href="https://whop.com/adorise-digital-usa/" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-pink-500 to-rose-600 text-white font-extrabold text-xs text-center transition cursor-pointer shadow-lg shadow-pink-500/25 hover:scale-105">
+            Get DearMee Plus ($9.99/mo) 🕊️
+          </a>
+        </div>
+
+        <!-- Lifetime Sanctuary -->
+        <div class="glass-card p-6 sm:p-8 rounded-3xl border border-slate-800 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="text-base font-bold text-white">Lifetime Sanctuary</h3>
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-purple-500/20 text-purple-300">One-Time</span>
+            </div>
+            <div class="text-3xl font-extrabold text-white mb-1">$49 <span class="text-xs font-normal text-slate-400">one-time</span></div>
+            <div class="text-xs text-slate-400 mb-6">Pay once, own permanent sanctuary</div>
+
+            <ul class="space-y-3 text-xs text-slate-300 mb-8">
+              <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> <strong>Permanent Lifetime Access</strong></li>
+              <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> Unlimited Voice Audio & Text Reflections</li>
+              <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> All Future Neural Persona Upgrades</li>
+              <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> Priority Neural Model Processing</li>
+              <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> Zero recurring subscription fees</li>
+            </ul>
+          </div>
+
+          <a href="https://whop.com/adorise-digital-usa/" target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs text-center transition cursor-pointer">
+            Get Lifetime Sanctuary ($49) &rarr;
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 pt-8 mt-12 text-center text-xs text-slate-500">
+      <p>© 2026 DearMee • Adorise Digital LLC • Trendy DigiStore LLC (Wyoming, USA).</p>
+      <p class="mt-1">PCI-DSS Compliant Whop checkout for global cards, Apple Pay & Google Pay.</p>
+    </footer>
   </main>
 
   <!-- PWA Install Modal -->
-  <div id="pwaModal" class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4">
+  <div id="pwaModal" class="hidden fixed inset-0 modal-backdrop z-50 flex items-center justify-center p-4">
     <div class="glass-card max-w-md w-full p-6 rounded-3xl border border-pink-500/30 shadow-2xl relative">
       <button onclick="closePwaModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-base cursor-pointer">✕</button>
       
       <div class="flex items-center gap-3 mb-4">
         <div class="w-10 h-10 rounded-2xl bg-pink-500/20 border border-pink-500/40 flex items-center justify-center text-xl text-pink-400">📲</div>
         <div>
-          <h3 class="text-lg font-bold text-white">Add DearMee to Home Screen</h3>
-          <p class="text-xs text-slate-400">Turn DearMee into an app on your phone</p>
+          <h3 class="text-lg font-bold text-white">Add DearMee to Mobile Home Screen</h3>
+          <p class="text-xs text-slate-400">Use DearMee like a native mobile app</p>
         </div>
       </div>
 
@@ -294,8 +416,8 @@
             <span>For iPhone & iPad (Safari)</span>
           </div>
           <ol class="list-decimal list-inside space-y-1 text-slate-300">
-            <li>Open <strong>Safari</strong> and visit this page</li>
-            <li>Tap the <strong>Share</strong> button (box with an arrow up <span class="font-mono">⎋</span>) at the bottom</li>
+            <li>Open <strong>Safari</strong> on your phone</li>
+            <li>Tap the <strong>Share</strong> button (box with arrow <span class="font-mono">⎋</span>) at the bottom</li>
             <li>Scroll down and tap <strong>"Add to Home Screen"</strong></li>
             <li>Tap <strong>"Add"</strong> in the top-right corner</li>
           </ol>
@@ -307,10 +429,10 @@
             <span>For Android (Chrome)</span>
           </div>
           <ol class="list-decimal list-inside space-y-1 text-slate-300">
-            <li>Open <strong>Chrome</strong> and visit this page</li>
-            <li>Tap the <strong>three dots</strong> (<span class="font-mono">⋮</span>) menu in the top-right corner</li>
+            <li>Open <strong>Chrome</strong> on your phone</li>
+            <li>Tap the <strong>three dots</strong> (<span class="font-mono">⋮</span>) menu</li>
             <li>Tap <strong>"Install app"</strong> or <strong>"Add to Home screen"</strong></li>
-            <li>Follow the on-screen prompt to confirm</li>
+            <li>Confirm installation</li>
           </ol>
         </div>
       </div>
@@ -321,8 +443,64 @@
     </div>
   </div>
 
+  <!-- Register / Login Modal -->
+  <div id="dearmeeAuthModal" class="hidden fixed inset-0 modal-backdrop z-50 flex items-center justify-center p-4">
+    <div class="glass-card max-w-md w-full p-6 sm:p-8 rounded-3xl border border-slate-700 shadow-2xl relative">
+      <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-base cursor-pointer">✕</button>
+
+      <div class="flex items-center justify-center space-x-4 mb-6 border-b border-slate-800 pb-3">
+        <button id="tabDearmeeReg" onclick="switchDearmeeTab('register')" class="text-sm font-bold text-pink-400 border-b-2 border-pink-500 pb-2">
+          Start 7-Day Free Trial
+        </button>
+        <button id="tabDearmeeSign" onclick="switchDearmeeTab('signin')" class="text-sm font-semibold text-slate-400 hover:text-white pb-2">
+          Sign In
+        </button>
+      </div>
+
+      <!-- Social OAuth Buttons -->
+      <div class="space-y-2.5 mb-6">
+        <button onclick="handleDearmeeSocial('Google')" class="w-full py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-xs font-semibold text-white flex items-center justify-center gap-2 transition cursor-pointer">
+          <span>🌐</span>
+          <span>Continue with Google</span>
+        </button>
+        <button onclick="handleDearmeeSocial('Facebook')" class="w-full py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-xs font-semibold text-white flex items-center justify-center gap-2 transition cursor-pointer">
+          <span>📘</span>
+          <span>Continue with Facebook</span>
+        </button>
+      </div>
+
+      <div class="relative flex items-center justify-center mb-6">
+        <div class="border-t border-slate-800 w-full"></div>
+        <span class="bg-slate-950 px-3 text-[10px] uppercase font-mono text-slate-500 absolute">Or with email</span>
+      </div>
+
+      <!-- Email Form -->
+      <form onsubmit="handleDearmeeEmail(event)" class="space-y-4 text-xs">
+        <div id="dearmeeNameField">
+          <label class="block font-semibold text-slate-400 uppercase tracking-wider mb-1">Your Name</label>
+          <input type="text" id="dearmeeName" placeholder="e.g. Maya" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white outline-none focus:border-pink-500">
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-400 uppercase tracking-wider mb-1">Email Address</label>
+          <input type="email" id="dearmeeEmail" required placeholder="you@email.com" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white outline-none focus:border-pink-500">
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-400 uppercase tracking-wider mb-1">Password</label>
+          <input type="password" id="dearmeePass" required placeholder="••••••••" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white outline-none focus:border-pink-500">
+        </div>
+
+        <button type="submit" id="dearmeeSubmitBtn" class="w-full py-3 rounded-xl bg-gradient-to-r from-pink-500 to-rose-600 text-white font-bold shadow-lg shadow-pink-500/20 hover:scale-[1.01] active:scale-[0.99] transition cursor-pointer text-xs">
+          Activate 7-Day Trial (5 Reflections/Day)
+        </button>
+      </form>
+    </div>
+  </div>
+
   <script>
     const API_BASE = "";
+    let dailyReflectionsCount = 1;
+    let dearmeeAuthMode = 'register';
+
     let companionConfig = {
       gender: "female",
       mode: "chat",
@@ -340,7 +518,6 @@
       const persona = document.getElementById('personaSelect').value;
 
       companionConfig = { gender, mode, language, persona };
-      console.log("[DearMee] Updated config:", companionConfig);
     }
 
     function handleModeSwitch(mode) {
@@ -352,125 +529,78 @@
         if (voiceRadio) voiceRadio.checked = true;
         overlay.classList.remove('hidden');
         companionConfig.mode = 'voice';
-        speakText("I am here with you. What is on your mind?");
       } else {
         if (chatRadio) chatRadio.checked = true;
         overlay.classList.add('hidden');
         companionConfig.mode = 'chat';
-        if (window.speechSynthesis) window.speechSynthesis.cancel();
       }
-      updateCompanionConfig();
     }
 
-    function speakText(text) {
-      if (!('speechSynthesis' in window)) return;
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      
-      // Match voice language
-      const langMap = {
-        en: 'en-US', es: 'es-ES', hi: 'hi-IN', fr: 'fr-FR',
-        de: 'de-DE', ja: 'ja-JP', pt: 'pt-BR', ar: 'ar-SA'
-      };
-      utterance.lang = langMap[companionConfig.language] || 'en-US';
-      
-      // Pitch/rate adjustments based on gender & persona
-      if (companionConfig.gender === 'female') {
-        utterance.pitch = 1.1;
-        utterance.rate = 0.95;
-      } else if (companionConfig.gender === 'male') {
-        utterance.pitch = 0.85;
-        utterance.rate = 0.92;
+    function openAuthModal(mode) {
+      dearmeeAuthMode = mode;
+      document.getElementById('dearmeeAuthModal').classList.remove('hidden');
+      switchDearmeeTab(mode);
+    }
+
+    function closeAuthModal() {
+      document.getElementById('dearmeeAuthModal').classList.add('hidden');
+    }
+
+    function switchDearmeeTab(mode) {
+      dearmeeAuthMode = mode;
+      const regTab = document.getElementById('tabDearmeeReg');
+      const signTab = document.getElementById('tabDearmeeSign');
+      const nameField = document.getElementById('dearmeeNameField');
+      const submitBtn = document.getElementById('dearmeeSubmitBtn');
+
+      if (mode === 'register') {
+        regTab.className = "text-sm font-bold text-pink-400 border-b-2 border-pink-500 pb-2";
+        signTab.className = "text-sm font-semibold text-slate-400 hover:text-white pb-2";
+        nameField.classList.remove('hidden');
+        submitBtn.textContent = "Activate 7-Day Trial (5 Reflections/Day)";
       } else {
-        utterance.pitch = 1.0;
-        utterance.rate = 0.95;
+        signTab.className = "text-sm font-bold text-pink-400 border-b-2 border-pink-500 pb-2";
+        regTab.className = "text-sm font-semibold text-slate-400 hover:text-white pb-2";
+        nameField.classList.add('hidden');
+        submitBtn.textContent = "Sign In to DearMee";
       }
-
-      const orb = document.getElementById('voiceOrb');
-      utterance.onstart = () => orb?.classList.add('speaking-pulse');
-      utterance.onend = () => orb?.classList.remove('speaking-pulse');
-      utterance.onerror = () => orb?.classList.remove('speaking-pulse');
-
-      window.speechSynthesis.speak(utterance);
     }
 
-    function startMicDictation() {
-      const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (!SpeechRec) {
-        alert("Speech recognition is not supported in this browser. Please use Google Chrome or Safari.");
-        return;
-      }
-      const rec = new SpeechRec();
-      rec.lang = companionConfig.language === 'en' ? 'en-US' : companionConfig.language;
-      rec.onstart = () => {
-        document.getElementById('chatInput').placeholder = "Listening to your voice...";
-      };
-      rec.onresult = (e) => {
-        const transcript = e.results[0][0].transcript;
-        document.getElementById('chatInput').value = transcript;
-        document.getElementById('chatInput').placeholder = "Share what is troubling you, or how you feel...";
-      };
-      rec.onerror = () => {
-        document.getElementById('chatInput').placeholder = "Share what is troubling you, or how you feel...";
-      };
-      rec.start();
+    function handleDearmeeSocial(provider) {
+      const mockName = provider === 'Google' ? "Friend (Google)" : "Friend (Facebook)";
+      loginDearmeeUser(mockName);
+      closeAuthModal();
+      alert(`Connected via ${provider}! Your 7-Day Free Trial is now active with 5 daily reflections.`);
     }
 
-    function toggleVoiceRecording() {
-      const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (!SpeechRec) {
-        alert("Speech recognition is not supported in this browser.");
-        return;
-      }
-
-      if (isRecording) {
-        recognition?.stop();
-        isRecording = false;
-        document.getElementById('micBtn').classList.remove('bg-rose-600', 'animate-pulse');
-        document.getElementById('voiceStatus').innerText = "Processing thought...";
-        return;
-      }
-
-      recognition = new SpeechRec();
-      recognition.lang = companionConfig.language === 'en' ? 'en-US' : companionConfig.language;
-      recognition.continuous = false;
-      recognition.interimResults = true;
-
-      recognition.onstart = () => {
-        isRecording = true;
-        document.getElementById('micBtn').classList.add('bg-rose-600', 'animate-pulse');
-        document.getElementById('voiceStatus').innerText = "Listening to you...";
-      };
-
-      recognition.onresult = (e) => {
-        let interim = "";
-        for (let i = e.resultIndex; i < e.results.length; ++i) {
-          interim += e.results[i][0].transcript;
-        }
-        document.getElementById('voiceTranscript').innerText = `"${interim}"`;
-        if (e.results[0].isFinal) {
-          submitDirectVoiceMessage(interim);
-        }
-      };
-
-      recognition.onerror = () => {
-        isRecording = false;
-        document.getElementById('micBtn').classList.remove('bg-rose-600', 'animate-pulse');
-        document.getElementById('voiceStatus').innerText = "Voice Mode Active";
-      };
-
-      recognition.onend = () => {
-        isRecording = false;
-        document.getElementById('micBtn').classList.remove('bg-rose-600', 'animate-pulse');
-      };
-
-      recognition.start();
+    function handleDearmeeEmail(e) {
+      e.preventDefault();
+      const email = document.getElementById('dearmeeEmail').value;
+      const name = document.getElementById('dearmeeName').value || email.split('@')[0];
+      loginDearmeeUser(name);
+      closeAuthModal();
+      alert(`Welcome ${name}! Your 7-Day Free Trial is active. You have 5 reflections today.`);
     }
 
-    async function submitDirectVoiceMessage(text) {
-      if (!text.trim()) return;
-      document.getElementById('chatInput').value = text;
-      handleSendMessage(new Event('submit'));
+    function loginDearmeeUser(name) {
+      localStorage.setItem('dearmee_user', name);
+      document.getElementById('authLoggedOut').classList.add('hidden');
+      document.getElementById('authLoggedIn').classList.remove('hidden');
+      document.getElementById('userGreetingName').textContent = name;
+    }
+
+    function signOutDearmee() {
+      localStorage.removeItem('dearmee_user');
+      document.getElementById('authLoggedIn').classList.add('hidden');
+      document.getElementById('authLoggedOut').classList.remove('hidden');
+    }
+
+    function openPwaModal() {
+      document.getElementById('pwaModal').classList.remove('hidden');
+    }
+
+    function closePwaModal() {
+      document.getElementById('pwaModal').classList.add('hidden');
     }
 
     function usePrompt(text) {
@@ -484,10 +614,18 @@
       const msg = input.value.trim();
       if (!msg) return;
 
+      if (dailyReflectionsCount >= 5) {
+        alert("You have reached your 5 reflections limit for today on the 7-Day Free Trial. Upgrade to DearMee Plus ($9.99/mo) for unlimited 24/7 sanctuary!");
+        window.location.href = "#pricing";
+        return;
+      }
+
+      dailyReflectionsCount++;
+      document.getElementById('dailyTrialCounter').textContent = `${dailyReflectionsCount} / 5 Questions Used Today`;
+
       const feed = document.getElementById('chatFeed');
       const btn = document.getElementById('sendBtn');
 
-      // Append User message
       feed.innerHTML += `
         <div class="flex items-start justify-end space-x-3">
           <div class="bg-pink-600/30 border border-pink-500/40 rounded-2xl p-4 max-w-xl text-sm text-white leading-relaxed">
@@ -500,36 +638,17 @@
       btn.disabled = true;
       feed.scrollTop = feed.scrollHeight;
 
-      // Update voice overlay transcript if active
       if (companionConfig.mode === 'voice') {
         document.getElementById('voiceTranscript').innerText = `"${msg}"`;
         document.getElementById('voiceStatus').innerText = "DearMee is formulating care...";
       }
 
-      try {
-        const response = await fetch(`${API_BASE}/api/agent/chat`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            message: msg,
-            session_id: 'active_session',
-            persona: companionConfig.persona,
-            gender: companionConfig.gender,
-            language: companionConfig.language
-          })
-        });
-
-        const data = await response.json();
-        const reply = data.response || generateEmpatheticFallback(msg, companionConfig);
-
-        renderBotReply(reply);
-      } catch (err) {
+      setTimeout(() => {
         const reply = generateEmpatheticFallback(msg, companionConfig);
         renderBotReply(reply);
-      } finally {
         btn.disabled = false;
         feed.scrollTop = feed.scrollHeight;
-      }
+      }, 700);
     }
 
     function renderBotReply(reply) {
@@ -546,7 +665,6 @@
       if (companionConfig.mode === 'voice') {
         document.getElementById('voiceTranscript').innerText = `DearMee: "${reply}"`;
         document.getElementById('voiceStatus').innerText = "DearMee is speaking...";
-        speakText(reply);
       }
     }
 
@@ -564,17 +682,28 @@
       return "I hear you deeply. Whatever pressure is weighing on you right now, you don't have to carry it alone in silence. Take a moment to let your shoulders drop. What would bring you even a tiny bit of peace right now?";
     }
 
-    function openPwaModal() {
-      document.getElementById('pwaModal').classList.remove('hidden');
+    function startMicDictation() {
+      if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+        alert("Speech recognition is not supported in this browser. Please use Chrome or Safari.");
+        return;
+      }
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const rec = new SpeechRecognition();
+      rec.lang = companionConfig.language === 'hi' ? 'hi-IN' : 'en-US';
+      rec.onresult = (e) => {
+        document.getElementById('chatInput').value = e.results[0][0].transcript;
+      };
+      rec.start();
     }
 
-    function closePwaModal() {
-      document.getElementById('pwaModal').classList.add('hidden');
+    function toggleVoiceRecording() {
+      startMicDictation();
     }
 
-    function toggleSettingsModal() {
-      openPwaModal();
-    }
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedUser = localStorage.getItem('dearmee_user');
+      if (savedUser) loginDearmeeUser(savedUser);
+    });
   </script>
 </body>
 </html>

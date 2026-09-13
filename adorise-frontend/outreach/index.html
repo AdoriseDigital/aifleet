@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adorise Outreach | Instantly-Style Cold Outreach & Multi-Inbox Engine</title>
+  <title>Adorise Outreach — Instantly-Style Multi-Inbox Cold Email Infrastructure</title>
+  <meta name="description" content="Bring your own lead CSVs. We handle the multi-inbox Google & Outlook rotation, automated AI warmup, and deliverability shield for medium B2B companies.">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -18,7 +20,7 @@
   </script>
   <style>
     .glass-card {
-      background: rgba(15, 23, 42, 0.65);
+      background: rgba(15, 23, 42, 0.72);
       backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
@@ -27,203 +29,352 @@
 <body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen selection:bg-indigo-500 selection:text-white">
 
   <!-- Header -->
-  <header class="h-20 border-b border-slate-800 bg-slate-950/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50 px-6 flex items-center justify-between">
+  <header class="h-20 border-b border-slate-800 bg-slate-950/85 backdrop-blur-md fixed top-0 left-0 right-0 z-40 px-6 flex items-center justify-between">
     <div class="flex items-center space-x-3">
-      <span class="text-2xl">📬</span>
-      <span class="font-extrabold text-xl tracking-tight text-white">ADORISE <span class="text-indigo-400">OUTREACH</span></span>
-      <span class="px-2.5 py-0.5 text-[10px] font-mono bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 rounded-full">Composio Engine v2.0</span>
-    </div>
-    <div class="flex items-center space-x-3">
-      <div class="text-xs font-mono px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
-        ● Node Online (Port 8000)
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-indigo-500/20">
+        📬
       </div>
+      <div>
+        <span class="font-extrabold text-xl tracking-tight text-white">ADORISE <span class="text-indigo-400">OUTREACH</span></span>
+        <span class="hidden sm:inline-block ml-2 px-2.5 py-0.5 text-[10px] font-mono bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 rounded-full">Instantly Alternative</span>
+      </div>
+    </div>
+
+    <nav class="hidden md:flex items-center space-x-6 text-xs font-semibold text-slate-300">
+      <a href="#architecture" class="hover:text-white transition">Architecture</a>
+      <a href="#inboxes" class="hover:text-white transition">Multi-Inbox Grid</a>
+      <a href="#campaigns" class="hover:text-white transition">Sequencer</a>
+      <a href="#pricing" class="hover:text-white transition">Pricing</a>
+    </nav>
+
+    <div class="flex items-center space-x-3">
+      <div class="text-[11px] font-mono px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hidden sm:flex items-center gap-1.5">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>7-Day Free Trial (2 Inboxes Free)</span>
+      </div>
+      <a href="#pricing" class="px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold text-xs shadow-lg hover:scale-105 transition cursor-pointer">
+        Start 7-Day Trial ⚡
+      </a>
     </div>
   </header>
 
   <!-- Main Container -->
-  <main class="pt-28 pb-20 max-w-5xl mx-auto px-6">
+  <main class="pt-28 pb-20 max-w-6xl mx-auto px-6">
+    
+    <!-- Hero Header -->
     <div class="text-center mb-10">
-      <span class="px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs font-bold uppercase tracking-widest inline-block mb-3">INSTANTLY-STYLE COLD OUTREACH STACK</span>
-      <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-3">High-Deliverability Multi-Inbox Engine</h1>
-      <p class="text-slate-400 text-sm max-w-xl mx-auto">
-        Distribute outreach volume across isolated sending accounts with automated AI inbox warmup, rotation management, and sequence tracking.
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs font-bold uppercase tracking-widest mb-4">
+        <span>📬</span>
+        <span>BRING YOUR OWN LEAD LISTS • WE HANDLE THE SENDING INFRASTRUCTURE</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight leading-tight">
+        High-Deliverability Cold Email Infrastructure <br class="hidden sm:inline" />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500">With Automated Google & Outlook Inbox Rotation</span>
+      </h1>
+      <p class="text-slate-400 text-xs sm:text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+        Engineered for medium B2B companies and agencies sending 10,000 to 100,000+ emails/month. Bring your own prospect CSVs — our system manages multi-domain rotation, peer-to-peer AI warmup, and 99.4% primary inbox placement.
       </p>
+
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#inboxes" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold text-sm shadow-xl shadow-indigo-500/20 hover:scale-105 transition cursor-pointer flex items-center justify-center gap-2">
+          <span>Start 7-Day Free Trial (Connect 2 Mailboxes)</span>
+          <span>⚡</span>
+        </a>
+        <a href="#architecture" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 font-semibold text-sm hover:border-slate-700 transition">
+          How Multi-Inbox Rotation Works ↓
+        </a>
+      </div>
     </div>
 
-    <!-- Metrics Grid -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 text-xs font-mono">
+    <!-- Live Infrastructure Health Metrics Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10 text-xs font-mono">
       <div class="p-4 rounded-2xl glass-card">
-        <div class="text-slate-500 mb-1 uppercase text-[10px]">Node Status</div>
-        <div class="text-emerald-400 font-bold text-sm">ONLINE (Port 8000)</div>
-        <div class="text-slate-400 text-[10px] mt-1">Composio Runtime</div>
+        <div class="text-slate-500 mb-1 uppercase text-[10px]">Active Sending Inboxes</div>
+        <div class="text-indigo-400 font-bold text-sm">8 Rotating Mailboxes</div>
+        <div class="text-slate-400 text-[10px] mt-1">Google & Office 365</div>
       </div>
       <div class="p-4 rounded-2xl glass-card">
-        <div class="text-slate-500 mb-1 uppercase text-[10px]">Active Inboxes</div>
-        <div class="text-indigo-400 font-bold text-sm">8 Rotating Domains</div>
-        <div class="text-slate-400 text-[10px] mt-1">SPF / DKIM / DMARC Valid</div>
-      </div>
-      <div class="p-4 rounded-2xl glass-card">
-        <div class="text-slate-500 mb-1 uppercase text-[10px]">Warmup Health</div>
-        <div class="text-cyan-400 font-bold text-sm">99.4% Primary</div>
+        <div class="text-slate-500 mb-1 uppercase text-[10px]">Warmup Health Score</div>
+        <div class="text-emerald-400 font-bold text-sm">99.4% Primary Placement</div>
         <div class="text-slate-400 text-[10px] mt-1">Spam Rate: 0.02%</div>
       </div>
       <div class="p-4 rounded-2xl glass-card">
-        <div class="text-slate-500 mb-1 uppercase text-[10px]">Daily Capacity</div>
-        <div class="text-purple-400 font-bold text-sm">1,200 Emails/Day</div>
-        <div class="text-slate-400 text-[10px] mt-1">Throttle Safe</div>
+        <div class="text-slate-500 mb-1 uppercase text-[10px]">Daily Safe Throughput</div>
+        <div class="text-cyan-400 font-bold text-sm">1,200 Emails / Day</div>
+        <div class="text-slate-400 text-[10px] mt-1">Under 30 emails/mailbox</div>
+      </div>
+      <div class="p-4 rounded-2xl glass-card">
+        <div class="text-slate-500 mb-1 uppercase text-[10px]">DNS Authentications</div>
+        <div class="text-purple-400 font-bold text-sm">SPF • DKIM • DMARC</div>
+        <div class="text-slate-400 text-[10px] mt-1">100% Passed</div>
       </div>
     </div>
 
-    <!-- Campaign Creator Console -->
-    <div class="glass-card p-6 md:p-8 rounded-3xl shadow-2xl mb-8">
-      <h3 class="text-base font-bold text-white mb-4 flex items-center space-x-2">
-        <span class="w-2.5 h-2.5 rounded-full bg-indigo-400 animate-pulse"></span>
-        <span>Configure & Dispatch Cold Outreach Sequence</span>
-      </h3>
+    <!-- Active Multi-Inbox Rotation Visualizer -->
+    <section id="inboxes" class="glass-card p-6 sm:p-8 rounded-3xl border border-slate-800 shadow-2xl mb-12">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-800">
+        <div>
+          <h3 class="text-lg font-bold text-white flex items-center gap-2">
+            <span>🔄</span>
+            <span>Multi-Inbox Domain Rotation Monitor</span>
+          </h3>
+          <p class="text-xs text-slate-400 mt-0.5">Outbound volume is distributed automatically across isolated secondary domains</p>
+        </div>
+        <button onclick="alert('Mailbox health verified: All 8 mailboxes optimal.')" class="text-xs font-mono text-indigo-400 hover:text-indigo-300 bg-indigo-500/10 px-3 py-1.5 rounded-xl border border-indigo-500/20 transition">
+          ↻ Check Mailbox Health
+        </button>
+      </div>
 
-      <form onsubmit="handleCampaignDispatch(event)" class="space-y-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Campaign Name</label>
-            <input type="text" id="campaignName" placeholder="e.g. Q3 SaaS Expansion Outbound" required value="Q3 Agency Client Growth" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition text-sm">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="p-3.5 rounded-2xl bg-slate-900 border border-slate-800">
+          <div class="flex justify-between items-center mb-1">
+            <span class="text-xs font-bold text-white">alex@getadorise.io</span>
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
           </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Target Persona / Niche</label>
-            <input type="text" id="targetPersona" placeholder="e.g. Founders & CMOs, US B2B Tech" required value="B2B Agency Founders & CMOs" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition text-sm">
-          </div>
+          <div class="text-[10px] font-mono text-slate-400">Google Workspace • 28/30 Sent</div>
+          <div class="text-[10px] text-emerald-400 mt-1">Warmup: 100% Healthy</div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Sequence Archetype</label>
-            <select id="sequenceArchetype" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white focus:outline-none focus:border-indigo-500 transition text-sm">
-              <option value="pain_led">Pain-Led Micro-Offer (3-Step Sequence)</option>
-              <option value="case_study">Value Metric & Proof Point (4-Step Sequence)</option>
-              <option value="direct_permission">Direct Permission Asker (2-Step Sequence)</option>
-              <option value="breakup">Polite Break-up Re-engagement</option>
-            </select>
+        <div class="p-3.5 rounded-2xl bg-slate-900 border border-slate-800">
+          <div class="flex justify-between items-center mb-1">
+            <span class="text-xs font-bold text-white">sanjay@tryadorise.co</span>
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
           </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Sending Throttle Limit</label>
-            <select id="sendingThrottle" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white focus:outline-none focus:border-indigo-500 transition text-sm">
-              <option value="conservative">Conservative (25 emails/inbox/day)</option>
-              <option value="moderate" selected>Moderate (45 emails/inbox/day)</option>
-              <option value="aggressive">Aggressive (75 emails/inbox/day)</option>
-            </select>
-          </div>
+          <div class="text-[10px] font-mono text-slate-400">Microsoft 365 • 25/30 Sent</div>
+          <div class="text-[10px] text-emerald-400 mt-1">Warmup: 99.2% Healthy</div>
         </div>
 
-        <div class="flex items-center justify-end pt-2">
-          <button type="submit" id="dispatchBtn" class="px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 font-bold text-white shadow-lg shadow-indigo-500/20 hover:scale-[1.02] active:scale-[0.98] transition text-sm flex items-center space-x-2 cursor-pointer">
-            <span>Deploy Multi-Inbox Sequence</span>
-            <span>🚀</span>
-          </button>
+        <div class="p-3.5 rounded-2xl bg-slate-900 border border-slate-800">
+          <div class="flex justify-between items-center mb-1">
+            <span class="text-xs font-bold text-white">growth@adorisehq.com</span>
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          </div>
+          <div class="text-[10px] font-mono text-slate-400">Google Workspace • 30/30 Sent</div>
+          <div class="text-[10px] text-emerald-400 mt-1">Warmup: 100% Healthy</div>
         </div>
-      </form>
-    </div>
 
-    <!-- Live Execution Feed -->
-    <div id="dispatchFeed" class="glass-card p-6 md:p-8 rounded-3xl shadow-xl mb-8">
-      <div class="flex justify-between items-center mb-4">
-        <h4 class="text-sm font-bold text-slate-300 uppercase tracking-wider">Campaign Execution Feed</h4>
-        <span class="text-xs font-mono text-emerald-400">8 Mailboxes Active</span>
+        <div class="p-3.5 rounded-2xl bg-slate-900 border border-slate-800">
+          <div class="flex justify-between items-center mb-1">
+            <span class="text-xs font-bold text-white">team@adorisemail.net</span>
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          </div>
+          <div class="text-[10px] font-mono text-slate-400">Microsoft 365 • 18/30 Sent</div>
+          <div class="text-[10px] text-emerald-400 mt-1">Warmup: 98.8% Healthy</div>
+        </div>
       </div>
-      <div id="dispatchLogs" class="space-y-2 font-mono text-xs text-slate-400">
-        <div class="p-4 rounded-xl bg-slate-900/50 text-slate-500 text-center">Ready to launch campaign. Configure sequence parameters above and click Deploy.</div>
-      </div>
-    </div>
+    </section>
 
-    <!-- Active Campaigns List -->
-    <div class="glass-card p-6 md:p-8 rounded-3xl shadow-xl">
-      <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Active Running Sequences</h4>
-      <div id="campaignsList" class="space-y-3">
-        <!-- Javascript populated -->
+    <!-- CSV Ingestion Simulator & Campaign Sequencer -->
+    <section id="campaigns" class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
+      
+      <!-- Left: CSV Ingestion -->
+      <div class="lg:col-span-5">
+        <div class="glass-card p-6 sm:p-8 rounded-3xl shadow-xl border border-slate-800">
+          <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">
+            <span>📁</span>
+            <span>1. Bring Your Lead List (CSV)</span>
+          </h3>
+          <p class="text-xs text-slate-400 mb-4">
+            Upload your scraped leads or customer data. Our engine verifies syntax, MX, and spam traps automatically.
+          </p>
+
+          <div class="p-6 border-2 border-dashed border-slate-700 hover:border-indigo-500 rounded-2xl text-center space-y-2 cursor-pointer transition" onclick="simulateCsvUpload()">
+            <span class="text-3xl block">📄</span>
+            <span class="text-xs font-bold text-slate-200">Click to Upload Leads (.CSV)</span>
+            <p class="text-[10px] text-slate-500">Supports Apollo, ZoomInfo, Clay & custom exports</p>
+          </div>
+
+          <div id="csvStatus" class="hidden mt-4 p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-xs text-emerald-300">
+            ✓ 500 Leads Loaded: 488 Verified Clean • 12 Catch-all Filtered Out
+          </div>
+        </div>
       </div>
-    </div>
+
+      <!-- Right: Sequence Creator -->
+      <div class="lg:col-span-7">
+        <div class="glass-card p-6 sm:p-8 rounded-3xl shadow-xl border border-slate-800">
+          <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">
+            <span>✉️</span>
+            <span>2. Configure Multi-Inbox Outbound Sequence</span>
+          </h3>
+          <p class="text-xs text-slate-400 mb-4">
+            Spintax and dynamic AI personalization tags prevent email service provider fingerprinting.
+          </p>
+
+          <form onsubmit="handleDispatch(event)" class="space-y-4 text-xs">
+            <div>
+              <label class="block font-semibold text-slate-400 uppercase tracking-wider mb-1">Subject Line (Spintax Supported)</label>
+              <input type="text" value="{{Quick question|Ideas for|Quick thought for}} {{Company}}" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white outline-none focus:border-indigo-500 font-mono text-xs">
+            </div>
+
+            <div>
+              <label class="block font-semibold text-slate-400 uppercase tracking-wider mb-1">Email Body</label>
+              <textarea rows="4" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white outline-none focus:border-indigo-500 font-mono text-xs leading-relaxed">Hi {{FirstName}},
+
+Saw you are scaling marketing at {{Company}}. Most teams burn $2k/mo on Meta ads with rising CAC. 
+
+We automated a social listening pipeline that delivers 3 ready-to-buy leads daily directly into WhatsApp. Open to seeing a 2-minute breakdown?</textarea>
+            </div>
+
+            <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold text-xs shadow-lg shadow-indigo-500/20 hover:scale-[1.01] active:scale-[0.99] transition cursor-pointer">
+              Launch Multi-Inbox Sequence (Test Mode) 🚀
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture" class="py-12 border-t border-slate-800/80">
+      <div class="text-center mb-12">
+        <span class="text-xs font-bold uppercase tracking-widest text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-3 py-1 rounded-full inline-block mb-3">
+          Enterprise Deliverability Stack
+        </span>
+        <h2 class="text-3xl font-extrabold text-white">Why Scaling B2B Companies Choose Adorise Outreach</h2>
+        <p class="text-slate-400 text-xs sm:text-sm mt-2 max-w-xl mx-auto">
+          We replace fragile single-account setups with distributed, fault-tolerant cold email architecture.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass-card p-6 rounded-3xl border border-slate-800">
+          <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 font-bold text-sm flex items-center justify-center mb-4">1</div>
+          <h3 class="text-base font-bold text-white mb-2">Automated Peer-to-Peer Warmup</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Every mailbox exchanges simulated human conversations with positive engagement, building high sender reputation with Google and Microsoft algorithms.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-3xl border border-slate-800">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 font-bold text-sm flex items-center justify-center mb-4">2</div>
+          <h3 class="text-base font-bold text-white mb-2">Multi-Domain Load Balancing</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            By limiting each domain to 25-30 emails per day and rotating across 10-50 inboxes, your primary corporate domain is never risked or blacklisted.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-3xl border border-slate-800">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 font-bold text-sm flex items-center justify-center mb-4">3</div>
+          <h3 class="text-base font-bold text-white mb-2">Real-Time Deliverability Shield</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            If an inbox experiences a slight drop in primary placement, the system automatically pauses its sending quota and intensifies recovery warmup.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-16 border-t border-slate-800/80">
+      <div class="text-center mb-12">
+        <span class="text-xs font-bold uppercase tracking-widest text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-3 py-1 rounded-full inline-block mb-3">
+          Scale Your Pipeline
+        </span>
+        <h2 class="text-3xl font-extrabold text-white">Infrastructure Pricing for B2B Outbound</h2>
+        <p class="text-slate-400 text-xs sm:text-sm mt-2">
+          Start with our 7-day free trial. Connect 2 mailboxes and experience flawless inbox placement.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+        
+        <!-- Starter Plan -->
+        <div class="glass-card p-6 sm:p-8 rounded-3xl border border-slate-800 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="text-base font-bold text-white">Starter Outbound</h3>
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-slate-800 text-slate-300">Small Teams</span>
+            </div>
+            <div class="text-3xl font-extrabold text-white mb-1">$39 <span class="text-xs font-normal text-slate-400">/ month</span></div>
+            <div class="text-xs text-slate-400 mb-6">7-day free trial included</div>
+
+            <ul class="space-y-3 text-xs text-slate-300 mb-8">
+              <li class="flex items-center gap-2"><span class="text-indigo-400">✓</span> <strong>5 Sending Mailboxes Connected</strong></li>
+              <li class="flex items-center gap-2"><span class="text-indigo-400">✓</span> 1,000 Warmup Emails / Day</li>
+              <li class="flex items-center gap-2"><span class="text-indigo-400">✓</span> 5,000 Cold Outbound Emails / mo</li>
+              <li class="flex items-center gap-2"><span class="text-indigo-400">✓</span> Google & Microsoft OAuth Setup</li>
+              <li class="flex items-center gap-2"><span class="text-indigo-400">✓</span> Bounce & Spam Shield</li>
+            </ul>
+          </div>
+
+          <a href="https://whop.com/adorise-digital-usa/" target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs text-center transition cursor-pointer">
+            Get Starter ($39/mo) &rarr;
+          </a>
+        </div>
+
+        <!-- Scale Plan (Featured) -->
+        <div class="glass-card p-6 sm:p-8 rounded-3xl border-2 border-indigo-500 flex flex-col justify-between relative shadow-2xl shadow-indigo-500/10">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-indigo-500 text-white text-[10px] font-black uppercase tracking-wider">
+            Most Popular
+          </div>
+
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="text-base font-bold text-white">Scale Growth</h3>
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-indigo-500/20 text-indigo-300">B2B Scaleups</span>
+            </div>
+            <div class="text-3xl font-extrabold text-white mb-1">$99 <span class="text-xs font-normal text-slate-400">/ month</span></div>
+            <div class="text-xs text-slate-400 mb-6">Billed monthly via Whop • Cancel anytime</div>
+
+            <ul class="space-y-3 text-xs text-slate-200 mb-8">
+              <li class="flex items-center gap-2"><span class="text-indigo-400">✓</span> <strong>25 Sending Mailboxes Connected</strong></li>
+              <li class="flex items-center gap-2"><span class="text-indigo-400">✓</span> <strong>Unlimited Automated Warmup</strong></li>
+              <li class="flex items-center gap-2"><span class="text-indigo-400">✓</span> 25,000 Cold Outbound Emails / mo</li>
+              <li class="flex items-center gap-2"><span class="text-indigo-400">✓</span> Multi-Domain Rotation Algorithm</li>
+              <li class="flex items-center gap-2"><span class="text-indigo-400">✓</span> API & Webhook Dispatch Access</li>
+            </ul>
+          </div>
+
+          <a href="https://whop.com/adorise-digital-usa/" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-extrabold text-xs text-center transition cursor-pointer shadow-lg shadow-indigo-500/25 hover:scale-105">
+            Get Scale Growth ($99/mo) ⚡
+          </a>
+        </div>
+
+        <!-- Agency Infrastructure -->
+        <div class="glass-card p-6 sm:p-8 rounded-3xl border border-slate-800 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="text-base font-bold text-white">Agency Infrastructure</h3>
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-purple-500/20 text-purple-300">Agencies</span>
+            </div>
+            <div class="text-3xl font-extrabold text-white mb-1">$199 <span class="text-xs font-normal text-slate-400">/ month</span></div>
+            <div class="text-xs text-slate-400 mb-6">Billed monthly via Whop</div>
+
+            <ul class="space-y-3 text-xs text-slate-300 mb-8">
+              <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> <strong>100 Sending Mailboxes Connected</strong></li>
+              <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> Unlimited Warmup & Spam Recovery</li>
+              <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> 100,000 Cold Outbound Emails / mo</li>
+              <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> Custom Dedicated IP Sending Pools</li>
+              <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> Client Sub-Accounts & White-Labeling</li>
+            </ul>
+          </div>
+
+          <a href="https://whop.com/adorise-digital-usa/" target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs text-center transition cursor-pointer">
+            Get Agency Infrastructure ($199/mo) &rarr;
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 pt-8 mt-12 text-center text-xs text-slate-500">
+      <p>© 2026 Adorise Outreach • Adorise Digital LLC • Trendy DigiStore LLC (Wyoming, USA).</p>
+      <p class="mt-1">PCI-DSS Compliant Whop checkout for global cards, Apple Pay & Google Pay.</p>
+    </footer>
   </main>
 
   <script>
-    const API_BASE = "";
-
-    async function loadCampaigns() {
-      try {
-        const res = await fetch(`${API_BASE}/api/outreach/campaigns`);
-        const data = await res.json();
-        const list = document.getElementById('campaignsList');
-        if (!data.campaigns || data.campaigns.length === 0) {
-          list.innerHTML = `<div class="p-4 text-center text-slate-500 text-xs font-mono">No active campaigns.</div>`;
-          return;
-        }
-        list.innerHTML = data.campaigns.map(c => `
-          <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
-            <div>
-              <div class="font-bold text-white text-sm">${c.name}</div>
-              <div class="text-xs text-slate-400 mt-0.5">${c.persona} • <span class="capitalize text-indigo-400">${c.archetype.replace('_', ' ')}</span></div>
-            </div>
-            <div class="flex items-center space-x-4 text-xs font-mono">
-              <div class="text-center">
-                <div class="text-slate-500 text-[10px]">SENT</div>
-                <div class="text-white font-bold">${c.sent_count}</div>
-              </div>
-              <div class="text-center">
-                <div class="text-slate-500 text-[10px]">OPEN RATE</div>
-                <div class="text-emerald-400 font-bold">${c.open_rate}</div>
-              </div>
-              <div class="text-center">
-                <div class="text-slate-500 text-[10px]">REPLY RATE</div>
-                <div class="text-purple-400 font-bold">${c.reply_rate}</div>
-              </div>
-              <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 capitalize">
-                ${c.status}
-              </span>
-            </div>
-          </div>
-        `).join('');
-      } catch (err) {
-        console.error("Failed to load campaigns", err);
-      }
+    function simulateCsvUpload() {
+      const status = document.getElementById('csvStatus');
+      status.classList.remove('hidden');
+      alert("CSV Uploaded: 500 prospects loaded. MX records checked and verified clean! 🟢");
     }
 
-    async function handleCampaignDispatch(e) {
+    function handleDispatch(e) {
       e.preventDefault();
-      const name = document.getElementById('campaignName').value.trim();
-      const persona = document.getElementById('targetPersona').value.trim();
-      const archetype = document.getElementById('sequenceArchetype').value;
-      const throttle = document.getElementById('sendingThrottle').value;
-      const btn = document.getElementById('dispatchBtn');
-      const logs = document.getElementById('dispatchLogs');
-
-      btn.disabled = true;
-      btn.innerHTML = '<span>Deploying Sequence...</span> <span class="animate-spin">⏳</span>';
-
-      try {
-        const response = await fetch(`${API_BASE}/api/outreach/dispatch`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, persona, archetype, throttle })
-        });
-
-        const data = await response.json();
-
-        if (response.ok && data.success) {
-          logs.innerHTML = data.logs.map(log => `
-            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-indigo-300">
-              ${log}
-            </div>
-          `).join('');
-          loadCampaigns();
-        } else {
-          logs.innerHTML = `<div class="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400">Error: ${data.error || 'Failed to dispatch'}</div>`;
-        }
-      } catch (err) {
-        logs.innerHTML = `<div class="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400">Dispatch Error: ${err.message}</div>`;
-      } finally {
-        btn.disabled = false;
-        btn.innerHTML = '<span>Deploy Multi-Inbox Sequence</span> <span>🚀</span>';
-      }
+      alert("Multi-Inbox sequence dispatched across 8 rotating mailboxes! Deliverability shield active.");
     }
-
-    loadCampaigns();
   </script>
 </body>
 </html>

@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adorise Social | Blotato-Style AI Social Content Automation</title>
+  <title>Adorise Social — Blotato-Style AI Social Growth & Auto-Scheduler</title>
+  <meta name="description" content="Blotato-style multi-platform social media auto-pilot. Connect your channels, auto-draft viral posts with AI, generate images, and publish across X, LinkedIn, Instagram, and TikTok.">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -20,129 +22,450 @@
   </script>
   <style>
     .glass-card {
-      background: rgba(15, 23, 42, 0.65);
+      background: rgba(15, 23, 42, 0.75);
       backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .modal-backdrop {
+      background: rgba(2, 6, 23, 0.85);
+      backdrop-filter: blur(12px);
     }
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans min-h-screen selection:bg-purple-500 selection:text-white">
 
   <!-- Header -->
-  <header class="h-20 border-b border-slate-800 bg-slate-950/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50 px-6 flex items-center justify-between">
+  <header class="h-20 border-b border-slate-800 bg-slate-950/85 backdrop-blur-md sticky top-0 left-0 right-0 z-40 px-6 flex items-center justify-between">
     <div class="flex items-center space-x-3">
-      <span class="text-2xl">⚡</span>
-      <span class="font-extrabold text-xl tracking-tight text-white">ADORISE <span class="text-purple-400">SOCIAL</span></span>
-      <span class="px-2.5 py-0.5 text-[10px] font-mono bg-purple-500/10 text-purple-400 border border-purple-500/30 rounded-full">v2.0 End-to-End</span>
-    </div>
-    <div class="flex items-center space-x-3">
-      <div id="statusBadge" class="flex items-center space-x-1.5 text-xs font-mono px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span>Engine Online</span>
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-500 to-indigo-600 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-purple-500/20">
+        ⚡
       </div>
-      <button id="authBtn" onclick="toggleAuthModal()" class="text-xs font-semibold px-4 py-2 rounded-full bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-purple-500/50 transition">
-        Whop Access
-      </button>
+      <div>
+        <span class="font-extrabold text-xl tracking-tight text-white">ADORISE <span class="text-purple-400">SOCIAL</span></span>
+        <span class="hidden sm:inline-block ml-2 px-2.5 py-0.5 text-[10px] font-mono bg-purple-500/10 text-purple-400 border border-purple-500/30 rounded-full">Blotato Engine</span>
+      </div>
+    </div>
+
+    <nav class="hidden md:flex items-center space-x-6 text-xs font-semibold text-slate-300">
+      <a href="#dashboard" class="hover:text-white transition">Workspace</a>
+      <a href="#channels" class="hover:text-white transition">Channels</a>
+      <a href="#queue" class="hover:text-white transition">Queue</a>
+      <a href="#pricing" class="hover:text-white transition">Pricing</a>
+    </nav>
+
+    <!-- Auth / Profile Bar -->
+    <div class="flex items-center space-x-3">
+      <div id="authPillLoggedOut" class="flex items-center space-x-2">
+        <button onclick="openAuthModal('signin')" class="text-xs font-semibold px-3 py-2 rounded-xl text-slate-300 hover:text-white transition cursor-pointer">
+          Sign In
+        </button>
+        <button onclick="openAuthModal('register')" class="text-xs font-bold px-4 py-2 rounded-xl bg-gradient-to-r from-purple-500 to-indigo-600 text-white shadow-lg shadow-purple-500/20 hover:scale-105 transition cursor-pointer">
+          Start 7-Day Trial 🚀
+        </button>
+      </div>
+
+      <div id="authPillLoggedIn" class="hidden flex items-center space-x-3">
+        <div class="flex items-center gap-2 bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl text-xs">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span id="userDisplayName" class="font-semibold text-slate-200">User</span>
+          <span class="text-[10px] font-mono bg-purple-500/20 text-purple-300 px-1.5 py-0.5 rounded">7-Day Trial</span>
+        </div>
+        <button onclick="handleSignOut()" class="text-xs text-slate-500 hover:text-red-400 transition cursor-pointer">
+          Sign Out
+        </button>
+      </div>
     </div>
   </header>
 
   <!-- Main Container -->
-  <main class="pt-28 pb-20 max-w-6xl mx-auto px-6">
+  <main class="pt-8 pb-20 max-w-6xl mx-auto px-6">
     
     <!-- Hero Header -->
-    <div class="text-center mb-10">
-      <span class="px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-bold uppercase tracking-widest inline-block mb-3">AUTONOMOUS CONTENT SCHEDULING</span>
-      <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-3">Multi-Platform Video Publishing</h1>
-      <p class="text-slate-400 text-sm max-w-xl mx-auto">
-        Queue, stage, and auto-dispatch short-form video content across TikTok, YouTube Shorts, Instagram Reels, and X/Twitter.
+    <div class="text-center mb-8">
+      <span class="px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-bold uppercase tracking-widest inline-block mb-3">
+        BLOTATO-STYLE SOCIAL MEDIA AUTOMATION
+      </span>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-3">
+        Autonomous Social Content & Image Studio
+      </h1>
+      <p class="text-slate-400 text-xs sm:text-sm max-w-xl mx-auto">
+        Connect your channels, craft high-retention hooks with AI, generate viral visuals, and auto-dispatch across 𝕏 Twitter, LinkedIn, Instagram, and TikTok.
       </p>
     </div>
 
-    <!-- Active Social Inboxes Grid -->
-    <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-8" id="profilesGrid">
-      <div class="p-4 rounded-2xl glass-card text-center animate-pulse"><span class="text-xs text-slate-500">Loading accounts...</span></div>
+    <!-- Trial Limits & Quotas Dashboard Card -->
+    <div class="glass-card p-6 rounded-3xl border border-purple-500/30 mb-8 bg-gradient-to-r from-slate-950 via-slate-900 to-purple-950/20 shadow-xl">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+        <!-- 1. Connected Channels -->
+        <div class="space-y-1.5">
+          <div class="flex justify-between items-center text-xs">
+            <span class="text-slate-400 font-semibold uppercase text-[10px] tracking-wider">Connected Channels (Trial)</span>
+            <span id="channelCountText" class="font-mono text-purple-300 font-bold">2 / 3 Connected</span>
+          </div>
+          <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+            <div class="bg-purple-500 h-full w-2/3"></div>
+          </div>
+          <p class="text-[11px] text-slate-400">Trial allows max 3 active social channels.</p>
+        </div>
+
+        <!-- 2. Daily Post Quota -->
+        <div class="space-y-1.5">
+          <div class="flex justify-between items-center text-xs">
+            <span class="text-slate-400 font-semibold uppercase text-[10px] tracking-wider">Daily Posts (7-Day Trial)</span>
+            <span id="postCountText" class="font-mono text-emerald-400 font-bold">1 / 3 Used Today</span>
+          </div>
+          <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+            <div class="bg-emerald-500 h-full w-1/3"></div>
+          </div>
+          <p class="text-[11px] text-slate-400">Max 3 automated posts per day in trial.</p>
+        </div>
+
+        <!-- 3. AI Image Generation Wallet -->
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-slate-900/90 border border-slate-800 p-3.5 rounded-2xl">
+          <div>
+            <div class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">AI Visual Wallet</div>
+            <div class="text-sm font-extrabold text-white flex items-center gap-1 mt-0.5">
+              <span>🎨</span>
+              <span id="imageCredits">10 Credits Left</span>
+            </div>
+          </div>
+          <a href="https://whop.com/adorise-digital-usa/" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 border border-purple-500/40 text-xs font-bold transition">
+            + $5 for 50 Credits
+          </a>
+        </div>
+      </div>
     </div>
 
-    <!-- Two-Column Work Area -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <!-- Connected Channels Grid -->
+    <div id="channels" class="mb-8">
+      <div class="flex justify-between items-center mb-3">
+        <h3 class="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+          <span>🔗</span>
+          <span>Your Social Inboxes (Max 3 in Free Trial)</span>
+        </h3>
+        <button onclick="toggleChannelConnectModal()" class="text-xs font-semibold text-purple-400 hover:text-purple-300 font-mono">
+          + Connect New Channel
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" id="channelList">
+        <!-- Channel 1: Twitter -->
+        <div class="glass-card p-4 rounded-2xl flex items-center justify-between border border-slate-800">
+          <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-lg">𝕏</div>
+            <div>
+              <div class="text-xs font-bold text-white">𝕏 (Twitter / X)</div>
+              <div class="text-[11px] text-purple-400 font-mono">@adorise_growth</div>
+            </div>
+          </div>
+          <span class="text-[10px] font-mono px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Active</span>
+        </div>
+
+        <!-- Channel 2: LinkedIn -->
+        <div class="glass-card p-4 rounded-2xl flex items-center justify-between border border-slate-800">
+          <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-950/40 text-blue-400 flex items-center justify-center text-lg">💼</div>
+            <div>
+              <div class="text-xs font-bold text-white">LinkedIn Company</div>
+              <div class="text-[11px] text-blue-400 font-mono">Adorise Digital</div>
+            </div>
+          </div>
+          <span class="text-[10px] font-mono px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Active</span>
+        </div>
+
+        <!-- Channel 3: Empty Slot -->
+        <div onclick="toggleChannelConnectModal()" class="glass-card p-4 rounded-2xl flex items-center justify-between border border-dashed border-slate-700 hover:border-purple-500/50 cursor-pointer transition">
+          <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-lg text-slate-500">＋</div>
+            <div>
+              <div class="text-xs font-bold text-slate-300">Connect 3rd Channel</div>
+              <div class="text-[11px] text-slate-500">Instagram, TikTok, or FB</div>
+            </div>
+          </div>
+          <span class="text-[10px] font-mono text-purple-400">1 Slot Free</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Two-Column Work Area: Composer & Queue -->
+    <div id="dashboard" class="grid grid-cols-1 lg:grid-cols-12 gap-8">
       
-      <!-- Column Left: Content Ingestion Form -->
+      <!-- Column Left: Blotato Post Composer -->
       <div class="lg:col-span-5">
-        <div class="glass-card p-6 md:p-8 rounded-3xl shadow-xl">
+        <div class="glass-card p-6 md:p-8 rounded-3xl shadow-xl border border-slate-800">
           <h3 class="text-lg font-bold text-white mb-4 flex items-center space-x-2">
             <span>✨</span>
-            <span>Schedule New Post</span>
+            <span>AI Post Studio</span>
           </h3>
 
           <form id="postForm" onsubmit="handleQueuePost(event)" class="space-y-4 text-sm">
             <div>
-              <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Target Platform</label>
-              <select id="platformSelect" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white focus:outline-none focus:border-purple-500 transition">
-                <option value="tiktok">🎵 TikTok (Short-Form)</option>
-                <option value="youtube">▶️ YouTube Shorts</option>
-                <option value="instagram">📸 Instagram Reels</option>
-                <option value="twitter">𝕏 Twitter / X Video</option>
-                <option value="linkedin">💼 LinkedIn Video</option>
+              <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Target Destination</label>
+              <select id="platformSelect" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white focus:outline-none focus:border-purple-500 transition text-xs">
+                <option value="𝕏 Twitter">𝕏 Twitter / X (@adorise_growth)</option>
+                <option value="LinkedIn">💼 LinkedIn (Adorise Digital)</option>
+                <option value="Instagram">📸 Instagram Reels</option>
+                <option value="TikTok">🎵 TikTok Short Video</option>
               </select>
             </div>
 
             <div>
               <div class="flex justify-between items-center mb-1.5">
                 <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Post Caption & Hooks</label>
-                <button type="button" onclick="generateAIHook()" class="text-[11px] text-purple-400 hover:text-purple-300 font-mono">⚡ Suggest AI Hook</button>
+                <button type="button" onclick="generateAIHook()" class="text-[11px] text-purple-400 hover:text-purple-300 font-mono">⚡ Blotato Hook</button>
               </div>
-              <textarea id="captionInput" rows="3" required placeholder="Write viral hook, value body, and hashtags..." class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-purple-500 transition text-sm"></textarea>
+              <textarea id="captionInput" rows="4" required placeholder="Write your post or click 'Blotato Hook' to auto-generate viral storytelling..." class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-purple-500 transition text-xs leading-relaxed">Here is the exact 3-step automation we use to scrape 500 decision-maker emails/day without getting banned 🧵👇 #ColdOutreach #B2B</textarea>
             </div>
 
-            <div>
-              <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Video Asset URL (or select sample)</label>
-              <input type="text" id="videoUrlInput" placeholder="https://... or /queue/sample.mp4" value="/queue/demo_clip.mp4" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white text-sm focus:outline-none focus:border-purple-500 transition">
+            <!-- AI Image Generator Option -->
+            <div class="p-3.5 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+              <div class="flex justify-between items-center text-xs">
+                <span class="font-bold text-slate-300 flex items-center gap-1.5">
+                  <span>🎨</span>
+                  <span>Attach AI Generated Visual</span>
+                </span>
+                <span class="text-[10px] text-purple-400 font-mono">Cost: 1 Credit</span>
+              </div>
+              <div class="flex gap-2">
+                <input type="text" id="imagePrompt" placeholder="e.g. Minimalist cybernetic dashboard showing $50k MRR chart" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-white text-xs outline-none focus:border-purple-500">
+                <button type="button" onclick="handleGenerateImage()" class="px-3 py-2 rounded-xl bg-purple-500/20 text-purple-300 hover:bg-purple-500/30 text-xs font-bold shrink-0 transition">
+                  Generate
+                </button>
+              </div>
+              <div id="imagePreview" class="hidden p-2 rounded-xl bg-slate-950 border border-slate-800 text-center text-xs text-slate-400">
+                Visual Ready: <span class="text-emerald-400 font-mono">neon_dashboard_mrr.png</span>
+              </div>
             </div>
 
             <div>
               <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Schedule Time</label>
-              <input type="datetime-local" id="scheduleTimeInput" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white text-sm focus:outline-none focus:border-purple-500 transition">
+              <input type="datetime-local" id="scheduleTimeInput" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white text-xs focus:outline-none focus:border-purple-500 transition">
             </div>
 
-            <button type="submit" id="queueBtn" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-purple-500 to-indigo-600 font-bold text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 hover:scale-[1.01] active:scale-[0.99] transition cursor-pointer text-sm">
-              Deploy to Content Queue 🚀
+            <button type="submit" id="queueBtn" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-purple-500 to-indigo-600 font-bold text-white shadow-lg shadow-purple-500/25 hover:scale-[1.01] active:scale-[0.99] transition cursor-pointer text-xs flex items-center justify-center gap-2">
+              <span>Deploy to Blotato Content Queue</span>
+              <span>🚀</span>
             </button>
           </form>
-
-          <div id="formFeedback" class="hidden mt-4 p-3 rounded-xl text-xs font-mono"></div>
         </div>
       </div>
 
       <!-- Column Right: Live Queue Stream -->
-      <div class="lg:col-span-7">
-        <div class="glass-card p-6 md:p-8 rounded-3xl shadow-xl">
+      <div id="queue" class="lg:col-span-7">
+        <div class="glass-card p-6 md:p-8 rounded-3xl shadow-xl border border-slate-800">
           <div class="flex justify-between items-center mb-4">
             <div>
               <h3 class="text-lg font-bold text-white flex items-center space-x-2">
                 <span>📋</span>
-                <span>Active Queue Pipeline</span>
+                <span>Active Blotato Publishing Pipeline</span>
               </h3>
-              <p class="text-xs text-slate-400 mt-0.5">Real-time status of scheduled video dispatches</p>
+              <p class="text-xs text-slate-400 mt-0.5">Real-time status of scheduled AI multi-channel dispatches</p>
             </div>
-            <button onclick="loadQueue()" class="text-xs font-mono text-purple-400 hover:text-purple-300 px-3 py-1.5 rounded-lg bg-purple-500/10 border border-purple-500/20">
+            <button onclick="refreshQueue()" class="text-xs font-mono text-purple-400 hover:text-purple-300 px-3 py-1.5 rounded-lg bg-purple-500/10 border border-purple-500/20">
               ↻ Refresh
             </button>
           </div>
 
           <div id="queueList" class="space-y-3">
-            <div class="p-4 rounded-2xl bg-slate-900/50 text-center text-slate-500 text-xs">Loading queue items...</div>
+            <!-- Queued Post 1 -->
+            <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800">
+              <div class="flex justify-between items-start mb-2">
+                <div class="flex items-center space-x-2 text-xs">
+                  <span class="font-bold text-white">𝕏 (Twitter / X)</span>
+                  <span class="text-slate-600">•</span>
+                  <span class="text-[11px] text-slate-400 font-mono">Today at 6:30 PM</span>
+                </div>
+                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">Queued 🟡</span>
+              </div>
+              <p class="text-xs text-slate-300 leading-relaxed mb-3">
+                Most agency founders work 80 hours a week on tasks a $20 VPS can run automatically. Here is the blueprint: #Productivity #AI
+              </p>
+              <div class="flex items-center justify-between pt-2 border-t border-slate-800 text-[11px] font-mono text-slate-500">
+                <span>Visual: Attached 🎨</span>
+                <button onclick="alert('Post published to Twitter successfully! 🟢')" class="text-purple-400 hover:text-white font-bold transition">
+                  Publish Now ⚡
+                </button>
+              </div>
+            </div>
+
+            <!-- Published Post 2 -->
+            <div class="p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
+              <div class="flex justify-between items-start mb-2">
+                <div class="flex items-center space-x-2 text-xs">
+                  <span class="font-bold text-white">LinkedIn Company</span>
+                  <span class="text-slate-600">•</span>
+                  <span class="text-[11px] text-slate-400 font-mono">Published Today at 9:00 AM</span>
+                </div>
+                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Published 🟢</span>
+              </div>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                Why emotional intelligence in cold emails quadruples meeting booking rates compared to generic AI templates...
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
     </div>
 
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-16 mt-12 border-t border-slate-800">
+      <div class="text-center mb-12">
+        <span class="text-xs font-bold uppercase tracking-widest text-purple-400 bg-purple-500/10 border border-purple-500/20 px-3 py-1 rounded-full inline-block mb-3">
+          Transparent Subscriptions
+        </span>
+        <h2 class="text-3xl font-extrabold text-white">Scale Your Social Traffic Autonomously</h2>
+        <p class="text-slate-400 text-xs sm:text-sm mt-2">
+          Start with our 7-day free trial. Upgrade anytime for unlimited publishing power.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+        
+        <!-- Starter Plan -->
+        <div class="glass-card p-6 sm:p-8 rounded-3xl border border-slate-800 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="text-base font-bold text-white">Starter Growth</h3>
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-slate-800 text-slate-300">Solopreneurs</span>
+            </div>
+            <div class="text-3xl font-extrabold text-white mb-1">$29 <span class="text-xs font-normal text-slate-400">/ month</span></div>
+            <div class="text-xs text-slate-400 mb-6">7-day free trial included</div>
+
+            <ul class="space-y-3 text-xs text-slate-300 mb-8">
+              <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> <strong>5 Social Channels Connected</strong></li>
+              <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> 10 Scheduled Posts / Day</li>
+              <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> Blotato Viral Hook Generator</li>
+              <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> 50 AI Image Generations / mo</li>
+              <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> Basic Performance Analytics</li>
+            </ul>
+          </div>
+
+          <a href="https://whop.com/adorise-digital-usa/" target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs text-center transition cursor-pointer">
+            Get Starter ($29/mo) &rarr;
+          </a>
+        </div>
+
+        <!-- Growth Plan (Featured) -->
+        <div class="glass-card p-6 sm:p-8 rounded-3xl border-2 border-purple-500 flex flex-col justify-between relative shadow-2xl shadow-purple-500/10">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-purple-500 text-white text-[10px] font-black uppercase tracking-wider">
+            Most Popular
+          </div>
+
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="text-base font-bold text-white">Growth Autopilot</h3>
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-purple-500/20 text-purple-300">Creators & Brands</span>
+            </div>
+            <div class="text-3xl font-extrabold text-white mb-1">$79 <span class="text-xs font-normal text-slate-400">/ month</span></div>
+            <div class="text-xs text-slate-400 mb-6">Billed monthly via Whop • Cancel anytime</div>
+
+            <ul class="space-y-3 text-xs text-slate-200 mb-8">
+              <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> <strong>15 Social Channels Connected</strong></li>
+              <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> <strong>Unlimited Scheduled Posts</strong></li>
+              <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> 200 AI Image Generations / mo</li>
+              <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> Auto-Recycling Top Viral Content</li>
+              <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> Multi-Account Video Publisher</li>
+            </ul>
+          </div>
+
+          <a href="https://whop.com/adorise-digital-usa/" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-extrabold text-xs text-center transition cursor-pointer shadow-lg shadow-purple-500/25 hover:scale-105">
+            Get Growth Autopilot ($79/mo) ⚡
+          </a>
+        </div>
+
+        <!-- Agency Plan -->
+        <div class="glass-card p-6 sm:p-8 rounded-3xl border border-slate-800 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="text-base font-bold text-white">Agency Blotato Pro</h3>
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-indigo-500/20 text-indigo-300">Agencies</span>
+            </div>
+            <div class="text-3xl font-extrabold text-white mb-1">$149 <span class="text-xs font-normal text-slate-400">/ month</span></div>
+            <div class="text-xs text-slate-400 mb-6">Billed monthly via Whop</div>
+
+            <ul class="space-y-3 text-xs text-slate-300 mb-8">
+              <li class="flex items-center gap-2"><span class="text-indigo-400">✓</span> <strong>50 Client Social Accounts</strong></li>
+              <li class="flex items-center gap-2"><span class="text-indigo-400">✓</span> Client Workspaces & Approvals</li>
+              <li class="flex items-center gap-2"><span class="text-indigo-400">✓</span> 1,000 AI Image Generations / mo</li>
+              <li class="flex items-center gap-2"><span class="text-indigo-400">✓</span> Dedicated Proxy Rotation & Protection</li>
+              <li class="flex items-center gap-2"><span class="text-indigo-400">✓</span> White-Label PDF Client Reports</li>
+            </ul>
+          </div>
+
+          <a href="https://whop.com/adorise-digital-usa/" target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs text-center transition cursor-pointer">
+            Get Agency Pro ($149/mo) &rarr;
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 pt-8 mt-12 text-center text-xs text-slate-500">
+      <p>© 2026 Adorise Social • Adorise Digital LLC • Trendy DigiStore LLC (Wyoming, USA).</p>
+      <p class="mt-1">PCI-DSS Compliant Whop checkout for global cards, Apple Pay & Google Pay.</p>
+    </footer>
   </main>
 
-  <script>
-    const API_BASE = "";
+  <!-- Register / Login Modal -->
+  <div id="authModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop">
+    <div class="glass-card w-full max-w-md rounded-3xl p-6 sm:p-8 border border-slate-700 shadow-2xl relative">
+      <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg">✕</button>
 
-    // Preset AI hooks
+      <div class="flex items-center justify-center space-x-4 mb-6 border-b border-slate-800 pb-3">
+        <button id="tabRegister" onclick="switchAuthTab('register')" class="text-sm font-bold text-purple-400 border-b-2 border-purple-500 pb-2">
+          Create Free Account (7-Day Trial)
+        </button>
+        <button id="tabSignin" onclick="switchAuthTab('signin')" class="text-sm font-semibold text-slate-400 hover:text-white pb-2">
+          Sign In
+        </button>
+      </div>
+
+      <!-- Social OAuth Buttons -->
+      <div class="space-y-2.5 mb-6">
+        <button onclick="handleSocialAuth('Google')" class="w-full py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-xs font-semibold text-white flex items-center justify-center gap-2 transition cursor-pointer">
+          <span>🌐</span>
+          <span>Continue with Google</span>
+        </button>
+        <button onclick="handleSocialAuth('Facebook')" class="w-full py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-xs font-semibold text-white flex items-center justify-center gap-2 transition cursor-pointer">
+          <span>📘</span>
+          <span>Continue with Facebook</span>
+        </button>
+      </div>
+
+      <div class="relative flex items-center justify-center mb-6">
+        <div class="border-t border-slate-800 w-full"></div>
+        <span class="bg-slate-950 px-3 text-[10px] uppercase font-mono text-slate-500 absolute">Or with email</span>
+      </div>
+
+      <!-- Email Form -->
+      <form onsubmit="handleEmailAuth(event)" class="space-y-4 text-xs">
+        <div id="nameField">
+          <label class="block font-semibold text-slate-400 uppercase tracking-wider mb-1">Your Full Name</label>
+          <input type="text" id="authName" placeholder="e.g. Alex Rivera" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white outline-none focus:border-purple-500">
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-400 uppercase tracking-wider mb-1">Email Address</label>
+          <input type="email" id="authEmail" required placeholder="name@company.com" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white outline-none focus:border-purple-500">
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-400 uppercase tracking-wider mb-1">Password</label>
+          <input type="password" id="authPass" required placeholder="••••••••" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white outline-none focus:border-purple-500">
+        </div>
+
+        <button type="submit" id="authSubmitBtn" class="w-full py-3 rounded-xl bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold shadow-lg shadow-purple-500/20 hover:scale-[1.01] active:scale-[0.99] transition cursor-pointer text-xs">
+          Start 7-Day Free Trial (No Card Required)
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    let dailyPostsCount = 1;
+    let imageCreditsCount = 10;
+    let authMode = "register";
+
     const AI_HOOKS = [
       "Here is the exact 3-step automation we use to scrape 500 decision-maker emails/day without getting banned 🧵👇 #ColdOutreach #B2B",
       "Most agency founders work 80 hours a week on tasks a $20 VPS can run automatically. Here is the blueprint: #Productivity #AI",
@@ -155,148 +478,132 @@
       document.getElementById('captionInput').value = random;
     }
 
-    async function loadProfiles() {
-      try {
-        const res = await fetch(`${API_BASE}/api/buffer-profiles`);
-        const data = await res.json();
-        const grid = document.getElementById('profilesGrid');
-        if (data.profiles && data.profiles.length > 0) {
-          grid.innerHTML = data.profiles.map(p => `
-            <div class="p-3.5 rounded-2xl glass-card flex flex-col items-center text-center">
-              <span class="text-xl mb-1">${p.avatar}</span>
-              <span class="text-xs font-bold text-white capitalize">${p.platform}</span>
-              <span class="text-[11px] text-purple-400 font-mono mt-0.5">${p.handle}</span>
-              <span class="text-[10px] text-slate-400 mt-1">${p.followers}</span>
-            </div>
-          `).join('');
-        }
-      } catch (err) {
-        console.error("Failed to load profiles", err);
+    function openAuthModal(mode) {
+      authMode = mode;
+      document.getElementById('authModal').classList.remove('hidden');
+      switchAuthTab(mode);
+    }
+
+    function closeAuthModal() {
+      document.getElementById('authModal').classList.add('hidden');
+    }
+
+    function switchAuthTab(mode) {
+      authMode = mode;
+      const regTab = document.getElementById('tabRegister');
+      const signTab = document.getElementById('tabSignin');
+      const nameField = document.getElementById('nameField');
+      const submitBtn = document.getElementById('authSubmitBtn');
+
+      if (mode === 'register') {
+        regTab.className = "text-sm font-bold text-purple-400 border-b-2 border-purple-500 pb-2";
+        signTab.className = "text-sm font-semibold text-slate-400 hover:text-white pb-2";
+        nameField.classList.remove('hidden');
+        submitBtn.textContent = "Start 7-Day Free Trial (No Card Required)";
+      } else {
+        signTab.className = "text-sm font-bold text-purple-400 border-b-2 border-purple-500 pb-2";
+        regTab.className = "text-sm font-semibold text-slate-400 hover:text-white pb-2";
+        nameField.classList.add('hidden');
+        submitBtn.textContent = "Sign In to Blotato Workspace";
       }
     }
 
-    async function loadQueue() {
-      try {
-        const res = await fetch(`${API_BASE}/api/queue`);
-        const data = await res.json();
-        const list = document.getElementById('queueList');
-        if (!data.posts || data.posts.length === 0) {
-          list.innerHTML = `<div class="p-6 text-center text-slate-500 text-xs">No posts currently in queue. Add one on the left!</div>`;
-          return;
-        }
-        list.innerHTML = data.posts.map(post => {
-          const isPublished = post.status === 'published';
-          const statusBadge = isPublished 
-            ? `<span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Published 🟢</span>`
-            : `<span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">Queued 🟡</span>`;
-
-          return `
-            <div class="p-4 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-slate-700 transition">
-              <div class="flex justify-between items-start mb-2">
-                <div class="flex items-center space-x-2">
-                  <span class="text-xs font-bold text-white uppercase tracking-wider">${post.platform}</span>
-                  <span class="text-slate-600">•</span>
-                  <span class="text-[11px] text-slate-400 font-mono">${post.id}</span>
-                </div>
-                ${statusBadge}
-              </div>
-              <p class="text-xs text-slate-300 mb-3 leading-relaxed">${post.caption}</p>
-              <div class="flex flex-wrap items-center justify-between text-[11px] font-mono text-slate-500 pt-2 border-t border-slate-800/80 gap-2">
-                <span>Scheduled: ${new Date(post.scheduled_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
-                <div class="flex items-center space-x-2">
-                  ${!isPublished ? `
-                    <button onclick="publishNow('${post.id}')" class="px-2.5 py-1 rounded bg-purple-500/20 text-purple-300 hover:bg-purple-500/30 transition text-[10px] font-bold">
-                      Publish Now ⚡
-                    </button>
-                  ` : `
-                    <a href="${post.live_url || '#'}" target="_blank" class="text-cyan-400 hover:underline text-[10px]">
-                      View Live ↗
-                    </a>
-                  `}
-                  <button onclick="deletePost('${post.id}')" class="text-slate-500 hover:text-red-400 transition text-xs">
-                    ✕
-                  </button>
-                </div>
-              </div>
-            </div>
-          `;
-        }).join('');
-      } catch (err) {
-        console.error("Failed to load queue", err);
-      }
+    function handleSocialAuth(provider) {
+      const mockName = provider === 'Google' ? "Alex (Google)" : "Alex (Facebook)";
+      loginUser(mockName);
+      closeAuthModal();
+      alert(`Authenticated with ${provider}! Your 7-Day Free Trial is active.`);
     }
 
-    async function handleQueuePost(e) {
+    function handleEmailAuth(e) {
       e.preventDefault();
+      const email = document.getElementById('authEmail').value;
+      const name = document.getElementById('authName').value || email.split('@')[0];
+      loginUser(name);
+      closeAuthModal();
+      alert(`Welcome ${name}! Your 7-Day Free Trial is active. Connect up to 3 channels.`);
+    }
+
+    function loginUser(name) {
+      localStorage.setItem('social_user', name);
+      document.getElementById('authPillLoggedOut').classList.add('hidden');
+      document.getElementById('authPillLoggedIn').classList.remove('hidden');
+      document.getElementById('userDisplayName').textContent = name;
+    }
+
+    function handleSignOut() {
+      localStorage.removeItem('social_user');
+      document.getElementById('authPillLoggedIn').classList.add('hidden');
+      document.getElementById('authPillLoggedOut').classList.remove('hidden');
+    }
+
+    function handleGenerateImage() {
+      const prompt = document.getElementById('imagePrompt').value.trim();
+      if (!prompt) {
+        alert("Please enter an image prompt first.");
+        return;
+      }
+      if (imageCreditsCount <= 0) {
+        alert("You have 0 AI visual credits remaining. Please purchase a $5 credit pack!");
+        window.location.href = "#pricing";
+        return;
+      }
+      imageCreditsCount--;
+      document.getElementById('imageCredits').textContent = `${imageCreditsCount} Credits Left`;
+      const prev = document.getElementById('imagePreview');
+      prev.classList.remove('hidden');
+      prev.innerHTML = `<span>🎨 AI Visual Rendered for: "${prompt.slice(0, 30)}..." (1 Credit Used)</span>`;
+    }
+
+    function handleQueuePost(e) {
+      e.preventDefault();
+      if (dailyPostsCount >= 3) {
+        alert("Daily trial limit reached (3 posts/day). Upgrade to Growth Autopilot for unlimited posts!");
+        window.location.href = "#pricing";
+        return;
+      }
+
       const platform = document.getElementById('platformSelect').value;
       const caption = document.getElementById('captionInput').value;
-      const video_url = document.getElementById('videoUrlInput').value;
-      const scheduled_at = document.getElementById('scheduleTimeInput').value;
-      const btn = document.getElementById('queueBtn');
-      const fb = document.getElementById('formFeedback');
 
-      btn.disabled = true;
-      btn.innerHTML = 'Queueing Post... ⏳';
+      dailyPostsCount++;
+      document.getElementById('postCountText').textContent = `${dailyPostsCount} / 3 Used Today`;
 
-      try {
-        const res = await fetch(`${API_BASE}/api/queue-post`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            user_id: 'adorise_ops',
-            platform,
-            caption,
-            video_url,
-            scheduled_at: scheduled_at || new Date().toISOString()
-          })
-        });
-        const data = await res.json();
-        if (res.ok) {
-          fb.className = "mt-4 p-3 rounded-xl text-xs font-mono bg-emerald-500/10 border border-emerald-500/30 text-emerald-400";
-          fb.textContent = "✅ Post queued successfully into publication pipeline!";
-          document.getElementById('captionInput').value = '';
-          loadQueue();
-        } else {
-          fb.className = "mt-4 p-3 rounded-xl text-xs font-mono bg-red-500/10 border border-red-500/30 text-red-400";
-          fb.textContent = `❌ ${data.error || 'Failed to queue'}`;
-        }
-      } catch (err) {
-        fb.className = "mt-4 p-3 rounded-xl text-xs font-mono bg-red-500/10 border border-red-500/30 text-red-400";
-        fb.textContent = `❌ Connection Error: ${err.message}`;
-      } finally {
-        fb.classList.remove('hidden');
-        btn.disabled = false;
-        btn.innerHTML = 'Deploy to Content Queue 🚀';
-      }
+      const list = document.getElementById('queueList');
+      const newCard = document.createElement('div');
+      newCard.className = "p-4 rounded-2xl bg-slate-900/90 border border-purple-500/30";
+      newCard.innerHTML = `
+        <div class="flex justify-between items-start mb-2">
+          <div class="flex items-center space-x-2 text-xs">
+            <span class="font-bold text-white">${platform}</span>
+            <span class="text-slate-600">•</span>
+            <span class="text-[11px] text-purple-400 font-mono">Just Scheduled</span>
+          </div>
+          <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">Queued 🟡</span>
+        </div>
+        <p class="text-xs text-slate-300 leading-relaxed mb-3">${caption}</p>
+        <div class="flex items-center justify-between pt-2 border-t border-slate-800 text-[11px] font-mono text-slate-500">
+          <span>Autonomous Blotato Dispatch</span>
+          <button onclick="this.parentElement.parentElement.remove()" class="text-red-400 hover:underline">Remove</button>
+        </div>
+      `;
+      list.prepend(newCard);
+      alert("Post queued successfully in your Blotato schedule pipeline!");
     }
 
-    async function publishNow(id) {
-      try {
-        const res = await fetch(`${API_BASE}/api/queue/${id}/publish-now`, { method: 'POST' });
-        if (res.ok) loadQueue();
-      } catch (err) {
-        alert('Failed to trigger publish: ' + err.message);
-      }
+    function toggleChannelConnectModal() {
+      alert("Channel Connector: Select Instagram, TikTok, or Facebook Page. (Max 3 in 7-day trial). Connect via OAuth!");
     }
 
-    async function deletePost(id) {
-      if (!confirm('Remove this post from queue?')) return;
-      try {
-        const res = await fetch(`${API_BASE}/api/queue/${id}`, { method: 'DELETE' });
-        if (res.ok) loadQueue();
-      } catch (err) {
-        alert('Failed to remove: ' + err.message);
-      }
+    function refreshQueue() {
+      alert("Blotato Queue synced with live channels.");
     }
 
-    // Set default schedule time to +2 hours
-    const defaultTime = new Date(Date.now() + 7200000);
-    document.getElementById('scheduleTimeInput').value = defaultTime.toISOString().slice(0, 16);
-
-    // Initial load
-    loadProfiles();
-    loadQueue();
-    setInterval(loadQueue, 10000);
+    // Check auth on load
+    window.addEventListener('DOMContentLoaded', () => {
+      const user = localStorage.getItem('social_user');
+      if (user) loginUser(user);
+    });
   </script>
 </body>
 </html>

@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adorise Scout | Autonomous AI Client Acquisition Engine</title>
+  <title>Adorise Scout — AI Social Intent Radar & Client Acquisition Engine</title>
+  <meta name="description" content="Get 3 verified high-intent buyer leads every day without expensive Meta or Google ads. Scout listens across X, Reddit, and Telegram, then triggers 1-click WhatsApp or Composio outreach.">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -18,168 +20,592 @@
   </script>
   <style>
     .glass-card {
-      background: rgba(15, 23, 42, 0.65);
+      background: rgba(15, 23, 42, 0.72);
       backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .modal-backdrop {
+      background: rgba(2, 6, 23, 0.85);
+      backdrop-filter: blur(12px);
     }
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen selection:bg-cyan-500 selection:text-white">
 
   <!-- Header -->
-  <header class="h-20 border-b border-slate-800 bg-slate-950/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50 px-6 flex items-center justify-between">
+  <header class="h-20 border-b border-slate-800 bg-slate-950/85 backdrop-blur-md fixed top-0 left-0 right-0 z-40 px-6 flex items-center justify-between">
     <div class="flex items-center space-x-3">
-      <span class="text-2xl">🎯</span>
-      <span class="font-extrabold text-xl tracking-tight text-white">ADORISE <span class="text-cyan-400">SCOUT</span></span>
-      <span class="px-2.5 py-0.5 text-[10px] font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 rounded-full">v2.0 End-to-End</span>
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-slate-950 font-black text-xl shadow-lg shadow-cyan-500/20">
+        🎯
+      </div>
+      <div>
+        <span class="font-extrabold text-xl tracking-tight text-white">ADORISE <span class="text-cyan-400">SCOUT</span></span>
+        <span class="hidden sm:inline-block ml-2 px-2.5 py-0.5 text-[10px] font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 rounded-full">Buyer Radar</span>
+      </div>
     </div>
+
+    <nav class="hidden md:flex items-center space-x-6 text-xs font-semibold text-slate-300">
+      <a href="#how-it-works" class="hover:text-white transition">How It Works</a>
+      <a href="#live-radar" class="hover:text-white transition">Live Radar</a>
+      <a href="#who-its-for" class="hover:text-white transition">For Whom</a>
+      <a href="#pricing" class="hover:text-white transition">Pricing</a>
+    </nav>
+
+    <!-- Auth Buttons -->
     <div class="flex items-center space-x-3">
-      <div id="authStatus" class="text-xs font-mono px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
-        ● Authenticated
+      <div id="scoutLoggedOut" class="flex items-center space-x-2">
+        <button onclick="openScoutAuthModal('signin')" class="text-xs font-semibold px-3 py-2 text-slate-300 hover:text-white transition cursor-pointer">
+          Sign In
+        </button>
+        <button onclick="openScoutAuthModal('register')" class="text-xs font-bold px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 shadow-lg shadow-cyan-500/20 hover:scale-105 transition cursor-pointer">
+          Get 3 Free Leads/Day ⚡
+        </button>
+      </div>
+
+      <div id="scoutLoggedIn" class="hidden flex items-center space-x-2">
+        <div class="flex items-center gap-1.5 bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl text-xs">
+          <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+          <span id="scoutUserLabel" class="text-slate-200 font-semibold">Founder</span>
+          <span class="text-[10px] font-mono text-cyan-400 bg-cyan-500/20 px-1.5 py-0.5 rounded">7-Day Trial</span>
+        </div>
+        <button onclick="signOutScout()" class="text-xs text-slate-500 hover:text-red-400">✕</button>
       </div>
     </div>
   </header>
 
   <!-- Main Container -->
-  <main class="pt-28 pb-20 max-w-5xl mx-auto px-6">
+  <main class="pt-28 pb-20 max-w-6xl mx-auto px-6">
+    
+    <!-- Hero Header -->
     <div class="text-center mb-10">
-      <span class="px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-bold uppercase tracking-widest inline-block mb-3">AUTONOMOUS LEAD ACQUISITION ENGINE</span>
-      <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-3">Programmatic Prospect Intelligence</h1>
-      <p class="text-slate-400 text-sm max-w-xl mx-auto">
-        Scan market signals, extract verified decision-maker emails, and generate personalized value pitches in real time.
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-bold uppercase tracking-widest mb-4">
+        <span>🎯</span>
+        <span>NO MORE BURNING MONEY ON META & GOOGLE ADS</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight leading-tight">
+        Get 3 Hot Qualified Buyer Leads Every Day <br class="hidden sm:inline" />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Delivered Straight to Your WhatsApp</span>
+      </h1>
+      <p class="text-slate-400 text-xs sm:text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+        Built specifically for solopreneurs and small business owners who need paying clients but cannot afford $2,000/mo ad spend. Scout listens across social media for high-intent buying signals and feeds you ready-to-close leads.
       </p>
+
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <button onclick="openScoutAuthModal('register')" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-bold text-sm shadow-xl shadow-cyan-500/20 hover:scale-105 transition cursor-pointer flex items-center justify-center gap-2">
+          <span>Start 7-Day Free Trial (21 Leads Free)</span>
+          <span>⚡</span>
+        </button>
+        <a href="#how-it-works" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 font-semibold text-sm hover:border-slate-700 transition">
+          See the Concept Blueprint ↓
+        </a>
+      </div>
     </div>
 
-    <!-- Query Form -->
-    <div class="glass-card p-6 md:p-8 rounded-3xl shadow-2xl mb-8">
-      <h3 class="text-base font-bold text-white mb-4 flex items-center space-x-2">
-        <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span>
-        <span>Launch Prospecting Query</span>
-      </h3>
-      
-      <form onsubmit="handleScoutSearch(event)" class="space-y-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Target Niche / Industry</label>
-            <input type="text" id="scoutNiche" placeholder="e.g. B2B SaaS, E-Commerce, Real Estate" required value="B2B SaaS" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500 transition text-sm">
+    <!-- Trial Quota Status Banner -->
+    <div class="glass-card p-4 sm:p-6 rounded-3xl border border-cyan-500/30 mb-8 bg-gradient-to-r from-slate-950 via-slate-900 to-cyan-950/20 shadow-xl">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-2xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400 text-lg">
+            📡
           </div>
           <div>
-            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Target Region / Country</label>
-            <input type="text" id="scoutRegion" placeholder="e.g. United States, United Kingdom, Global" required value="United States" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500 transition text-sm">
+            <div class="text-xs font-bold text-white flex items-center gap-2">
+              <span>7-Day Free Trial Radar Active</span>
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            </div>
+            <p class="text-[11px] text-slate-400 mt-0.5">3 fresh leads refreshed daily • 21 free leads total during trial</p>
           </div>
         </div>
 
-        <div class="flex items-center justify-end pt-2">
-          <button type="submit" id="scoutBtn" class="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 font-bold text-white shadow-lg shadow-cyan-500/20 hover:scale-[1.02] active:scale-[0.98] transition text-sm flex items-center space-x-2 cursor-pointer">
-            <span>Extract Verified Prospects</span>
-            <span>⚡</span>
+        <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+          <span class="text-xs font-mono text-cyan-300 bg-slate-950 px-3 py-1.5 rounded-xl border border-cyan-500/30 font-bold">
+            Today: 3 / 3 Leads Ready
+          </span>
+          <button onclick="toggleIcpModal()" class="text-xs font-semibold px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 transition">
+            ⚙️ Edit Business ICP
           </button>
         </div>
-      </form>
+      </div>
     </div>
 
-    <!-- Live Results Feed -->
-    <div id="resultsFeed" class="glass-card p-6 md:p-8 rounded-3xl shadow-xl">
-      <div class="flex justify-between items-center mb-4">
-        <h4 class="text-sm font-bold text-slate-300 uppercase tracking-wider">Extracted Prospects Queue</h4>
-        <span id="leadCount" class="text-xs font-mono text-cyan-400">Ready to search</span>
+    <!-- Live Radar Feed & 1-Click Outreach Console -->
+    <section id="live-radar" class="glass-card p-6 sm:p-8 rounded-3xl border border-slate-800 shadow-2xl mb-16">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-800">
+        <div>
+          <h3 class="text-lg font-bold text-white flex items-center gap-2">
+            <span>🔥</span>
+            <span>Today's Verified High-Intent Buyer Leads (Trial Drop)</span>
+          </h3>
+          <p class="text-xs text-slate-400 mt-0.5">Scout identified people actively asking for your services in the last 4 hours</p>
+        </div>
+        <button onclick="alert('Radar refreshed! 3 new verified signals checked.')" class="text-xs font-mono text-cyan-400 hover:text-cyan-300 bg-cyan-500/10 px-3 py-1.5 rounded-xl border border-cyan-500/20 transition">
+          ↻ Live Radar Sync
+        </button>
       </div>
-      <div id="resultsList" class="space-y-4 font-sans text-sm">
-        <div class="p-6 text-center text-slate-500 text-xs">Enter a niche and click Extract Verified Prospects above to run the live scraper engine.</div>
+
+      <!-- 3 Hot Leads Cards -->
+      <div class="space-y-4">
+        <!-- Lead 1 -->
+        <div class="p-5 rounded-2xl bg-slate-900/90 border border-cyan-500/30 hover:border-cyan-400 transition space-y-3">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div class="flex items-center space-x-3">
+              <span class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-sm font-bold text-cyan-400">R</span>
+              <div>
+                <span class="text-xs font-bold text-white">u/ecommerce_dan</span>
+                <span class="text-[10px] text-slate-500 ml-2 font-mono">Reddit • r/Shopify • 42 mins ago</span>
+              </div>
+            </div>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 self-start sm:self-auto">
+              Match: 99% Buying Intent
+            </span>
+          </div>
+
+          <div class="p-3 rounded-xl bg-slate-950 text-xs text-slate-300 border border-slate-800 italic">
+            "Looking to hire someone immediately to redesign my DTC store checkout and fix abandon cart drop-offs. Budget is $1,500 - $3,000. Any recommendations or portfolios?"
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+            <div class="text-[11px] text-slate-400">
+              Target Offer: <strong>Shopify Conversion Optimization</strong>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="triggerOutreach('WhatsApp', 'u/ecommerce_dan')" class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-1.5 transition cursor-pointer">
+                <span>💬 WhatsApp DM</span>
+              </button>
+              <button onclick="triggerOutreach('Telegram', 'u/ecommerce_dan')" class="px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1.5 transition cursor-pointer">
+                <span>✈️ Telegram</span>
+              </button>
+              <button onclick="triggerComposioAuto('u/ecommerce_dan')" class="px-3 py-1.5 rounded-xl bg-purple-600/30 hover:bg-purple-600/50 border border-purple-500/40 text-purple-300 font-bold text-xs flex items-center gap-1.5 transition cursor-pointer">
+                <span>⚡ Auto (Composio)</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lead 2 -->
+        <div class="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-slate-700 transition space-y-3">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div class="flex items-center space-x-3">
+              <span class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-sm font-bold text-blue-400">𝕏</span>
+              <div>
+                <span class="text-xs font-bold text-white">@sarah_growth_cmo</span>
+                <span class="text-[10px] text-slate-500 ml-2 font-mono">Twitter / X • 2 hours ago</span>
+              </div>
+            </div>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 self-start sm:self-auto">
+              Match: 95% High Urgency
+            </span>
+          </div>
+
+          <div class="p-3 rounded-xl bg-slate-950 text-xs text-slate-300 border border-slate-800 italic">
+            "Need an expert who can set up cold email infrastructure with Google Workspace and proper SPF/DMARC warmup this week. DM me your pricing."
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+            <div class="text-[11px] text-slate-400">
+              Target Offer: <strong>Cold Email Deliverability Stack</strong>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="triggerOutreach('WhatsApp', '@sarah_growth_cmo')" class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-1.5 transition cursor-pointer">
+                <span>💬 WhatsApp DM</span>
+              </button>
+              <button onclick="triggerOutreach('Telegram', '@sarah_growth_cmo')" class="px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1.5 transition cursor-pointer">
+                <span>✈️ Telegram</span>
+              </button>
+              <button onclick="triggerComposioAuto('@sarah_growth_cmo')" class="px-3 py-1.5 rounded-xl bg-purple-600/30 hover:bg-purple-600/50 border border-purple-500/40 text-purple-300 font-bold text-xs flex items-center gap-1.5 transition cursor-pointer">
+                <span>⚡ Auto (Composio)</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lead 3 -->
+        <div class="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-slate-700 transition space-y-3">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div class="flex items-center space-x-3">
+              <span class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-sm font-bold text-indigo-400">TG</span>
+              <div>
+                <span class="text-xs font-bold text-white">Agency Founders Hub</span>
+                <span class="text-[10px] text-slate-500 ml-2 font-mono">Telegram Channel • 3 hours ago</span>
+              </div>
+            </div>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 self-start sm:self-auto">
+              Match: 92% Buying Intent
+            </span>
+          </div>
+
+          <div class="p-3 rounded-xl bg-slate-950 text-xs text-slate-300 border border-slate-800 italic">
+            "Any agencies here offering white-label AI voice agents for inbound phone calls? We have 3 dental clinics ready to onboard."
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+            <div class="text-[11px] text-slate-400">
+              Target Offer: <strong>AI Voice Receptionist System</strong>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="triggerOutreach('WhatsApp', 'Telegram Lead')" class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-1.5 transition cursor-pointer">
+                <span>💬 WhatsApp DM</span>
+              </button>
+              <button onclick="triggerOutreach('Telegram', 'Telegram Lead')" class="px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1.5 transition cursor-pointer">
+                <span>✈️ Telegram</span>
+              </button>
+              <button onclick="triggerComposioAuto('Telegram Lead')" class="px-3 py-1.5 rounded-xl bg-purple-600/30 hover:bg-purple-600/50 border border-purple-500/40 text-purple-300 font-bold text-xs flex items-center gap-1.5 transition cursor-pointer">
+                <span>⚡ Auto (Composio)</span>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
+
+    <!-- How It Works (Concept Blueprint) -->
+    <section id="how-it-works" class="py-12 border-t border-slate-800/80">
+      <div class="text-center mb-12">
+        <span class="text-xs font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-3 py-1 rounded-full inline-block mb-3">
+          Concept & Pipeline
+        </span>
+        <h2 class="text-3xl font-extrabold text-white">How Adorise Scout Works</h2>
+        <p class="text-slate-400 text-xs sm:text-sm mt-2 max-w-xl mx-auto">
+          Four steps that replace expensive Meta/Google ads with real-time buyer listening.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="glass-card p-6 rounded-3xl border border-slate-800">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 font-bold text-sm flex items-center justify-center mb-4">1</div>
+          <h3 class="text-base font-bold text-white mb-2">Register & Input ICP</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Register for the 7-day trial and define your offer, target niche, and trigger keywords in our database.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-3xl border border-slate-800">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 font-bold text-sm flex items-center justify-center mb-4">2</div>
+          <h3 class="text-base font-bold text-white mb-2">Social Radar Listening</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Our Hermes radar agent scans Reddit, X, Telegram, and forums 24/7 for people actively asking to hire your skill.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-3xl border border-slate-800">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 font-bold text-sm flex items-center justify-center mb-4">3</div>
+          <h3 class="text-base font-bold text-white mb-2">Daily 3-Lead Delivery</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Every morning during the 7-day trial, 3 pre-vetted buyer leads are deposited directly into your dashboard.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-3xl border border-slate-800">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 font-bold text-sm flex items-center justify-center mb-4">4</div>
+          <h3 class="text-base font-bold text-white mb-2">1-Click or Auto Outreach</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Reach out directly via WhatsApp/Telegram or toggle autonomous Composio & Buffer dispatch to message them hands-free.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- For Whom Section -->
+    <section id="who-its-for" class="py-12 border-t border-slate-800/80">
+      <div class="text-center mb-10">
+        <span class="text-xs font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-3 py-1 rounded-full inline-block mb-3">
+          Ideal Audience
+        </span>
+        <h2 class="text-3xl font-extrabold text-white">Built for High-Execution Small Businesses</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass-card p-6 rounded-3xl border border-slate-800">
+          <span class="text-3xl mb-3 block">🧑‍💻</span>
+          <h3 class="text-base font-bold text-white mb-2">Freelancers & Solopreneurs</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Copywriters, developers, and designers who want warm inbound clients without cold calling or wasting hours bidding on Upwork.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-3xl border border-slate-800">
+          <span class="text-3xl mb-3 block">🏢</span>
+          <h3 class="text-base font-bold text-white mb-2">B2B Agencies & Consultants</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Agencies tired of $50 CPMs on Meta ads. Capture clients right at the exact moment they express dissatisfaction with competitors.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-3xl border border-slate-800">
+          <span class="text-3xl mb-3 block">🛍️</span>
+          <h3 class="text-base font-bold text-white mb-2">Local & Service Businesses</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Real estate, insurance, bookkeeping, and SaaS founders looking for high-intent buyers ready to sign agreements immediately.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-16 border-t border-slate-800/80">
+      <div class="text-center mb-12">
+        <span class="text-xs font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-3 py-1 rounded-full inline-block mb-3">
+          Predictable ROI
+        </span>
+        <h2 class="text-3xl font-extrabold text-white">Invest in High-Intent Leads, Not Ad Waste</h2>
+        <p class="text-slate-400 text-xs sm:text-sm mt-2">
+          Start with our 7-day free trial (21 leads). Scale up when you close your first client.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+        
+        <!-- 7-Day Free Trial -->
+        <div class="glass-card p-6 sm:p-8 rounded-3xl border border-slate-800 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="text-base font-bold text-white">7-Day Free Trial</h3>
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-slate-800 text-slate-300">Free</span>
+            </div>
+            <div class="text-3xl font-extrabold text-white mb-1">$0</div>
+            <div class="text-xs text-slate-400 mb-6">21 qualified leads free</div>
+
+            <ul class="space-y-3 text-xs text-slate-300 mb-8">
+              <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> <strong>3 Hot Leads / Day (21 Total)</strong></li>
+              <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> Reddit, X & Telegram Social Radar</li>
+              <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> 1-Click WhatsApp & Telegram DM</li>
+              <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> Basic ICP Keyword Setup</li>
+            </ul>
+          </div>
+
+          <button onclick="openScoutAuthModal('register')" class="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs text-center transition cursor-pointer">
+            Start 7-Day Trial (Free) &rarr;
+          </button>
+        </div>
+
+        <!-- Solo Hunter -->
+        <div class="glass-card p-6 sm:p-8 rounded-3xl border border-slate-800 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="text-base font-bold text-white">Solo Hunter</h3>
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-cyan-500/20 text-cyan-400">Freelancers</span>
+            </div>
+            <div class="text-3xl font-extrabold text-white mb-1">$49 <span class="text-xs font-normal text-slate-400">/ month</span></div>
+            <div class="text-xs text-slate-400 mb-6">Billed monthly via Whop</div>
+
+            <ul class="space-y-3 text-xs text-slate-300 mb-8">
+              <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> <strong>10 Vetted Leads / Day (300/mo)</strong></li>
+              <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> Custom AI Outreach Hook Templates</li>
+              <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> LinkedIn & WhatsApp Connectors</li>
+              <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> Real-Time Urgent Buying Alerts</li>
+            </ul>
+          </div>
+
+          <a href="https://whop.com/adorise-digital-usa/" target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-slate-800 hover:bg-cyan-500 hover:text-slate-950 text-white font-bold text-xs text-center transition cursor-pointer">
+            Get Solo Hunter ($49/mo) &rarr;
+          </a>
+        </div>
+
+        <!-- Growth Auto-Pilot (Featured) -->
+        <div class="glass-card p-6 sm:p-8 rounded-3xl border-2 border-cyan-500 flex flex-col justify-between relative shadow-2xl shadow-cyan-500/10">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-cyan-400 text-slate-950 text-[10px] font-black uppercase tracking-wider">
+            Most Popular
+          </div>
+
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="text-base font-bold text-white">Growth Auto-Pilot</h3>
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-blue-500/20 text-blue-300">Agencies</span>
+            </div>
+            <div class="text-3xl font-extrabold text-white mb-1">$149 <span class="text-xs font-normal text-slate-400">/ month</span></div>
+            <div class="text-xs text-slate-400 mb-6">Billed monthly via Whop • Cancel anytime</div>
+
+            <ul class="space-y-3 text-xs text-slate-200 mb-8">
+              <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> <strong>30 Hot Leads / Day (900/mo)</strong></li>
+              <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> <strong>Full Composio & Buffer AI Outreach Autopilot</strong></li>
+              <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> Autonomous WhatsApp & Telegram DM Dispatch</li>
+              <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> GoHighLevel & CRM Webhook Sync</li>
+              <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> Dedicated Proxy & Account Shield</li>
+            </ul>
+          </div>
+
+          <a href="https://whop.com/adorise-digital-usa/" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-extrabold text-xs text-center transition cursor-pointer shadow-lg shadow-cyan-500/25 hover:scale-105">
+            Get Growth Auto-Pilot ($149/mo) ⚡
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 pt-8 mt-12 text-center text-xs text-slate-500">
+      <p>© 2026 Adorise Scout • Adorise Digital LLC • Trendy DigiStore LLC (Wyoming, USA).</p>
+      <p class="mt-1">PCI-DSS Compliant Whop checkout for global cards, Apple Pay & Google Pay.</p>
+    </footer>
   </main>
 
+  <!-- Register / Login Modal -->
+  <div id="scoutAuthModal" class="hidden fixed inset-0 modal-backdrop z-50 flex items-center justify-center p-4">
+    <div class="glass-card max-w-md w-full p-6 sm:p-8 rounded-3xl border border-slate-700 shadow-2xl relative">
+      <button onclick="closeScoutAuthModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-base cursor-pointer">✕</button>
+
+      <div class="flex items-center justify-center space-x-4 mb-6 border-b border-slate-800 pb-3">
+        <button id="tabScoutReg" onclick="switchScoutTab('register')" class="text-sm font-bold text-cyan-400 border-b-2 border-cyan-500 pb-2">
+          Start 7-Day Trial (21 Leads)
+        </button>
+        <button id="tabScoutSign" onclick="switchScoutTab('signin')" class="text-sm font-semibold text-slate-400 hover:text-white pb-2">
+          Sign In
+        </button>
+      </div>
+
+      <!-- Social OAuth Buttons -->
+      <div class="space-y-2.5 mb-6">
+        <button onclick="handleScoutSocial('Google')" class="w-full py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-xs font-semibold text-white flex items-center justify-center gap-2 transition cursor-pointer">
+          <span>🌐</span>
+          <span>Continue with Google</span>
+        </button>
+        <button onclick="handleScoutSocial('Facebook')" class="w-full py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-xs font-semibold text-white flex items-center justify-center gap-2 transition cursor-pointer">
+          <span>📘</span>
+          <span>Continue with Facebook</span>
+        </button>
+      </div>
+
+      <div class="relative flex items-center justify-center mb-6">
+        <div class="border-t border-slate-800 w-full"></div>
+        <span class="bg-slate-950 px-3 text-[10px] uppercase font-mono text-slate-500 absolute">Or with email</span>
+      </div>
+
+      <!-- Email Form -->
+      <form onsubmit="handleScoutEmail(event)" class="space-y-4 text-xs">
+        <div id="scoutNameField">
+          <label class="block font-semibold text-slate-400 uppercase tracking-wider mb-1">Your Full Name / Business Name</label>
+          <input type="text" id="scoutName" placeholder="e.g. Acme Growth Studio" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white outline-none focus:border-cyan-500">
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-400 uppercase tracking-wider mb-1">Email Address</label>
+          <input type="email" id="scoutEmail" required placeholder="name@company.com" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white outline-none focus:border-cyan-500">
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-400 uppercase tracking-wider mb-1">Password</label>
+          <input type="password" id="scoutPass" required placeholder="••••••••" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white outline-none focus:border-cyan-500">
+        </div>
+
+        <button type="submit" id="scoutSubmitBtn" class="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-bold shadow-lg shadow-cyan-500/20 hover:scale-[1.01] active:scale-[0.99] transition cursor-pointer text-xs">
+          Activate 7-Day Free Trial (3 Leads Today)
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Business ICP Setup Drawer Modal -->
+  <div id="icpModal" class="hidden fixed inset-0 modal-backdrop z-50 flex items-center justify-center p-4">
+    <div class="glass-card max-w-lg w-full p-6 sm:p-8 rounded-3xl border border-slate-700 shadow-2xl relative">
+      <button onclick="toggleIcpModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-base cursor-pointer">✕</button>
+
+      <div class="flex items-center gap-3 mb-6">
+        <span class="text-2xl">⚙️</span>
+        <div>
+          <h3 class="text-lg font-bold text-white">Configure Your Business Radar ICP</h3>
+          <p class="text-xs text-slate-400">Scout uses these parameters to filter high-intent buyers</p>
+        </div>
+      </div>
+
+      <form onsubmit="handleSaveIcp(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Business Service / Offer</label>
+          <input type="text" id="icpOffer" required value="Shopify CRO & Cold Email Deliverability" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white outline-none focus:border-cyan-500">
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Keywords Scout Listens For</label>
+          <input type="text" id="icpKeywords" required value="hire shopify dev, looking for copywriter, fix cold email" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white outline-none focus:border-cyan-500">
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Your WhatsApp Number (for Instant Lead Alerts)</label>
+          <input type="text" id="icpWhatsapp" placeholder="+1 (555) 019-2834" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white outline-none focus:border-cyan-500">
+        </div>
+
+        <button type="submit" class="w-full py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold transition text-xs cursor-pointer">
+          Save ICP & Update Radar Signals 🎯
+        </button>
+      </form>
+    </div>
+  </div>
+
   <script>
-    const API_BASE = "";
+    function openScoutAuthModal(mode) {
+      document.getElementById('scoutAuthModal').classList.remove('hidden');
+      switchScoutTab(mode);
+    }
 
-    async function handleScoutSearch(e) {
-      e.preventDefault();
-      const niche = document.getElementById('scoutNiche').value.trim();
-      const region = document.getElementById('scoutRegion').value.trim();
-      const btn = document.getElementById('scoutBtn');
-      const list = document.getElementById('resultsList');
-      const count = document.getElementById('leadCount');
+    function closeScoutAuthModal() {
+      document.getElementById('scoutAuthModal').classList.add('hidden');
+    }
 
-      btn.disabled = true;
-      btn.innerHTML = '<span>Querying Intelligence Nodes...</span> <span class="animate-spin">⏳</span>';
-      list.innerHTML = `<div class="p-4 rounded-xl bg-slate-900/60 border border-cyan-500/30 text-cyan-400 text-xs font-mono">[SYSTEM]: Scanning LinkedIn, Twitter/X, and Reddit streams for "${niche}" in "${region}"...</div>`;
+    function switchScoutTab(mode) {
+      const regTab = document.getElementById('tabScoutReg');
+      const signTab = document.getElementById('tabScoutSign');
+      const nameField = document.getElementById('scoutNameField');
+      const submitBtn = document.getElementById('scoutSubmitBtn');
 
-      try {
-        const response = await fetch(`${API_BASE}/webhook/scout-hunter`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ niche, region, timestamp: new Date().toISOString() })
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          const posts = data.posts || [];
-          count.textContent = `Found ${posts.length} Verified High-Intent Prospects`;
-
-          if (posts.length === 0) {
-            list.innerHTML = `<div class="p-4 rounded-xl bg-slate-900 border border-amber-500/30 text-amber-300 text-xs font-mono">No matching leads found for this query. Try a broader search term.</div>`;
-          } else {
-            list.innerHTML = posts.map((post, idx) => `
-              <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-slate-700 transition flex flex-col gap-3">
-                <div class="flex justify-between items-start">
-                  <div>
-                    <div class="flex items-center space-x-2">
-                      <span class="font-bold text-white text-base">${post.author_name}</span>
-                      <span class="text-xs text-slate-400 font-mono">@${post.author_handle}</span>
-                      <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">${post.platform}</span>
-                    </div>
-                    <div class="text-xs text-slate-400 mt-0.5">${post.title} • <strong class="text-slate-300">${post.company}</strong> (${post.region})</div>
-                  </div>
-                  <div class="px-3 py-1 rounded-full text-xs font-bold font-mono bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
-                    Intent Score: ${post.score}/100
-                  </div>
-                </div>
-
-                <div class="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800/80 text-xs text-slate-300 italic">
-                  "${post.text}"
-                </div>
-
-                <div class="p-3.5 rounded-xl bg-purple-500/5 border border-purple-500/20 text-xs">
-                  <div class="font-bold text-purple-300 uppercase tracking-wider text-[10px] mb-1">⚡ Generated 1:1 Outreach Pitch:</div>
-                  <div class="text-slate-300 leading-relaxed">${post.pitch}</div>
-                </div>
-
-                <div class="flex justify-between items-center pt-2 border-t border-slate-800 text-xs font-mono text-slate-400">
-                  <span>Contact: <strong class="text-cyan-400">${post.email}</strong></span>
-                  <div class="flex items-center space-x-3">
-                    <button onclick="copyToClipboard('${encodeURIComponent(post.pitch)}')" class="px-3 py-1 rounded bg-slate-800 hover:bg-slate-700 text-white text-xs font-medium transition cursor-pointer">
-                      Copy Pitch 📋
-                    </button>
-                    <a href="${post.url}" target="_blank" class="text-cyan-400 hover:underline text-xs">
-                      View Profile ↗
-                    </a>
-                  </div>
-                </div>
-              </div>
-            `).join('');
-          }
-        } else {
-          list.innerHTML = `<div class="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-mono">Error querying scraper API.</div>`;
-        }
-      } catch (err) {
-        list.innerHTML = `<div class="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-mono">Failed to connect: ${err.message}</div>`;
-      } finally {
-        btn.disabled = false;
-        btn.innerHTML = '<span>Extract Verified Prospects</span> <span>⚡</span>';
+      if (mode === 'register') {
+        regTab.className = "text-sm font-bold text-cyan-400 border-b-2 border-cyan-500 pb-2";
+        signTab.className = "text-sm font-semibold text-slate-400 hover:text-white pb-2";
+        nameField.classList.remove('hidden');
+        submitBtn.textContent = "Activate 7-Day Free Trial (3 Leads Today)";
+      } else {
+        signTab.className = "text-sm font-bold text-cyan-400 border-b-2 border-cyan-500 pb-2";
+        regTab.className = "text-sm font-semibold text-slate-400 hover:text-white pb-2";
+        nameField.classList.add('hidden');
+        submitBtn.textContent = "Sign In to Scout Radar";
       }
     }
 
-    function copyToClipboard(encodedText) {
-      const text = decodeURIComponent(encodedText);
-      navigator.clipboard.writeText(text).then(() => {
-        alert("Pitch copied to clipboard!");
-      });
+    function handleScoutSocial(provider) {
+      const name = provider === 'Google' ? "Founder (Google)" : "Founder (Facebook)";
+      loginScout(name);
+      closeScoutAuthModal();
+      alert(`Authenticated with ${provider}! Your 7-day free trial has been activated with 3 fresh buyer leads.`);
     }
 
-    // Auto trigger initial sample search on load
+    function handleScoutEmail(e) {
+      e.preventDefault();
+      const email = document.getElementById('scoutEmail').value;
+      const name = document.getElementById('scoutName').value || email.split('@')[0];
+      loginScout(name);
+      closeScoutAuthModal();
+      alert(`Welcome ${name}! Your 7-Day Free Trial is live with 3 verified leads.`);
+    }
+
+    function loginScout(name) {
+      localStorage.setItem('scout_user', name);
+      document.getElementById('scoutLoggedOut').classList.add('hidden');
+      document.getElementById('scoutLoggedIn').classList.remove('hidden');
+      document.getElementById('scoutUserLabel').textContent = name;
+    }
+
+    function signOutScout() {
+      localStorage.removeItem('scout_user');
+      document.getElementById('scoutLoggedIn').classList.add('hidden');
+      document.getElementById('scoutLoggedOut').classList.remove('hidden');
+    }
+
+    function toggleIcpModal() {
+      const m = document.getElementById('icpModal');
+      m.classList.toggle('hidden');
+    }
+
+    function handleSaveIcp(e) {
+      e.preventDefault();
+      toggleIcpModal();
+      alert("Business ICP updated in database! Hermes & Scout radar listening parameters refreshed.");
+    }
+
+    function triggerOutreach(platform, lead) {
+      alert(`Opening ${platform} DM composer with personalized pitch template for ${lead}!`);
+    }
+
+    function triggerComposioAuto(lead) {
+      alert(`Queued automated AI outreach for ${lead} via Composio & Buffer background workflow!`);
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('scoutBtn').click();
+      const user = localStorage.getItem('scout_user');
+      if (user) loginScout(user);
     });
   </script>
 </body>
