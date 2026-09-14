@@ -941,7 +941,7 @@
             <div class="p-6 overflow-y-auto flex-1 space-y-4">
                 <div class="text-xs text-slate-300 bg-slate-950/60 p-4 rounded-xl border border-slate-800/80 flex items-center justify-between gap-4">
                     <span>Direct calendar link:</span>
-                    <a href="https://api.leadconnectorhq.com/widget/booking/adorise-digital-consult" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-300 font-semibold underline shrink-0">
+                    <a href="https://ghlbooking.adorisedigital.com/ai-services" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-300 font-semibold underline shrink-0">
                         Open in New Tab &nearr;
                     </a>
                 </div>
@@ -950,7 +950,7 @@
                 <div class="w-full h-[480px] rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
                     <iframe 
                         id="ghl-calendar-iframe"
-                        src="https://api.leadconnectorhq.com/widget/booking/adorise-digital-consult" 
+                        src="https://ghlbooking.adorisedigital.com/ai-services" 
                         class="w-full h-full border-0" 
                         title="Adorise Digital Strategy Call Booking Calendar"
                         loading="lazy">
@@ -1068,14 +1068,14 @@
     <div id="checkout-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden items-center justify-center p-3 sm:p-4">
         <div class="relative w-full max-w-2xl bg-slate-900 border border-slate-700/80 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
             <!-- Modal Header -->
-            <div class="flex items-center justify-between px-5 py-3.5 border-b border-slate-800 bg-slate-950/90">
+            <div class="flex items-center justify-between px-5 py-4 border-b border-slate-800 bg-slate-950">
                 <div class="flex items-center space-x-3">
                     <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center font-bold text-white text-sm">
                         A
                     </div>
                     <div>
-                        <h3 class="text-sm font-bold text-white font-display" id="modal-plan-name">Adorise Digital — Secure Checkout</h3>
-                        <p class="text-[11px] text-cyan-400 font-mono">100% Encrypted • 7-Day Onboarding Turnaround</p>
+                        <h3 class="text-sm font-bold text-white font-display">Adorise Digital — Secure Checkout</h3>
+                        <p class="text-[11px] text-cyan-400 font-mono">100% Encrypted • Sovereign VPS & n8n Orchestration</p>
                     </div>
                 </div>
                 <div class="flex items-center gap-2 sm:gap-3">
@@ -1086,37 +1086,83 @@
                 </div>
             </div>
 
-            <!-- Iframe Container -->
-            <div class="relative flex-1 min-h-[500px] sm:min-h-[550px] bg-slate-950">
-                <iframe id="checkout-iframe" src="" class="w-full h-full min-h-[500px] sm:min-h-[550px] border-0" allow="payment"></iframe>
+            <!-- Modal Body / Order Summary -->
+            <div class="p-6 bg-slate-900/95 space-y-5">
+                <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800">
+                    <div class="text-[10px] uppercase font-mono tracking-wider text-cyan-400 font-bold mb-1">Selected Tier:</div>
+                    <h2 id="modal-plan-name" class="text-lg font-bold text-white font-display">AI Solution</h2>
+                    <div class="flex items-center justify-between mt-3 pt-3 border-t border-slate-800/80">
+                        <span class="text-xs text-slate-400">Total Due Today:</span>
+                        <span id="modal-plan-price" class="text-xl font-black text-cyan-400 font-mono">$147/mo</span>
+                    </div>
+                </div>
+
+                <div class="space-y-2.5 text-xs text-slate-300">
+                    <div class="flex items-start gap-2.5">
+                        <span class="text-cyan-400 font-bold">✓</span>
+                        <span><strong>Turnkey 7-Day Turnaround:</strong> Full setup and deployment by dedicated engineers.</span>
+                    </div>
+                    <div class="flex items-start gap-2.5">
+                        <span class="text-cyan-400 font-bold">✓</span>
+                        <span><strong>Sovereign VPS & n8n Orchestration:</strong> Zero third-party lock-in on dedicated infrastructure.</span>
+                    </div>
+                    <div class="flex items-start gap-2.5">
+                        <span class="text-cyan-400 font-bold">✓</span>
+                        <span><strong>All Payment Methods Supported:</strong> Credit Cards (Visa, Mastercard, Amex), Apple Pay, and Google Pay.</span>
+                    </div>
+                    <div class="flex items-start gap-2.5">
+                        <span class="text-cyan-400 font-bold">✓</span>
+                        <span><strong>Flexible Subscription:</strong> Pause, scale, or cancel anytime with 1-click in your Whop portal.</span>
+                    </div>
+                </div>
+
+                <!-- Action Button -->
+                <div class="pt-2">
+                    <a id="service-checkout-direct-btn" href="#" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-cyan-400 via-teal-500 to-indigo-500 hover:from-cyan-300 hover:to-indigo-400 text-slate-950 font-black text-sm uppercase tracking-wider flex items-center justify-center gap-3 shadow-xl shadow-cyan-500/20 transition transform hover:scale-[1.01]">
+                        <span>🔒 Proceed to Secure Checkout</span>
+                        <span>➔</span>
+                    </a>
+                    <div class="flex items-center justify-center gap-2.5 mt-3 text-[11px] text-slate-400 font-medium">
+                        <span>💳 Visa, Mastercard, Amex</span>
+                        <span>•</span>
+                        <span>🍏 Apple Pay</span>
+                        <span>•</span>
+                        <span>📱 Google Pay</span>
+                    </div>
+                </div>
             </div>
 
             <!-- Modal Footer -->
-            <div class="px-5 py-3 border-t border-slate-800 bg-slate-950/95 flex items-center justify-between text-xs text-slate-400">
+            <div class="px-5 py-3 border-t border-slate-800 bg-slate-950 flex items-center justify-between text-xs text-slate-400">
                 <div class="flex items-center gap-2">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span class="text-[11px]">Sovereign VPS & n8n Orchestration Connected</span>
+                    <span class="text-[11px]">256-Bit SSL Protection via Whop</span>
                 </div>
-                <a id="checkout-fallback-link" href="#" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline text-[11px]">
-                    Open in new tab ↗
-                </a>
+                <button onclick="closeCheckoutModal()" class="text-slate-400 hover:text-white text-[11px] transition">
+                    Cancel
+                </button>
             </div>
         </div>
     </div>
 
     <script>
-        // Native On-Site Whop Checkout Modal Logic
-        function openWhopCheckout(planId, planName) {
+        // Native On-Site Whop Checkout Modal Logic (Zero CSP / Zero Iframe Errors)
+        function openWhopCheckout(planId, planName, price) {
             const modal = document.getElementById('checkout-modal');
-            const iframe = document.getElementById('checkout-iframe');
             const planTitle = document.getElementById('modal-plan-name');
-            const fallbackLink = document.getElementById('checkout-fallback-link');
+            const priceEl = document.getElementById('modal-plan-price');
+            const directBtn = document.getElementById('service-checkout-direct-btn');
 
-            if (planTitle) planTitle.textContent = planName + ' — Secure Checkout';
-            const checkoutUrl = 'https://whop.com/checkout/' + planId + '?theme=dark';
-            
-            if (iframe) iframe.src = checkoutUrl;
-            if (fallbackLink) fallbackLink.href = checkoutUrl;
+            if (planTitle) planTitle.textContent = planName;
+            if (priceEl && price) {
+                priceEl.textContent = price;
+            } else if (priceEl) {
+                const match = planName.match(/\(\$?[0-9.]+(\/mo)?\)/);
+                if (match) priceEl.textContent = match[0].replace(/[()]/g, '');
+            }
+
+            const checkoutUrl = 'https://whop.com/checkout/' + planId;
+            if (directBtn) directBtn.href = checkoutUrl;
 
             modal.classList.remove('hidden');
             modal.classList.add('flex');
@@ -1125,8 +1171,6 @@
 
         function closeCheckoutModal() {
             const modal = document.getElementById('checkout-modal');
-            const iframe = document.getElementById('checkout-iframe');
-            if (iframe) iframe.src = '';
             modal.classList.add('hidden');
             modal.classList.remove('flex');
             document.body.style.overflow = 'auto';
