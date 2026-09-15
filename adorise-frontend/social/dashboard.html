@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Adorise Social Workspace</title>
+  <meta name="description" content="Manage connected channels, generate viral hooks, and auto-dispatch social media queues.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: { fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] } }
+      }
+    }
+  </script>
+  <style>
+    .glass-card {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen selection:bg-purple-500 selection:text-white">
+
+  <!-- Header -->
+  <header class="h-20 border-b border-slate-800 bg-slate-950/85 backdrop-blur-md sticky top-0 left-0 right-0 z-40 px-6 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-500 to-indigo-600 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-purple-500/20">
+        ⚡
+      </div>
+      <div>
+        <span class="font-extrabold text-xl tracking-tight text-white">ADORISE <span class="text-purple-400">SOCIAL</span></span>
+        <span class="hidden sm:inline-block ml-2 px-2.5 py-0.5 text-[10px] font-mono bg-purple-500/10 text-purple-400 border border-purple-500/30 rounded-full">Dashboard</span>
+      </div>
+    </div>
+
+    <!-- User Profile & Sign Out -->
+    <div class="flex items-center space-x-3">
+      <div class="flex items-center gap-2 bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl text-xs">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span id="userDisplayName" class="font-semibold text-slate-200">Alex Rivera</span>
+        <span id="userPlanBadge" class="text-[10px] font-mono bg-purple-500/20 text-purple-300 px-1.5 py-0.5 rounded">Pro Active</span>
+      </div>
+      <button onclick="handleSignOut()" class="text-xs text-slate-500 hover:text-red-400 transition cursor-pointer px-2 py-1 rounded">
+        Sign Out
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="pt-8 pb-20 max-w-6xl mx-auto px-6">
+    <!-- Quota Bar -->
+    <div class="glass-card p-6 rounded-3xl border border-purple-500/30 mb-8 bg-gradient-to-r from-slate-950 via-slate-900 to-purple-950/20 shadow-xl">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+        <div class="space-y-1.5">
+          <div class="flex justify-between items-center text-xs">
+            <span class="text-slate-400 font-semibold uppercase text-[10px] tracking-wider">Connected Inboxes</span>
+            <span id="channelCountText" class="font-mono text-purple-300 font-bold">2 / 15 Connected</span>
+          </div>
+          <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+            <div class="bg-purple-500 h-full w-1/3"></div>
+          </div>
+          <p class="text-[11px] text-slate-400">Multi-network auto-dispatch slots</p>
+        </div>
+
+        <div class="space-y-1.5">
+          <div class="flex justify-between items-center text-xs">
+            <span class="text-slate-400 font-semibold uppercase text-[10px] tracking-wider">Daily Post Publishing</span>
+            <span class="font-mono text-emerald-400 font-bold">Unlimited Active</span>
+          </div>
+          <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+            <div class="bg-emerald-500 h-full w-full"></div>
+          </div>
+          <p class="text-[11px] text-slate-400">Continuous AI queue recycling</p>
+        </div>
+
+        <div class="flex items-center justify-between gap-3 bg-slate-900/90 border border-slate-800 p-3.5 rounded-2xl">
+          <div>
+            <div class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">AI Visual Wallet</div>
+            <div class="text-sm font-extrabold text-white flex items-center gap-1 mt-0.5">
+              <span>🎨</span>
+              <span id="imageCredits">50 Credits Left</span>
+            </div>
+          </div>
+          <a href="https://whop.com/adorise-digital-usa/" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 border border-purple-500/40 text-xs font-bold transition">
+            + $5 for 50
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Channels Grid -->
+    <div id="channels" class="mb-8">
+      <div class="flex justify-between items-center mb-3">
+        <h3 class="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+          <span>🔗</span>
+          <span>Active Social Networks</span>
+        </h3>
+        <button onclick="toggleChannelConnectModal()" class="text-xs font-semibold text-purple-400 hover:text-purple-300 font-mono cursor-pointer">
+          + Connect New Channel
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" id="channelList">
+        <div class="glass-card p-4 rounded-2xl flex items-center justify-between border border-slate-800">
+          <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-lg">𝕏</div>
+            <div>
+              <div class="text-xs font-bold text-white">𝕏 (Twitter / X)</div>
+              <div class="text-[11px] text-purple-400 font-mono">@adorise_growth</div>
+            </div>
+          </div>
+          <span class="text-[10px] font-mono px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Active</span>
+        </div>
+
+        <div class="glass-card p-4 rounded-2xl flex items-center justify-between border border-slate-800">
+          <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-950/40 text-blue-400 flex items-center justify-center text-lg">💼</div>
+            <div>
+              <div class="text-xs font-bold text-white">LinkedIn Company</div>
+              <div class="text-[11px] text-blue-400 font-mono">Adorise Digital</div>
+            </div>
+          </div>
+          <span class="text-[10px] font-mono px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Active</span>
+        </div>
+
+        <div onclick="toggleChannelConnectModal()" class="glass-card p-4 rounded-2xl flex items-center justify-between border border-dashed border-slate-700 hover:border-purple-500/50 cursor-pointer transition">
+          <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-lg text-slate-500">＋</div>
+            <div>
+              <div class="text-xs font-bold text-slate-300">Connect Channel</div>
+              <div class="text-[11px] text-slate-500">Instagram, TikTok, or FB</div>
+            </div>
+          </div>
+          <span class="text-[10px] font-mono text-purple-400">Add Account</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Studio & Queue -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div class="lg:col-span-5">
+        <div class="glass-card p-6 rounded-3xl shadow-xl border border-slate-800">
+          <h3 class="text-base font-bold text-white mb-4 flex items-center space-x-2">
+            <span>✨</span>
+            <span>Compose Viral Post</span>
+          </h3>
+
+          <form onsubmit="handleQueuePost(event)" class="space-y-4 text-xs">
+            <div>
+              <label class="block font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Destination</label>
+              <select id="platformSelect" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white outline-none">
+                <option value="𝕏 Twitter">𝕏 Twitter / X (@adorise_growth)</option>
+                <option value="LinkedIn">💼 LinkedIn (Adorise Digital)</option>
+                <option value="Instagram">📸 Instagram Business</option>
+                <option value="TikTok">🎵 TikTok Short Video</option>
+                <option value="Facebook">📘 Facebook Page</option>
+              </select>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-center mb-1.5">
+                <label class="block font-semibold text-slate-400 uppercase tracking-wider">Caption & Hook</label>
+                <button type="button" onclick="generateAIHook()" class="text-purple-400 hover:text-purple-300 font-bold font-mono">⚡ Viral AI Hook</button>
+              </div>
+              <textarea id="captionInput" rows="4" required class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white outline-none">Here is the exact 3-step automation we use to scrape 500 decision-maker emails/day without getting banned 🧵👇 #ColdOutreach #B2B</textarea>
+            </div>
+
+            <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold cursor-pointer shadow-lg shadow-purple-500/20">
+              Deploy to Publishing Queue 🚀
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7">
+        <div class="glass-card p-6 rounded-3xl shadow-xl border border-slate-800">
+          <h3 class="text-base font-bold text-white mb-4 flex items-center space-x-2">
+            <span>📋</span>
+            <span>Active Publishing Queue</span>
+          </h3>
+          <div id="queueList" class="space-y-3">
+            <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800">
+              <div class="flex justify-between items-start mb-2 text-xs">
+                <span class="font-bold text-white">𝕏 (Twitter / X)</span>
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">Queued 🟡</span>
+              </div>
+              <p class="text-xs text-slate-300 mb-3">Most agency founders work 80 hours a week on tasks a $20 VPS can run automatically. Here is the blueprint: #Productivity #AI</p>
+              <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 pt-2 border-t border-slate-800">
+                <span>Autonomous Adorise Dispatch</span>
+                <button onclick="publishCard(this)" class="text-purple-400 hover:text-white font-bold cursor-pointer">Publish Now ⚡</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function handleSignOut() {
+      document.cookie = "social_session=; Path=/; Max-Age=0";
+      localStorage.removeItem('social_token');
+      localStorage.removeItem('social_user');
+      window.location.href = "/login";
+    }
+
+    function generateAIHook() {
+      const hooks = [
+        "Most agency founders work 80 hours a week on tasks a $20 VPS can run automatically. Here is the blueprint: 🧵👇 #AgencyGrowth #AI",
+        "We replaced $2,400/mo in bloated SaaS subscriptions with 3 open-source automated pipelines. Breakdown: #Bootstrapping #Operations",
+        "How to scale an agency from $10k to $50k MRR without hiring more account managers: #AgencyLife #Automation"
+      ];
+      document.getElementById('captionInput').value = hooks[Math.floor(Math.random() * hooks.length)];
+    }
+
+    function handleQueuePost(e) {
+      e.preventDefault();
+      const p = document.getElementById('platformSelect').value;
+      const c = document.getElementById('captionInput').value;
+      const list = document.getElementById('queueList');
+      const div = document.createElement('div');
+      div.className = "p-4 rounded-2xl bg-slate-900/90 border border-purple-500/30";
+      div.innerHTML = `
+        <div class="flex justify-between items-start mb-2 text-xs">
+          <span class="font-bold text-white">${p}</span>
+          <span class="status-badge px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">Queued 🟡</span>
+        </div>
+        <p class="text-xs text-slate-300 mb-3">${c}</p>
+        <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 pt-2 border-t border-slate-800">
+          <span>Autonomous Adorise Dispatch</span>
+          <button onclick="publishCard(this)" class="text-purple-400 hover:text-white font-bold cursor-pointer">Publish Now ⚡</button>
+        </div>
+      `;
+      list.prepend(div);
+    }
+
+    function publishCard(btn) {
+      const badge = btn.closest('.p-4').querySelector('.status-badge');
+      badge.className = "status-badge px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30";
+      badge.textContent = "Published 🟢";
+      btn.replaceWith(document.createTextNode("Dispatched Live"));
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const user = localStorage.getItem('social_user');
+      const plan = localStorage.getItem('social_plan') || 'Pro Active';
+      if (user) {
+        document.getElementById('userDisplayName').textContent = user;
+        document.getElementById('userPlanBadge').textContent = plan;
+      }
+    });
+  </script>
+</body>
+</html>

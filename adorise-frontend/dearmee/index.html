@@ -713,12 +713,26 @@
         document.getElementById('voiceStatus').innerText = "DearMee is formulating care...";
       }
 
-      setTimeout(() => {
-        const reply = generateEmpatheticFallback(msg, companionConfig);
-        renderBotReply(reply);
+      try {
+        const response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: msg, persona: companionConfig.persona || 'calm_listener' })
+        });
+        if (response.ok) {
+          const data = await response.json();
+          renderBotReply(data.reply);
+        } else {
+          const fallback = generateEmpatheticFallback(msg, companionConfig);
+          renderBotReply(fallback);
+        }
+      } catch (err) {
+        const fallback = generateEmpatheticFallback(msg, companionConfig);
+        renderBotReply(fallback);
+      } finally {
         btn.disabled = false;
         feed.scrollTop = feed.scrollHeight;
-      }, 700);
+      }
     }
 
     function renderBotReply(reply) {

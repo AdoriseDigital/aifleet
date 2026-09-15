@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scout Radar Console | Adorise Digital</title>
+  <meta name="description" content="Manage real-time buyer intent listening, filter qualified leads, and trigger automated outreach workflows.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: { fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] } }
+      }
+    }
+  </script>
+  <style>
+    .glass-card {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen selection:bg-cyan-500 selection:text-white flex flex-col justify-between">
+
+  <!-- Header -->
+  <header class="h-20 border-b border-slate-800 bg-slate-950/85 backdrop-blur-md fixed top-0 left-0 right-0 z-50 px-6 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-cyan-500/20">
+        🎯
+      </div>
+      <div>
+        <span class="font-extrabold text-xl tracking-tight text-white">ADORISE <span class="text-cyan-400">SCOUT</span></span>
+        <span class="ml-2 px-2.5 py-0.5 text-[10px] font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 rounded-full">Radar Console</span>
+      </div>
+    </div>
+
+    <div class="flex items-center space-x-4">
+      <div class="text-right hidden sm:block">
+        <div id="userEmail" class="text-xs font-semibold text-slate-200">Loading account...</div>
+        <div id="userTier" class="text-[10px] font-mono text-cyan-400">Syncing license...</div>
+      </div>
+      <button onclick="handleLogout()" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-rose-500/40 text-slate-400 hover:text-rose-300 text-xs font-medium transition cursor-pointer">
+        Sign Out
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="pt-28 pb-16 px-4 sm:px-6 max-w-7xl mx-auto w-full flex-1 space-y-8">
+
+    <!-- Top KPI Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="glass-card p-5 rounded-2xl border border-slate-800">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium text-slate-400">Active Radar Sources</span>
+          <span class="text-cyan-400 text-xs font-mono">24/7 Live</span>
+        </div>
+        <div class="text-2xl font-black text-white mt-2">4 Channels</div>
+        <div class="text-[11px] text-slate-500 mt-1">Reddit, Twitter/X, Telegram, LinkedIn</div>
+      </div>
+
+      <div class="glass-card p-5 rounded-2xl border border-slate-800">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium text-slate-400">Today's Qualified Signals</span>
+          <span class="text-emerald-400 text-xs font-mono font-bold">High Intent</span>
+        </div>
+        <div class="text-2xl font-black text-emerald-400 mt-2" id="statTodayLeads">14 Leads</div>
+        <div class="text-[11px] text-slate-500 mt-1">Filtered from 1,280 public posts</div>
+      </div>
+
+      <div class="glass-card p-5 rounded-2xl border border-slate-800">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium text-slate-400">Daily Allocation</span>
+          <span class="text-cyan-400 text-xs font-mono" id="statQuotaUsed">3 / 30 Used</span>
+        </div>
+        <div class="w-full bg-slate-800 h-2 rounded-full mt-3 overflow-hidden">
+          <div id="quotaBar" class="bg-gradient-to-r from-cyan-500 to-blue-500 h-full w-[10%] transition-all duration-500"></div>
+        </div>
+        <div class="text-[11px] text-slate-500 mt-2">Resets daily at 00:00 UTC</div>
+      </div>
+
+      <div class="glass-card p-5 rounded-2xl border border-slate-800 flex flex-col justify-between">
+        <div>
+          <div class="text-xs font-medium text-slate-400">Active Plan</div>
+          <div class="text-lg font-bold text-white mt-1" id="statPlanName">Growth Auto-Pilot</div>
+        </div>
+        <a href="https://whop.com/adorise-digital-usa/" target="_blank" class="text-xs text-cyan-400 hover:text-cyan-300 font-semibold flex items-center justify-between pt-2 border-t border-slate-800/80 transition">
+          <span>Manage Whop License</span>
+          <span>&rarr;</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Filter & Action Bar -->
+    <div class="glass-card p-4 rounded-2xl border border-slate-800 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+      <div class="flex flex-wrap items-center gap-2" id="platformFilterButtons">
+        <button onclick="filterPlatform('all')" class="px-3 py-1.5 rounded-xl bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 text-xs font-semibold cursor-pointer filter-btn" data-plat="all">All Sources (14)</button>
+        <button onclick="filterPlatform('reddit')" class="px-3 py-1.5 rounded-xl bg-slate-900 text-slate-400 hover:text-white border border-slate-800 text-xs font-semibold cursor-pointer filter-btn" data-plat="reddit">Reddit (5)</button>
+        <button onclick="filterPlatform('x')" class="px-3 py-1.5 rounded-xl bg-slate-900 text-slate-400 hover:text-white border border-slate-800 text-xs font-semibold cursor-pointer filter-btn" data-plat="x">Twitter / 𝕏 (4)</button>
+        <button onclick="filterPlatform('telegram')" class="px-3 py-1.5 rounded-xl bg-slate-900 text-slate-400 hover:text-white border border-slate-800 text-xs font-semibold cursor-pointer filter-btn" data-plat="telegram">Telegram (3)</button>
+        <button onclick="filterPlatform('linkedin')" class="px-3 py-1.5 rounded-xl bg-slate-900 text-slate-400 hover:text-white border border-slate-800 text-xs font-semibold cursor-pointer filter-btn" data-plat="linkedin">LinkedIn (2)</button>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button onclick="exportLeadsCsv()" class="px-3.5 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-cyan-500 text-slate-200 hover:text-white text-xs font-semibold transition flex items-center gap-1.5 cursor-pointer">
+          <span>📥 Export CSV</span>
+        </button>
+        <button onclick="refreshLeadStream()" class="px-3.5 py-1.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-bold text-xs transition flex items-center gap-1.5 cursor-pointer">
+          <span>↻ Refresh Stream</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Radar Feed Stream -->
+    <div class="space-y-4" id="leadsFeedContainer">
+      <!-- Injected via JavaScript -->
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-6 border-t border-slate-900 text-center text-xs text-slate-400">
+    <p>&copy; 2026 Adorise Digital LLC / Trendy DigiStore LLC. Scout Autonomous Radar v2.4.</p>
+  </footer>
+
+  <script>
+    const SAMPLE_LEADS = [
+      {
+        id: "lead_001",
+        platform: "reddit",
+        platform_label: "Reddit • r/Shopify",
+        username: "u/ecommerce_dan",
+        time_ago: "42 mins ago",
+        intent_score: 99,
+        badge_color: "emerald",
+        target_offer: "Shopify Checkout Optimization",
+        quote: "Looking to hire someone immediately to redesign my DTC store checkout and fix abandon cart drop-offs. Budget is $1,500 - $3,000. Any recommendations or portfolios?",
+        pitch: "Hey Dan, saw your post on r/Shopify regarding DTC checkout redesign. We specialize in high-converting Shopify checkout flows. Happy to share 2 case studies: https://adorisedigital.com/services/"
+      },
+      {
+        id: "lead_002",
+        platform: "x",
+        platform_label: "Twitter / 𝕏 • Public Post",
+        username: "@sarah_growth_cmo",
+        time_ago: "2 hours ago",
+        intent_score: 96,
+        badge_color: "cyan",
+        target_offer: "Cold Email Deliverability Infrastructure",
+        quote: "Need an expert who can set up cold email infrastructure with Google Workspace and proper SPF/DMARC warmup this week. DM me your pricing.",
+        pitch: "Hi Sarah, saw your tweet about cold email infrastructure. We deploy automated SPF/DKIM/DMARC configurations with 21-day ramp-up: https://adorisedigital.com/services/"
+      },
+      {
+        id: "lead_003",
+        platform: "telegram",
+        platform_label: "Telegram • Agency Founders Hub",
+        username: "Vikram R. (Founder)",
+        time_ago: "3 hours ago",
+        intent_score: 94,
+        badge_color: "cyan",
+        target_offer: "AI Voice Receptionist System",
+        quote: "Any agencies here offering white-label AI voice agents for inbound phone calls? We have 3 dental clinics ready to onboard this month.",
+        pitch: "Hello Vikram! Saw your note on AI voice agents. We deploy 24/7 autonomous phone receptionists for clinics: https://adorisedigital.com/services/"
+      },
+      {
+        id: "lead_004",
+        platform: "linkedin",
+        platform_label: "LinkedIn • Post",
+        username: "Marcus Vance (VP Marketing)",
+        time_ago: "4 hours ago",
+        intent_score: 92,
+        badge_color: "purple",
+        target_offer: "Programmatic SEO / pSEO Engine",
+        quote: "Our organic traffic has plateaued. Looking for someone experienced in programmatic SEO (pSEO) to generate 500+ long-tail comparison and location landing pages.",
+        pitch: "Hi Marcus, saw your post on pSEO infrastructure. We engineer programmatic SEO architectures ranking thousands of keywords: https://adorisedigital.com/services/"
+      },
+      {
+        id: "lead_005",
+        platform: "reddit",
+        platform_label: "Reddit • r/SaaS",
+        username: "u/saas_builder_99",
+        time_ago: "5 hours ago",
+        intent_score: 95,
+        badge_color: "emerald",
+        target_offer: "B2B Outbound Funnels",
+        quote: "What tool are you guys using for multi-channel lead enrichment and automated follow-ups? Apollo is giving us 40% bounce rate.",
+        pitch: "Hey there, saw your r/SaaS discussion on high bounce rates. We use triple-verified waterfall enrichment guaranteeing under 2% bounces: https://adorisedigital.com/services/"
+      }
+    ];
+
+    let currentFilter = 'all';
+
+    function renderLeads(leads) {
+      const container = document.getElementById('leadsFeedContainer');
+      container.innerHTML = '';
+
+      const filtered = currentFilter === 'all' 
+        ? leads 
+        : leads.filter(l => l.platform === currentFilter);
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="glass-card p-12 text-center rounded-2xl border border-slate-800 text-slate-400 text-sm">
+            No signals found for this source filter.
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(lead => {
+        const card = document.createElement('div');
+        card.className = "glass-card p-5 rounded-2xl border border-slate-800 hover:border-slate-700 transition space-y-3";
+        card.innerHTML = `
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div class="flex items-center space-x-3">
+              <span class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-xs font-bold text-cyan-400 uppercase">${lead.platform.substring(0, 2)}</span>
+              <div>
+                <span class="text-xs font-bold text-white">${lead.username}</span>
+                <span class="text-[10px] text-slate-500 ml-2 font-mono">${lead.platform_label} • ${lead.time_ago}</span>
+              </div>
+            </div>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-${lead.badge_color}-500/20 text-${lead.badge_color}-400 border border-${lead.badge_color}-500/30 self-start sm:self-auto">
+              Match: ${lead.intent_score}% High Buying Intent
+            </span>
+          </div>
+
+          <div class="p-3 rounded-xl bg-slate-950 text-xs text-slate-300 border border-slate-800/80 italic">
+            "${lead.quote}"
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-slate-800/60">
+            <div class="text-[11px] text-slate-400">
+              Target Offer: <strong class="text-slate-200">${lead.target_offer}</strong>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="dispatchOutreach('WhatsApp', '${lead.username}', '${encodeURIComponent(lead.pitch)}')" class="px-3 py-1.5 rounded-xl bg-emerald-600/90 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-1.5 transition cursor-pointer">
+                <span>💬 WhatsApp</span>
+              </button>
+              <button onclick="dispatchOutreach('Telegram', '${lead.username}', '${encodeURIComponent(lead.pitch)}')" class="px-3 py-1.5 rounded-xl bg-blue-600/90 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1.5 transition cursor-pointer">
+                <span>✈️ Telegram</span>
+              </button>
+              <button onclick="copyPitch('${encodeURIComponent(lead.pitch)}')" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium transition cursor-pointer">
+                <span>📋 Copy Pitch</span>
+              </button>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function filterPlatform(plat) {
+      currentFilter = plat;
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        if (b.getAttribute('data-plat') === plat) {
+          b.className = "px-3 py-1.5 rounded-xl bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 text-xs font-semibold cursor-pointer filter-btn";
+        } else {
+          b.className = "px-3 py-1.5 rounded-xl bg-slate-900 text-slate-400 hover:text-white border border-slate-800 text-xs font-semibold cursor-pointer filter-btn";
+        }
+      });
+      renderLeads(SAMPLE_LEADS);
+    }
+
+    function dispatchOutreach(platform, username, encodedPitch) {
+      const pitch = decodeURIComponent(encodedPitch);
+      if (platform === 'WhatsApp') {
+        window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(pitch)}`, '_blank');
+      } else {
+        window.open(`https://t.me/share/url?url=https://adorisedigital.com/services/&text=${encodeURIComponent(pitch)}`, '_blank');
+      }
+    }
+
+    function copyPitch(encodedPitch) {
+      navigator.clipboard.writeText(decodeURIComponent(encodedPitch));
+      alert("Personalized outreach pitch copied to clipboard!");
+    }
+
+    function refreshLeadStream() {
+      renderLeads(SAMPLE_LEADS);
+      alert("Scout Radar checked: 14 qualified buyer signals refreshed.");
+    }
+
+    function exportLeadsCsv() {
+      let csvContent = "data:text/csv;charset=utf-8,Platform,Username,IntentScore,TargetOffer,Excerpt\n";
+      SAMPLE_LEADS.forEach(l => {
+        csvContent += `"${l.platform}","${l.username}","${l.intent_score}%","${l.target_offer}","${l.quote.replace(/"/g, '""')}"\n`;
+      });
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "scout_verified_leads.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    async function checkAuth() {
+      try {
+        const res = await fetch('/api/auth/me');
+        const data = await res.json();
+        if (!data.authenticated || !data.user) {
+          window.location.href = '/login?redirect=/dashboard';
+          return;
+        }
+
+        document.getElementById('userEmail').textContent = data.user.email;
+        const isPro = data.user.plan === 'pro';
+        document.getElementById('userTier').textContent = isPro ? 'Growth Auto-Pilot (Active)' : 'Solo Hunter Trial (Active)';
+        document.getElementById('statPlanName').textContent = isPro ? 'Growth Auto-Pilot' : 'Solo Hunter (Trial)';
+        document.getElementById('statQuotaUsed').textContent = isPro ? '3 / 30 Used' : '1 / 3 Used';
+        document.getElementById('quotaBar').style.width = isPro ? '10%' : '33%';
+      } catch (e) {
+        window.location.href = '/login?redirect=/dashboard';
+      }
+    }
+
+    async function handleLogout() {
+      await fetch('/api/auth/logout', { method: 'POST' });
+      window.location.href = '/login';
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      checkAuth();
+      renderLeads(SAMPLE_LEADS);
+    });
+  </script>
+</body>
+</html>

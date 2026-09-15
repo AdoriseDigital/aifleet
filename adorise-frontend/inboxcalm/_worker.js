@@ -580,9 +580,45 @@ export default {
     }
 
     // -------------------------------------------------------------
-    // APPLICATION ROUTING: /login, /app, /dashboard & Static Assets
-    // Clean URL routing to dedicated application views via asset manifest
+    // APPLICATION ROUTING: /login, /app, /dashboard & Session Gating
     // -------------------------------------------------------------
-    return env.ASSETS.fetch(request);
+    if (path === '/login' || path === '/login/') {
+      const res = await env.ASSETS.fetch(new Request(new URL('/login.html', request.url)));
+      const body = await res.text();
+      return new Response(body, {
+        status: 200,
+        headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=0, must-revalidate' }
+      });
+    }
+
+    if (path === '/dashboard' || path === '/dashboard/') {
+      if (!user) {
+        return Response.redirect(new URL('/login?redirect=' + encodeURIComponent(path), request.url), 302);
+      }
+      const res = await env.ASSETS.fetch(new Request(new URL('/dashboard.html', request.url)));
+      const body = await res.text();
+      return new Response(body, {
+        status: 200,
+        headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=0, must-revalidate' }
+      });
+    }
+
+    if (path === '/app' || path === '/app/') {
+      if (!user) {
+        return Response.redirect(new URL('/login?redirect=' + encodeURIComponent(path), request.url), 302);
+      }
+      const res = await env.ASSETS.fetch(new Request(new URL('/app.html', request.url)));
+      const body = await res.text();
+      return new Response(body, {
+        status: 200,
+        headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=0, must-revalidate' }
+      });
+    }
+
+    const resp = await env.ASSETS.fetch(request);
+    if (resp.status === 404 && !path.includes('.')) {
+      return new Response("Not Found", { status: 404, headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+    }
+    return resp;
   }
 };

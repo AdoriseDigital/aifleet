@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sanctuary Console | DearMee AI Companion</title>
+  <meta name="description" content="Your private, non-judgmental space for emotional grounding, burnout reflection, and founder wellness.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: { fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] } }
+      }
+    }
+  </script>
+  <style>
+    .glass-card {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen selection:bg-pink-500 selection:text-white flex flex-col justify-between">
+
+  <!-- Header -->
+  <header class="h-20 border-b border-slate-800 bg-slate-950/85 backdrop-blur-md fixed top-0 left-0 right-0 z-50 px-6 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-pink-500 to-rose-600 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-pink-500/20">
+        🕊️
+      </div>
+      <div>
+        <span class="font-extrabold text-xl tracking-tight text-white">DEAR<span class="text-pink-400">MEE</span></span>
+        <span class="ml-2 px-2.5 py-0.5 text-[10px] font-mono bg-pink-500/10 text-pink-400 border border-pink-500/30 rounded-full">Private Sanctuary</span>
+      </div>
+    </div>
+
+    <div class="flex items-center space-x-4">
+      <div class="text-right hidden sm:block">
+        <div id="userEmail" class="text-xs font-semibold text-slate-200">Loading sanctuary...</div>
+        <div id="userTier" class="text-[10px] font-mono text-pink-400">Syncing reflection pass...</div>
+      </div>
+      <button onclick="handleLogout()" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-rose-500/40 text-slate-400 hover:text-rose-300 text-xs font-medium transition cursor-pointer">
+        Sign Out
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Sanctuary Area -->
+  <main class="pt-28 pb-16 px-4 sm:px-6 max-w-4xl mx-auto w-full flex-1 space-y-6">
+
+    <!-- Top Status Banner -->
+    <div class="glass-card p-4 rounded-2xl border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <span class="w-3 h-3 rounded-full bg-emerald-400 animate-ping"></span>
+        <span class="text-xs text-slate-300 font-medium">DearMee Sanctuary is ready. You are safe here. Zero logs recorded.</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-pink-500/20 text-pink-300 border border-pink-500/30" id="badgePlan">DearMee Plus</span>
+      </div>
+    </div>
+
+    <!-- Active Chat Feed -->
+    <div class="glass-card rounded-3xl border border-slate-800 overflow-hidden flex flex-col h-[520px]">
+      <div class="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-950/40">
+        <div class="flex items-center gap-2">
+          <span class="text-xs text-slate-400 font-semibold">Active Persona:</span>
+          <select id="personaSelect" class="bg-slate-900 border border-slate-700 text-xs text-pink-300 rounded-lg px-2 py-1 focus:outline-none">
+            <option value="calm_listener">Calm Listener (Gentle & Grounding)</option>
+            <option value="founder_copilot">Founder Co-Pilot (Reframes Chaos)</option>
+            <option value="gentle_coach">Gentle Coach (Micro-Action Steps)</option>
+            <option value="mindfulness">Mindfulness Guide (Breath & Body)</option>
+          </select>
+        </div>
+        <button onclick="clearChat()" class="text-xs text-slate-500 hover:text-slate-300">Clear</button>
+      </div>
+
+      <!-- Messages Feed -->
+      <div class="flex-1 p-6 overflow-y-auto space-y-4" id="chatFeed">
+        <div class="flex items-start space-x-3">
+          <div class="w-8 h-8 rounded-full bg-pink-500/20 border border-pink-500/40 flex items-center justify-center text-pink-400 font-bold text-xs shrink-0">DM</div>
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 max-w-xl text-sm text-slate-300 leading-relaxed shadow-sm">
+            Welcome to your sanctuary. Take a gentle breath. What is feeling heavy, loud, or unresolved in your mind right now?
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Input Bar -->
+      <form onsubmit="sendMessage(event)" class="p-4 border-t border-slate-800 bg-slate-950/60 flex items-center gap-3">
+        <input 
+          type="text" 
+          id="chatInput" 
+          placeholder="Share what is on your mind..."
+          class="flex-1 px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white text-sm focus:outline-none focus:border-pink-500 transition"
+        >
+        <button 
+          type="submit" 
+          id="sendBtn"
+          class="px-5 py-3 rounded-xl bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-400 hover:to-rose-500 text-white font-bold text-xs shadow-lg transition cursor-pointer"
+        >
+          Reflect
+        </button>
+      </form>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-6 border-t border-slate-900 text-center text-xs text-slate-400">
+    <p>&copy; 2026 Adorise Digital LLC / Trendy DigiStore LLC. Caring Confidant, not licensed clinical therapy.</p>
+  </footer>
+
+  <script>
+    async function sendMessage(e) {
+      if (e) e.preventDefault();
+      const input = document.getElementById('chatInput');
+      const msg = input.value.trim();
+      if (!msg) return;
+
+      const feed = document.getElementById('chatFeed');
+      const persona = document.getElementById('personaSelect').value;
+      const sendBtn = document.getElementById('sendBtn');
+
+      feed.innerHTML += `
+        <div class="flex items-start justify-end space-x-3">
+          <div class="bg-pink-600/30 border border-pink-500/40 rounded-2xl p-4 max-w-xl text-sm text-white leading-relaxed">
+            ${msg}
+          </div>
+        </div>
+      `;
+
+      input.value = '';
+      sendBtn.disabled = true;
+      feed.scrollTop = feed.scrollHeight;
+
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: msg, persona: persona })
+        });
+        const data = await res.json();
+        renderReply(data.reply || "I am holding space for you. Take a slow breath.");
+      } catch (err) {
+        renderReply("I hear you deeply. Whatever pressure is weighing on you right now, let your shoulders drop. You don't have to carry this alone.");
+      } finally {
+        sendBtn.disabled = false;
+        feed.scrollTop = feed.scrollHeight;
+      }
+    }
+
+    function renderReply(reply) {
+      const feed = document.getElementById('chatFeed');
+      feed.innerHTML += `
+        <div class="flex items-start space-x-3">
+          <div class="w-8 h-8 rounded-full bg-pink-500/20 border border-pink-500/40 flex items-center justify-center text-pink-400 font-bold text-xs shrink-0">DM</div>
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 max-w-xl text-sm text-slate-300 leading-relaxed shadow-sm">
+            ${reply}
+          </div>
+        </div>
+      `;
+    }
+
+    function clearChat() {
+      document.getElementById('chatFeed').innerHTML = `
+        <div class="flex items-start space-x-3">
+          <div class="w-8 h-8 rounded-full bg-pink-500/20 border border-pink-500/40 flex items-center justify-center text-pink-400 font-bold text-xs shrink-0">DM</div>
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 max-w-xl text-sm text-slate-300 leading-relaxed shadow-sm">
+            New session started. Take an unhurried breath. What would bring you peace right now?
+          </div>
+        </div>
+      `;
+    }
+
+    async function checkAuth() {
+      try {
+        const res = await fetch('/api/auth/me');
+        const data = await res.json();
+        if (!data.authenticated || !data.user) {
+          window.location.href = '/login?redirect=/dashboard';
+          return;
+        }
+
+        document.getElementById('userEmail').textContent = data.user.email;
+        const isPro = data.user.plan === 'pro';
+        document.getElementById('userTier').textContent = isPro ? 'DearMee Plus (Unlimited)' : '7-Day Free Trial';
+        document.getElementById('badgePlan').textContent = isPro ? 'DearMee Plus ($9.99/mo)' : '7-Day Free Trial (5 Reflections/Day)';
+      } catch (e) {
+        window.location.href = '/login?redirect=/dashboard';
+      }
+    }
+
+    async function handleLogout() {
+      await fetch('/api/auth/logout', { method: 'POST' });
+      window.location.href = '/login';
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      checkAuth();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In & Access | Adorise Outreach Infrastructure</title>
+  <meta name="description" content="Sign in to your Adorise Outreach dashboard to manage sending mailboxes, warmup rotation, and deliverability metrics.">
+  <link rel="canonical" href="https://outreach.adorisedigital.com/login">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: { fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] } }
+      }
+    }
+  </script>
+  <style>
+    .glass-card {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen selection:bg-indigo-500 selection:text-white flex flex-col justify-between">
+
+  <!-- Header -->
+  <header class="h-20 border-b border-slate-800 bg-slate-950/85 backdrop-blur-md fixed top-0 left-0 right-0 z-50 px-6 flex items-center justify-between">
+    <a href="/" class="flex items-center space-x-3 group">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-indigo-500/20">
+        📬
+      </div>
+      <div>
+        <span class="font-extrabold text-xl tracking-tight text-white">ADORISE <span class="text-indigo-400">OUTREACH</span></span>
+        <span class="hidden sm:inline-block ml-2 px-2.5 py-0.5 text-[10px] font-mono bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 rounded-full">Cold Infra</span>
+      </div>
+    </a>
+
+    <div class="flex items-center space-x-4">
+      <a href="/" class="text-xs text-slate-400 hover:text-white transition font-medium flex items-center gap-1">
+        <span>&larr;</span> <span>Back to Home</span>
+      </a>
+      <a href="/dashboard" class="px-3.5 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-indigo-500 text-indigo-300 text-xs font-semibold transition">
+        Mailbox Console &rarr;
+      </a>
+    </div>
+  </header>
+
+  <!-- Login Container -->
+  <main class="pt-32 pb-16 px-6 max-w-md mx-auto w-full flex-1 flex flex-col justify-center">
+    <div class="glass-card p-8 rounded-3xl shadow-2xl border border-slate-800 relative">
+      <div class="text-center mb-8">
+        <span class="px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-[10px] font-mono uppercase tracking-wider inline-block mb-3">SECURE INFRASTRUCTURE ACCESS</span>
+        <h1 class="text-2xl font-black text-white tracking-tight">Sign In to Outreach</h1>
+        <p class="text-xs text-slate-400 mt-1.5">Manage multi-inbox rotation, warmup health & automated outbound</p>
+      </div>
+
+      <!-- Quick Test Drive Accounts -->
+      <div class="mb-6 p-4 rounded-2xl bg-indigo-950/30 border border-indigo-500/30">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-[10px] font-mono font-bold text-indigo-400 uppercase tracking-wide">Instant Test-Drive</span>
+          <span class="text-[10px] text-slate-400">Click to autofill</span>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <button type="button" onclick="fillTestAccount('scale')" class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-700 hover:border-indigo-400 text-left transition text-xs group cursor-pointer">
+            <div class="font-bold text-slate-200 group-hover:text-indigo-300">Scale Growth</div>
+            <div class="text-[10px] text-slate-400">25 sending inboxes</div>
+          </button>
+          <button type="button" onclick="fillTestAccount('starter')" class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-700 hover:border-indigo-400 text-left transition text-xs group cursor-pointer">
+            <div class="font-bold text-slate-200 group-hover:text-indigo-300">Starter Trial</div>
+            <div class="text-[10px] text-slate-400">5 sending inboxes</div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Error / Notice Box -->
+      <div id="errorBox" class="hidden mb-6 p-3.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs flex items-center space-x-2">
+        <span>⚠️</span>
+        <span id="errorMessage">Invalid email or password</span>
+      </div>
+
+      <!-- Authentication Form -->
+      <form id="authForm" onsubmit="handleAuthSubmit(event)" class="space-y-4">
+        <div>
+          <label for="email" class="block text-xs font-semibold text-slate-300 mb-1.5">Work Email Address</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            required 
+            placeholder="growth@yourcompany.com"
+            class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white text-sm focus:outline-none focus:border-indigo-500 transition"
+          >
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-1.5">
+            <label for="password" class="block text-xs font-semibold text-slate-300">Password</label>
+            <span class="text-[11px] text-slate-500">Min. 8 characters</span>
+          </div>
+          <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            required 
+            placeholder="••••••••••••"
+            class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white text-sm focus:outline-none focus:border-indigo-500 transition"
+          >
+        </div>
+
+        <button 
+          type="submit" 
+          id="submitBtn"
+          class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-400 hover:to-purple-500 text-white font-black text-sm tracking-wide shadow-lg shadow-indigo-500/25 transition flex items-center justify-center space-x-2 cursor-pointer mt-2"
+        >
+          <span id="submitBtnText">Sign In to Outreach Console</span>
+          <span id="spinner" class="hidden animate-spin">🌀</span>
+        </button>
+      </form>
+
+      <!-- Monetization Link -->
+      <div class="mt-8 pt-6 border-t border-slate-800/80 text-center">
+        <p class="text-xs text-slate-400 mb-3">Need new mailboxes provisioned?</p>
+        <a 
+          href="https://whop.com/adorise-digital-usa/" 
+          target="_blank"
+          class="inline-flex items-center space-x-1.5 text-xs text-indigo-400 hover:text-indigo-300 font-semibold transition"
+        >
+          <span>Subscribe via Whop (7-Day Trial)</span>
+          <span>&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-6 border-t border-slate-900 text-center text-xs text-slate-400">
+    <p>&copy; 2026 Adorise Digital LLC / Trendy DigiStore LLC. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function fillTestAccount(type) {
+      const emailInput = document.getElementById('email');
+      const passInput = document.getElementById('password');
+      if (type === 'scale') {
+        emailInput.value = 'pro@adorisedigital.com';
+        passInput.value = 'AdorisePro2026!';
+      } else {
+        emailInput.value = 'trial@adorisedigital.com';
+        passInput.value = 'AdoriseTrial2026!';
+      }
+      document.getElementById('errorBox').classList.add('hidden');
+    }
+
+    async function handleAuthSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const errorBox = document.getElementById('errorBox');
+      const errorMsg = document.getElementById('errorMessage');
+      const submitBtn = document.getElementById('submitBtn');
+      const btnText = document.getElementById('submitBtnText');
+      const spinner = document.getElementById('spinner');
+
+      errorBox.classList.add('hidden');
+      submitBtn.disabled = true;
+      btnText.textContent = "Authenticating Infrastructure...";
+      spinner.classList.remove('hidden');
+
+      try {
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          throw new Error(data.error || 'Authentication failed');
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const redirectPath = urlParams.get('redirect') || '/dashboard';
+        window.location.href = redirectPath;
+      } catch (err) {
+        errorMsg.textContent = err.message || 'Login failed. Please check credentials.';
+        errorBox.classList.remove('hidden');
+        submitBtn.disabled = false;
+        btnText.textContent = "Sign In to Outreach Console";
+        spinner.classList.add('hidden');
+      }
+    }
+  </script>
+</body>
+</html>
