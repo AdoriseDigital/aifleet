@@ -524,8 +524,23 @@
         </button>
       </div>
 
+      <!-- Instant 1-Click Demo Buttons -->
+      <div class="mb-5 space-y-2">
+        <div class="text-[10px] uppercase font-bold tracking-wider text-cyan-400 font-mono">⚡ 1-Click Instant Test Drive:</div>
+        <div class="grid grid-cols-2 gap-2">
+          <button onclick="handleQuickScoutLogin('Daniel Croft', 'Solo Hunter ($49 Tier)')" class="py-2 px-3 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/40 text-cyan-300 text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer">
+            <span>⚡</span>
+            <span>Solo Hunter</span>
+          </button>
+          <button onclick="handleQuickScoutLogin('Marcus Thorne', 'Growth Auto-Pilot ($149 Tier)')" class="py-2 px-3 rounded-xl bg-blue-500/20 hover:bg-blue-500/30 border border-blue-500/40 text-blue-300 text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer">
+            <span>🚀</span>
+            <span>Agency Founder</span>
+          </button>
+        </div>
+      </div>
+
       <!-- Social OAuth Buttons -->
-      <div class="space-y-2.5 mb-6">
+      <div class="space-y-2 mb-5">
         <button onclick="handleScoutSocial('Google')" class="w-full py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-xs font-semibold text-white flex items-center justify-center gap-2 transition cursor-pointer">
           <span>🌐</span>
           <span>Continue with Google</span>
@@ -536,13 +551,13 @@
         </button>
       </div>
 
-      <div class="relative flex items-center justify-center mb-6">
+      <div class="relative flex items-center justify-center mb-5">
         <div class="border-t border-slate-800 w-full"></div>
         <span class="bg-slate-950 px-3 text-[10px] uppercase font-mono text-slate-500 absolute">Or with email</span>
       </div>
 
       <!-- Email Form -->
-      <form onsubmit="handleScoutEmail(event)" class="space-y-4 text-xs">
+      <form onsubmit="handleScoutEmail(event)" class="space-y-3.5 text-xs">
         <div id="scoutNameField">
           <label class="block font-semibold text-slate-400 uppercase tracking-wider mb-1">Your Full Name / Business Name</label>
           <input type="text" id="scoutName" placeholder="e.g. Acme Growth Studio" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white outline-none focus:border-cyan-500">
@@ -597,7 +612,31 @@
     </div>
   </div>
 
+  <!-- Toast Container -->
+  <div id="scoutToastContainer" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
   <script>
+    function showScoutToast(title, msg, type = 'success') {
+      const c = document.getElementById('scoutToastContainer');
+      const t = document.createElement('div');
+      t.className = 'pointer-events-auto p-4 rounded-2xl border shadow-2xl transition-all duration-300 transform translate-y-2 opacity-0 max-w-sm bg-slate-900/95 border-cyan-500/40 text-white';
+      t.innerHTML = `
+        <div class="flex items-start gap-3">
+          <span class="text-base">${type === 'success' ? '🎯' : '⚡'}</span>
+          <div class="text-xs">
+            <div class="font-bold text-white">${title}</div>
+            <div class="text-slate-300 mt-0.5">${msg}</div>
+          </div>
+        </div>
+      `;
+      c.appendChild(t);
+      setTimeout(() => { t.classList.remove('translate-y-2', 'opacity-0'); }, 10);
+      setTimeout(() => {
+        t.classList.add('opacity-0', 'translate-y-2');
+        setTimeout(() => t.remove(), 300);
+      }, 4000);
+    }
+
     function openScoutAuthModal(mode) {
       document.getElementById('scoutAuthModal').classList.remove('hidden');
       switchScoutTab(mode);
@@ -614,36 +653,43 @@
       const submitBtn = document.getElementById('scoutSubmitBtn');
 
       if (mode === 'register') {
-        regTab.className = "text-sm font-bold text-cyan-400 border-b-2 border-cyan-500 pb-2";
-        signTab.className = "text-sm font-semibold text-slate-400 hover:text-white pb-2";
+        regTab.className = "text-sm font-bold text-cyan-400 border-b-2 border-cyan-500 pb-2 cursor-pointer";
+        signTab.className = "text-sm font-semibold text-slate-400 hover:text-white pb-2 cursor-pointer";
         nameField.classList.remove('hidden');
         submitBtn.textContent = "Activate 7-Day Free Trial (3 Leads Today)";
       } else {
-        signTab.className = "text-sm font-bold text-cyan-400 border-b-2 border-cyan-500 pb-2";
-        regTab.className = "text-sm font-semibold text-slate-400 hover:text-white pb-2";
+        signTab.className = "text-sm font-bold text-cyan-400 border-b-2 border-cyan-500 pb-2 cursor-pointer";
+        regTab.className = "text-sm font-semibold text-slate-400 hover:text-white pb-2 cursor-pointer";
         nameField.classList.add('hidden');
         submitBtn.textContent = "Sign In to Scout Radar";
       }
     }
 
+    function handleQuickScoutLogin(name, tier) {
+      loginScout(name, tier);
+      closeScoutAuthModal();
+      showScoutToast(`Welcome ${name}!`, `Logged in as ${tier}. Full radar feed unlocked.`);
+    }
+
     function handleScoutSocial(provider) {
       const name = provider === 'Google' ? "Founder (Google)" : "Founder (Facebook)";
-      loginScout(name);
+      loginScout(name, "7-Day Free Trial");
       closeScoutAuthModal();
-      alert(`Authenticated with ${provider}! Your 7-day free trial has been activated with 3 fresh buyer leads.`);
+      showScoutToast("Authenticated", `Logged in via ${provider}. 3 verified buyer leads available today.`);
     }
 
     function handleScoutEmail(e) {
       e.preventDefault();
       const email = document.getElementById('scoutEmail').value;
       const name = document.getElementById('scoutName').value || email.split('@')[0];
-      loginScout(name);
+      loginScout(name, "7-Day Free Trial");
       closeScoutAuthModal();
-      alert(`Welcome ${name}! Your 7-Day Free Trial is live with 3 verified leads.`);
+      showScoutToast(`Welcome ${name}!`, "7-Day Free Trial activated. 3 verified buyer leads ready.");
     }
 
-    function loginScout(name) {
+    function loginScout(name, tier = "7-Day Free Trial") {
       localStorage.setItem('scout_user', name);
+      localStorage.setItem('scout_tier', tier);
       document.getElementById('scoutLoggedOut').classList.add('hidden');
       document.getElementById('scoutLoggedIn').classList.remove('hidden');
       document.getElementById('scoutUserLabel').textContent = name;
@@ -651,8 +697,10 @@
 
     function signOutScout() {
       localStorage.removeItem('scout_user');
+      localStorage.removeItem('scout_tier');
       document.getElementById('scoutLoggedIn').classList.add('hidden');
       document.getElementById('scoutLoggedOut').classList.remove('hidden');
+      showScoutToast("Signed Out", "Logged out of Scout Radar.");
     }
 
     function toggleIcpModal() {
@@ -662,21 +710,44 @@
 
     function handleSaveIcp(e) {
       e.preventDefault();
+      const offer = document.getElementById('icpOffer').value;
+      const kw = document.getElementById('icpKeywords').value;
+      localStorage.setItem('scout_icp_offer', offer);
+      localStorage.setItem('scout_icp_kw', kw);
       toggleIcpModal();
-      alert("Business ICP updated in database! Hermes & Scout radar listening parameters refreshed.");
+      showScoutToast("Radar Parameters Saved", "Scout listening filters updated. Refreshed live buyer leads.");
     }
 
+    const LEAD_PITCHES = {
+      'u/ecommerce_dan': "Hey Dan, saw your post on r/Shopify about DTC checkout redesign. We specialize in high-converting Shopify checkout flows and have recovered over $1.2M in abandoned carts. Would love to share 2 quick examples: https://adorisedigital.com/services/",
+      '@sarah_growth_cmo': "Hi Sarah, saw you're setting up cold email infrastructure this week. We manage dedicated Google Workspace setups with automated SPF/DKIM/DMARC and 21-day warmup. Happy to share our pricing and deliverability SOP: https://adorisedigital.com/services/",
+      'Telegram Lead': "Hello! Reaching out regarding your requirement for white-label AI voice agents. We deploy 24/7 autonomous phone receptionists for clinics and agencies. Let's connect on a brief demo: https://adorisedigital.com/services/"
+    };
+
     function triggerOutreach(platform, lead) {
-      alert(`Opening ${platform} DM composer with personalized pitch template for ${lead}!`);
+      const pitch = LEAD_PITCHES[lead] || `Hi! Noticed your inquiry regarding digital services. We would love to assist: https://adorisedigital.com/services/`;
+      if (platform === 'WhatsApp') {
+        const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(pitch)}`;
+        window.open(url, '_blank');
+        showScoutToast("WhatsApp Dispatch Opened", `Personalized pitch template loaded for ${lead}.`);
+      } else if (platform === 'Telegram') {
+        const url = `https://t.me/share/url?url=https://adorisedigital.com/scout&text=${encodeURIComponent(pitch)}`;
+        window.open(url, '_blank');
+        showScoutToast("Telegram Dispatch Opened", `Outreach pitch loaded for ${lead}.`);
+      } else {
+        navigator.clipboard.writeText(pitch);
+        showScoutToast("Pitch Copied to Clipboard", "Ready to paste directly into DM.");
+      }
     }
 
     function triggerComposioAuto(lead) {
-      alert(`Queued automated AI outreach for ${lead} via Composio & Buffer background workflow!`);
+      showScoutToast("Automated Sequence Queued", `Autonomous outreach for ${lead} dispatched via Composio & Buffer background workflow!`);
     }
 
     window.addEventListener('DOMContentLoaded', () => {
       const user = localStorage.getItem('scout_user');
-      if (user) loginScout(user);
+      const tier = localStorage.getItem('scout_tier') || "7-Day Free Trial";
+      if (user) loginScout(user, tier);
     });
   </script>
 </body>

@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adorise Social — Autonomous AI AI Social Growth & Auto-Scheduler</title>
+  <title>Adorise Social — Autonomous AI Social Growth & Auto-Scheduler</title>
   <meta name="description" content="Autonomous AI multi-platform social media auto-pilot. Connect your channels, auto-draft viral posts with AI, generate images, and publish across X, LinkedIn, Instagram, and TikTok.">
   <link rel="canonical" href="https://adorisedigital.com/social/">
 
   <!-- Open Graph / Meta -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://adorisedigital.com/social/">
-  <meta property="og:title" content="Adorise Social — Autonomous AI AI Social Growth & Auto-Scheduler">
+  <meta property="og:title" content="Adorise Social — Autonomous AI Social Growth & Auto-Scheduler">
   <meta property="og:description" content="Autonomous AI multi-platform social media auto-pilot with automated drafts, image generation, and multi-network publishing.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Adorise Social — AI Social Media Growth Engine">
@@ -25,7 +25,7 @@
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web",
     "url": "https://adorisedigital.com/social/",
-    "description": "Autonomous AI AI social media scheduler and viral growth auto-pilot across X, LinkedIn, Instagram, and TikTok.",
+    "description": "Autonomous AI social media scheduler and viral growth auto-pilot across X, LinkedIn, Instagram, and TikTok.",
     "publisher": {
       "@type": "Organization",
       "name": "Adorise Digital",
@@ -287,9 +287,17 @@
             </div>
 
             <div>
-              <div class="flex justify-between items-center mb-1.5">
+              <div class="flex flex-wrap justify-between items-center gap-1 mb-1.5">
                 <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Post Caption & Hooks</label>
-                <button type="button" onclick="generateAIHook()" class="text-[11px] text-purple-400 hover:text-purple-300 font-mono">⚡ Viral AI Hook</button>
+                <div class="flex items-center gap-1.5">
+                  <select id="hookNicheSelect" class="bg-slate-900 border border-slate-800 text-purple-300 text-[10px] rounded-lg px-2 py-0.5 outline-none">
+                    <option value="agency">Agency & Consulting</option>
+                    <option value="saas">B2B SaaS</option>
+                    <option value="ecommerce">E-Commerce & D2C</option>
+                    <option value="ai">AI Automation</option>
+                  </select>
+                  <button type="button" onclick="generateAIHook()" class="text-[11px] text-purple-400 hover:text-purple-300 font-bold font-mono">⚡ Viral AI Hook</button>
+                </div>
               </div>
               <textarea id="captionInput" rows="4" required placeholder="Write your post or click 'Viral AI Hook' to auto-generate viral storytelling..." class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-purple-500 transition text-xs leading-relaxed">Here is the exact 3-step automation we use to scrape 500 decision-maker emails/day without getting banned 🧵👇 #ColdOutreach #B2B</textarea>
             </div>
@@ -309,8 +317,14 @@
                   Generate
                 </button>
               </div>
-              <div id="imagePreview" class="hidden p-2 rounded-xl bg-slate-950 border border-slate-800 text-center text-xs text-slate-400">
-                Visual Ready: <span class="text-emerald-400 font-mono">neon_dashboard_mrr.png</span>
+              <div id="imagePreview" class="hidden p-3 rounded-xl bg-slate-950 border border-purple-500/30 text-xs">
+                <div class="flex items-center gap-3">
+                  <div id="previewThumb" class="w-12 h-12 rounded-lg bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center text-lg shrink-0">🎨</div>
+                  <div class="text-left overflow-hidden">
+                    <div class="text-white font-semibold truncate text-[11px]" id="previewTitle">AI Visual Rendered</div>
+                    <div class="text-[10px] text-emerald-400 font-mono">✓ High-Res Visual Attached to Post</div>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -499,8 +513,23 @@
         </button>
       </div>
 
+      <!-- Instant 1-Click Demo Buttons -->
+      <div class="mb-5 space-y-2">
+        <div class="text-[10px] uppercase font-bold tracking-wider text-purple-400 font-mono">⚡ 1-Click Instant Test Drive:</div>
+        <div class="grid grid-cols-2 gap-2">
+          <button onclick="handleQuickLogin('Alex Rivera', 'Solopreneur ($29 Tier)', 3, 10)" class="py-2 px-3 rounded-xl bg-purple-500/20 hover:bg-purple-500/30 border border-purple-500/40 text-purple-300 text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer">
+            <span>⚡</span>
+            <span>Solopreneur</span>
+          </button>
+          <button onclick="handleQuickLogin('Elena Vance', 'Agency Pro ($149 Tier)', 15, 50)" class="py-2 px-3 rounded-xl bg-indigo-500/20 hover:bg-indigo-500/30 border border-indigo-500/40 text-indigo-300 text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer">
+            <span>🚀</span>
+            <span>Agency Pro</span>
+          </button>
+        </div>
+      </div>
+
       <!-- Social OAuth Buttons -->
-      <div class="space-y-2.5 mb-6">
+      <div class="space-y-2 mb-5">
         <button onclick="handleSocialAuth('Google')" class="w-full py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-xs font-semibold text-white flex items-center justify-center gap-2 transition cursor-pointer">
           <span>🌐</span>
           <span>Continue with Google</span>
@@ -511,13 +540,13 @@
         </button>
       </div>
 
-      <div class="relative flex items-center justify-center mb-6">
+      <div class="relative flex items-center justify-center mb-5">
         <div class="border-t border-slate-800 w-full"></div>
         <span class="bg-slate-950 px-3 text-[10px] uppercase font-mono text-slate-500 absolute">Or with email</span>
       </div>
 
       <!-- Email Form -->
-      <form onsubmit="handleEmailAuth(event)" class="space-y-4 text-xs">
+      <form onsubmit="handleEmailAuth(event)" class="space-y-3.5 text-xs">
         <div id="nameField">
           <label class="block font-semibold text-slate-400 uppercase tracking-wider mb-1">Your Full Name</label>
           <input type="text" id="authName" placeholder="e.g. Alex Rivera" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white outline-none focus:border-purple-500">
@@ -538,21 +567,110 @@
     </div>
   </div>
 
+  <!-- Channel Connect Modal -->
+  <div id="channelModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop">
+    <div class="glass-card w-full max-w-md rounded-3xl p-6 sm:p-8 border border-slate-700 shadow-2xl relative">
+      <button onclick="toggleChannelConnectModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg">✕</button>
+
+      <div class="flex items-center gap-3 mb-5">
+        <span class="text-2xl">🔗</span>
+        <div>
+          <h3 class="text-base font-bold text-white">Connect Social Media Account</h3>
+          <p class="text-xs text-slate-400">Link your channels for autonomous dispatch</p>
+        </div>
+      </div>
+
+      <form onsubmit="handleAddChannel(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Select Social Network</label>
+          <select id="channelNetwork" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white outline-none focus:border-purple-500">
+            <option value="𝕏 Twitter">𝕏 (Twitter / X)</option>
+            <option value="LinkedIn">💼 LinkedIn (Company or Creator)</option>
+            <option value="Instagram">📸 Instagram Business</option>
+            <option value="TikTok">🎵 TikTok Creator Account</option>
+            <option value="Facebook">📘 Facebook Business Page</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Account Handle / Page Name</label>
+          <input type="text" id="channelHandle" required placeholder="e.g. @mybrand or Acme Media" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white outline-none focus:border-purple-500">
+        </div>
+
+        <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold transition text-xs cursor-pointer shadow-lg shadow-purple-500/20">
+          Verify & Bind Account ⚡
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
   <script>
+    // State management
     let dailyPostsCount = 1;
     let imageCreditsCount = 10;
     let authMode = "register";
+    let activeVisualData = null;
 
-    const AI_HOOKS = [
-      "Here is the exact 3-step automation we use to scrape 500 decision-maker emails/day without getting banned 🧵👇 #ColdOutreach #B2B",
-      "Most agency founders work 80 hours a week on tasks a $20 VPS can run automatically. Here is the blueprint: #Productivity #AI",
-      "Stop hiring cold callers until you watch this breakdown of self-hosted Composio outreach pipelines 🚀 #SaaS #GrowthHacking",
-      "We tested 1,000 video ad variations using automated 9:16 rendering. The retention difference was insane: #VideoMarketing #Shorts"
+    let userChannels = [
+      { id: 1, network: "𝕏 (Twitter / X)", icon: "𝕏", handle: "@adorise_growth", status: "Active" },
+      { id: 2, network: "LinkedIn Company", icon: "💼", handle: "Adorise Digital", status: "Active" }
     ];
 
+    const NICHE_HOOKS = {
+      agency: [
+        "Most agency founders work 80 hours a week on tasks a $20 VPS can run automatically. Here is the blueprint: 🧵👇 #AgencyGrowth #AI",
+        "We replaced $2,400/mo in bloated SaaS subscriptions with 3 open-source automated pipelines. Breakdown: #Bootstrapping #Operations",
+        "How to scale an agency from $10k to $50k MRR without hiring more account managers: #AgencyLife #Automation"
+      ],
+      saas: [
+        "Stop hiring cold callers until you watch this breakdown of self-hosted social listening pipelines 🚀 #SaaS #GrowthHacking",
+        "Here is the exact 3-step automation we use to scrape 500 decision-maker emails/day without getting banned 🧵👇 #ColdOutreach #B2B",
+        "Why PLG without automated reactivation workflows leaves 40% of trial users on the table: #ProductLedGrowth #Retention"
+      ],
+      ecommerce: [
+        "We tested 1,000 video ad variations using automated 9:16 rendering. The retention difference was insane: #VideoMarketing #Shorts",
+        "DTC founders: Meta CPMs jumped 32% this quarter. Here is how we drive zero-ad-spend buyers from social listening: #Ecommerce #CRO",
+        "The 1 checkout abandonment email flow that generates 18% recovered revenue on autopilot: #Shopify #DTC"
+      ],
+      ai: [
+        "Autonomous AI agents are not the future—they are running our production deployments today. Here is the tech stack: #AI #DevOps",
+        "The difference between AI hype and real agency automation: What actually delivers $10k/mo results: #AIAgents #Tech",
+        "How to build a custom AI lead qualification rubric that filters 95% of tire-kickers: #MachineLearning #SaaS"
+      ]
+    };
+
+    function showToast(title, msg, type = 'success') {
+      const c = document.getElementById('toastContainer');
+      const t = document.createElement('div');
+      t.className = `pointer-events-auto p-4 rounded-2xl border shadow-2xl transition-all duration-300 transform translate-y-2 opacity-0 max-w-sm ${
+        type === 'success' ? 'bg-slate-900/95 border-emerald-500/40 text-white' : 'bg-slate-900/95 border-purple-500/40 text-white'
+      }`;
+      t.innerHTML = `
+        <div class="flex items-start gap-3">
+          <span class="text-base">${type === 'success' ? '🟢' : '⚡'}</span>
+          <div class="text-xs">
+            <div class="font-bold text-white">${title}</div>
+            <div class="text-slate-300 mt-0.5">${msg}</div>
+          </div>
+        </div>
+      `;
+      c.appendChild(t);
+      setTimeout(() => { t.classList.remove('translate-y-2', 'opacity-0'); }, 10);
+      setTimeout(() => {
+        t.classList.add('opacity-0', 'translate-y-2');
+        setTimeout(() => t.remove(), 300);
+      }, 4000);
+    }
+
     function generateAIHook() {
-      const random = AI_HOOKS[Math.floor(Math.random() * AI_HOOKS.length)];
+      const niche = document.getElementById('hookNicheSelect').value || 'agency';
+      const hooks = NICHE_HOOKS[niche] || NICHE_HOOKS.agency;
+      const random = hooks[Math.floor(Math.random() * hooks.length)];
       document.getElementById('captionInput').value = random;
+      showToast("AI Hook Generated", "High-retention storytelling draft loaded into composer.");
     }
 
     function openAuthModal(mode) {
@@ -573,36 +691,45 @@
       const submitBtn = document.getElementById('authSubmitBtn');
 
       if (mode === 'register') {
-        regTab.className = "text-sm font-bold text-purple-400 border-b-2 border-purple-500 pb-2";
-        signTab.className = "text-sm font-semibold text-slate-400 hover:text-white pb-2";
+        regTab.className = "text-sm font-bold text-purple-400 border-b-2 border-purple-500 pb-2 cursor-pointer";
+        signTab.className = "text-sm font-semibold text-slate-400 hover:text-white pb-2 cursor-pointer";
         nameField.classList.remove('hidden');
         submitBtn.textContent = "Start 7-Day Free Trial (No Card Required)";
       } else {
-        signTab.className = "text-sm font-bold text-purple-400 border-b-2 border-purple-500 pb-2";
-        regTab.className = "text-sm font-semibold text-slate-400 hover:text-white pb-2";
+        signTab.className = "text-sm font-bold text-purple-400 border-b-2 border-purple-500 pb-2 cursor-pointer";
+        regTab.className = "text-sm font-semibold text-slate-400 hover:text-white pb-2 cursor-pointer";
         nameField.classList.add('hidden');
         submitBtn.textContent = "Sign In to Adorise Social Workspace";
       }
     }
 
+    function handleQuickLogin(name, tier, channelLimit, credits) {
+      loginUser(name, tier);
+      imageCreditsCount = credits;
+      document.getElementById('imageCredits').textContent = `${imageCreditsCount} Credits Left`;
+      closeAuthModal();
+      showToast(`Welcome ${name}!`, `Loaded workspace with active ${tier}. All channels and AI models unlocked.`);
+    }
+
     function handleSocialAuth(provider) {
       const mockName = provider === 'Google' ? "Alex (Google)" : "Alex (Facebook)";
-      loginUser(mockName);
+      loginUser(mockName, "7-Day Free Trial");
       closeAuthModal();
-      alert(`Authenticated with ${provider}! Your 7-Day Free Trial is active.`);
+      showToast("Authenticated", `Logged in via ${provider}. 7-Day Free Trial active.`);
     }
 
     function handleEmailAuth(e) {
       e.preventDefault();
       const email = document.getElementById('authEmail').value;
       const name = document.getElementById('authName').value || email.split('@')[0];
-      loginUser(name);
+      loginUser(name, "7-Day Free Trial");
       closeAuthModal();
-      alert(`Welcome ${name}! Your 7-Day Free Trial is active. Connect up to 3 channels.`);
+      showToast(`Welcome ${name}!`, "Your 7-Day Free Trial is live. Connect your channels to start scheduling.");
     }
 
-    function loginUser(name) {
+    function loginUser(name, plan = "7-Day Free Trial") {
       localStorage.setItem('social_user', name);
+      localStorage.setItem('social_plan', plan);
       document.getElementById('authPillLoggedOut').classList.add('hidden');
       document.getElementById('authPillLoggedIn').classList.remove('hidden');
       document.getElementById('userDisplayName').textContent = name;
@@ -610,32 +737,119 @@
 
     function handleSignOut() {
       localStorage.removeItem('social_user');
+      localStorage.removeItem('social_plan');
       document.getElementById('authPillLoggedIn').classList.add('hidden');
       document.getElementById('authPillLoggedOut').classList.remove('hidden');
+      showToast("Signed Out", "You have been logged out of Adorise Social.");
+    }
+
+    function toggleChannelConnectModal() {
+      const m = document.getElementById('channelModal');
+      m.classList.toggle('hidden');
+    }
+
+    function handleAddChannel(e) {
+      e.preventDefault();
+      if (userChannels.length >= 3) {
+        showToast("Trial Channel Limit", "Free trial includes max 3 channels. Upgrade to Growth Autopilot ($79/mo) for 15 channels!", "warning");
+        toggleChannelConnectModal();
+        window.location.href = "#pricing";
+        return;
+      }
+
+      const net = document.getElementById('channelNetwork').value;
+      const handle = document.getElementById('channelHandle').value;
+      const icon = net.includes('Twitter') ? '𝕏' : net.includes('LinkedIn') ? '💼' : net.includes('Instagram') ? '📸' : net.includes('TikTok') ? '🎵' : '📘';
+
+      userChannels.push({
+        id: Date.now(),
+        network: net,
+        icon: icon,
+        handle: handle,
+        status: "Active"
+      });
+
+      renderChannels();
+      toggleChannelConnectModal();
+      document.getElementById('channelHandle').value = '';
+      showToast("Channel Connected", `${net} (${handle}) verified and bound to publishing pipeline.`);
+    }
+
+    function removeChannel(id) {
+      userChannels = userChannels.filter(c => c.id !== id);
+      renderChannels();
+      showToast("Channel Disconnected", "Social inbox released.");
+    }
+
+    function renderChannels() {
+      const list = document.getElementById('channelList');
+      const maxChannels = 3;
+      document.getElementById('channelCountText').textContent = `${userChannels.length} / ${maxChannels} Connected`;
+
+      let html = userChannels.map(c => `
+        <div class="glass-card p-4 rounded-2xl flex items-center justify-between border border-slate-800">
+          <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-lg">${c.icon}</div>
+            <div>
+              <div class="text-xs font-bold text-white">${c.network}</div>
+              <div class="text-[11px] text-purple-400 font-mono">${c.handle}</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Active</span>
+            <button onclick="removeChannel(${c.id})" class="text-slate-600 hover:text-red-400 text-xs transition">✕</button>
+          </div>
+        </div>
+      `).join('');
+
+      if (userChannels.length < maxChannels) {
+        html += `
+          <div onclick="toggleChannelConnectModal()" class="glass-card p-4 rounded-2xl flex items-center justify-between border border-dashed border-slate-700 hover:border-purple-500/50 cursor-pointer transition">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-lg text-slate-500">＋</div>
+              <div>
+                <div class="text-xs font-bold text-slate-300">Connect Channel</div>
+                <div class="text-[11px] text-slate-500">Instagram, TikTok, or FB</div>
+              </div>
+            </div>
+            <span class="text-[10px] font-mono text-purple-400">${maxChannels - userChannels.length} Slot Free</span>
+          </div>
+        `;
+      }
+
+      list.innerHTML = html;
     }
 
     function handleGenerateImage() {
       const prompt = document.getElementById('imagePrompt').value.trim();
       if (!prompt) {
-        alert("Please enter an image prompt first.");
+        showToast("Prompt Required", "Please enter a descriptive image prompt first.", "warning");
         return;
       }
       if (imageCreditsCount <= 0) {
-        alert("You have 0 AI visual credits remaining. Please purchase a $5 credit pack!");
+        showToast("0 Credits Remaining", "Please upgrade plan or reload credit pack via Whop.", "warning");
         window.location.href = "#pricing";
         return;
       }
+
       imageCreditsCount--;
       document.getElementById('imageCredits').textContent = `${imageCreditsCount} Credits Left`;
+
+      activeVisualData = {
+        prompt: prompt,
+        timestamp: new Date().toLocaleTimeString()
+      };
+
       const prev = document.getElementById('imagePreview');
       prev.classList.remove('hidden');
-      prev.innerHTML = `<span>🎨 AI Visual Rendered for: "${prompt.slice(0, 30)}..." (1 Credit Used)</span>`;
+      document.getElementById('previewTitle').textContent = `"${prompt.slice(0, 32)}..."`;
+      showToast("Visual Generated", `1 AI Credit used. Attached to current post composer.`);
     }
 
     function handleQueuePost(e) {
       e.preventDefault();
       if (dailyPostsCount >= 3) {
-        alert("Daily trial limit reached (3 posts/day). Upgrade to Growth Autopilot for unlimited posts!");
+        showToast("Daily Trial Quota Reached", "Max 3 posts/day on free trial. Upgrade to Growth Autopilot for unlimited publishing!", "warning");
         window.location.href = "#pricing";
         return;
       }
@@ -648,7 +862,9 @@
 
       const list = document.getElementById('queueList');
       const newCard = document.createElement('div');
-      newCard.className = "p-4 rounded-2xl bg-slate-900/90 border border-purple-500/30";
+      newCard.className = "p-4 rounded-2xl bg-slate-900/90 border border-purple-500/30 transition-all";
+      const hasImage = activeVisualData !== null;
+
       newCard.innerHTML = `
         <div class="flex justify-between items-start mb-2">
           <div class="flex items-center space-x-2 text-xs">
@@ -656,30 +872,46 @@
             <span class="text-slate-600">•</span>
             <span class="text-[11px] text-purple-400 font-mono">Just Scheduled</span>
           </div>
-          <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">Queued 🟡</span>
+          <span class="status-badge px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">Queued 🟡</span>
         </div>
         <p class="text-xs text-slate-300 leading-relaxed mb-3">${caption}</p>
         <div class="flex items-center justify-between pt-2 border-t border-slate-800 text-[11px] font-mono text-slate-500">
-          <span>Autonomous Adorise Social Dispatch</span>
-          <button onclick="this.parentElement.parentElement.remove()" class="text-red-400 hover:underline">Remove</button>
+          <span>${hasImage ? 'Visual: Attached 🎨' : 'Text Only 📝'}</span>
+          <div class="flex items-center gap-3">
+            <button onclick="publishPostCard(this)" class="text-purple-400 hover:text-purple-300 font-bold transition cursor-pointer">
+              Publish Now ⚡
+            </button>
+            <button onclick="this.closest('.p-4').remove()" class="text-red-400 hover:underline">Remove</button>
+          </div>
         </div>
       `;
       list.prepend(newCard);
-      alert("Post queued successfully in your Adorise Social schedule pipeline!");
+
+      // Reset composer
+      document.getElementById('imagePreview').classList.add('hidden');
+      activeVisualData = null;
+      showToast("Post Queued", `Scheduled into autonomous publishing queue for ${platform}.`);
     }
 
-    function toggleChannelConnectModal() {
-      alert("Channel Connector: Select Instagram, TikTok, or Facebook Page. (Max 3 in 7-day trial). Connect via OAuth!");
+    function publishPostCard(btn) {
+      const card = btn.closest('.p-4');
+      const badge = card.querySelector('.status-badge');
+      badge.className = "status-badge px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30";
+      badge.textContent = "Published 🟢";
+      btn.replaceWith(document.createTextNode("Dispatched Live"));
+      showToast("Published Successfully", "Post broadcasted live across selected network with real-time impression tracking.");
     }
 
     function refreshQueue() {
-      alert("Adorise Social Queue synced with live channels.");
+      showToast("Pipeline Synced", "All channel webhook queues refreshed. Status: 100% operational.");
     }
 
-    // Check auth on load
+    // Initialize
     window.addEventListener('DOMContentLoaded', () => {
       const user = localStorage.getItem('social_user');
-      if (user) loginUser(user);
+      const plan = localStorage.getItem('social_plan') || "7-Day Free Trial";
+      if (user) loginUser(user, plan);
+      renderChannels();
     });
   </script>
 </body>
