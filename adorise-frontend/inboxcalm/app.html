@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workbench | InboxCalm Email Defense</title>
+  <meta name="description" content="InboxCalm Threat Scanner Workbench: analyze emails, isolate passive-aggression, and auto-draft 3 diplomatic de-escalation replies.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
+          colors: {
+            brandCyan: '#06b6d4',
+            brandRed: '#ef4444'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .glass-card {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen selection:bg-cyan-500 selection:text-white flex flex-col justify-between">
+
+  <!-- Application Header -->
+  <header class="h-20 border-b border-slate-800 bg-slate-950/90 backdrop-blur-md fixed top-0 left-0 right-0 z-50 px-6 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <a href="/" class="flex items-center space-x-3 group">
+        <span class="text-2xl group-hover:scale-110 transition">🛡️</span>
+        <span class="font-extrabold text-xl tracking-tight text-white">INBOX<span class="text-red-500">CALM</span></span>
+      </a>
+      <span class="hidden md:inline-block px-2.5 py-0.5 text-[10px] font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 rounded-full">Workbench v2.4</span>
+    </div>
+
+    <!-- User & Quota Bar -->
+    <div class="flex items-center space-x-4">
+      <!-- Live Quota Status Indicator -->
+      <div id="quotaBadge" class="text-xs font-mono px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-slate-300 flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+        <span id="quotaText">Loading quota...</span>
+      </div>
+
+      <a href="/dashboard" class="text-xs font-semibold text-slate-300 hover:text-white transition hidden sm:inline-block">
+        Dashboard
+      </a>
+
+      <!-- Auth Action Button -->
+      <div id="authArea">
+        <a href="/login" class="px-3.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-xs font-bold text-white transition">
+          Sign In
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Workbench Container -->
+  <main class="pt-28 pb-20 max-w-6xl mx-auto px-6 w-full flex-1">
+    
+    <!-- Top Context & Quick Sample Bar -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+      <div>
+        <h1 class="text-2xl md:text-3xl font-black text-white tracking-tight flex items-center gap-2">
+          <span>Email Threat Scanner</span>
+          <span class="text-xs font-normal text-slate-400 bg-slate-900 px-2.5 py-1 rounded-lg border border-slate-800 font-mono">NLP Firewall Engine</span>
+        </h1>
+        <p class="text-xs text-slate-400 mt-1">Paste inbound email text to isolate hostility patterns and auto-draft 3 de-escalation response alternatives.</p>
+      </div>
+
+      <!-- Quick Preset Buttons -->
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="text-[11px] font-mono text-slate-500 uppercase tracking-wider">Presets:</span>
+        <button onclick="loadPreset('passive')" class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 hover:border-red-500/50 text-[11px] text-slate-300 hover:text-white transition">
+          😒 Passive-Aggressive
+        </button>
+        <button onclick="loadPreset('hostile')" class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 hover:border-red-500/50 text-[11px] text-slate-300 hover:text-white transition">
+          😡 Threat / Escalation
+        </button>
+        <button onclick="loadPreset('urgent')" class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 hover:border-cyan-500/50 text-[11px] text-slate-300 hover:text-white transition">
+          ⚡ False Urgency
+        </button>
+        <button onclick="loadPreset('clean')" class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 hover:border-emerald-500/50 text-[11px] text-slate-300 hover:text-white transition">
+          ✅ Professional Clean
+        </button>
+      </div>
+    </div>
+
+    <!-- Alert Banner (for quota limits or notifications) -->
+    <div id="quotaAlert" class="hidden mb-6 p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-200 text-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+      <div class="flex items-center gap-2">
+        <span class="text-lg">⚡</span>
+        <span id="quotaAlertMsg">Daily free trial scan quota reached (5/5 scans used).</span>
+      </div>
+      <a href="https://whop.com/adorise-digital-usa/" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-gradient-to-r from-red-500 to-cyan-500 font-bold text-white text-xs whitespace-nowrap shadow hover:scale-105 transition">
+        Upgrade to Pro ($19/mo) &rarr;
+      </a>
+    </div>
+
+    <!-- Editor & Scanner Card -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      
+      <!-- Input Panel (Left, 6 cols) -->
+      <div class="lg:col-span-6 space-y-4">
+        <div class="glass-card p-6 rounded-3xl border border-slate-800 shadow-xl space-y-4">
+          <div class="flex items-center justify-between">
+            <label class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+              <span>Inbound Email Message</span>
+            </label>
+            <span id="charCount" class="text-[11px] font-mono text-slate-500">0 characters</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[11px] text-slate-400 font-medium mb-1">Sender Email / Name (Optional)</label>
+              <input type="text" id="senderInput" placeholder="sarah.miller@enterprise.com" class="w-full px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500 transition text-xs">
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-400 font-medium mb-1">Email Subject Line (Optional)</label>
+              <input type="text" id="subjectInput" placeholder="FW: Project Status Update" class="w-full px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500 transition text-xs">
+            </div>
+          </div>
+
+          <div>
+            <textarea id="emailInput" rows="7" placeholder="Paste the suspicious, aggressive or passive-aggressive email text here..." class="w-full px-4 py-3 rounded-2xl bg-slate-900/90 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500 transition text-sm leading-relaxed"></textarea>
+          </div>
+
+          <div class="flex items-center justify-between pt-1">
+            <button type="button" onclick="clearInput()" class="text-xs text-slate-500 hover:text-slate-300 transition font-mono">
+              ✕ Clear Input
+            </button>
+            <button type="button" id="scanBtn" onclick="runEmailScan()" class="px-6 py-3 rounded-xl bg-gradient-to-r from-red-500 via-purple-600 to-cyan-500 text-white font-extrabold text-xs tracking-wide shadow-lg shadow-cyan-500/20 hover:scale-[1.02] active:scale-[0.98] transition cursor-pointer flex items-center space-x-2">
+              <span id="scanBtnText">Analyze Hostility & Generate Replies</span>
+              <span id="scanBtnIcon">🛡️</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Direct Email Forwarding Box -->
+        <div class="glass-card p-5 rounded-3xl border border-cyan-500/20 bg-gradient-to-r from-slate-950 via-slate-900 to-cyan-950/20 flex items-center justify-between gap-4">
+          <div class="space-y-1">
+            <div class="flex items-center gap-1.5">
+              <span class="text-xs font-bold text-cyan-400 font-mono uppercase">Direct Inbound Email Forwarding</span>
+              <span class="px-1.5 py-0.5 rounded text-[9px] bg-cyan-500/20 text-cyan-300 font-mono">ACTIVE</span>
+            </div>
+            <p class="text-[11px] text-slate-400">Forward raw hostile emails directly to your defense mailbox:</p>
+            <div class="text-xs font-mono text-white select-all font-bold">calm@ai.goadorisedigital.com</div>
+          </div>
+          <button onclick="copyForwarding()" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-medium text-cyan-300 transition whitespace-nowrap">
+            Copy Address
+          </button>
+        </div>
+      </div>
+
+      <!-- Analysis Results Panel (Right, 6 cols) -->
+      <div class="lg:col-span-6 space-y-4">
+        
+        <!-- Empty State (before first scan) -->
+        <div id="emptyState" class="glass-card p-12 rounded-3xl border border-slate-800 text-center flex flex-col items-center justify-center min-h-[380px]">
+          <span class="text-5xl mb-4">🛡️</span>
+          <h3 class="text-base font-bold text-white mb-1">Defense Engine Standing By</h3>
+          <p class="text-xs text-slate-400 max-w-sm mx-auto mb-5">Paste an email on the left or select a preset to evaluate toxicity scores and generate diplomatic de-escalation responses.</p>
+          <button onclick="loadPreset('passive')" class="px-4 py-2 rounded-xl bg-slate-900 border border-slate-700 hover:border-cyan-500 text-cyan-400 text-xs font-semibold transition">
+            Load Sample Threat &rarr;
+          </button>
+        </div>
+
+        <!-- Active Analysis Results Container -->
+        <div id="resultsCard" class="hidden space-y-4">
+          
+          <!-- Threat Score Gauge Bar -->
+          <div class="glass-card p-6 rounded-3xl border border-slate-800">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 font-mono">Toxicity Assessment</span>
+                <div id="threatLevelBadge" class="text-lg font-black text-red-400 mt-0.5">High Hostility / Passive-Aggression</div>
+              </div>
+              <div class="text-right">
+                <div class="text-[10px] text-slate-400 uppercase tracking-wider font-mono">Toxicity Index</div>
+                <div id="toxicityNumber" class="text-2xl font-black font-mono text-white">88%</div>
+              </div>
+            </div>
+
+            <!-- Visual Meter Bar -->
+            <div class="w-full bg-slate-900 rounded-full h-3 p-0.5 overflow-hidden border border-slate-800">
+              <div id="scoreMeterBar" class="h-full rounded-full transition-all duration-700 bg-gradient-to-r from-emerald-500 via-amber-500 to-red-500" style="width: 88%"></div>
+            </div>
+          </div>
+
+          <!-- Detected Hostility Patterns -->
+          <div class="glass-card p-6 rounded-3xl border border-slate-800 space-y-3">
+            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+              <span>⚠️</span>
+              <span>Identified Trigger Elements (<span id="triggerCount">0</span>)</span>
+            </h4>
+            <div id="flaggedPatternsList" class="space-y-2 max-h-48 overflow-y-auto pr-1"></div>
+          </div>
+
+          <!-- 3 De-escalation Response Alternatives -->
+          <div class="glass-card p-6 rounded-3xl border border-slate-800 space-y-4">
+            <div class="flex items-center justify-between">
+              <h4 class="text-xs font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5 font-mono">
+                <span>⚡</span>
+                <span>De-escalation Alternatives (1-Click Copy)</span>
+              </h4>
+              <span class="text-[10px] text-slate-400">Click to copy</span>
+            </div>
+
+            <div id="responsesContainer" class="space-y-3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 py-6 px-6 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between max-w-6xl mx-auto w-full">
+    <p>© 2026 InboxCalm • Adorise Digital LLC • Real NLP Cloudflare Worker</p>
+    <div class="flex items-center space-x-4 mt-2 sm:mt-0 text-slate-400">
+      <a href="/" class="hover:text-white transition">Landing Page</a>
+      <a href="/dashboard" class="hover:text-white transition">Dashboard</a>
+      <a href="https://whop.com/adorise-digital-usa/" target="_blank" class="hover:text-cyan-400 transition">Whop Store</a>
+    </div>
+  </footer>
+
+  <script>
+    let currentUser = null;
+    let currentQuota = null;
+
+    const PRESETS = {
+      passive: {
+        sender: "mark.bradford@acmepartners.com",
+        subject: "RE: Q3 Marketing Deliverables Deadline",
+        text: "Per my last email, why hasn't this deliverable been pushed live yet? Obviously we needed this yesterday, and the delay is completely unacceptable!!! Moving forward, please ensure you actually read the scope before committing to timelines."
+      },
+      hostile: {
+        sender: "jason.vance@urgentclient.io",
+        subject: "CRITICAL: Immediate Escalation to Leadership",
+        text: "This is totally unacceptable and borderline incompetence. Drop everything and fix this immediately! I am escalating this to leadership and cc'ing your executives right now if this is not live in 30 minutes."
+      },
+      urgent: {
+        sender: "vp.operations@globalcorp.net",
+        subject: "ASAP Review Required Tonight",
+        text: "We need this reviewed and approved ASAP. Immediate response required tonight by midnight regardless of hours. It is common sense that this was a high priority item."
+      },
+      clean: {
+        sender: "elena.rostova@collabstudio.org",
+        subject: "Status update on project roadmap",
+        text: "Hi team, thanks for sending over the revised drafts. The design layout looks clean and we appreciate the thorough documentation. Looking forward to our scheduled sync tomorrow afternoon."
+      }
+    };
+
+    function loadPreset(key) {
+      const p = PRESETS[key];
+      if (!p) return;
+      document.getElementById('senderInput').value = p.sender;
+      document.getElementById('subjectInput').value = p.subject;
+      document.getElementById('emailInput').value = p.text;
+      updateCharCount();
+      runEmailScan();
+    }
+
+    function clearInput() {
+      document.getElementById('senderInput').value = '';
+      document.getElementById('subjectInput').value = '';
+      document.getElementById('emailInput').value = '';
+      updateCharCount();
+      document.getElementById('emptyState').classList.remove('hidden');
+      document.getElementById('resultsCard').classList.add('hidden');
+    }
+
+    function updateCharCount() {
+      const len = document.getElementById('emailInput').value.length;
+      document.getElementById('charCount').textContent = `${len} characters`;
+    }
+
+    document.getElementById('emailInput').addEventListener('input', updateCharCount);
+
+    function copyForwarding() {
+      navigator.clipboard.writeText('calm@ai.goadorisedigital.com').then(() => {
+        alert("Forwarding address copied: calm@ai.goadorisedigital.com");
+      });
+    }
+
+    function copyText(btn, text) {
+      navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.innerHTML;
+        btn.innerHTML = 'Copied! ✅';
+        btn.classList.add('bg-emerald-600', 'text-white');
+        setTimeout(() => {
+          btn.innerHTML = orig;
+          btn.classList.remove('bg-emerald-600', 'text-white');
+        }, 2000);
+      });
+    }
+
+    async function checkAuthAndQuota() {
+      const token = localStorage.getItem('inboxcalm_token');
+      const headers = {};
+      if (token) headers['Authorization'] = `Bearer ${token}`;
+
+      try {
+        const res = await fetch('/api/quota', { headers });
+        if (res.ok) {
+          const data = await res.json();
+          currentQuota = data.quota;
+          currentUser = data.user;
+
+          // Update header bar
+          const quotaBadge = document.getElementById('quotaBadge');
+          const quotaText = document.getElementById('quotaText');
+          const authArea = document.getElementById('authArea');
+
+          if (data.authenticated && currentUser) {
+            if (currentUser.plan === 'pro') {
+              quotaBadge.className = "text-xs font-mono px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 flex items-center gap-2";
+              quotaText.innerHTML = `<span class="font-bold">PRO SHIELD:</span> Unlimited Daily Scans`;
+            } else {
+              quotaBadge.className = "text-xs font-mono px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-slate-300 flex items-center gap-2";
+              quotaText.innerHTML = `<span class="font-bold">TRIAL:</span> ${currentQuota.used} / ${currentQuota.limit} Scans Used Today`;
+            }
+
+            authArea.innerHTML = `
+              <div class="flex items-center space-x-2">
+                <span class="text-xs text-slate-400 hidden md:inline-block">${currentUser.email}</span>
+                <button onclick="logout()" class="px-3 py-1 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-xs text-red-400 transition">
+                  Sign Out
+                </button>
+              </div>
+            `;
+          } else {
+            quotaBadge.className = "text-xs font-mono px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-slate-300 flex items-center gap-2";
+            quotaText.innerHTML = `<span class="font-bold">GUEST TRIAL:</span> ${currentQuota.used} / ${currentQuota.limit} Scans Used Today`;
+            authArea.innerHTML = `
+              <a href="/login" class="px-3.5 py-1.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-xs font-bold text-white transition">
+                Sign In
+              </a>
+            `;
+          }
+
+          // Check if quota limit reached
+          if (!currentQuota.is_pro && currentQuota.remaining <= 0) {
+            document.getElementById('quotaAlert').classList.remove('hidden');
+            document.getElementById('quotaAlertMsg').textContent = `Daily free trial limit reached (${currentQuota.used}/${currentQuota.limit} used). Upgrade to Pro for unlimited email defense.`;
+          } else {
+            document.getElementById('quotaAlert').classList.add('hidden');
+          }
+        }
+      } catch (err) {
+        console.error("Quota fetch error:", err);
+      }
+    }
+
+    async function logout() {
+      localStorage.removeItem('inboxcalm_token');
+      localStorage.removeItem('inboxcalm_user');
+      try {
+        await fetch('/api/auth/logout', { method: 'POST' });
+      } catch (e) {}
+      window.location.href = "/login";
+    }
+
+    async function runEmailScan() {
+      const text = document.getElementById('emailInput').value.trim();
+      const sender = document.getElementById('senderInput').value.trim();
+      const subject = document.getElementById('subjectInput').value.trim();
+
+      if (!text) {
+        alert("Please enter or paste an email message to analyze.");
+        return;
+      }
+
+      const scanBtn = document.getElementById('scanBtn');
+      const scanBtnText = document.getElementById('scanBtnText');
+      const scanBtnIcon = document.getElementById('scanBtnIcon');
+
+      scanBtn.disabled = true;
+      scanBtnText.textContent = "Running NLP Pattern Analysis...";
+      scanBtnIcon.className = "animate-spin";
+      scanBtnIcon.textContent = "⏳";
+
+      const token = localStorage.getItem('inboxcalm_token');
+      const headers = { 'Content-Type': 'application/json' };
+      if (token) headers['Authorization'] = `Bearer ${token}`;
+
+      try {
+        const res = await fetch('/api/analyze-email', {
+          method: 'POST',
+          headers: headers,
+          body: JSON.stringify({ email_text: text, sender, subject })
+        });
+
+        const data = await res.json();
+
+        if (res.status === 429) {
+          document.getElementById('quotaAlert').classList.remove('hidden');
+          document.getElementById('quotaAlertMsg').textContent = data.error;
+          alert(data.error);
+          return;
+        }
+
+        if (!res.ok || !data.success) {
+          throw new Error(data.error || "Analysis failed.");
+        }
+
+        // Render Results
+        document.getElementById('emptyState').classList.add('hidden');
+        const resultsCard = document.getElementById('resultsCard');
+        resultsCard.classList.remove('hidden');
+
+        // Score & Threat Level
+        const score = data.toxicity_score;
+        document.getElementById('toxicityNumber').textContent = `${score}%`;
+        document.getElementById('threatLevelBadge').textContent = data.threat_level;
+        const meterBar = document.getElementById('scoreMeterBar');
+        meterBar.style.width = `${score}%`;
+
+        // Flagged patterns
+        const patternsList = document.getElementById('flaggedPatternsList');
+        document.getElementById('triggerCount').textContent = data.flagged_phrases.length;
+
+        if (data.flagged_phrases.length === 0) {
+          patternsList.innerHTML = `<div class="p-3 rounded-xl bg-slate-900 border border-emerald-500/30 text-emerald-400 text-xs font-mono flex items-center gap-2"><span>✅</span> <span>No hostile or passive-aggressive triggers detected. Message tone is clean and professional.</span></div>`;
+        } else {
+          patternsList.innerHTML = data.flagged_phrases.map(p => `
+            <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+              <div class="space-y-0.5">
+                <div class="flex items-center gap-2">
+                  <span class="font-mono font-bold text-red-400">"${p.phrase}"</span>
+                  <span class="px-1.5 py-0.5 rounded text-[9px] font-mono bg-red-500/20 text-red-300 border border-red-500/30">${p.category}</span>
+                </div>
+                <div class="text-slate-400 text-[11px]">${p.explanation}</div>
+              </div>
+              <span class="text-red-400 font-mono text-[11px] shrink-0 font-semibold">+${p.penalty}% impact</span>
+            </div>
+          `).join('');
+        }
+
+        // De-escalation Responses
+        const responsesContainer = document.getElementById('responsesContainer');
+        responsesContainer.innerHTML = data.responses.map(r => `
+          <div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-cyan-500/40 transition space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-cyan-300 font-mono uppercase tracking-wider">${r.style}</span>
+              <button onclick="copyText(this, \`${r.text.replace(/"/g, '&quot;')}\`)" class="px-3 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-white text-[11px] font-medium transition cursor-pointer flex items-center gap-1">
+                <span>Copy</span> <span>📋</span>
+              </button>
+            </div>
+            <p class="text-xs text-slate-300 whitespace-pre-line leading-relaxed">${r.text}</p>
+          </div>
+        `).join('');
+
+        // Refresh quota display
+        await checkAuthAndQuota();
+
+      } catch (err) {
+        alert("Error running analysis: " + err.message);
+      } finally {
+        scanBtn.disabled = false;
+        scanBtnText.textContent = "Analyze Hostility & Generate Replies";
+        scanBtnIcon.className = "";
+        scanBtnIcon.textContent = "🛡️";
+      }
+    }
+
+    // Initialize on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      checkAuthAndQuota();
+      loadPreset('passive');
+    });
+  </script>
+</body>
+</html>

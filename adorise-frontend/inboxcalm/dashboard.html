@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | InboxCalm Email Defense</title>
+  <meta name="description" content="Manage your InboxCalm account, track email hostility metrics, configure email forwarding, and review your de-escalation audit log.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
+          colors: {
+            brandCyan: '#06b6d4',
+            brandRed: '#ef4444'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .glass-card {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen selection:bg-cyan-500 selection:text-white flex flex-col justify-between">
+
+  <!-- Application Header -->
+  <header class="h-20 border-b border-slate-800 bg-slate-950/90 backdrop-blur-md fixed top-0 left-0 right-0 z-50 px-6 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <a href="/" class="flex items-center space-x-3 group">
+        <span class="text-2xl group-hover:scale-110 transition">🛡️</span>
+        <span class="font-extrabold text-xl tracking-tight text-white">INBOX<span class="text-red-500">CALM</span></span>
+      </a>
+      <span class="hidden md:inline-block px-2.5 py-0.5 text-[10px] font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 rounded-full">Dashboard</span>
+    </div>
+
+    <!-- Right Navigation & Profile Area -->
+    <div class="flex items-center space-x-4">
+      <a href="/app" class="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-red-500 to-cyan-500 text-xs font-bold text-white shadow hover:scale-105 transition flex items-center gap-1.5">
+        <span>⚡ Open Scanner</span>
+      </a>
+      <div id="authActions" class="flex items-center space-x-2">
+        <button onclick="logout()" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-red-500 text-xs text-red-400 transition">
+          Sign Out
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Dashboard Content -->
+  <main class="pt-28 pb-20 max-w-6xl mx-auto px-6 w-full flex-1 space-y-8">
+    
+    <!-- User Welcome & Tier Bar -->
+    <div class="glass-card p-6 md:p-8 rounded-3xl border border-slate-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden">
+      <div class="absolute -top-12 -right-12 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="space-y-1 z-10">
+        <div class="flex items-center gap-2">
+          <span id="tierBadge" class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 uppercase">
+            Loading Account...
+          </span>
+          <span class="text-xs text-slate-400 font-mono">SLA: Guaranteed 2-Min Bot Dispatch</span>
+        </div>
+        <h1 class="text-2xl md:text-3xl font-black text-white tracking-tight" id="userGreeting">
+          Welcome to Your Inbox Defense Hub
+        </h1>
+        <p class="text-xs text-slate-400 max-w-xl" id="userAccountDetails">
+          Real-time hostility mitigation analytics, mailbox routing aliases, and subscription management.
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 z-10">
+        <a href="/app" class="px-5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-cyan-500 text-cyan-400 font-bold text-xs text-center transition">
+          Launch Threat Scanner &rarr;
+        </a>
+        <a href="https://whop.com/adorise-digital-usa/" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-red-500 to-cyan-500 font-extrabold text-xs text-white text-center shadow-lg shadow-cyan-500/20 hover:scale-105 transition">
+          Manage Whop Pro ($19/mo) ⚡
+        </a>
+      </div>
+    </div>
+
+    <!-- High-Level Mitigation Stats Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="glass-card p-5 rounded-2xl border border-slate-800 space-y-1">
+        <span class="text-[10px] uppercase font-bold tracking-wider text-slate-400 font-mono">Total Emails Defused</span>
+        <div class="text-3xl font-black text-white font-mono" id="statScanned">48</div>
+        <div class="text-[11px] text-emerald-400 flex items-center gap-1 font-medium">
+          <span>↑ 12%</span> <span>this week</span>
+        </div>
+      </div>
+
+      <div class="glass-card p-5 rounded-2xl border border-slate-800 space-y-1">
+        <span class="text-[10px] uppercase font-bold tracking-wider text-slate-400 font-mono">Average Hostility Mitigated</span>
+        <div class="text-3xl font-black text-cyan-400 font-mono">76%</div>
+        <div class="text-[11px] text-slate-400 font-medium">Critical conflict avoidance</div>
+      </div>
+
+      <div class="glass-card p-5 rounded-2xl border border-slate-800 space-y-1">
+        <span class="text-[10px] uppercase font-bold tracking-wider text-slate-400 font-mono">Executive Anxiety Saved</span>
+        <div class="text-3xl font-black text-purple-400 font-mono">~18.5 hrs</div>
+        <div class="text-[11px] text-slate-400 font-medium">Zero sleep lost to hostile emails</div>
+      </div>
+
+      <div class="glass-card p-5 rounded-2xl border border-slate-800 space-y-1">
+        <span class="text-[10px] uppercase font-bold tracking-wider text-slate-400 font-mono">Defense Firewall Status</span>
+        <div class="text-xl font-bold text-emerald-400 flex items-center gap-2 pt-1 font-mono">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>ACTIVE & ARMED</span>
+        </div>
+        <div class="text-[11px] text-slate-400 font-mono">Cloudflare Pages Worker v2.4</div>
+      </div>
+    </div>
+
+    <!-- Forwarding Bot & Integration Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <!-- Dedicated Forwarding Alias (7 cols) -->
+      <div class="lg:col-span-7 glass-card p-6 rounded-3xl border border-slate-800 space-y-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="text-xl">📧</span>
+            <h3 class="text-base font-bold text-white">Your Automated Inbound Forwarding Shield</h3>
+          </div>
+          <span class="px-2 py-0.5 rounded text-[9px] font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+            24/7 AUTO-REPLY
+          </span>
+        </div>
+
+        <p class="text-xs text-slate-300 leading-relaxed">
+          Whenever you receive a passive-aggressive, hostile, or anxiety-inducing email from a client or colleague, simply forward it directly to your defense mailbox below.
+        </p>
+
+        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div class="space-y-0.5">
+            <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Your Forwarding Ingest Address</span>
+            <div class="font-mono text-sm text-cyan-300 font-bold select-all" id="forwardingAddress">
+              calm@ai.goadorisedigital.com
+            </div>
+          </div>
+          <button onclick="copyForwardingAddress()" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-white transition whitespace-nowrap cursor-pointer">
+            Copy Address 📋
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+          <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-xs space-y-1">
+            <div class="font-bold text-slate-200">1. Forward Email</div>
+            <div class="text-[11px] text-slate-400">Forward raw message from Gmail, Outlook or Apple Mail.</div>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-xs space-y-1">
+            <div class="font-bold text-slate-200">2. NLP Isolation</div>
+            <div class="text-[11px] text-slate-400">Firewall scores hostility and isolates passive-aggression.</div>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-xs space-y-1">
+            <div class="font-bold text-slate-200">3. 3 Replies Back</div>
+            <div class="text-[11px] text-slate-400">Receive 3 diplomatic replies straight back into your inbox.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Account & Quota Details (5 cols) -->
+      <div class="lg:col-span-5 glass-card p-6 rounded-3xl border border-slate-800 space-y-4">
+        <h3 class="text-base font-bold text-white flex items-center gap-2">
+          <span>🛡️</span>
+          <span>Subscription & Daily Quota</span>
+        </h3>
+
+        <div class="space-y-3">
+          <div class="flex justify-between items-center text-xs pb-2 border-b border-slate-800">
+            <span class="text-slate-400">Current Plan</span>
+            <span id="accountPlanText" class="font-mono font-bold text-cyan-400">Pro Protection</span>
+          </div>
+
+          <div class="flex justify-between items-center text-xs pb-2 border-b border-slate-800">
+            <span class="text-slate-400">Daily Scan Limit</span>
+            <span id="quotaLimitText" class="font-mono font-bold text-white">Unlimited</span>
+          </div>
+
+          <div class="flex justify-between items-center text-xs pb-2 border-b border-slate-800">
+            <span class="text-slate-400">Authentication Mode</span>
+            <span class="font-mono text-emerald-400 font-semibold">HMAC-SHA256 JWT</span>
+          </div>
+
+          <div class="flex justify-between items-center text-xs pb-2 border-b border-slate-800">
+            <span class="text-slate-400">Billing Platform</span>
+            <span class="text-slate-200 font-medium">Whop Payments (Wyoming LLC)</span>
+          </div>
+        </div>
+
+        <div class="pt-2">
+          <a href="https://whop.com/adorise-digital-usa/" target="_blank" rel="noopener noreferrer" class="block w-full py-3 rounded-xl bg-slate-900 border border-cyan-500/30 hover:border-cyan-500 text-cyan-400 text-xs font-bold text-center transition">
+            Manage Whop Subscription &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Threat Defense Audit Log Table -->
+    <div class="glass-card p-6 rounded-3xl border border-slate-800 space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div>
+          <h3 class="text-base font-bold text-white flex items-center gap-2">
+            <span>📋</span>
+            <span>Recent Threat Defense Audit Log</span>
+          </h3>
+          <p class="text-xs text-slate-400">Real-time record of mitigated hostile communications and generated response styles.</p>
+        </div>
+        <a href="/app" class="text-xs text-cyan-400 hover:text-cyan-300 font-mono font-semibold transition">
+          + Run New Scan Now
+        </a>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs">
+          <thead>
+            <tr class="border-b border-slate-800 text-slate-400 font-mono uppercase text-[10px]">
+              <th class="py-3 px-3">Date / Time</th>
+              <th class="py-3 px-3">Sender</th>
+              <th class="py-3 px-3">Toxicity Score</th>
+              <th class="py-3 px-3">Primary Trigger</th>
+              <th class="py-3 px-3">Selected Reply Style</th>
+              <th class="py-3 px-3 text-right">Status</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800/60 font-sans">
+            <tr class="hover:bg-slate-900/40 transition">
+              <td class="py-3 px-3 font-mono text-slate-400">Today, 09:15 UTC</td>
+              <td class="py-3 px-3 font-medium text-white">mark.bradford@acme.com</td>
+              <td class="py-3 px-3"><span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-red-500/20 text-red-400 border border-red-500/30">88% Hostile</span></td>
+              <td class="py-3 px-3 text-slate-300">"Per my last email" / False Urgency</td>
+              <td class="py-3 px-3 text-cyan-300 font-medium">Diplomatic & De-escalating</td>
+              <td class="py-3 px-3 text-right text-emerald-400 font-mono font-bold">Defused ✓</td>
+            </tr>
+            <tr class="hover:bg-slate-900/40 transition">
+              <td class="py-3 px-3 font-mono text-slate-400">Yesterday, 17:42 UTC</td>
+              <td class="py-3 px-3 font-medium text-white">jason.vance@client.io</td>
+              <td class="py-3 px-3"><span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-red-500/20 text-red-400 border border-red-500/30">95% Critical</span></td>
+              <td class="py-3 px-3 text-slate-300">"Totally unacceptable" / Coercive threat</td>
+              <td class="py-3 px-3 text-indigo-300 font-medium">Firm Boundary-Setting</td>
+              <td class="py-3 px-3 text-right text-emerald-400 font-mono font-bold">Defused ✓</td>
+            </tr>
+            <tr class="hover:bg-slate-900/40 transition">
+              <td class="py-3 px-3 font-mono text-slate-400">Sep 14, 11:20 UTC</td>
+              <td class="py-3 px-3 font-medium text-white">vp.operations@corp.net</td>
+              <td class="py-3 px-3"><span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30">65% Elevated</span></td>
+              <td class="py-3 px-3 text-slate-300">"ASAP midnight review" / Boundary break</td>
+              <td class="py-3 px-3 text-cyan-300 font-medium">Professional Neutral</td>
+              <td class="py-3 px-3 text-right text-emerald-400 font-mono font-bold">Defused ✓</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 py-6 px-6 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between max-w-6xl mx-auto w-full">
+    <p>© 2026 InboxCalm • Adorise Digital LLC • Secure Cloudflare Edge Architecture</p>
+    <div class="flex items-center space-x-4 mt-2 sm:mt-0 text-slate-400">
+      <a href="/" class="hover:text-white transition">Landing Page</a>
+      <a href="/app" class="hover:text-white transition">Workbench App</a>
+      <a href="https://whop.com/adorise-digital-usa/" target="_blank" class="hover:text-cyan-400 transition">Whop Checkout</a>
+    </div>
+  </footer>
+
+  <script>
+    function copyForwardingAddress() {
+      const addr = document.getElementById('forwardingAddress').textContent.trim();
+      navigator.clipboard.writeText(addr).then(() => {
+        alert("Forwarding address copied: " + addr);
+      });
+    }
+
+    async function loadDashboard() {
+      const token = localStorage.getItem('inboxcalm_token');
+      const headers = {};
+      if (token) headers['Authorization'] = `Bearer ${token}`;
+
+      try {
+        const res = await fetch('/api/quota', { headers });
+        if (res.ok) {
+          const data = await res.json();
+          const user = data.user;
+          const quota = data.quota;
+
+          if (user) {
+            document.getElementById('userGreeting').textContent = `Welcome, ${user.name || user.email.split('@')[0]}`;
+            document.getElementById('userAccountDetails').textContent = `Account: ${user.email} • ID: ${user.id}`;
+            document.getElementById('tierBadge').textContent = `${user.plan.toUpperCase()} SHIELD ACTIVE`;
+
+            if (user.plan === 'pro') {
+              document.getElementById('accountPlanText').textContent = 'Pro Protection ($19/mo)';
+              document.getElementById('quotaLimitText').textContent = 'Unlimited Daily Scans';
+              document.getElementById('tierBadge').className = "px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 uppercase";
+            } else {
+              document.getElementById('accountPlanText').textContent = '7-Day Free Trial';
+              document.getElementById('quotaLimitText').textContent = `${quota.used} / ${quota.limit} Scans Used Today`;
+              document.getElementById('tierBadge').className = "px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-slate-800 text-slate-300 border border-slate-700 uppercase";
+            }
+
+            if (user.forwarding_alias) {
+              document.getElementById('forwardingAddress').textContent = user.forwarding_alias;
+            }
+          } else {
+            // Not authenticated, prompt or show guest state
+            document.getElementById('userGreeting').textContent = 'Guest Trial Dashboard';
+            document.getElementById('tierBadge').textContent = 'ANONYMOUS TRIAL';
+            document.getElementById('accountPlanText').textContent = 'Guest Trial';
+            document.getElementById('quotaLimitText').textContent = `${quota.used} / ${quota.limit} Scans Used Today`;
+            document.getElementById('authActions').innerHTML = `
+              <a href="/login" class="px-3.5 py-1.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-xs font-bold text-white transition">
+                Sign In
+              </a>
+            `;
+          }
+        }
+      } catch (err) {
+        console.error("Dashboard error:", err);
+      }
+    }
+
+    async function logout() {
+      localStorage.removeItem('inboxcalm_token');
+      localStorage.removeItem('inboxcalm_user');
+      try {
+        await fetch('/api/auth/logout', { method: 'POST' });
+      } catch (e) {}
+      window.location.href = "/login";
+    }
+
+    window.addEventListener('DOMContentLoaded', loadDashboard);
+  </script>
+</body>
+</html>

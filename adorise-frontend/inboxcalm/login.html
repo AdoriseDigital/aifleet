@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In & Access | InboxCalm Email Defense</title>
+  <meta name="description" content="Sign in to your InboxCalm account to access your email firewall, toxicity scans, and diplomatic reply generator.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
+          colors: {
+            brandCyan: '#06b6d4',
+            brandRed: '#ef4444'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .glass-card {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen selection:bg-cyan-500 selection:text-white flex flex-col justify-between">
+
+  <!-- Header -->
+  <header class="h-20 border-b border-slate-800 bg-slate-950/85 backdrop-blur-md fixed top-0 left-0 right-0 z-50 px-6 flex items-center justify-between">
+    <a href="/" class="flex items-center space-x-3 group">
+      <span class="text-2xl group-hover:scale-110 transition">🛡️</span>
+      <span class="font-extrabold text-xl tracking-tight text-white">INBOX<span class="text-red-500">CALM</span></span>
+      <span class="hidden sm:inline-block px-2.5 py-0.5 text-[10px] font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 rounded-full">Email Defense AI</span>
+    </a>
+
+    <div class="flex items-center space-x-4">
+      <a href="/" class="text-xs text-slate-400 hover:text-white transition font-medium flex items-center gap-1">
+        <span>&larr;</span> <span>Back to Home</span>
+      </a>
+      <a href="/app" class="px-3.5 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-cyan-500 text-cyan-400 text-xs font-semibold transition">
+        Launch App &rarr;
+      </a>
+    </div>
+  </header>
+
+  <!-- Login Container -->
+  <main class="pt-32 pb-16 px-6 max-w-md mx-auto w-full flex-1 flex flex-col justify-center">
+    <div class="glass-card p-8 rounded-3xl shadow-2xl border border-slate-800 relative">
+      <!-- Glow ambient -->
+      <div class="absolute -top-10 -right-10 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none"></div>
+      <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-red-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+      <div class="text-center mb-8">
+        <span class="px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-[10px] font-mono uppercase tracking-wider inline-block mb-3">SECURE PORTAL ACCESS</span>
+        <h1 class="text-2xl font-black text-white tracking-tight" id="authTitle">Sign In to InboxCalm</h1>
+        <p class="text-xs text-slate-400 mt-1.5" id="authSubtitle">Access your email firewall, live scans & diplomatic auto-replies</p>
+      </div>
+
+      <!-- Tab Buttons -->
+      <div class="flex p-1 bg-slate-900/80 rounded-xl mb-6 border border-slate-800">
+        <button id="tabSignIn" onclick="switchTab('signin')" class="flex-1 py-2 text-xs font-bold rounded-lg bg-slate-800 text-white shadow transition">Sign In</button>
+        <button id="tabSignUp" onclick="switchTab('signup')" class="flex-1 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-white transition">Create Account</button>
+      </div>
+
+      <!-- Alert Box -->
+      <div id="alertBox" class="hidden mb-5 p-3.5 rounded-xl text-xs flex items-center gap-2"></div>
+
+      <!-- Form -->
+      <form id="authForm" onsubmit="handleAuth(event)" class="space-y-4">
+        <div id="nameFieldContainer" class="hidden">
+          <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Full Name</label>
+          <input type="text" id="nameInput" placeholder="Sanjay Shharma" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500 transition text-sm">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Email Address</label>
+          <input type="email" id="emailInput" required placeholder="name@company.com" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500 transition text-sm">
+        </div>
+
+        <div>
+          <div class="flex justify-between items-center mb-1.5">
+            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Password</label>
+            <span class="text-[11px] text-slate-500">Min 6 characters</span>
+          </div>
+          <input type="password" id="passwordInput" required placeholder="••••••••" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500 transition text-sm">
+        </div>
+
+        <div id="planSelectionContainer" class="hidden">
+          <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Select Initial Plan</label>
+          <div class="grid grid-cols-2 gap-2">
+            <label class="p-2.5 rounded-xl border border-slate-800 bg-slate-900 cursor-pointer flex items-center space-x-2 text-xs">
+              <input type="radio" name="planChoice" value="trial" checked class="text-cyan-500">
+              <div>
+                <div class="font-bold text-white">7-Day Trial</div>
+                <div class="text-[10px] text-slate-400">5 scans/day</div>
+              </div>
+            </label>
+            <label class="p-2.5 rounded-xl border border-cyan-500/40 bg-cyan-950/20 cursor-pointer flex items-center space-x-2 text-xs">
+              <input type="radio" name="planChoice" value="pro" class="text-cyan-500">
+              <div>
+                <div class="font-bold text-cyan-400">Pro Shield</div>
+                <div class="text-[10px] text-slate-400">Unlimited scans</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" id="submitBtn" class="w-full py-3 rounded-xl bg-gradient-to-r from-red-500 via-purple-600 to-cyan-500 font-extrabold text-white text-xs tracking-wide shadow-lg shadow-cyan-500/20 hover:scale-[1.02] active:scale-[0.98] transition cursor-pointer flex items-center justify-center space-x-2">
+          <span id="btnText">Sign In to Dashboard</span>
+          <span id="btnSpinner" class="hidden animate-spin">⏳</span>
+        </button>
+      </form>
+
+      <!-- Instant Test Credentials -->
+      <div class="mt-8 pt-6 border-t border-slate-800">
+        <div class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-3 text-center flex items-center justify-center gap-1.5">
+          <span>⚡</span> <span>Instant Demo Verification Accounts</span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <button type="button" onclick="fillTestAccount('pro')" class="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 hover:bg-cyan-500/20 text-left transition cursor-pointer">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-cyan-300">Pro Subscriber</span>
+              <span class="text-[9px] bg-cyan-500/30 text-cyan-200 px-1.5 py-0.5 rounded font-mono">PRO</span>
+            </div>
+            <div class="text-[10px] text-slate-400 font-mono mt-0.5">pro@adorisedigital.com</div>
+            <div class="text-[9px] text-emerald-400 mt-1 font-medium">✓ Unlimited scans active</div>
+          </button>
+
+          <button type="button" onclick="fillTestAccount('trial')" class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 text-left transition cursor-pointer">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-slate-300">Free Trial</span>
+              <span class="text-[9px] bg-slate-800 text-slate-400 px-1.5 py-0.5 rounded font-mono">TRIAL</span>
+            </div>
+            <div class="text-[10px] text-slate-400 font-mono mt-0.5">trial@adorisedigital.com</div>
+            <div class="text-[9px] text-slate-400 mt-1 font-medium">● 5 free scans daily</div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 py-6 text-center text-xs text-slate-500">
+    <p>© 2026 InboxCalm • Adorise Digital LLC • Secure Cloudflare Edge Authentication</p>
+  </footer>
+
+  <script>
+    let mode = 'signin';
+
+    function switchTab(newMode) {
+      mode = newMode;
+      const tabSignIn = document.getElementById('tabSignIn');
+      const tabSignUp = document.getElementById('tabSignUp');
+      const nameContainer = document.getElementById('nameFieldContainer');
+      const planContainer = document.getElementById('planSelectionContainer');
+      const title = document.getElementById('authTitle');
+      const subtitle = document.getElementById('authSubtitle');
+      const btnText = document.getElementById('btnText');
+      hideAlert();
+
+      if (mode === 'signup') {
+        tabSignUp.className = 'flex-1 py-2 text-xs font-bold rounded-lg bg-cyan-600 text-white shadow transition';
+        tabSignIn.className = 'flex-1 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-white transition';
+        nameContainer.classList.remove('hidden');
+        planContainer.classList.remove('hidden');
+        title.textContent = "Create an Account";
+        subtitle.textContent = "Start your 7-day email defense trial with 5 daily scans";
+        btnText.textContent = "Create Account & Start Free";
+      } else {
+        tabSignIn.className = 'flex-1 py-2 text-xs font-bold rounded-lg bg-slate-800 text-white shadow transition';
+        tabSignUp.className = 'flex-1 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-white transition';
+        nameContainer.classList.add('hidden');
+        planContainer.classList.add('hidden');
+        title.textContent = "Sign In to InboxCalm";
+        subtitle.textContent = "Access your email firewall, live scans & diplomatic auto-replies";
+        btnText.textContent = "Sign In to Dashboard";
+      }
+    }
+
+    function showAlert(msg, isError = true) {
+      const box = document.getElementById('alertBox');
+      box.classList.remove('hidden', 'bg-red-500/20', 'border-red-500/40', 'text-red-300', 'bg-emerald-500/20', 'border-emerald-500/40', 'text-emerald-300');
+      if (isError) {
+        box.classList.add('bg-red-500/20', 'border', 'border-red-500/40', 'text-red-300');
+        box.innerHTML = `<span>⚠️</span> <span>${msg}</span>`;
+      } else {
+        box.classList.add('bg-emerald-500/20', 'border', 'border-emerald-500/40', 'text-emerald-300');
+        box.innerHTML = `<span>✅</span> <span>${msg}</span>`;
+      }
+    }
+
+    function hideAlert() {
+      document.getElementById('alertBox').classList.add('hidden');
+    }
+
+    function fillTestAccount(type) {
+      if (type === 'pro') {
+        document.getElementById('emailInput').value = 'pro@adorisedigital.com';
+        document.getElementById('passwordInput').value = 'ProDefense2026!';
+      } else {
+        document.getElementById('emailInput').value = 'trial@adorisedigital.com';
+        document.getElementById('passwordInput').value = 'TrialCalm2026!';
+      }
+      switchTab('signin');
+      showAlert(`Loaded ${type === 'pro' ? 'Pro Unlimited' : 'Trial'} demo credentials. Click "Sign In" to authenticate.`, false);
+    }
+
+    async function handleAuth(e) {
+      e.preventDefault();
+      hideAlert();
+
+      const email = document.getElementById('emailInput').value.trim();
+      const password = document.getElementById('passwordInput').value;
+      const name = document.getElementById('nameInput') ? document.getElementById('nameInput').value.trim() : '';
+      const plan = document.querySelector('input[name="planChoice"]:checked')?.value || 'trial';
+
+      const btn = document.getElementById('submitBtn');
+      const spinner = document.getElementById('btnSpinner');
+      btn.disabled = true;
+      spinner.classList.remove('hidden');
+
+      const endpoint = mode === 'signup' ? '/api/auth/signup' : '/api/auth/login';
+      const payload = mode === 'signup' ? { email, password, name, plan } : { email, password };
+
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+        if (!res.ok || !data.success) {
+          throw new Error(data.error || "Authentication failed. Please check your inputs.");
+        }
+
+        // Save session token in localStorage for client auth state
+        if (data.token) {
+          localStorage.setItem('inboxcalm_token', data.token);
+          localStorage.setItem('inboxcalm_user', JSON.stringify(data.user));
+        }
+
+        showAlert(`Authenticated successfully as ${data.user.email} (${data.user.plan.toUpperCase()}). Redirecting...`, false);
+        setTimeout(() => {
+          window.location.href = "/app";
+        }, 800);
+
+      } catch (err) {
+        showAlert(err.message, true);
+      } finally {
+        btn.disabled = false;
+        spinner.classList.add('hidden');
+      }
+    }
+
+    // Auto-check if already authenticated
+    window.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const token = localStorage.getItem('inboxcalm_token');
+        const headers = {};
+        if (token) headers['Authorization'] = `Bearer ${token}`;
+        const res = await fetch('/api/auth/me', { headers });
+        if (res.ok) {
+          const data = await res.json();
+          if (data.authenticated && data.user) {
+            showAlert(`Already signed in as ${data.user.email}. <a href="/app" class="underline font-bold">Open App &rarr;</a>`, false);
+          }
+        }
+      } catch (e) {}
+    });
+  </script>
+</body>
+</html>
