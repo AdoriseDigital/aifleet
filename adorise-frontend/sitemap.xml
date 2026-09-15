@@ -2,6 +2,10 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>https://adorisedigital.com/sitemaps/sitemap-1.xml</loc>
-    <lastmod>2026-09-11T11:53:07.336Z</lastmod>
+    <lastmod>2026-09-16T02:30:00.000Z</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://adorisedigital.com/sitemaps/sitemap-books.xml</loc>
+    <lastmod>2026-09-16T02:30:00.000Z</lastmod>
   </sitemap>
 </sitemapindex>

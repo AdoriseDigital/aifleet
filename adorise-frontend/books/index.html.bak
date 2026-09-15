@@ -22,12 +22,7 @@
         }
       }
     </script>
-        <!-- PDF.js CDN for High-Performance Canvas Rendering (DRM Anti-Piracy Reader) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-    <script>
-      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-    </script>
-<link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
     <style>
       .glass-card {
         background: rgba(15, 23, 42, 0.75);
@@ -1598,163 +1593,11 @@
         </div>
     </div>
 
-    <!-- ========================================================
-         SELF-HOSTED LOCKED HTML5 FLIPBOOK READER (ANTI-PIRACY DRM)
-         ======================================================== -->
-    <div id="lockedReaderModal" class="hidden fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-2xl flex flex-col select-none transition-opacity" style="-webkit-user-select: none; user-select: none;">
-        <!-- Top Control Bar -->
-        <div class="h-16 border-b border-slate-800/90 bg-slate-950/95 px-4 sm:px-6 flex items-center justify-between z-20 flex-shrink-0 shadow-lg">
-            <div class="flex items-center space-x-3 truncate mr-2">
-                <span class="px-2.5 py-1 text-[10px] font-mono font-bold rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/40 whitespace-nowrap flex items-center gap-1.5 shadow-sm">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span>DRM PROTECTED READER</span>
-                </span>
-                <div class="truncate">
-                    <h3 id="readerBookTitle" class="text-sm sm:text-base font-bold text-white truncate font-display">Book Title</h3>
-                    <p id="readerBookAuthor" class="text-[11px] text-slate-400 font-medium truncate">By Sanjay Shharma</p>
-                </div>
-            </div>
-
-            <!-- Center Navigation / Page Indicator -->
-            <div class="flex items-center space-x-2 sm:space-x-3 bg-slate-900/90 px-3 py-1.5 rounded-full border border-slate-800 shadow-inner">
-                <button id="readerPrevBtn" onclick="readerPrevPage()" class="px-2.5 py-1 text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition disabled:opacity-30 disabled:cursor-not-allowed">
-                    ‹ Prev
-                </button>
-                <div class="text-xs font-mono text-slate-300 whitespace-nowrap">
-                    Page <span id="readerCurrentPage" class="text-cyan-400 font-bold">1</span> / <span id="readerTotalPages">--</span>
-                </div>
-                <button id="readerNextBtn" onclick="readerNextPage()" class="px-2.5 py-1 text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition disabled:opacity-30 disabled:cursor-not-allowed">
-                    Next ›
-                </button>
-            </div>
-
-            <!-- Right Controls: Zoom + Unlock CTA + Close -->
-            <div class="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
-                <div class="hidden lg:flex items-center space-x-1 bg-slate-900 px-2 py-1 rounded-xl border border-slate-800 text-xs font-mono text-slate-400">
-                    <button onclick="readerZoomOut()" title="Zoom Out" class="px-2 py-0.5 hover:text-white transition font-bold">−</button>
-                    <span id="readerZoomLevel" class="px-1 text-[11px] text-slate-300">100%</span>
-                    <button onclick="readerZoomIn()" title="Zoom In" class="px-2 py-0.5 hover:text-white transition font-bold">+</button>
-                    <button onclick="readerFitWidth()" title="Fit to Screen" class="px-2 py-0.5 hover:text-cyan-400 transition text-[10px] font-bold">Fit</button>
-                </div>
-                <button id="readerTopBuyBtn" onclick="triggerCheckoutFromReader()" class="hidden sm:inline-flex items-center space-x-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 shadow-lg shadow-emerald-500/20 transition hover:scale-[1.02]">
-                    <span>Unlock Full Edition ⚡</span>
-                </button>
-                <button onclick="closeLockedReader()" class="w-9 h-9 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white flex items-center justify-center text-lg font-bold transition">
-                    ✕
-                </button>
-            </div>
-        </div>
-
-        <!-- Reader Canvas Viewport -->
-        <div id="readerViewport" class="flex-1 relative overflow-auto flex items-center justify-center p-2 sm:p-6 bg-slate-950/90" oncontextmenu="return false;">
-            <!-- Loading Indicator -->
-            <div id="readerLoadingSpinner" class="absolute inset-0 flex flex-col items-center justify-center bg-slate-950/95 z-20 transition-opacity">
-                <div class="w-12 h-12 border-4 border-cyan-500/20 border-t-cyan-400 rounded-full animate-spin mb-4"></div>
-                <p class="text-xs font-mono text-slate-300 font-semibold animate-pulse">Rendering protected vector pages...</p>
-                <span class="text-[10px] text-slate-500 mt-1 font-mono">Anti-piracy rasterization active • Direct download locked</span>
-            </div>
-
-            <!-- Side Floating Flip Buttons -->
-            <button onclick="readerPrevPage()" class="hidden md:flex absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-slate-900/80 hover:bg-cyan-500/20 border border-slate-700/80 hover:border-cyan-500/40 text-slate-300 hover:text-cyan-400 items-center justify-center text-xl transition z-10 shadow-xl backdrop-blur-md">
-                ‹
-            </button>
-            <button onclick="readerNextPage()" class="hidden md:flex absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-slate-900/80 hover:bg-cyan-500/20 border border-slate-700/80 hover:border-cyan-500/40 text-slate-300 hover:text-cyan-400 items-center justify-center text-xl transition z-10 shadow-xl backdrop-blur-md">
-                ›
-            </button>
-
-            <!-- Canvas Wrapper -->
-            <div id="readerCanvasWrapper" class="relative shadow-2xl rounded-2xl overflow-hidden bg-slate-900/50 border border-slate-800/80 flex items-center justify-center max-w-full">
-                <canvas id="lockedBookCanvas" class="block max-w-full h-auto transition-transform"></canvas>
-
-                <!-- Paywall Overlay (Triggered at end of preview) -->
-                <div id="readerPaywallOverlay" class="hidden absolute inset-0 bg-slate-950/95 backdrop-blur-xl flex flex-col items-center justify-center p-6 text-center z-30">
-                    <div class="w-16 h-16 rounded-3xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mb-4 text-3xl shadow-lg shadow-emerald-500/20">
-                        🔒
-                    </div>
-                    <span class="px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 font-bold mb-3">
-                        End of Free 3-Chapter Preview
-                    </span>
-                    <h3 id="paywallBookTitle" class="text-xl sm:text-2xl md:text-3xl font-bold text-white font-display max-w-lg mb-2">
-                        Enjoying This Blueprint?
-                    </h3>
-                    <p class="text-xs md:text-sm text-slate-300 max-w-md leading-relaxed mb-6">
-                        Unlock the complete full edition with all 14 chapters, actionable worksheets, and audio companion guides.
-                    </p>
-                    
-                    <div class="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 max-w-md w-full mb-6 text-left shadow-xl">
-                        <div class="flex items-center justify-between mb-3 pb-3 border-b border-slate-800">
-                            <span class="text-xs text-slate-400 font-mono">Full Edition Access:</span>
-                            <span id="paywallBookPrice" class="text-xl font-black text-emerald-400 font-mono">$9.99 / ₹899</span>
-                        </div>
-                        <ul class="text-xs text-slate-300 space-y-2">
-                            <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">✓</span> Complete uncensored PDF & EPUB for all devices</li>
-                            <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">✓</span> Direct author reflection & implementation framework</li>
-                            <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">✓</span> Instant email dispatch with lifetime updates</li>
-                        </ul>
-                    </div>
-
-                    <!-- Multi-Gateway Instant Checkout -->
-                    <div class="flex flex-col sm:flex-row items-center gap-3 w-full max-w-md">
-                        <!-- Global USD: Whop / Cards / Apple Pay -->
-                        <button onclick="triggerCheckoutFromReader('usd')" class="w-full sm:flex-1 py-3.5 px-4 rounded-xl font-extrabold text-xs uppercase tracking-wider bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 shadow-xl shadow-emerald-500/25 transition hover:scale-[1.02] flex flex-col items-center justify-center">
-                            <span>Pay in USD ($9.99) ⚡</span>
-                            <span class="text-[10px] font-normal opacity-85 font-mono">Cards • Apple Pay • Whop</span>
-                        </button>
-                        <!-- Indian INR: SuperProfile UPI / RuPay -->
-                        <button onclick="triggerCheckoutFromReader('upi')" class="w-full sm:flex-1 py-3.5 px-4 rounded-xl font-extrabold text-xs uppercase tracking-wider bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 shadow-xl shadow-amber-500/25 transition hover:scale-[1.02] flex flex-col items-center justify-center">
-                            <span>Pay in INR (₹899) 🇮🇳</span>
-                            <span class="text-[10px] font-normal opacity-85 font-mono">UPI • PhonePe • GPay</span>
-                        </button>
-                    </div>
-
-                    <!-- Alternate Routes: Gumroad & Complete 14-Book Vault -->
-                    <div class="flex items-center justify-center gap-4 mt-4 text-xs">
-                        <button onclick="triggerCheckoutFromReader('gumroad')" class="text-slate-400 hover:text-white transition flex items-center gap-1 text-[11px] font-medium">
-                            <span>Or buy on Gumroad</span> ➔
-                        </button>
-                        <span class="text-slate-700">•</span>
-                        <button onclick="openWhopCheckout('plan_care_vault_79', 'Complete 14-Book Care Vault ($79)', '$79.00')" class="text-emerald-400 hover:text-emerald-300 font-bold transition text-[11px] flex items-center gap-1">
-                            <span>Get All 14 Books ($79)</span> ⚡
-                        </button>
-                    </div>
-
-                    <p class="text-[10px] text-slate-500 font-mono mt-3">
-                        Instant PDF & ePub delivery to email • Lifetime access • 100% Encrypted
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Bottom Status Bar -->
-        <div class="h-11 border-t border-slate-800/80 bg-slate-950/95 px-4 sm:px-6 flex items-center justify-between text-xs text-slate-400 z-20 flex-shrink-0">
-            <div class="flex items-center space-x-2">
-                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                <span class="text-[11px] font-mono text-slate-400 hidden sm:inline">Anti-Piracy DRM: Vector Canvas • Right-Click & Copy Blocked</span>
-                <span class="text-[11px] font-mono text-slate-400 sm:hidden">DRM Protected</span>
-            </div>
-            
-            <div class="text-[11px] text-slate-500 font-mono hidden md:block">
-                Use Keyboard <kbd class="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">←</kbd> / <kbd class="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">→</kbd> to turn pages • <kbd class="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Esc</kbd> to exit
-            </div>
-
-            <button onclick="triggerCheckoutFromReader()" class="text-xs font-bold text-emerald-400 hover:text-emerald-300 flex items-center gap-1 transition">
-                <span>Unlock Full Edition</span>
-                <span>➔</span>
-            </button>
-        </div>
-
-        <!-- DRM Toast Alert (when copy/save attempted) -->
-        <div id="readerDrmToast" class="hidden fixed bottom-16 left-1/2 -translate-x-1/2 bg-rose-950/95 border border-rose-500/60 text-rose-200 px-5 py-2.5 rounded-xl text-xs font-mono shadow-2xl backdrop-blur-md z-50 transition-opacity">
-            ⚠️ Protected Reading Copy: Printing, saving, and copying are disabled.
-        </div>
-    </div>
-
     <script>
 
         const books = [
   {
     "id": "care-01",
-    "gumroad_url": "https://adorisedigital.gumroad.com/l/hum-ladte-nahi",
     "category": "care",
     "category_label": "Care Collection \u2022 Hinglish Flagship",
     "author": "Sanjay Shharma",
@@ -1776,7 +1619,6 @@
   },
   {
     "id": "care-02",
-    "gumroad_url": "https://adorisedigital.gumroad.com/l/the-quiet-care",
     "category": "care",
     "category_label": "Care Collection \u2022 Empathy & Aging",
     "author": "Sanjay Shharma",
@@ -1798,7 +1640,6 @@
   },
   {
     "id": "care-03",
-    "gumroad_url": "https://adorisedigital.gumroad.com/l/Still_Married_Just_Silent",
     "category": "care",
     "category_label": "Care Collection \u2022 Relationship Health",
     "author": "Sanjay Shharma",
@@ -1820,7 +1661,6 @@
   },
   {
     "id": "care-04",
-    "gumroad_url": "https://adorisedigital.gumroad.com/l/when-they-forget-your-name",
     "category": "care",
     "category_label": "Care Collection \u2022 Dementia & Memory Care",
     "author": "Sanjay Shharma",
@@ -1842,7 +1682,6 @@
   },
   {
     "id": "care-05",
-    "gumroad_url": "https://adorisedigital.gumroad.com/l/the-long-goodbye",
     "category": "care",
     "category_label": "Care Collection \u2022 Bereavement & Healing",
     "author": "Sanjay Shharma",
@@ -1864,7 +1703,6 @@
   },
   {
     "id": "care-06",
-    "gumroad_url": "https://adorisedigital.gumroad.com/l/the-long-hello",
     "category": "care",
     "category_label": "Care Collection \u2022 Reconnection",
     "author": "Sanjay Shharma",
@@ -1886,7 +1724,6 @@
   },
   {
     "id": "care-07",
-    "gumroad_url": "https://adorisedigital.gumroad.com/l/The_Second_Chapter",
     "category": "care",
     "category_label": "Care Collection \u2022 Life Transitions",
     "author": "Sanjay Shharma",
@@ -1908,7 +1745,6 @@
   },
   {
     "id": "care-08",
-    "gumroad_url": "https://adorisedigital.gumroad.com/l/the-second-honeymoon",
     "category": "care",
     "category_label": "Care Collection \u2022 Midlife Love",
     "author": "Sanjay Shharma",
@@ -1930,7 +1766,6 @@
   },
   {
     "id": "care-09",
-    "gumroad_url": "https://adorisedigital.gumroad.com/l/the-last-sandwich",
     "category": "care",
     "category_label": "Care Collection \u2022 Family Dynamics",
     "author": "Sanjay Shharma",
@@ -1952,7 +1787,6 @@
   },
   {
     "id": "care-10",
-    "gumroad_url": "https://adorisedigital.gumroad.com/l/the-friends-who-fade",
     "category": "care",
     "category_label": "Care Collection \u2022 Social Circles",
     "author": "Sanjay Shharma",
@@ -1974,7 +1808,6 @@
   },
   {
     "id": "care-11",
-    "gumroad_url": "https://adorisedigital.gumroad.com/l/the-survivor",
     "category": "care",
     "category_label": "Care Collection \u2022 Resilience & Hope",
     "author": "Sanjay Shharma",
@@ -1996,7 +1829,6 @@
   },
   {
     "id": "care-12",
-    "gumroad_url": "https://adorisedigital.gumroad.com/l/gray-divorce",
     "category": "care",
     "category_label": "Care Collection \u2022 Midlife Autonomy",
     "author": "Sanjay Shharma",
@@ -2018,7 +1850,6 @@
   },
   {
     "id": "care-13",
-    "gumroad_url": "https://adorisedigital.gumroad.com/l/remarried-at-60",
     "category": "care",
     "category_label": "Care Collection \u2022 Late Life Love",
     "author": "Sanjay Shharma",
@@ -2040,7 +1871,6 @@
   },
   {
     "id": "care-14",
-    "gumroad_url": "https://adorisedigital.gumroad.com/l/after-the-last-goodbye",
     "category": "care",
     "category_label": "Care Collection \u2022 Sudden Loss",
     "author": "Sanjay Shharma",
@@ -2598,7 +2428,7 @@
     "pain_point": "Content creators and brands exhausted by the daily grind of filming, editing, and posting.",
     "takeaways": [
       "Building end-to-end 9:16 vertical short-form video pipelines using GPU rendering.",
-      "Connecting Adorise Social APIs for multi-channel autonomous scheduling.",
+      "Connecting Blotato/Postiz APIs for multi-channel autonomous scheduling.",
       "Generating 1,000+ indexed programmatic SEO solution pages to capture Google search."
     ],
     "excerpt": "You don't need a 5-person content team. You need one Python script connected to high-speed GPUs and headless publishing APIs."
@@ -2806,11 +2636,10 @@
                     <div class="pt-4 border-t border-slate-800/80 flex flex-col gap-2.5">
                         <div class="flex items-center justify-between gap-2">
                             <button onclick="openPreview('${b.id}')" class="text-xs font-semibold text-slate-400 hover:text-cyan-400 flex items-center space-x-1 transition">
-                                <span>Overview →</span>
+                                <span>Read Excerpt →</span>
                             </button>
-                            <button onclick="openLockedReader('${b.id}')" class="px-3 py-1.5 rounded-xl text-xs font-bold ${bookPreviewMap[b.id] ? 'bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border-emerald-500/40' : 'bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border-cyan-500/30'} border flex items-center gap-1.5 transition hover:scale-105 shadow-sm">
-                                <span>📖 Read 3 Chapters</span>
-                            </button>
+                            ${b.id === 'care-01' ? '<a href="/previews/Hum_Ladte_Nahi_3_Chapter_Preview.pdf" target="_blank" class="text-[11px] font-bold text-emerald-400 hover:underline flex items-center gap-1"><span>📖 Free 3 Chapters PDF</span></a>' : ''}
+                            ${b.id === 'ai-rec-01' ? '<a href="/previews/Never_Miss_Another_Call_3_Chapter_Preview.pdf" target="_blank" class="text-[11px] font-bold text-cyan-400 hover:underline flex items-center gap-1"><span>📖 Free 3 Chapters PDF</span></a>' : ''}
                         </div>
                         <button onclick="triggerCheckout('${b.id}')" class="w-full py-2 rounded-xl text-xs font-bold ${b.category === 'indian' ? 'bg-amber-500 hover:bg-amber-400 text-slate-950' : 'bg-cyan-500 hover:bg-cyan-400 text-slate-950'} transition shadow-md">
                             ${b.category === 'indian' ? 'Order on SuperProfile (UPI / ₹) ⚡' : 'Buy & Instant Download ($ USD) ⚡'}
@@ -2918,19 +2747,15 @@
             document.body.style.overflow = 'auto';
         }
 
-        function triggerCheckout(bookId, gateway = 'auto') {
+        function triggerCheckout(bookId) {
             const b = books.find(item => item.id === bookId);
             if (!b) return;
 
-            if (gateway === 'upi' || gateway === 'superprofile' || (gateway === 'auto' && b.category === 'indian')) {
-                // Indian Audience -> SuperProfile.bio (UPI / RuPay / NetBanking)
+            if (b.category === 'indian') {
+                // Indian Audience -> SuperProfile.bio (UPI / RuPay / INR Indian Bank Account)
                 window.open(b.superprofile_url || 'https://superprofile.bio/adorisedigital', '_blank');
-            } else if (gateway === 'gumroad') {
-                // Gumroad direct checkout
-                const gumroadUrl = b.gumroad_url || ('https://adorisedigital.gumroad.com/l/' + b.id.replace('care-', 'care-book-'));
-                window.open(gumroadUrl, '_blank');
             } else {
-                // Global Audience -> Whop Modal (Credit Cards, Apple Pay, Google Pay)
+                // Global Audience -> Whop / Wyoming USA LLC Checking Account
                 const planId = b.whop_plan || 'plan_adorise_ebook_9';
                 openWhopCheckout(planId, b.title, b.price_usd);
             }
@@ -2946,298 +2771,6 @@
         document.addEventListener('click', (e) => {
             const modal = document.getElementById('checkoutModal');
             if (modal && e.target === modal) closeCheckoutModal();
-        });
-
-
-        // ==========================================================
-        // SELF-HOSTED LOCKED HTML5 CANVAS FLIPBOOK READER (ANTI-PIRACY)
-        // ==========================================================
-        const bookPreviewMap = {
-            "care-01": "/previews/Care Collection Lead magnets/Hum_Ladte_Nahi_Par_Baat_Hi_Nahi_Karte.pdf",
-            "care-02": "/previews/Care Collection Lead magnets/The_Quiet_Care_Lead_Magnet.pdf",
-            "care-03": "/previews/Care Collection Lead magnets/Still_Married_Just_Silent_Lead_Magnet.pdf",
-            "care-04": "/previews/Care Collection Lead magnets/When_They_Forget_Your_Name_Lead_Magnet.pdf",
-            "care-05": "/previews/Care Collection Lead magnets/The_Long_Goodbye_Lead_Magnet.pdf",
-            "care-06": "/previews/Care Collection Lead magnets/The_Long_Hello_Lead_Magnet.pdf",
-            "care-07": "/previews/Care Collection Lead magnets/The_Second_Chapter_Lead_Magnet.pdf",
-            "care-08": "/previews/Care Collection Lead magnets/The_Second_Honeymoon_Lead_Magnet.pdf",
-            "care-09": "/previews/Care Collection Lead magnets/The_Last_Sandwich_Lead_Magnet.pdf",
-            "care-10": "/previews/Care Collection Lead magnets/The_Friends_Who_Fade_Lead_Magnet.pdf",
-            "care-11": "/previews/Care Collection Lead magnets/The_Survivor_Lead_Magnet.pdf",
-            "care-12": "/previews/Care Collection Lead magnets/Gray_Divorce_Lead_Magnet.pdf",
-            "care-13": "/previews/Care Collection Lead magnets/Remarried_at_60_Lead_Magnet.pdf",
-            "care-14": "/previews/Care Collection Lead magnets/After_the_Last_Goodbye_Lead_Magnet.pdf",
-            "ai-06": "/previews/Never_Miss_Another_Call_3_Chapter_Preview.pdf"
-};
-
-        let currentPdfDoc = null;
-        let currentReaderPage = 1;
-        let isRenderingPage = false;
-        let pendingPageNum = null;
-        let currentReaderScale = 1.0;
-        let currentReaderBook = null;
-        const PREVIEW_PAGE_LIMIT = 20; // 3 chapters limit
-
-        async function openLockedReader(bookId) {
-            const b = books.find(item => item.id === bookId);
-            if (!b) return;
-
-            const pdfUrl = bookPreviewMap[bookId];
-            if (!pdfUrl) {
-                // Fall back to excerpt preview if no PDF
-                openPreview(bookId);
-                return;
-            }
-
-            currentReaderBook = b;
-            currentReaderPage = 1;
-            currentReaderScale = 1.0;
-            currentPdfDoc = null;
-
-            // Set modal info
-            document.getElementById('readerBookTitle').textContent = b.title;
-            document.getElementById('readerBookAuthor').textContent = 'By ' + b.author;
-            document.getElementById('paywallBookTitle').textContent = 'Unlock ' + b.title;
-            document.getElementById('paywallBookPrice').textContent = b.price_usd + ' / ' + b.price_inr;
-
-            const modal = document.getElementById('lockedReaderModal');
-            const spinner = document.getElementById('readerLoadingSpinner');
-            const paywall = document.getElementById('readerPaywallOverlay');
-
-            paywall.classList.add('hidden');
-            spinner.classList.remove('hidden');
-            spinner.style.opacity = '1';
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-
-            try {
-                const loadingTask = pdfjsLib.getDocument({
-                    url: pdfUrl,
-                    cMapUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/cmaps/',
-                    cMapPacked: true
-                });
-
-                currentPdfDoc = await loadingTask.promise;
-                const effectiveTotal = Math.min(currentPdfDoc.numPages, PREVIEW_PAGE_LIMIT);
-                document.getElementById('readerTotalPages').textContent = effectiveTotal;
-
-                renderReaderPage(currentReaderPage);
-            } catch (err) {
-                console.error('Error loading PDF document:', err);
-                spinner.classList.add('hidden');
-                alert('Preview document is preparing. Opening text excerpt preview now.');
-                closeLockedReader();
-                openPreview(bookId);
-            }
-        }
-
-        async function renderReaderPage(num) {
-            if (!currentPdfDoc) return;
-            isRenderingPage = true;
-
-            const canvas = document.getElementById('lockedBookCanvas');
-            const ctx = canvas.getContext('2d');
-            const spinner = document.getElementById('readerLoadingSpinner');
-            const paywall = document.getElementById('readerPaywallOverlay');
-
-            // Check if beyond preview limit
-            const effectiveMax = Math.min(currentPdfDoc.numPages, PREVIEW_PAGE_LIMIT);
-            if (num > effectiveMax) {
-                paywall.classList.remove('hidden');
-                isRenderingPage = false;
-                return;
-            } else {
-                paywall.classList.add('hidden');
-            }
-
-            try {
-                const page = await currentPdfDoc.getPage(num);
-
-                // Calculate scale to fit viewport comfortably
-                const viewportContainer = document.getElementById('readerViewport');
-                const availableWidth = Math.max(320, (viewportContainer.clientWidth || window.innerWidth) - 48);
-                const availableHeight = Math.max(450, (viewportContainer.clientHeight || window.innerHeight) - 48);
-
-                const unscaledViewport = page.getViewport({ scale: 1.0 });
-                const widthScale = availableWidth / unscaledViewport.width;
-                const heightScale = availableHeight / unscaledViewport.height;
-                const baseScale = Math.min(widthScale, heightScale, 1.6);
-                const scale = baseScale * currentReaderScale;
-
-                const viewport = page.getViewport({ scale });
-                const outputScale = window.devicePixelRatio || 1;
-
-                canvas.width = Math.floor(viewport.width * outputScale);
-                canvas.height = Math.floor(viewport.height * outputScale);
-                canvas.style.width = Math.floor(viewport.width) + 'px';
-                canvas.style.height = Math.floor(viewport.height) + 'px';
-
-                const transform = outputScale !== 1 ? [outputScale, 0, 0, outputScale, 0, 0] : null;
-
-                const renderContext = {
-                    canvasContext: ctx,
-                    transform: transform,
-                    viewport: viewport
-                };
-
-                await page.render(renderContext).promise;
-
-                // Apply translucent DRM watermark across canvas
-                drawSecurityWatermark(ctx, canvas.width, canvas.height);
-
-                // Update UI indicators
-                document.getElementById('readerCurrentPage').textContent = num;
-                document.getElementById('readerPrevBtn').disabled = (num <= 1);
-                document.getElementById('readerNextBtn').disabled = (num >= effectiveMax);
-
-                spinner.classList.add('hidden');
-            } catch (renderErr) {
-                console.error('Page render error:', renderErr);
-                spinner.classList.add('hidden');
-            } finally {
-                isRenderingPage = false;
-                if (pendingPageNum !== null) {
-                    renderReaderPage(pendingPageNum);
-                    pendingPageNum = null;
-                }
-            }
-        }
-
-        function drawSecurityWatermark(ctx, width, height) {
-            ctx.save();
-            ctx.font = 'bold ' + Math.max(16, Math.floor(width / 36)) + 'px sans-serif';
-            ctx.fillStyle = 'rgba(100, 116, 139, 0.15)';
-            ctx.textAlign = 'center';
-            ctx.translate(width / 2, height / 2);
-            ctx.rotate(-Math.PI / 4);
-            ctx.fillText('adorisedigital.com • Protected Reading Copy', 0, -30);
-            ctx.fillText('Unauthorized copying, sharing, or distribution is prohibited', 0, 10);
-            ctx.fillText('Authored by Sanjay Shharma • All Rights Reserved', 0, 50);
-            ctx.restore();
-        }
-
-        function queueRenderReaderPage(num) {
-            if (isRenderingPage) {
-                pendingPageNum = num;
-            } else {
-                renderReaderPage(num);
-            }
-        }
-
-        function readerPrevPage() {
-            if (currentReaderPage <= 1) return;
-            currentReaderPage--;
-            queueRenderReaderPage(currentReaderPage);
-        }
-
-        function readerNextPage() {
-            if (!currentPdfDoc) return;
-            const effectiveMax = Math.min(currentPdfDoc.numPages, PREVIEW_PAGE_LIMIT);
-            if (currentReaderPage >= effectiveMax) {
-                // Show paywall when attempting to go past limit
-                document.getElementById('readerPaywallOverlay').classList.remove('hidden');
-                return;
-            }
-            currentReaderPage++;
-            queueRenderReaderPage(currentReaderPage);
-        }
-
-        function readerZoomIn() {
-            if (currentReaderScale >= 2.0) return;
-            currentReaderScale += 0.2;
-            document.getElementById('readerZoomLevel').textContent = Math.round(currentReaderScale * 100) + '%';
-            queueRenderReaderPage(currentReaderPage);
-        }
-
-        function readerZoomOut() {
-            if (currentReaderScale <= 0.6) return;
-            currentReaderScale -= 0.2;
-            document.getElementById('readerZoomLevel').textContent = Math.round(currentReaderScale * 100) + '%';
-            queueRenderReaderPage(currentReaderPage);
-        }
-
-        function readerFitWidth() {
-            currentReaderScale = 1.0;
-            document.getElementById('readerZoomLevel').textContent = '100%';
-            queueRenderReaderPage(currentReaderPage);
-        }
-
-        function closeLockedReader() {
-            const modal = document.getElementById('lockedReaderModal');
-            modal.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-            currentPdfDoc = null;
-            currentReaderBook = null;
-        }
-
-        function triggerCheckoutFromReader(gateway = 'auto') {
-            if (currentReaderBook) {
-                triggerCheckout(currentReaderBook.id, gateway);
-            } else if (gateway === 'upi') {
-                window.open('https://superprofile.bio/adorisedigital', '_blank');
-            } else if (gateway === 'gumroad') {
-                window.open('https://adorisedigital.gumroad.com', '_blank');
-            } else {
-                openWhopCheckout('plan_adorise_ebook_9', 'Adorise Digital Blueprint', '$9.99');
-            }
-        }
-
-        function showDRMToast(msg) {
-            const toast = document.getElementById('readerDrmToast');
-            if (!toast) return;
-            if (msg) toast.textContent = msg;
-            toast.classList.remove('hidden');
-            toast.style.opacity = '1';
-            setTimeout(() => {
-                toast.classList.add('hidden');
-            }, 2500);
-        }
-
-        // ==========================================================
-        // DRM ANTI-PIRACY SECURITY EVENT LISTENERS
-        // ==========================================================
-        document.addEventListener('contextmenu', (e) => {
-            const readerModal = document.getElementById('lockedReaderModal');
-            if (readerModal && !readerModal.classList.contains('hidden')) {
-                e.preventDefault();
-                showDRMToast("⚠️ Protected Reading Copy: Right-click menu disabled.");
-                return false;
-            }
-        });
-
-        document.addEventListener('keydown', (e) => {
-            const readerModal = document.getElementById('lockedReaderModal');
-            if (readerModal && !readerModal.classList.contains('hidden')) {
-                // Intercept Print, Save, Copy, View Source, DevTools
-                const key = e.key.toLowerCase();
-                if ((e.ctrlKey || e.metaKey) && ['p', 's', 'c', 'u', 'a'].includes(key)) {
-                    e.preventDefault();
-                    showDRMToast("⚠️ Protected Reading Copy: Printing, saving, and copying are disabled.");
-                    return false;
-                }
-                if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['i', 'j', 'c'].includes(key))) {
-                    e.preventDefault();
-                    return false;
-                }
-
-                // Keyboard Page Navigation
-                if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
-                    e.preventDefault();
-                    readerNextPage();
-                } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
-                    e.preventDefault();
-                    readerPrevPage();
-                } else if (e.key === 'Escape') {
-                    closeLockedReader();
-                }
-            }
-        });
-
-        window.addEventListener('resize', () => {
-            const readerModal = document.getElementById('lockedReaderModal');
-            if (readerModal && !readerModal.classList.contains('hidden') && currentPdfDoc) {
-                queueRenderReaderPage(currentReaderPage);
-            }
         });
 
         // Initial render
