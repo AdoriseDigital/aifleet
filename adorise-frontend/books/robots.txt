@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://books.adorisedigital.com/sitemap-books.xml
+Sitemap: https://adorisedigital.com/sitemaps/sitemap-books.xml

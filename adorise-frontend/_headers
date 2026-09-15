@@ -25,6 +25,27 @@
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
 
+/books/*
+  Cache-Control: public, max-age=2592000, s-maxage=2592000, stale-while-revalidate=86400
+  Cloudflare-CDN-Cache-Control: max-age=2592000
+  CDN-Cache-Control: max-age=2592000
+  Cache-Tag: pseo, books
+  X-Robots-Tag: index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/books
+  Cache-Control: public, max-age=2592000, s-maxage=2592000, stale-while-revalidate=86400
+  Cloudflare-CDN-Cache-Control: max-age=2592000
+  CDN-Cache-Control: max-age=2592000
+  Cache-Tag: pseo, books
+  X-Robots-Tag: index, follow
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+
+
 # 2. XML Sitemaps & Dynamic Header Compression
 /sitemap.xml
   Cache-Control: public, max-age=3600, s-maxage=3600, stale-while-revalidate=1800
