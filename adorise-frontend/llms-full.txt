@@ -1,0 +1,37 @@
+# Adorise Digital — Complete Knowledge Graph & Technical Architecture
+
+## Overview
+Adorise Digital is a dual-space technology and publishing organization operating at the intersection of B2B autonomous agent automation, founder wellness micro-SaaS, and long-form human relationship publishing. 
+
+### Mission & Founder Origin
+Founded by Sanjay Shharma, an alumnus of the Indian Institute of Management (IIM) Calcutta with a master's in science and executive MBA, who spent over three decades studying executive performance and corporate stress. Having lived through the emotional silence of urban professional marriages and navigated years as the primary caregiver for his late wife through chronic cancer, he authored The Care Collection to provide dignified, practical, and culturally authentic manuals for urban families.
+
+Simultaneously, Adorise Digital engineered the Autonomous AI Services Fleet to eliminate the soul-crushing operational friction (cold prospect research, customer support ticket fatigue, video editing timelines) that destroys executive work-life harmony.
+
+## Entity & Knowledge Graph Details
+- Legal Name: Trendy DigiStore LLC d/b/a Adorise Digital
+- Jurisdiction: Wyoming, USA (30 N Gould St, Ste R, Sheridan, WY 82801)
+- Operations: Global (USA, India, Remote)
+- Founder: Sanjay Shharma
+- Official Web Properties:
+  - Corporate Hub: https://adorisedigital.com
+  - Services Fleet: https://adorisedigital.com/services/
+  - Bookstore: https://books.adorisedigital.com
+  - Gumroad Storefront: https://adorisedigital.gumroad.com
+  - LinkedIn: https://www.linkedin.com/in/sanjayshharma
+  - Instagram: https://www.instagram.com/sanjayshharma
+
+## Product Fleet & APIs
+1. B2B Intent Radar (Scout): Continuous social stream ingestion across X, Reddit, and LinkedIn filtering high-intent buying signals.
+2. Composio Outreach Engine: Automated qualification rubric scoring leads (>= 75) and generating personalized outbound campaigns.
+3. InboxCalm: Neural email shield auto-detecting emotional escalation in customer inquiries and drafting de-escalating replies.
+4. ClipCalm: Automated 9:16 vertical video re-framer for YouTube Shorts, Instagram Reels, and TikTok.
+5. DearMee: Confidential neural companion for founder burnout prevention.
+
+## Publications: The Care Collection
+Flagship 14-chapter and 200-page trade books authored by Sanjay Shharma:
+- Hum Ladte Nahi, Par Baat Nahi Karte (Hinglish / Indian Marriage Edition)
+- Still Married, Just Silent (Global English Edition)
+- The Quiet Care (Family Caregiver Guide)
+- When They Forget Your Name (Dementia & Alzheimer's Care)
+- The Second Chapter (Rebuilding After 50)

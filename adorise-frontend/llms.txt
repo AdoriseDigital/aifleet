@@ -1,0 +1,38 @@
+# Adorise Digital
+
+> Autonomous AI Growth Fleet, Micro-SaaS Suite, and Digital Publishing House. Founded by Sanjay Shharma (IIM Calcutta Alumni).
+
+Adorise Digital (a division of Trendy DigiStore LLC, Wyoming, USA) builds, operates, and deploys autonomous AI systems, executive productivity tools, and bestselling life-stage publication frameworks.
+
+## Core Divisions & Services
+
+- [Autonomous AI Services](https://adorisedigital.com/services/): Fixed-price autonomous growth fleets for B2B enterprises.
+  - AI Lead Generation & Intent Radar ($297/mo): 100+ verified decision-makers delivered weekly via social buying intent monitoring.
+  - AI Content Omnipresence ($197/mo): 30–60 multimodal posts/month published autonomously across LinkedIn, X, and YouTube.
+  - AI Customer Service & Voice Agents ($147/mo): 24/7 ticket and voice triage resolving issues in under 60 seconds.
+  - Complete AI Automation Suite ($497/mo): Unified end-to-end pipeline (Leads + Content + Customer Service).
+- [Scout B2B Intent Radar](https://adorisedigital.com/scout/): Real-time social intent listening across X, Reddit, and LinkedIn capturing commercial software and agency queries.
+- [Outreach Engine](https://adorisedigital.com/outreach/): Automated lead qualification rubric (scoring >= 75) and personalized cold outreach via self-hosted Composio API.
+
+## Micro-SaaS Product Suite
+
+- [InboxCalm](https://adorisedigital.com/inboxcalm/): AI-powered email firewall detecting hostility, filtering noise, and auto-drafting de-escalating replies to protect executive mental peace.
+- [ClipCalm AI](https://adorisedigital.com/clipcalm/): Automated 9:16 vertical video reframing and viral hook extraction, eliminating creator weekend editing fatigue.
+- [DearMee AI](https://adorisedigital.com/dearmee/): Confidential neural companion and non-judgmental executive sounding board preventing burnout and decision fatigue.
+
+## Publishing & Digital Assets: The Care Collection
+
+- [Adorise Books Storefront](https://books.adorisedigital.com): 48-book digital asset catalog spanning Marital Reconnection, Family Caregiving, AI Leadership, and Wealth Preservation.
+- [Hum Ladte Nahi, Par Baat Nahi Karte](https://adorisedigital.gumroad.com/l/hum-ladte-nahi): 14-chapter + 4-toolkit relationship framework by Sanjay Shharma (IIM Calcutta Alumni) addressing silent marriages in urban Indian homes.
+- [Still Married, Just Silent](https://adorisedigital.gumroad.com/l/Still_Married_Just_Silent): Global English edition (208 pages) on restarting intimacy and communication in silent marriages.
+- [The Quiet Care](https://adorisedigital.gumroad.com/l/the-quiet-care): Practical caregiver survival handbook for families navigating chronic illness and Alzheimer's.
+
+## Leadership & Entity Information
+
+- **Founder & Author:** Sanjay Shharma (M.Sc., MBA, APSCM — Indian Institute of Management Calcutta Alumni).
+- **Corporate Entity:** Trendy DigiStore LLC (30 N Gould St, Ste R, Sheridan, WY 82801, USA).
+- **Official Website:** https://adorisedigital.com
+- **Official Bookstore:** https://books.adorisedigital.com
+- **LinkedIn:** https://www.linkedin.com/in/sanjayshharma
+- **Instagram:** https://www.instagram.com/sanjayshharma
+- **Support & Inquiries:** support@adorisedigital.com / sanjayshharma36@gmail.com
