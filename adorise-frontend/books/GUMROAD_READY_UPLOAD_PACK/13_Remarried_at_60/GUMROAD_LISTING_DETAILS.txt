@@ -1,0 +1,24 @@
+================================================================================
+GUMROAD PRODUCT UPLOAD GUIDE — BOOK #13
+================================================================================
+TITLE:        Remarried at 60
+SUBTITLE:     Blending Adult Families, Protecting Assets, and Opening Your Heart in the Sunset Years
+PRICE:        $9.99 USD
+GUMROAD URL:  https://adorisedigital.gumroad.com/l/remarried-at-60
+DIRECT EDIT:  https://app.gumroad.com/products/_0s6-hxeLDDQzqoo5LiR7g==/edit
+
+CATEGORY:     Self Improvement -> Dating & Relationships (Taxonomy: 86)
+TAGS:         relationships, marriage, emotional intimacy, personal growth, communication
+
+FILES IN THIS FOLDER TO UPLOAD ON GUMROAD:
+1. Cover Image:
+   -> Drag 'cover.jpg' into the "Cover" box on the Product tab.
+
+2. Product Content / Deliverables:
+   -> Go to the "Content" tab.
+   -> Drag & drop the Master PDF (Remarried_at_60.pdf)
+   -> Drag & drop the Master EPUB (Remarried_at_60.epub)
+   -> (Optional) Drag & drop the full bundle (13_Remarried_at_60_bundle.zip)
+
+3. Click "Save and Publish Changes" in the top right.
+================================================================================
