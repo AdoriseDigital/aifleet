@@ -1,0 +1,24 @@
+================================================================================
+GUMROAD PRODUCT UPLOAD GUIDE — BOOK #09
+================================================================================
+TITLE:        The Last Sandwich
+SUBTITLE:     Surviving the Double Pressure of Raising Teens While Nursing Aging Parents
+PRICE:        $9.99 USD
+GUMROAD URL:  https://adorisedigital.gumroad.com/l/the-last-sandwich
+DIRECT EDIT:  https://app.gumroad.com/products/j-2p3rfyLPnHiwvFEIQ6Jg==/edit
+
+CATEGORY:     Self Improvement -> Dating & Relationships (Taxonomy: 86)
+TAGS:         relationships, marriage, emotional intimacy, personal growth, communication
+
+FILES IN THIS FOLDER TO UPLOAD ON GUMROAD:
+1. Cover Image:
+   -> Drag 'cover.jpg' into the "Cover" box on the Product tab.
+
+2. Product Content / Deliverables:
+   -> Go to the "Content" tab.
+   -> Drag & drop the Master PDF (The_Last_Sandwich.pdf)
+   -> Drag & drop the Master EPUB (The_Last_Sandwich.epub)
+   -> (Optional) Drag & drop the full bundle (09_The_Last_Sandwich_bundle.zip)
+
+3. Click "Save and Publish Changes" in the top right.
+================================================================================

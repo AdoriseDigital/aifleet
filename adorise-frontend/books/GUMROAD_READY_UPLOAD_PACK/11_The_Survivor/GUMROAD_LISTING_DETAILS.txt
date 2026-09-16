@@ -1,0 +1,24 @@
+================================================================================
+GUMROAD PRODUCT UPLOAD GUIDE — BOOK #11
+================================================================================
+TITLE:        The Survivor
+SUBTITLE:     A Compassionate Protocol for Chronic Medical Battles and Emotional Exhaustion
+PRICE:        $9.99 USD
+GUMROAD URL:  https://adorisedigital.gumroad.com/l/the-survivor
+DIRECT EDIT:  https://app.gumroad.com/products/vb8_8B5N1l5wzov_l2gy5Q==/edit
+
+CATEGORY:     Self Improvement -> Dating & Relationships (Taxonomy: 86)
+TAGS:         relationships, marriage, emotional intimacy, personal growth, communication
+
+FILES IN THIS FOLDER TO UPLOAD ON GUMROAD:
+1. Cover Image:
+   -> Drag 'cover.jpg' into the "Cover" box on the Product tab.
+
+2. Product Content / Deliverables:
+   -> Go to the "Content" tab.
+   -> Drag & drop the Master PDF (The_Survivor.pdf)
+   -> Drag & drop the Master EPUB (The_Survivor.epub)
+   -> (Optional) Drag & drop the full bundle (11_The_Survivor_bundle.zip)
+
+3. Click "Save and Publish Changes" in the top right.
+================================================================================

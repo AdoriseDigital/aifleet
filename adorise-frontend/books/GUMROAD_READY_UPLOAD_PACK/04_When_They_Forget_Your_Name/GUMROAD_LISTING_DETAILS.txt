@@ -1,0 +1,24 @@
+================================================================================
+GUMROAD PRODUCT UPLOAD GUIDE — BOOK #04
+================================================================================
+TITLE:        When They Forget Your Name
+SUBTITLE:     Navigating Dementia, Cognitive Decline, and the Ambiguous Grief of Slow Loss
+PRICE:        $9.99 USD
+GUMROAD URL:  https://adorisedigital.gumroad.com/l/when-they-forget-your-name
+DIRECT EDIT:  https://app.gumroad.com/products/gsHSOkfBt4WW0LiH_yJW3A==/edit
+
+CATEGORY:     Self Improvement -> Dating & Relationships (Taxonomy: 86)
+TAGS:         relationships, marriage, emotional intimacy, personal growth, communication
+
+FILES IN THIS FOLDER TO UPLOAD ON GUMROAD:
+1. Cover Image:
+   -> Drag 'cover.jpg' into the "Cover" box on the Product tab.
+
+2. Product Content / Deliverables:
+   -> Go to the "Content" tab.
+   -> Drag & drop the Master PDF (When_They_Forget_Your_Name.pdf)
+   -> Drag & drop the Master EPUB (When_They_Forget_Your_Name.epub)
+   -> (Optional) Drag & drop the full bundle (04_When_They_Forget_Your_Name_bundle.zip)
+
+3. Click "Save and Publish Changes" in the top right.
+================================================================================

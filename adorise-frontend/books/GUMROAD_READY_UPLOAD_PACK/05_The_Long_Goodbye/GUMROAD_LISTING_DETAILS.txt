@@ -1,0 +1,24 @@
+================================================================================
+GUMROAD PRODUCT UPLOAD GUIDE — BOOK #05
+================================================================================
+TITLE:        The Long Goodbye
+SUBTITLE:     Finding Grounded Strength When Terminal Illness Redefines Every Tomorrow
+PRICE:        $9.99 USD
+GUMROAD URL:  https://adorisedigital.gumroad.com/l/the-long-goodbye
+DIRECT EDIT:  https://app.gumroad.com/products/ZK-LdJ81jf7RrnDC8sAHcw==/edit
+
+CATEGORY:     Self Improvement -> Dating & Relationships (Taxonomy: 86)
+TAGS:         relationships, marriage, emotional intimacy, personal growth, communication
+
+FILES IN THIS FOLDER TO UPLOAD ON GUMROAD:
+1. Cover Image:
+   -> Drag 'cover.jpg' into the "Cover" box on the Product tab.
+
+2. Product Content / Deliverables:
+   -> Go to the "Content" tab.
+   -> Drag & drop the Master PDF (The_Long_Goodbye.pdf)
+   -> Drag & drop the Master EPUB (The_Long_Goodbye.epub)
+   -> (Optional) Drag & drop the full bundle (05_The_Long_Goodbye_bundle.zip)
+
+3. Click "Save and Publish Changes" in the top right.
+================================================================================
