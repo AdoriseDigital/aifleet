@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instant Digital Download & Order Confirmation | Adorise Books</title>
+    <meta name="description" content="Thank you for your purchase. Instantly download your Master PDF and Kindle EPUB digital blueprints from Adorise Digital.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Plus Jakarta Sans', 'sans-serif'],
+              display: ['Outfit', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      .glass-card {
+        background: rgba(15, 23, 42, 0.82);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .glass-card:hover {
+        border-color: rgba(6, 182, 212, 0.35);
+      }
+      .gradient-glow {
+        background: radial-gradient(circle at 50% -20%, rgba(6, 182, 212, 0.18), transparent 70%);
+      }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-cyan-500 selection:text-slate-950 min-h-screen flex flex-col justify-between">
+
+    <!-- Fixed Header Navigation -->
+    <header class="h-20 border-b border-slate-800/80 bg-slate-950/95 backdrop-blur-md fixed top-0 left-0 right-0 z-50 px-6 flex items-center justify-between">
+        <a href="/" class="flex items-center space-x-3 group">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 via-indigo-500 to-purple-600 p-0.5 shadow-lg shadow-cyan-500/20">
+                <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+                    <span class="font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 text-lg">A</span>
+                </div>
+            </div>
+            <span class="font-extrabold text-lg tracking-tight text-white font-display">ADORISE <span class="text-cyan-400">BOOKS</span></span>
+            <span class="px-2 py-0.5 text-[10px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded-full flex items-center space-x-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Fulfillment Portal</span>
+            </span>
+        </a>
+        
+        <div class="flex items-center space-x-3 md:space-x-4">
+            <a href="/" class="text-xs font-semibold px-4 py-2 rounded-full bg-slate-900 border border-slate-800 text-slate-300 hover:text-white transition">
+                ← 48 Catalog
+            </a>
+            <a href="https://services.adorisedigital.com" target="_blank" class="text-xs font-bold px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/20 hover:scale-105 transition">
+                AI Services Storefront ⚡
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="pt-28 pb-20 max-w-6xl mx-auto px-6 w-full gradient-glow">
+        
+        <!-- Order Confirmation Status Banner -->
+        <div class="mb-10 text-center max-w-3xl mx-auto">
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold tracking-wide uppercase mb-4">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span id="orderBadgeStatus">Payment Confirmed • Instant Access Granted</span>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-3 tracking-tight font-display">
+                Thank You for Your Order!
+            </h1>
+            <p class="text-slate-400 text-sm md:text-base leading-relaxed">
+                Your payment has been processed securely. Your DRM-free master digital edition is ready for instant download below.
+            </p>
+        </div>
+
+        <!-- Verified Order Receipt Card -->
+        <div class="glass-card rounded-2xl p-5 md:p-6 mb-10 border border-slate-800 shadow-xl">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800/80 pb-5">
+                <div>
+                    <span class="text-xs font-mono uppercase text-slate-500 tracking-wider">Transaction Receipt</span>
+                    <div class="flex items-center space-x-2 mt-1">
+                        <span class="text-sm md:text-base font-mono font-bold text-cyan-400" id="receiptTx">TX-VERIFIED-AUTH</span>
+                        <button onclick="copyTxId()" class="text-xs text-slate-400 hover:text-cyan-300 transition" title="Copy ID">📋</button>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-4 text-xs font-mono">
+                    <div class="bg-slate-900/90 px-3 py-1.5 rounded-lg border border-slate-800">
+                        <span class="text-slate-500 block text-[10px]">PAYMENT STATUS</span>
+                        <span class="text-emerald-400 font-bold" id="receiptStatus">Completed</span>
+                    </div>
+                    <div class="bg-slate-900/90 px-3 py-1.5 rounded-lg border border-slate-800">
+                        <span class="text-slate-500 block text-[10px]">TOTAL AMOUNT</span>
+                        <span class="text-white font-bold" id="receiptAmount">$19.99 USD</span>
+                    </div>
+                    <div class="bg-slate-900/90 px-3 py-1.5 rounded-lg border border-slate-800">
+                        <span class="text-slate-500 block text-[10px]">GATEWAY / RAIL</span>
+                        <span class="text-cyan-400 font-bold" id="receiptGateway">PayPal Express</span>
+                    </div>
+                    <div class="bg-slate-900/90 px-3 py-1.5 rounded-lg border border-slate-800">
+                        <span class="text-slate-500 block text-[10px]">FULFILLMENT</span>
+                        <span class="text-purple-400 font-bold">DRM-Free Direct</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pt-4 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-slate-400 gap-2">
+                <div>
+                    Customer Support & Inquiries: <a href="mailto:support@adorisedigital.com" class="text-cyan-400 hover:underline">support@adorisedigital.com</a>
+                </div>
+                <div class="font-mono text-[11px] text-slate-500" id="receiptTimestamp">
+                    Timestamp: 2026-09-19
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Purchased Book Download Section -->
+        <div id="heroBookContainer" class="glass-card rounded-3xl p-6 md:p-10 border border-cyan-500/30 shadow-2xl mb-12 relative overflow-hidden">
+            <div class="absolute -top-24 -right-24 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Book Thumbnail & Badge -->
+                <div class="lg:col-span-4 flex flex-col items-center text-center">
+                    <div class="w-52 md:w-60 h-76 rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-slate-700/80 shadow-2xl p-3 flex flex-col justify-between relative group hover:scale-[1.02] transition duration-300">
+                        <div class="flex items-center justify-between text-[10px] font-mono text-cyan-400">
+                            <span id="heroBookCatBadge" class="px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/30 uppercase">AI Series</span>
+                            <span class="text-slate-500">6"x9" Trade</span>
+                        </div>
+                        <div class="py-6">
+                            <h3 id="heroCoverTitle" class="text-lg md:text-xl font-extrabold text-white leading-snug font-display">The AI Agent Blueprint</h3>
+                            <p id="heroCoverAuthor" class="text-xs text-slate-400 mt-2">By Sanjay Shharma</p>
+                            <span class="inline-block mt-3 px-2.5 py-1 text-[10px] font-mono font-bold bg-amber-500/10 text-amber-300 border border-amber-500/30 rounded">
+                                Complete Unabridged Edition
+                            </span>
+                        </div>
+                        <div class="pt-3 border-t border-slate-800 text-[10px] font-mono text-slate-500 flex justify-between">
+                            <span>Adorise Digital LLC</span>
+                            <span id="heroCoverPages">164 Pages</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book Metadata & Download Actions -->
+                <div class="lg:col-span-8 flex flex-col justify-center">
+                    <div class="flex flex-wrap items-center gap-2 mb-3">
+                        <span id="heroCategoryLabel" class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">
+                            AI Wealth • Autonomous Agency
+                        </span>
+                        <span class="px-3 py-1 rounded-full text-xs font-mono bg-slate-900 border border-slate-800 text-emerald-400">
+                            ✓ Verified Complete Edition with Backmatter
+                        </span>
+                    </div>
+
+                    <h2 id="heroBookTitle" class="text-2xl md:text-4xl font-extrabold text-white mb-2 font-display">
+                        The AI Agent Blueprint
+                    </h2>
+                    <p id="heroBookSubtitle" class="text-slate-300 text-sm md:text-base leading-relaxed mb-4">
+                        Building, Deploying, and Monetizing Autonomous Software Fleets for Modern Businesses
+                    </p>
+
+                    <div class="flex items-center space-x-2 text-xs text-slate-400 mb-6">
+                        <span>Author: <strong class="text-white">Sanjay Shharma</strong> (IIM Calcutta Alumni)</span>
+                        <span>•</span>
+                        <span>Published by <strong class="text-white">Adorise Digital (Wyoming, USA)</strong></span>
+                    </div>
+
+                    <!-- Instant Download Action Buttons -->
+                    <div class="space-y-3 sm:space-y-0 sm:flex sm:flex-wrap sm:gap-4 mb-6">
+                        <!-- Master PDF Button -->
+                        <a id="btnDownloadPdf" href="#" download class="flex-1 min-w-[220px] px-6 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-extrabold text-sm shadow-xl shadow-cyan-500/25 flex items-center justify-center space-x-3 transition transform hover:-translate-y-0.5">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            <div class="text-left">
+                                <div class="leading-none">Download Master PDF</div>
+                                <span class="text-[10px] font-normal opacity-80" id="btnPdfMeta">Print-Ready • High Res</span>
+                            </div>
+                        </a>
+
+                        <!-- Kindle EPUB Button -->
+                        <a id="btnDownloadEpub" href="#" download class="flex-1 min-w-[220px] px-6 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-white font-bold text-sm shadow-lg flex items-center justify-center space-x-3 transition transform hover:-translate-y-0.5">
+                            <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                            <div class="text-left">
+                                <div class="leading-none">Download Kindle EPUB</div>
+                                <span class="text-[10px] font-normal text-slate-400" id="btnEpubMeta">Kindle / Apple Books</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Bonus / Direct In-Browser Reader Link -->
+                    <div class="flex items-center justify-between text-xs text-slate-400 border-t border-slate-800/80 pt-4">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-emerald-400">●</span>
+                            <span>Direct Lifetime Access Link: Bookmark this URL anytime.</span>
+                        </div>
+                        <a id="btnDirectRead" href="#" target="_blank" class="text-cyan-400 hover:text-cyan-300 font-semibold hover:underline">
+                            Open In-Browser PDF Reader →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Easy Reading Instructions (Send-to-Kindle, Apple Books, Android) -->
+        <div class="mb-14">
+            <h3 class="text-xl md:text-2xl font-bold text-white font-display mb-4 text-center">
+                Reading Instructions & Device Setup
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <!-- Kindle -->
+                <div class="glass-card rounded-2xl p-5 border border-slate-800">
+                    <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-400 flex items-center justify-center font-bold text-lg mb-3">
+                        📖
+                    </div>
+                    <h4 class="font-bold text-white text-base mb-1">Amazon Kindle</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                        Sync the EPUB directly to your Kindle Paperwhite, Oasis, Scribe, or mobile app.
+                    </p>
+                    <ol class="text-xs text-slate-300 space-y-1.5 list-decimal list-inside">
+                        <li>Visit <a href="https://www.amazon.com/sendtokindle" target="_blank" class="text-cyan-400 hover:underline">amazon.com/sendtokindle</a>.</li>
+                        <li>Drag & drop your downloaded <strong>.epub</strong> file.</li>
+                        <li>Click Send — your book arrives on your Kindle in under 60 seconds!</li>
+                    </ol>
+                </div>
+
+                <!-- Apple Books -->
+                <div class="glass-card rounded-2xl p-5 border border-slate-800">
+                    <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 text-blue-400 flex items-center justify-center font-bold text-lg mb-3">
+                        🍎
+                    </div>
+                    <h4 class="font-bold text-white text-base mb-1">Apple Books (iOS / Mac)</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                        Native reading with custom typography, page-turn animation, and auto dark mode.
+                    </p>
+                    <ol class="text-xs text-slate-300 space-y-1.5 list-decimal list-inside">
+                        <li>Download the <strong>.epub</strong> file on iPhone, iPad, or Mac.</li>
+                        <li>Tap the downloaded file in your Files / Downloads folder.</li>
+                        <li>Tap <strong>"Open in Books"</strong> to start reading instantly.</li>
+                    </ol>
+                </div>
+
+                <!-- Acrobat / PDF -->
+                <div class="glass-card rounded-2xl p-5 border border-slate-800">
+                    <div class="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 flex items-center justify-center font-bold text-lg mb-3">
+                        📑
+                    </div>
+                    <h4 class="font-bold text-white text-base mb-1">Master PDF & Large Screen</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                        Ideal for desktop reading, high-res printing, and interactive checklists.
+                    </p>
+                    <ol class="text-xs text-slate-300 space-y-1.5 list-decimal list-inside">
+                        <li>Download the <strong>Master PDF</strong> above.</li>
+                        <li>Open in Chrome, Adobe Acrobat Reader, or Preview.</li>
+                        <li>Full luxury 6"x9" layout with complete master catalog included.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 48-Book Master Catalog Title Switcher -->
+        <div class="glass-card rounded-2xl p-6 md:p-8 border border-slate-800 mb-14">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                <div>
+                    <h3 class="text-xl font-bold text-white font-display">Switch to Another Purchased Title</h3>
+                    <p class="text-xs text-slate-400">Purchased a bundle or multiple books? Select any title from our 48-book catalog to download:</p>
+                </div>
+                <!-- Search Input -->
+                <div class="w-full md:w-72">
+                    <input type="text" id="catalogSearchInput" placeholder="Search 48 titles or ID..." oninput="filterCatalog()" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500">
+                </div>
+            </div>
+
+            <!-- Category Pills -->
+            <div class="flex flex-wrap gap-2 mb-6 text-xs font-semibold">
+                <button onclick="setCategoryFilter('all')" class="cat-pill px-3 py-1.5 rounded-lg bg-cyan-500 text-slate-950 font-bold" data-cat="all">All 48 Titles</button>
+                <button onclick="setCategoryFilter('ai')" class="cat-pill px-3 py-1.5 rounded-lg bg-slate-900 text-slate-300 border border-slate-800 hover:text-white" data-cat="ai">AI Wealth Fleet (10)</button>
+                <button onclick="setCategoryFilter('care')" class="cat-pill px-3 py-1.5 rounded-lg bg-slate-900 text-slate-300 border border-slate-800 hover:text-white" data-cat="care">Care Collection (14)</button>
+                <button onclick="setCategoryFilter('indian')" class="cat-pill px-3 py-1.5 rounded-lg bg-slate-900 text-slate-300 border border-slate-800 hover:text-white" data-cat="indian">Indian Financial Stack (24)</button>
+            </div>
+
+            <!-- Catalog Items Grid -->
+            <div id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 max-h-96 overflow-y-auto pr-2 custom-scrollbar">
+                <!-- Injected via JavaScript -->
+            </div>
+        </div>
+
+        <!-- Ecosystem Cross-Promotion & AI Services Banner -->
+        <div class="rounded-3xl p-8 bg-gradient-to-r from-cyan-950/60 via-slate-900 to-purple-950/60 border border-cyan-500/30 text-center relative overflow-hidden">
+            <h3 class="text-2xl font-bold text-white font-display mb-2">Deploy Autonomous AI for Your Business</h3>
+            <p class="text-sm text-slate-300 max-w-2xl mx-auto mb-6">
+                Turn book theory into deployed enterprise software. Hire Adorise Digital to install 24/7 AI Receptionists, autonomous lead scrapers, and programmatic marketing pipelines.
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-4">
+                <a href="https://services.adorisedigital.com" target="_blank" class="px-6 py-3 rounded-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-extrabold text-xs tracking-wide uppercase transition shadow-lg shadow-cyan-500/25">
+                    Explore Services Storefront ⚡
+                </a>
+                <a href="https://adorisedigital.com" target="_blank" class="px-6 py-3 rounded-full bg-slate-900 hover:bg-slate-800 border border-slate-700 text-white font-semibold text-xs transition">
+                    Main Ecosystem Overview →
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-900 bg-slate-950 py-8 px-6 text-center text-xs text-slate-500">
+        <p class="mb-2">© 2026 Adorise Digital LLC • A Division of Trendy DigiStore LLC (Wyoming, USA). All Rights Reserved.</p>
+        <p>Support & Author Inquiries: <a href="mailto:support@adorisedigital.com" class="text-slate-400 hover:underline">support@adorisedigital.com</a> • Official Bookstore: <a href="https://books.adorisedigital.com" class="text-slate-400 hover:underline">books.adorisedigital.com</a></p>
+    </footer>
+
+    <!-- Toast Notification for Downloads -->
+    <div id="downloadToast" class="fixed bottom-6 right-6 hidden bg-slate-900 border border-cyan-500/50 text-white px-5 py-3 rounded-xl shadow-2xl z-50 text-xs font-semibold flex items-center space-x-2 transition">
+        <span class="text-cyan-400 text-lg">⚡</span>
+        <span id="toastMessage">Download started! Check your downloads folder.</span>
+    </div>
+
+    <!-- Embedded Catalog Data & Client Logic -->
+    <script>
+        const CATALOG = [{"id": "care-01", "category": "care", "category_label": "Care Collection • Hinglish Flagship", "author": "Sanjay Shharma", "title": "Hum Ladte Nahi Par Baat Hi Nahi Karte", "subtitle": "Navigating Silent Emotional Disconnect in Modern Indian Marriages", "price_usd": "$9.99", "price_inr": "₹899", "gumroad_url": "https://adorisedigital.gumroad.com/l/hum-ladte-nahi", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "When fighting stops, but silence takes over. Living like roommates in the same house without emotional connection.", "takeaways": ["Why silence is more dangerous to a relationship than frequent arguments.", "Breaking the 10-year communication freeze without awkward confrontation.", "De-escalating emotional distance through structured micro-conversations."], "excerpt": "Ghar mein koi cheekhta nahi hai. Bartan nahi toot te. Par shaam ko jab dono ek hi sofe par baithte hain, toh beech mein hazaron kilometer ka sannata hota hai. Ye ladai nahi hai—ye thakan hai. Aur is thakan ko todne ke liye pehla kadam sharminda hona chhodna hai.", "pdf_name": "Hum_Ladte_Nahi_Par_Baat_Hi_Nahi_Karte.pdf", "pdf_url": "/downloads/care-01/Hum_Ladte_Nahi_Par_Baat_Hi_Nahi_Karte.pdf", "pdf_size_mb": 1.4, "epub_name": "Hum_Ladte_Nahi_Par_Baat_Hi_Nahi_Karte.epub", "epub_url": "/downloads/care-01/Hum_Ladte_Nahi_Par_Baat_Hi_Nahi_Karte.epub", "epub_size_mb": 0.98}, {"id": "care-02", "category": "care", "category_label": "Care Collection • Empathy & Aging", "author": "Sanjay Shharma", "title": "The Quiet Care", "subtitle": "Sustaining Compassion and Emotional Boundaries Through Caregiver Fatigue", "price_usd": "$9.99", "price_inr": "₹899", "gumroad_url": "https://adorisedigital.gumroad.com/l/the-quiet-care", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "The overwhelming guilt and chronic exhaustion of caring for aging parents while holding down a career and family.", "takeaways": ["Releasing the chronic guilt of feeling tired or impatient.", "How to set loving emotional boundaries without neglecting parental dignity.", "Daily micro-reset routines to protect your own mental and physical health."], "excerpt": "Nobody prepares you for the day the roles reverse—when you become the parent to the very people who once shielded you from the world. It is an honor, but it is also heavy. Learning to breathe without guilt is not selfish; it is survival.", "pdf_name": "The_Quiet_Care.pdf", "pdf_url": "/downloads/care-02/The_Quiet_Care.pdf", "pdf_size_mb": 8.19, "epub_name": "The_Quiet_Care.epub", "epub_url": "/downloads/care-02/The_Quiet_Care.epub", "epub_size_mb": 1.3}, {"id": "care-03", "category": "care", "category_label": "Care Collection • Relationship Health", "author": "Sanjay Shharma", "title": "Still Married, Just Silent", "subtitle": "Breaking Through Decade-Long Emotional Cold Wars Without Starting a Fire", "price_usd": "$9.99", "price_inr": "₹899", "gumroad_url": "https://adorisedigital.gumroad.com/l/Still_Married_Just_Silent", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Couples living functional, polite, yet completely detached lives under one roof.", "takeaways": ["The psychology of the defensive emotional turtle shell.", "Re-establishing eye contact and emotional vulnerability after years of drift.", "Practical exercises to rebuild shared laughter and collaborative presence."], "excerpt": "Politeness can be the coldest form of abandonment. When you stop asking how their day was because you already know the mechanical response, the marriage has entered emotional hibernation. Here is how to light a gentle hearth.", "pdf_name": "Still_Married_Just_Silent.pdf", "pdf_url": "/downloads/care-03/Still_Married_Just_Silent.pdf", "pdf_size_mb": 6.71, "epub_name": "Still_Married_Just_Silent.epub", "epub_url": "/downloads/care-03/Still_Married_Just_Silent.epub", "epub_size_mb": 1.01}, {"id": "care-04", "category": "care", "category_label": "Care Collection • Dementia & Memory Care", "author": "Sanjay Shharma", "title": "When They Forget Your Name", "subtitle": "Navigating Dementia, Cognitive Decline, and the Ambiguous Grief of Slow Loss", "price_usd": "$9.99", "price_inr": "₹899", "gumroad_url": "https://adorisedigital.gumroad.com/l/when-they-forget-your-name", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "The heartbreaking pain of looking into a parent's eyes when they no longer recognize who you are.", "takeaways": ["Entering their reality instead of correcting their fading memory.", "Navigating ambiguous loss—grieving someone who is physically still here.", "Preserving dignity and connection through music, touch, and sensory comfort."], "excerpt": "The first time your mother looks at you and politely asks who you are, your chest caves in. You cannot correct them back into your timeline. You must step gently into theirs.", "pdf_name": "When_They_Forget_Your_Name.pdf", "pdf_url": "/downloads/care-04/When_They_Forget_Your_Name.pdf", "pdf_size_mb": 6.92, "epub_name": "When_They_Forget_Your_Name.epub", "epub_url": "/downloads/care-04/When_They_Forget_Your_Name.epub", "epub_size_mb": 0.85}, {"id": "care-05", "category": "care", "category_label": "Care Collection • Bereavement & Healing", "author": "Sanjay Shharma", "title": "The Long Goodbye", "subtitle": "Finding Grounded Strength When Terminal Illness Redefines Every Tomorrow", "price_usd": "$9.99", "price_inr": "₹899", "gumroad_url": "https://adorisedigital.gumroad.com/l/the-long-goodbye", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Living in anticipatory grief while managing doctor visits, hospice care, and emotional collapse.", "takeaways": ["Navigating anticipatory grief without shutting down emotionally.", "Having the unsaid conversations with courage and gentle presence.", "Honoring every remaining ordinary moment without anxiety hijacking the room."], "excerpt": "Anticipatory grief is like mourning under a ticking clock. The secret is not pretending the clock does not exist, but filling each second with pure, uncomplicated presence.", "pdf_name": "The_Long_Goodbye.pdf", "pdf_url": "/downloads/care-05/The_Long_Goodbye.pdf", "pdf_size_mb": 10.35, "epub_name": "The_Long_Goodbye.epub", "epub_url": "/downloads/care-05/The_Long_Goodbye.epub", "epub_size_mb": 0.99}, {"id": "care-06", "category": "care", "category_label": "Care Collection • Reconnection", "author": "Sanjay Shharma", "title": "The Long Hello", "subtitle": "Rekindling Intimacy, Curiosity, and Shared Horizons After Life Calms Down", "price_usd": "$9.99", "price_inr": "₹899", "gumroad_url": "https://adorisedigital.gumroad.com/l/the-long-hello", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "When children leave or careers stabilize and you look at your spouse wondering who they became.", "takeaways": ["Rediscovering who your partner is today rather than who they were at 25.", "Building new rituals of play, travel, and quiet shared discovery.", "Transforming empty-nest silence into mutual artistic and emotional renaissance."], "excerpt": "After thirty years of carpools, mortgages, and deadlines, the silence can be frightening. But that silence is not a void; it is a clean canvas waiting for a second introduction.", "pdf_name": "The_Long_Hello.pdf", "pdf_url": "/downloads/care-06/The_Long_Hello.pdf", "pdf_size_mb": 7.44, "epub_name": "The_Long_Hello.epub", "epub_url": "/downloads/care-06/The_Long_Hello.epub", "epub_size_mb": 0.97}, {"id": "care-07", "category": "care", "category_label": "Care Collection • Life Transitions", "author": "Sanjay Shharma", "title": "The Second Chapter", "subtitle": "Rebuilding Identity, Purpose, and Daily Joy After a Massive Life Disruption", "price_usd": "$9.99", "price_inr": "₹899", "gumroad_url": "https://adorisedigital.gumroad.com/l/The_Second_Chapter", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Starting over after divorce, career elimination, or sudden bereavement in your 40s, 50s, or 60s.", "takeaways": ["Untangling your self-worth from a role or relationship that ended.", "Designing an autonomous personal operating system for daily peace.", "Cultivating new community, physical energy, and joyful self-sufficiency."], "excerpt": "When your world collapses, you realize your previous life was a stage play where you knew all your lines. Writing the next script is terrifying—until you realize you hold the pen.", "pdf_name": "The_Second_Chapter.pdf", "pdf_url": "/downloads/care-07/The_Second_Chapter.pdf", "pdf_size_mb": 7.95, "epub_name": "The_Second_Chapter.epub", "epub_url": "/downloads/care-07/The_Second_Chapter.epub", "epub_size_mb": 1.09}, {"id": "care-08", "category": "care", "category_label": "Care Collection • Midlife Love", "author": "Sanjay Shharma", "title": "The Second Honeymoon", "subtitle": "Reclaiming Romance, Vulnerability, and Deep Play in the Empty-Nest Era", "price_usd": "$9.99", "price_inr": "₹899", "gumroad_url": "https://adorisedigital.gumroad.com/l/the-second-honeymoon", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Midlife couples who want romance back but feel clumsy or emotionally rusty.", "takeaways": ["Overcoming body insecurity and emotional hesitance after 50.", "Planning micro-adventures that break the routine of domestic autopilot.", "Deepening physical and emotional intimacy without pressure or performance."], "excerpt": "Romance in midlife is sweeter than in youth because it is shorn of pretension. It is two survivors looking across the table, choosing each other once again.", "pdf_name": "The_Second_Honeymoon.pdf", "pdf_url": "/downloads/care-08/The_Second_Honeymoon.pdf", "pdf_size_mb": 7.36, "epub_name": "The_Second_Honeymoon.epub", "epub_url": "/downloads/care-08/The_Second_Honeymoon.epub", "epub_size_mb": 0.83}, {"id": "care-09", "category": "care", "category_label": "Care Collection • Family Dynamics", "author": "Sanjay Shharma", "title": "The Last Sandwich", "subtitle": "Surviving the Double Pressure of Raising Teens While Nursing Aging Parents", "price_usd": "$9.99", "price_inr": "₹899", "gumroad_url": "https://adorisedigital.gumroad.com/l/the-last-sandwich", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "The crushing stress of being pulled between rebellious children and ailing, dependent parents.", "takeaways": ["How to stop being the emotional punching bag for two opposing generations.", "Delegation frameworks that protect your marriage and financial sanity.", "Recognizing when sacrifice turns into toxic self-destruction."], "excerpt": "You are caught between college tuition and hospital bills, hormonal teenage mood swings and geriatric stubbornness. You cannot carry the world without breaking your back.", "pdf_name": "The_Last_Sandwich.pdf", "pdf_url": "/downloads/care-09/The_Last_Sandwich.pdf", "pdf_size_mb": 1.49, "epub_name": "The_Last_Sandwich.epub", "epub_url": "/downloads/care-09/The_Last_Sandwich.epub", "epub_size_mb": 1.15}, {"id": "care-10", "category": "care", "category_label": "Care Collection • Social Circles", "author": "Sanjay Shharma", "title": "The Friends Who Fade", "subtitle": "Making Peace With Drifting Friendships and Building Intentional Adult Tribes", "price_usd": "$9.99", "price_inr": "₹899", "gumroad_url": "https://adorisedigital.gumroad.com/l/the-friends-who-fade", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "The quiet ache of realizing college or old childhood friends have vanished from your life.", "takeaways": ["Distinguishing between seasonal friendships and lifelong anchors.", "Releasing resentment toward friends who stopped calling after your crisis.", "How adults in their 40s and 50s build deep, loyal, intellectual circles."], "excerpt": "Not all friendships are meant to reach the finish line. Some people were companions for a chapter, not the whole book. Letting them go with gratitude is the highest form of maturity.", "pdf_name": "The_Friends_Who_Fade.pdf", "pdf_url": "/downloads/care-10/The_Friends_Who_Fade.pdf", "pdf_size_mb": 1.28, "epub_name": "The_Friends_Who_Fade.epub", "epub_url": "/downloads/care-10/The_Friends_Who_Fade.epub", "epub_size_mb": 1.0}, {"id": "care-11", "category": "care", "category_label": "Care Collection • Resilience & Hope", "author": "Sanjay Shharma", "title": "The Survivor", "subtitle": "A Compassionate Protocol for Chronic Medical Battles and Emotional Exhaustion", "price_usd": "$9.99", "price_inr": "₹899", "gumroad_url": "https://adorisedigital.gumroad.com/l/the-survivor", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Living through a protracted medical diagnosis or nursing a spouse through chronic illness.", "takeaways": ["Managing medical PTSD and scanxiety before test results.", "Communicating with doctors without feeling intimidated or dismissed.", "Maintaining your humanity when life feels reduced to pills, charts, and hospitals."], "excerpt": "Surviving a long illness is not about heroic bravado; it is about enduring the mundane, sterile afternoons when all you want is one day where you feel normal again.", "pdf_name": "The_Survivor.pdf", "pdf_url": "/downloads/care-11/The_Survivor.pdf", "pdf_size_mb": 6.03, "epub_name": "The_Survivor.epub", "epub_url": "/downloads/care-11/The_Survivor.epub", "epub_size_mb": 0.74}, {"id": "care-12", "category": "care", "category_label": "Care Collection • Midlife Autonomy", "author": "Sanjay Shharma", "title": "Gray Divorce", "subtitle": "Navigating Separation After 50 With Dignity, Financial Clarity, and Self-Worth", "price_usd": "$9.99", "price_inr": "₹899", "gumroad_url": "https://adorisedigital.gumroad.com/l/gray-divorce", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "The complex financial, social, and emotional shock of separating after 20+ years of marriage.", "takeaways": ["Protecting retirement security, property rights, and financial independence.", "Communicating with adult children who feel caught in the middle.", "Overcoming the societal stigma of choosing peace over miserable longevity."], "excerpt": "Ending a thirty-year marriage is not a failure; remaining in a dead, suffocating union until you wither away is. It takes immense bravery to choose life at 55.", "pdf_name": "Gray_Divorce.pdf", "pdf_url": "/downloads/care-12/Gray_Divorce.pdf", "pdf_size_mb": 1.28, "epub_name": "Gray_Divorce.epub", "epub_url": "/downloads/care-12/Gray_Divorce.epub", "epub_size_mb": 0.99}, {"id": "care-13", "category": "care", "category_label": "Care Collection • Late Life Love", "author": "Sanjay Shharma", "title": "Remarried at 60", "subtitle": "Blending Adult Families, Protecting Assets, and Opening Your Heart in the Sunset Years", "price_usd": "$9.99", "price_inr": "₹899", "gumroad_url": "https://adorisedigital.gumroad.com/l/remarried-at-60", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Finding companionship in your 60s while navigating skeptical adult children and inheritance boundaries.", "takeaways": ["Structuring transparent estate plans so money never poisons love.", "Managing expectations around step-grandchildren and legacy traditions.", "Embracing gentle companionship without demanding someone replace your past."], "excerpt": "Love at sixty is not about creating a future together; it is about savoring the present. It is the peace of sharing tea with someone who appreciates the journey you both survived.", "pdf_name": "Remarried_at_60.pdf", "pdf_url": "/downloads/care-13/Remarried_at_60.pdf", "pdf_size_mb": 1.37, "epub_name": "Remarried_at_60.epub", "epub_url": "/downloads/care-13/Remarried_at_60.epub", "epub_size_mb": 1.04}, {"id": "care-14", "category": "care", "category_label": "Care Collection • Sudden Loss", "author": "Sanjay Shharma", "title": "After the Last Goodbye", "subtitle": "The Practical and Emotional Roadmap for the First 365 Days of Bereavement", "price_usd": "$9.99", "price_inr": "₹899", "gumroad_url": "https://adorisedigital.gumroad.com/l/after-the-last-goodbye", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "The disorientation and paralysis that strikes after the funeral ends and everyone goes home.", "takeaways": ["The week-by-week bureaucratic and legal checklist for surviving executors.", "How to handle the first holidays, birthdays, and anniversaries alone.", "Learning to laugh again without feeling like you are betraying their memory."], "excerpt": "Grief does not come in stages; it comes in waves that knock the wind out of you in the grocery store aisle over a jar of peanut butter they loved. Breathe. The wave will pass.", "pdf_name": "After_the_Last_Goodbye.pdf", "pdf_url": "/downloads/care-14/After_the_Last_Goodbye.pdf", "pdf_size_mb": 1.37, "epub_name": "After_the_Last_Goodbye.epub", "epub_url": "/downloads/care-14/After_the_Last_Goodbye.epub", "epub_size_mb": 1.09}, {"id": "in-cibil-99", "category": "indian", "category_label": "Indian Wealth • CIBIL Repair", "author": "Sanjay Shharma", "title": "CIBIL Repair — Book 1: 7-Step Audit & Checklist", "subtitle": "Tier 1 • Quick-Action Audit • Identify hidden mistakes and instant red flags before taking action.", "price_usd": "$12", "price_inr": "₹99", "gumroad_url": "https://adorisedigital.gumroad.com/l/cibil-repair-book-1-7-step-audit-checklist", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Fix credit report errors, eliminate written-off tags, and restore a verified 750+ score.", "takeaways": ["Actionable framework for cibil repair at the tier 1 • quick-action audit level.", "Direct copy-paste checklists and templates designed for the Indian banking & regulatory system.", "Immediate digital download with life-time reference access."], "excerpt": "In the Indian financial ecosystem, knowing the official circulars and automated rules separates those who get rejected from those who walk away with approved sanctions.", "pdf_name": "CIBIL_7_Error_Audit-7.pdf", "pdf_url": "/downloads/in-cibil-99/CIBIL_7_Error_Audit-7.pdf", "pdf_size_mb": 0.91, "epub_name": null, "epub_url": null, "epub_size_mb": 0}, {"id": "in-cibil-299", "category": "indian", "category_label": "Indian Wealth • CIBIL Repair", "author": "Sanjay Shharma", "title": "CIBIL Repair — Book 2: Tactical Implementation Manual", "subtitle": "Tier 2 • Core Blueprint • Complete step-by-step frameworks, calculations, and strategic protocols.", "price_usd": "$24", "price_inr": "₹299", "gumroad_url": "https://adorisedigital.gumroad.com/l/cibil-repair-book-2-tactical-implementation-manual", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Fix credit report errors, eliminate written-off tags, and restore a verified 750+ score.", "takeaways": ["Actionable framework for cibil repair at the tier 2 • core blueprint level.", "Direct copy-paste checklists and templates designed for the Indian banking & regulatory system.", "Immediate digital download with life-time reference access."], "excerpt": "In the Indian financial ecosystem, knowing the official circulars and automated rules separates those who get rejected from those who walk away with approved sanctions.", "pdf_name": "CIBIL_750_Score_Formula-3.pdf", "pdf_url": "/downloads/in-cibil-299/CIBIL_750_Score_Formula-3.pdf", "pdf_size_mb": 0.41, "epub_name": null, "epub_url": null, "epub_size_mb": 0}, {"id": "in-cibil-799", "category": "indian", "category_label": "Indian Wealth • CIBIL Repair", "author": "Sanjay Shharma", "title": "CIBIL Repair — Book 3: Legal Templates & Dispute Drafts", "subtitle": "Tier 3 • Masterclass Toolkit • Full battle-tested bank letters, legal notices, and compliance workflows.", "price_usd": "$39", "price_inr": "₹799", "gumroad_url": "https://adorisedigital.gumroad.com/l/cibil-repair-book-3-legal-templates-dispute-drafts", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Fix credit report errors, eliminate written-off tags, and restore a verified 750+ score.", "takeaways": ["Actionable framework for cibil repair at the tier 3 • masterclass toolkit level.", "Direct copy-paste checklists and templates designed for the Indian banking & regulatory system.", "Immediate digital download with life-time reference access."], "excerpt": "In the Indian financial ecosystem, knowing the official circulars and automated rules separates those who get rejected from those who walk away with approved sanctions.", "pdf_name": "CIBIL_Complete_Repair_System-4.pdf", "pdf_url": "/downloads/in-cibil-799/CIBIL_Complete_Repair_System-4.pdf", "pdf_size_mb": 0.19, "epub_name": null, "epub_url": null, "epub_size_mb": 0}, {"id": "in-home-loan-99", "category": "indian", "category_label": "Indian Wealth • Home Loan Approval", "author": "Sanjay Shharma", "title": "Home Loan Approval — Book 1: 7-Step Audit & Checklist", "subtitle": "Tier 1 • Quick-Action Audit • Identify hidden mistakes and instant red flags before taking action.", "price_usd": "$12", "price_inr": "₹99", "gumroad_url": "https://adorisedigital.gumroad.com/l/home-loan-approval-book-1-7-step-audit-checklist", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Maximize borrowing power, lower interest rates, and accelerate bank sanctions.", "takeaways": ["Actionable framework for home loan approval at the tier 1 • quick-action audit level.", "Direct copy-paste checklists and templates designed for the Indian banking & regulatory system.", "Immediate digital download with life-time reference access."], "excerpt": "In the Indian financial ecosystem, knowing the official circulars and automated rules separates those who get rejected from those who walk away with approved sanctions.", "pdf_name": "Home_Loan_Eligibility_Blueprint-3.pdf", "pdf_url": "/downloads/in-home-loan-99/Home_Loan_Eligibility_Blueprint-3.pdf", "pdf_size_mb": 0.17, "epub_name": null, "epub_url": null, "epub_size_mb": 0}, {"id": "in-home-loan-299", "category": "indian", "category_label": "Indian Wealth • Home Loan Approval", "author": "Sanjay Shharma", "title": "Home Loan Approval — Book 2: Tactical Implementation Manual", "subtitle": "Tier 2 • Core Blueprint • Complete step-by-step frameworks, calculations, and strategic protocols.", "price_usd": "$24", "price_inr": "₹299", "gumroad_url": "https://adorisedigital.gumroad.com/l/home-loan-approval-book-2-tactical-implementation-manual", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Maximize borrowing power, lower interest rates, and accelerate bank sanctions.", "takeaways": ["Actionable framework for home loan approval at the tier 2 • core blueprint level.", "Direct copy-paste checklists and templates designed for the Indian banking & regulatory system.", "Immediate digital download with life-time reference access."], "excerpt": "In the Indian financial ecosystem, knowing the official circulars and automated rules separates those who get rejected from those who walk away with approved sanctions.", "pdf_name": "Home_Loan_Approval_Toolkit.pdf", "pdf_url": "/downloads/in-home-loan-299/Home_Loan_Approval_Toolkit.pdf", "pdf_size_mb": 0.54, "epub_name": null, "epub_url": null, "epub_size_mb": 0}, {"id": "in-home-loan-799", "category": "indian", "category_label": "Indian Wealth • Home Loan Approval", "author": "Sanjay Shharma", "title": "Home Loan Approval — Book 3: Legal Templates & Dispute Drafts", "subtitle": "Tier 3 • Masterclass Toolkit • Full battle-tested bank letters, legal notices, and compliance workflows.", "price_usd": "$39", "price_inr": "₹799", "gumroad_url": "https://adorisedigital.gumroad.com/l/home-loan-approval-book-3-legal-templates-dispute-drafts", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Maximize borrowing power, lower interest rates, and accelerate bank sanctions.", "takeaways": ["Actionable framework for home loan approval at the tier 3 • masterclass toolkit level.", "Direct copy-paste checklists and templates designed for the Indian banking & regulatory system.", "Immediate digital download with life-time reference access."], "excerpt": "In the Indian financial ecosystem, knowing the official circulars and automated rules separates those who get rejected from those who walk away with approved sanctions.", "pdf_name": "Home_Loan_Complete_System.pdf", "pdf_url": "/downloads/in-home-loan-799/Home_Loan_Complete_System.pdf", "pdf_size_mb": 0.18, "epub_name": null, "epub_url": null, "epub_size_mb": 0}, {"id": "in-business-loan-99", "category": "indian", "category_label": "Indian Wealth • Business Loan Approval", "author": "Sanjay Shharma", "title": "Business Loan Approval — Book 1: 7-Step Audit & Checklist", "subtitle": "Tier 1 • Quick-Action Audit • Identify hidden mistakes and instant red flags before taking action.", "price_usd": "$12", "price_inr": "₹99", "gumroad_url": "https://adorisedigital.gumroad.com/l/business-loan-approval-book-1-7-step-audit-checklist", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Secure collateral-free MSME financing and optimize debt service ratios.", "takeaways": ["Actionable framework for business loan approval at the tier 1 • quick-action audit level.", "Direct copy-paste checklists and templates designed for the Indian banking & regulatory system.", "Immediate digital download with life-time reference access."], "excerpt": "In the Indian financial ecosystem, knowing the official circulars and automated rules separates those who get rejected from those who walk away with approved sanctions.", "pdf_name": "Business_Loan_5_Rejection_Reasons.pdf", "pdf_url": "/downloads/in-business-loan-99/Business_Loan_5_Rejection_Reasons.pdf", "pdf_size_mb": 0.16, "epub_name": null, "epub_url": null, "epub_size_mb": 0}, {"id": "in-business-loan-299", "category": "indian", "category_label": "Indian Wealth • Business Loan Approval", "author": "Sanjay Shharma", "title": "Business Loan Approval — Book 2: Tactical Implementation Manual", "subtitle": "Tier 2 • Core Blueprint • Complete step-by-step frameworks, calculations, and strategic protocols.", "price_usd": "$24", "price_inr": "₹299", "gumroad_url": "https://adorisedigital.gumroad.com/l/business-loan-approval-book-2-tactical-implementation-manual", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Secure collateral-free MSME financing and optimize debt service ratios.", "takeaways": ["Actionable framework for business loan approval at the tier 2 • core blueprint level.", "Direct copy-paste checklists and templates designed for the Indian banking & regulatory system.", "Immediate digital download with life-time reference access."], "excerpt": "In the Indian financial ecosystem, knowing the official circulars and automated rules separates those who get rejected from those who walk away with approved sanctions.", "pdf_name": "Business_Loan_Udyam_DSCR.pdf", "pdf_url": "/downloads/in-business-loan-299/Business_Loan_Udyam_DSCR.pdf", "pdf_size_mb": 0.11, "epub_name": null, "epub_url": null, "epub_size_mb": 0}, {"id": "in-business-loan-799", "category": "indian", "category_label": "Indian Wealth • Business Loan Approval", "author": "Sanjay Shharma", "title": "Business Loan Approval — Book 3: Legal Templates & Dispute Drafts", "subtitle": "Tier 3 • Masterclass Toolkit • Full battle-tested bank letters, legal notices, and compliance workflows.", "price_usd": "$39", "price_inr": "₹799", "gumroad_url": "https://adorisedigital.gumroad.com/l/business-loan-approval-book-3-legal-templates-dispute-drafts", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Secure collateral-free MSME financing and optimize debt service ratios.", "takeaways": ["Actionable framework for business loan approval at the tier 3 • masterclass toolkit level.", "Direct copy-paste checklists and templates designed for the Indian banking & regulatory system.", "Immediate digital download with life-time reference access."], "excerpt": "In the Indian financial ecosystem, knowing the official circulars and automated rules separates those who get rejected from those who walk away with approved sanctions.", "pdf_name": "Business_Loan_Complete_System.pdf", "pdf_url": "/downloads/in-business-loan-799/Business_Loan_Complete_System.pdf", "pdf_size_mb": 0.19, "epub_name": null, "epub_url": null, "epub_size_mb": 0}, {"id": "in-credit-card-99", "category": "indian", "category_label": "Indian Wealth • Credit Card Hacks", "author": "Sanjay Shharma", "title": "Credit Card Hacks — Book 1: 7-Step Audit & Checklist", "subtitle": "Tier 1 • Quick-Action Audit • Identify hidden mistakes and instant red flags before taking action.", "price_usd": "$12", "price_inr": "₹99", "gumroad_url": "https://adorisedigital.gumroad.com/l/credit-card-hacks-book-1-7-step-audit-checklist", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Eliminate high APR, execute 0% balance transfers, and multiply rewards.", "takeaways": ["Actionable framework for credit card hacks at the tier 1 • quick-action audit level.", "Direct copy-paste checklists and templates designed for the Indian banking & regulatory system.", "Immediate digital download with life-time reference access."], "excerpt": "In the Indian financial ecosystem, knowing the official circulars and automated rules separates those who get rejected from those who walk away with approved sanctions.", "pdf_name": "Credit_Card_30_3_1_7_Types-1.pdf", "pdf_url": "/downloads/in-credit-card-99/Credit_Card_30_3_1_7_Types-1.pdf", "pdf_size_mb": 0.17, "epub_name": null, "epub_url": null, "epub_size_mb": 0}, {"id": "in-credit-card-299", "category": "indian", "category_label": "Indian Wealth • Credit Card Hacks", "author": "Sanjay Shharma", "title": "Credit Card Hacks — Book 2: Tactical Implementation Manual", "subtitle": "Tier 2 • Core Blueprint • Complete step-by-step frameworks, calculations, and strategic protocols.", "price_usd": "$24", "price_inr": "₹299", "gumroad_url": "https://adorisedigital.gumroad.com/l/credit-card-hacks-book-2-tactical-implementation-manual", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Eliminate high APR, execute 0% balance transfers, and multiply rewards.", "takeaways": ["Actionable framework for credit card hacks at the tier 2 • core blueprint level.", "Direct copy-paste checklists and templates designed for the Indian banking & regulatory system.", "Immediate digital download with life-time reference access."], "excerpt": "In the Indian financial ecosystem, knowing the official circulars and automated rules separates those who get rejected from those who walk away with approved sanctions.", "pdf_name": "Credit_Card_Reward_Stacking-1.pdf", "pdf_url": "/downloads/in-credit-card-299/Credit_Card_Reward_Stacking-1.pdf", "pdf_size_mb": 0.11, "epub_name": null, "epub_url": null, "epub_size_mb": 0}, {"id": "in-credit-card-799", "category": "indian", "category_label": "Indian Wealth • Credit Card Hacks", "author": "Sanjay Shharma", "title": "Credit Card Hacks — Book 3: Legal Templates & Dispute Drafts", "subtitle": "Tier 3 • Masterclass Toolkit • Full battle-tested bank letters, legal notices, and compliance workflows.", "price_usd": "$39", "price_inr": "₹799", "gumroad_url": "https://adorisedigital.gumroad.com/l/credit-card-hacks-book-3-legal-templates-dispute-drafts", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Eliminate high APR, execute 0% balance transfers, and multiply rewards.", "takeaways": ["Actionable framework for credit card hacks at the tier 3 • masterclass toolkit level.", "Direct copy-paste checklists and templates designed for the Indian banking & regulatory system.", "Immediate digital download with life-time reference access."], "excerpt": "In the Indian financial ecosystem, knowing the official circulars and automated rules separates those who get rejected from those who walk away with approved sanctions.", "pdf_name": "Credit_Card_Complete_System.pdf", "pdf_url": "/downloads/in-credit-card-799/Credit_Card_Complete_System.pdf", "pdf_size_mb": 0.18, "epub_name": null, "epub_url": null, "epub_size_mb": 0}, {"id": "in-debt-settlement-99", "category": "indian", "category_label": "Indian Wealth • Debt Settlement", "author": "Sanjay Shharma", "title": "Debt Settlement — Book 1: 7-Step Audit & Checklist", "subtitle": "Tier 1 • Quick-Action Audit • Identify hidden mistakes and instant red flags before taking action.", "price_usd": "$12", "price_inr": "₹99", "gumroad_url": "https://adorisedigital.gumroad.com/l/debt-settlement-book-1-7-step-audit-checklist", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Invoke RBI borrower rights, stop recovery harassment, and negotiate OTS.", "takeaways": ["Actionable framework for debt settlement at the tier 1 • quick-action audit level.", "Direct copy-paste checklists and templates designed for the Indian banking & regulatory system.", "Immediate digital download with life-time reference access."], "excerpt": "In the Indian financial ecosystem, knowing the official circulars and automated rules separates those who get rejected from those who walk away with approved sanctions.", "pdf_name": "Debt_Settlement_Decision_Tree.pdf", "pdf_url": "/downloads/in-debt-settlement-99/Debt_Settlement_Decision_Tree.pdf", "pdf_size_mb": 0.16, "epub_name": null, "epub_url": null, "epub_size_mb": 0}, {"id": "in-debt-settlement-299", "category": "indian", "category_label": "Indian Wealth • Debt Settlement", "author": "Sanjay Shharma", "title": "Debt Settlement — Book 2: Tactical Implementation Manual", "subtitle": "Tier 2 • Core Blueprint • Complete step-by-step frameworks, calculations, and strategic protocols.", "price_usd": "$24", "price_inr": "₹299", "gumroad_url": "https://adorisedigital.gumroad.com/l/debt-settlement-book-2-tactical-implementation-manual", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Invoke RBI borrower rights, stop recovery harassment, and negotiate OTS.", "takeaways": ["Actionable framework for debt settlement at the tier 2 • core blueprint level.", "Direct copy-paste checklists and templates designed for the Indian banking & regulatory system.", "Immediate digital download with life-time reference access."], "excerpt": "In the Indian financial ecosystem, knowing the official circulars and automated rules separates those who get rejected from those who walk away with approved sanctions.", "pdf_name": "Debt_Settlement_7_Step_Scripts.pdf", "pdf_url": "/downloads/in-debt-settlement-299/Debt_Settlement_7_Step_Scripts.pdf", "pdf_size_mb": 0.11, "epub_name": null, "epub_url": null, "epub_size_mb": 0}, {"id": "in-debt-settlement-799", "category": "indian", "category_label": "Indian Wealth • Debt Settlement", "author": "Sanjay Shharma", "title": "Debt Settlement — Book 3: Legal Templates & Dispute Drafts", "subtitle": "Tier 3 • Masterclass Toolkit • Full battle-tested bank letters, legal notices, and compliance workflows.", "price_usd": "$39", "price_inr": "₹799", "gumroad_url": "https://adorisedigital.gumroad.com/l/debt-settlement-book-3-legal-templates-dispute-drafts", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Invoke RBI borrower rights, stop recovery harassment, and negotiate OTS.", "takeaways": ["Actionable framework for debt settlement at the tier 3 • masterclass toolkit level.", "Direct copy-paste checklists and templates designed for the Indian banking & regulatory system.", "Immediate digital download with life-time reference access."], "excerpt": "In the Indian financial ecosystem, knowing the official circulars and automated rules separates those who get rejected from those who walk away with approved sanctions.", "pdf_name": "Debt_Settlement_Complete_System.pdf", "pdf_url": "/downloads/in-debt-settlement-799/Debt_Settlement_Complete_System.pdf", "pdf_size_mb": 0.18, "epub_name": null, "epub_url": null, "epub_size_mb": 0}, {"id": "in-remote-jobs-99", "category": "indian", "category_label": "Indian Wealth • Get Hired Remote: 30-Day", "author": "Sanjay Shharma", "title": "Get Hired Remote: 30-Day — Book 1: 7-Step Audit & Checklist", "subtitle": "Tier 1 • Quick-Action Audit • Identify hidden mistakes and instant red flags before taking action.", "price_usd": "$12", "price_inr": "₹99", "gumroad_url": "https://adorisedigital.gumroad.com/l/get-hired-remote-30-day-book-1-7-step-audit-checklist", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Land high-paying US/EU remote contracts earning in USD from India.", "takeaways": ["Actionable framework for get hired remote: 30-day at the tier 1 • quick-action audit level.", "Direct copy-paste checklists and templates designed for the Indian banking & regulatory system.", "Immediate digital download with life-time reference access."], "excerpt": "In the Indian financial ecosystem, knowing the official circulars and automated rules separates those who get rejected from those who walk away with approved sanctions.", "pdf_name": "Hired_Remote_Resume_LinkedIn.pdf", "pdf_url": "/downloads/in-remote-jobs-99/Hired_Remote_Resume_LinkedIn.pdf", "pdf_size_mb": 0.1, "epub_name": null, "epub_url": null, "epub_size_mb": 0}, {"id": "in-remote-jobs-299", "category": "indian", "category_label": "Indian Wealth • Get Hired Remote: 30-Day", "author": "Sanjay Shharma", "title": "Get Hired Remote: 30-Day — Book 2: Tactical Implementation Manual", "subtitle": "Tier 2 • Core Blueprint • Complete step-by-step frameworks, calculations, and strategic protocols.", "price_usd": "$24", "price_inr": "₹299", "gumroad_url": "https://adorisedigital.gumroad.com/l/get-hired-remote-30-day-book-2-tactical-implementation-manual", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Land high-paying US/EU remote contracts earning in USD from India.", "takeaways": ["Actionable framework for get hired remote: 30-day at the tier 2 • core blueprint level.", "Direct copy-paste checklists and templates designed for the Indian banking & regulatory system.", "Immediate digital download with life-time reference access."], "excerpt": "In the Indian financial ecosystem, knowing the official circulars and automated rules separates those who get rejected from those who walk away with approved sanctions.", "pdf_name": "Hired_Remote_30_Day_Plan.pdf", "pdf_url": "/downloads/in-remote-jobs-299/Hired_Remote_30_Day_Plan.pdf", "pdf_size_mb": 0.21, "epub_name": null, "epub_url": null, "epub_size_mb": 0}, {"id": "in-remote-jobs-799", "category": "indian", "category_label": "Indian Wealth • Get Hired Remote: 30-Day", "author": "Sanjay Shharma", "title": "Get Hired Remote: 30-Day — Book 3: Legal Templates & Dispute Drafts", "subtitle": "Tier 3 • Masterclass Toolkit • Full battle-tested bank letters, legal notices, and compliance workflows.", "price_usd": "$39", "price_inr": "₹799", "gumroad_url": "https://adorisedigital.gumroad.com/l/get-hired-remote-30-day-book-3-legal-templates-dispute-drafts", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Land high-paying US/EU remote contracts earning in USD from India.", "takeaways": ["Actionable framework for get hired remote: 30-day at the tier 3 • masterclass toolkit level.", "Direct copy-paste checklists and templates designed for the Indian banking & regulatory system.", "Immediate digital download with life-time reference access."], "excerpt": "In the Indian financial ecosystem, knowing the official circulars and automated rules separates those who get rejected from those who walk away with approved sanctions.", "pdf_name": "Hired_Remote_Complete_System.pdf", "pdf_url": "/downloads/in-remote-jobs-799/Hired_Remote_Complete_System.pdf", "pdf_size_mb": 0.19, "epub_name": null, "epub_url": null, "epub_size_mb": 0}, {"id": "in-gst-filing-99", "category": "indian", "category_label": "Indian Wealth • GST Filing Mastery (NEW)", "author": "Sanjay Shharma", "title": "GST Filing Mastery (NEW) — Book 1: 7-Step Audit & Checklist", "subtitle": "Tier 1 • Quick-Action Audit • Identify hidden mistakes and instant red flags before taking action.", "price_usd": "$12", "price_inr": "₹99", "gumroad_url": "https://adorisedigital.gumroad.com/l/gst-filing-mastery-new-book-1-7-step-audit-checklist", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Error-free monthly returns, ITC 2B matching, and notice defense.", "takeaways": ["Actionable framework for gst filing mastery (new) at the tier 1 • quick-action audit level.", "Direct copy-paste checklists and templates designed for the Indian banking & regulatory system.", "Immediate digital download with life-time reference access."], "excerpt": "In the Indian financial ecosystem, knowing the official circulars and automated rules separates those who get rejected from those who walk away with approved sanctions.", "pdf_name": "GST_Return_Calendar_Reconciliation.pdf", "pdf_url": "/downloads/in-gst-filing-99/GST_Return_Calendar_Reconciliation.pdf", "pdf_size_mb": 0.11, "epub_name": null, "epub_url": null, "epub_size_mb": 0}, {"id": "in-gst-filing-299", "category": "indian", "category_label": "Indian Wealth • GST Filing Mastery (NEW)", "author": "Sanjay Shharma", "title": "GST Filing Mastery (NEW) — Book 2: Tactical Implementation Manual", "subtitle": "Tier 2 • Core Blueprint • Complete step-by-step frameworks, calculations, and strategic protocols.", "price_usd": "$24", "price_inr": "₹299", "gumroad_url": "https://adorisedigital.gumroad.com/l/gst-filing-mastery-new-book-2-tactical-implementation-manual", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Error-free monthly returns, ITC 2B matching, and notice defense.", "takeaways": ["Actionable framework for gst filing mastery (new) at the tier 2 • core blueprint level.", "Direct copy-paste checklists and templates designed for the Indian banking & regulatory system.", "Immediate digital download with life-time reference access."], "excerpt": "In the Indian financial ecosystem, knowing the official circulars and automated rules separates those who get rejected from those who walk away with approved sanctions.", "pdf_name": "GST_GSTR1_3B_ITC_Guide.pdf", "pdf_url": "/downloads/in-gst-filing-299/GST_GSTR1_3B_ITC_Guide.pdf", "pdf_size_mb": 0.16, "epub_name": null, "epub_url": null, "epub_size_mb": 0}, {"id": "in-gst-filing-799", "category": "indian", "category_label": "Indian Wealth • GST Filing Mastery (NEW)", "author": "Sanjay Shharma", "title": "GST Filing Mastery (NEW) — Book 3: Legal Templates & Dispute Drafts", "subtitle": "Tier 3 • Masterclass Toolkit • Full battle-tested bank letters, legal notices, and compliance workflows.", "price_usd": "$39", "price_inr": "₹799", "gumroad_url": "https://adorisedigital.gumroad.com/l/gst-filing-mastery-new-book-3-legal-templates-dispute-drafts", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Error-free monthly returns, ITC 2B matching, and notice defense.", "takeaways": ["Actionable framework for gst filing mastery (new) at the tier 3 • masterclass toolkit level.", "Direct copy-paste checklists and templates designed for the Indian banking & regulatory system.", "Immediate digital download with life-time reference access."], "excerpt": "In the Indian financial ecosystem, knowing the official circulars and automated rules separates those who get rejected from those who walk away with approved sanctions.", "pdf_name": "GST_Filing_Complete_System.pdf", "pdf_url": "/downloads/in-gst-filing-799/GST_Filing_Complete_System.pdf", "pdf_size_mb": 0.19, "epub_name": null, "epub_url": null, "epub_size_mb": 0}, {"id": "in-gst-refund-99", "category": "indian", "category_label": "Indian Wealth • GST Refund Bible (NEW)", "author": "Sanjay Shharma", "title": "GST Refund Bible (NEW) — Book 1: 7-Step Audit & Checklist", "subtitle": "Tier 1 • Quick-Action Audit • Identify hidden mistakes and instant red flags before taking action.", "price_usd": "$12", "price_inr": "₹99", "gumroad_url": "https://adorisedigital.gumroad.com/l/gst-refund-bible-new-book-1-7-step-audit-checklist", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Fast-track stuck export refunds and inverted duty structure cash recovery.", "takeaways": ["Actionable framework for gst refund bible (new) at the tier 1 • quick-action audit level.", "Direct copy-paste checklists and templates designed for the Indian banking & regulatory system.", "Immediate digital download with life-time reference access."], "excerpt": "In the Indian financial ecosystem, knowing the official circulars and automated rules separates those who get rejected from those who walk away with approved sanctions.", "pdf_name": "GST_Inverted_Duty_LUT_Guide.pdf", "pdf_url": "/downloads/in-gst-refund-99/GST_Inverted_Duty_LUT_Guide.pdf", "pdf_size_mb": 0.12, "epub_name": null, "epub_url": null, "epub_size_mb": 0}, {"id": "in-gst-refund-299", "category": "indian", "category_label": "Indian Wealth • GST Refund Bible (NEW)", "author": "Sanjay Shharma", "title": "GST Refund Bible (NEW) — Book 2: Tactical Implementation Manual", "subtitle": "Tier 2 • Core Blueprint • Complete step-by-step frameworks, calculations, and strategic protocols.", "price_usd": "$24", "price_inr": "₹299", "gumroad_url": "https://adorisedigital.gumroad.com/l/gst-refund-bible-new-book-2-tactical-implementation-manual", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Fast-track stuck export refunds and inverted duty structure cash recovery.", "takeaways": ["Actionable framework for gst refund bible (new) at the tier 2 • core blueprint level.", "Direct copy-paste checklists and templates designed for the Indian banking & regulatory system.", "Immediate digital download with life-time reference access."], "excerpt": "In the Indian financial ecosystem, knowing the official circulars and automated rules separates those who get rejected from those who walk away with approved sanctions.", "pdf_name": "GST_RFD01_Export_Refund_Guide.pdf", "pdf_url": "/downloads/in-gst-refund-299/GST_RFD01_Export_Refund_Guide.pdf", "pdf_size_mb": 0.16, "epub_name": null, "epub_url": null, "epub_size_mb": 0}, {"id": "in-gst-refund-799", "category": "indian", "category_label": "Indian Wealth • GST Refund Bible (NEW)", "author": "Sanjay Shharma", "title": "GST Refund Bible (NEW) — Book 3: Legal Templates & Dispute Drafts", "subtitle": "Tier 3 • Masterclass Toolkit • Full battle-tested bank letters, legal notices, and compliance workflows.", "price_usd": "$39", "price_inr": "₹799", "gumroad_url": "https://adorisedigital.gumroad.com/l/gst-refund-bible-new-book-3-legal-templates-dispute-drafts", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Fast-track stuck export refunds and inverted duty structure cash recovery.", "takeaways": ["Actionable framework for gst refund bible (new) at the tier 3 • masterclass toolkit level.", "Direct copy-paste checklists and templates designed for the Indian banking & regulatory system.", "Immediate digital download with life-time reference access."], "excerpt": "In the Indian financial ecosystem, knowing the official circulars and automated rules separates those who get rejected from those who walk away with approved sanctions.", "pdf_name": "GST_Refund_Complete_System.pdf", "pdf_url": "/downloads/in-gst-refund-799/GST_Refund_Complete_System.pdf", "pdf_size_mb": 0.19, "epub_name": null, "epub_url": null, "epub_size_mb": 0}, {"id": "ai-01", "category": "ai", "category_label": "AI Wealth • Autonomous Agency", "author": "Sanjay Shharma", "title": "The AI Agent Blueprint", "subtitle": "Building, Deploying, and Monetizing Autonomous Software Fleets for Businesses", "price_usd": "$19.99", "price_inr": "₹1,899", "gumroad_url": "https://adorisedigital.gumroad.com/l/the-ai-agent-blueprint", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Entrepreneurs stuck working 16 hours a day doing repetitive operational tasks an autonomous agent could solve.", "takeaways": ["Architecting autonomous reasoning agents using open-source frameworks.", "Integrating CRM, email, and database hooks into self-healing workflows.", "Packaging AI agents as $2,000/month recurring B2B retainer services."], "excerpt": "In 2026, employee headcount is a liability; autonomous agent fleets are your real equity. Here is how to architect software that operates your business while you sleep.", "pdf_name": "The_AI_Agent_Blueprint.pdf", "pdf_url": "/downloads/ai-01/The_AI_Agent_Blueprint.pdf", "pdf_size_mb": 0.79, "epub_name": "The_AI_Agent_Blueprint.epub", "epub_url": "/downloads/ai-01/The_AI_Agent_Blueprint.epub", "epub_size_mb": 0.31}, {"id": "ai-02", "category": "ai", "category_label": "AI Wealth • Agency Scaling", "author": "Sanjay Shharma", "title": "The AI Agency Playbook", "subtitle": "From Zero to $50,000/Month Offering Turnkey AI Automation to Local Businesses", "price_usd": "$19.99", "price_inr": "₹1,899", "gumroad_url": "https://adorisedigital.gumroad.com/l/the-ai-agency-playbook", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Agencies competing in red-ocean web design or social media management for razor-thin margins.", "takeaways": ["The 5 highest-margin AI automation offers SMBs will pay $5,000 for immediately.", "Cold client acquisition scripts that bypass gatekeepers directly to owners.", "Fulfillment SOPs to deliver turnkey systems in under 7 days with zero code."], "excerpt": "Stop selling Facebook ads. Sell doctors and contractors a system that captures 40 missed calls a month and turns them into booked revenue. It is an offer they cannot refuse.", "pdf_name": "The_AI_Agency_Playbook.pdf", "pdf_url": "/downloads/ai-02/The_AI_Agency_Playbook.pdf", "pdf_size_mb": 0.62, "epub_name": "The_AI_Agency_Playbook.epub", "epub_url": "/downloads/ai-02/The_AI_Agency_Playbook.epub", "epub_size_mb": 0.25}, {"id": "ai-03", "category": "ai", "category_label": "AI Wealth • Content Engines", "author": "Sanjay Shharma", "title": "The AI Content Agent", "subtitle": "Autonomous Video, Social Scheduling, and Programmatic SEO Without Human Bottlenecks", "price_usd": "$19.99", "price_inr": "₹1,899", "gumroad_url": "https://adorisedigital.gumroad.com/l/the-ai-content-agent", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Content creators and brands exhausted by the daily grind of filming, editing, and posting.", "takeaways": ["Building end-to-end 9:16 vertical short-form video pipelines using GPU rendering.", "Connecting Adorise Social APIs for multi-channel autonomous scheduling.", "Generating 1,000+ indexed programmatic SEO solution pages to capture Google search."], "excerpt": "You don't need a 5-person content team. You need one Python script connected to high-speed GPUs and headless publishing APIs.", "pdf_name": "The_AI_Content_Agent.pdf", "pdf_url": "/downloads/ai-03/The_AI_Content_Agent.pdf", "pdf_size_mb": 0.66, "epub_name": "The_AI_Content_Agent.epub", "epub_url": "/downloads/ai-03/The_AI_Content_Agent.epub", "epub_size_mb": 0.26}, {"id": "ai-04", "category": "ai", "category_label": "AI Wealth • Practical Systems", "author": "Sanjay Shharma", "title": "The AI Agent Action Workbook", "subtitle": "Interactive Architecture Schemas, Code Snippets, and Integration Worksheets", "price_usd": "$19.99", "price_inr": "₹1,899", "gumroad_url": "https://adorisedigital.gumroad.com/l/the-ai-agent-action-workbook", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Theoretical knowledge without concrete implementation templates and architecture schemas.", "takeaways": ["Fill-in-the-blank system integration worksheets for client onboarding.", "Standard operating procedure (SOP) blueprints for webhook data pipelines.", "Debugging checklists to ensure 99.9% uptime for autonomous business logic."], "excerpt": "Theory makes you sound smart at dinner parties; execution sheets make your bank account ring. Open this workbook and build your first deployed agent today.", "pdf_name": "The_AI_Agent_Workbook.pdf", "pdf_url": "/downloads/ai-04/The_AI_Agent_Workbook.pdf", "pdf_size_mb": 0.71, "epub_name": "The_AI_Agent_Workbook.epub", "epub_url": "/downloads/ai-04/The_AI_Agent_Workbook.epub", "epub_size_mb": 0.27}, {"id": "ai-05", "category": "ai", "category_label": "AI Wealth • Developer Prompts", "author": "Sanjay Shharma", "title": "The AI Agent Cheat Sheets & System Prompts", "subtitle": "50+ Battle-Tested System Prompts for Customer Service, Lead Scraping & Cold Email", "price_usd": "$19.99", "price_inr": "₹1,899", "gumroad_url": "https://adorisedigital.gumroad.com/l/the-ai-agent-cheat-sheets-system-prompts", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "AI outputs that sound robotic, hallucinate facts, or trigger defensive client reactions.", "takeaways": ["High-EQ de-escalation system prompts that neutralize hostile customer inquiries.", "Outbound prospect qualification rubrics that reject 100% of generic gatekeeper leads.", "Zero-hallucination factual guardrail constraints for mission-critical client databases."], "excerpt": "The difference between an amateur AI chatbot and an enterprise automation system is three lines of system constraints. Copy these battle-tested prompts directly into your stack.", "pdf_name": "The_AI_Agent_Cheat_Sheets.pdf", "pdf_url": "/downloads/ai-05/The_AI_Agent_Cheat_Sheets.pdf", "pdf_size_mb": 0.77, "epub_name": "The_AI_Agent_Cheat_Sheets.epub", "epub_url": "/downloads/ai-05/The_AI_Agent_Cheat_Sheets.epub", "epub_size_mb": 0.27}, {"id": "ai-06", "category": "ai", "category_label": "AI Receptionist • Flagship Hero", "author": "Sanjay Shharma", "title": "Never Miss Another Call", "subtitle": "How Front-Desk Voice AI Captures $100,000 in Lost Revenue for High-Ticket Businesses", "price_usd": "$19.99", "price_inr": "₹1,899", "gumroad_url": "https://adorisedigital.gumroad.com/l/never-miss-another-call", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "62% of business phone calls go unanswered after hours, dumping high-paying clients to competitors.", "takeaways": ["The terrifying economics of the unanswered front-desk phone call.", "How natural voice AI answers 24/7, qualifies patient/client intent, and books calendar slots.", "Case studies of clinics and contractors booking ₹10L+ in additional monthly revenue."], "excerpt": "When a water pipe bursts at 9 PM or an emergency toothache strikes on Sunday, the customer calls the first three names on Google. If you don't answer, your competitor gets the check.", "pdf_name": "Never_Miss_Another_Call.pdf", "pdf_url": "/downloads/ai-06/Never_Miss_Another_Call.pdf", "pdf_size_mb": 0.88, "epub_name": "Never_Miss_Another_Call.epub", "epub_url": "/downloads/ai-06/Never_Miss_Another_Call.epub", "epub_size_mb": 0.33}, {"id": "ai-07", "category": "ai", "category_label": "AI Receptionist • Technical Blueprint", "author": "Sanjay Shharma", "title": "The AI Receptionist Blueprint", "subtitle": "Architecture, Twilio SIP Trunking, ElevenLabs Latency, and CRM Integration", "price_usd": "$19.99", "price_inr": "₹1,899", "gumroad_url": "https://adorisedigital.gumroad.com/l/the-ai-receptionist-blueprint", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Voice AI systems that suffer from 3-second latency pauses that destroy caller trust.", "takeaways": ["Achieving sub-500ms voice latency using WebRTC and streaming speech pipelines.", "Handling live interruptions, accents, background noise, and telephony fallback.", "Seamless live calendar booking and automated confirmation SMS dispatch."], "excerpt": "A voice AI that takes two seconds to respond feels like talking to a robot on Mars. A voice AI that responds in 400 milliseconds feels like speaking to your best employee.", "pdf_name": "The_AI_Receptionist_Blueprint.pdf", "pdf_url": "/downloads/ai-07/The_AI_Receptionist_Blueprint.pdf", "pdf_size_mb": 0.73, "epub_name": "The_AI_Receptionist_Blueprint.epub", "epub_url": "/downloads/ai-07/The_AI_Receptionist_Blueprint.epub", "epub_size_mb": 0.29}, {"id": "ai-08", "category": "ai", "category_label": "AI Receptionist • Executive Guide", "author": "Sanjay Shharma", "title": "The AI Receptionist Buyer's Guide", "subtitle": "What Founders Must Know Before Buying or Building an Automated Voice Agent", "price_usd": "$19.99", "price_inr": "₹1,899", "gumroad_url": "https://adorisedigital.gumroad.com/l/the-ai-receptionist-buyer-s-guide", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Business owners getting scammed by low-quality agencies selling fragile ChatGPT wrappers.", "takeaways": ["The 10 critical security and HIPAA/GDPR questions to ask any AI vendor.", "Understanding true telephony and token infrastructure costs vs. agency markup.", "How to test a voice agent's de-escalation capability before putting it in front of clients."], "excerpt": "Don't sign a $10,000 AI contract until you read this checklist. Know exactly what technology you are paying for and what questions make dishonest vendors squirm.", "pdf_name": "The_AI_Receptionist_Buyer's_Guide.pdf", "pdf_url": "/downloads/ai-08/The_AI_Receptionist_Buyer's_Guide.pdf", "pdf_size_mb": 0.71, "epub_name": "The_AI_Receptionist_Buyer's_Guide.epub", "epub_url": "/downloads/ai-08/The_AI_Receptionist_Buyer's_Guide.epub", "epub_size_mb": 0.29}, {"id": "ai-09", "category": "ai", "category_label": "AI Receptionist • Trade Services", "author": "Sanjay Shharma", "title": "AI Front Desk for HVAC, Plumbing & Home Services", "subtitle": "Capturing Emergency Dispatch Calls 24/7 While Your Technicians Are on Jobs", "price_usd": "$19.99", "price_inr": "₹1,899", "gumroad_url": "https://adorisedigital.gumroad.com/l/ai-front-desk-for-hvac-plumbing-home-services", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Trade contractors losing $5,000 emergency replacement jobs because their crew was working on a roof.", "takeaways": ["Emergency triage prompts that distinguish a minor leak from a flooded basement.", "Automated technician dispatch routing based on geographic proximity.", "Booking deposits over the phone before the technician ever leaves the shop."], "excerpt": "Your technicians are paid to fix air conditioners and install water heaters, not answer ringing cell phones while balancing on a ladder. Let AI answer the call and lock in the deposit.", "pdf_name": "AI_for_HVAC_Plumbing_&_Home_Services.pdf", "pdf_url": "/downloads/ai-09/AI_for_HVAC_Plumbing_&_Home_Services.pdf", "pdf_size_mb": 0.75, "epub_name": "AI_for_HVAC_Plumbing_&_Home_Services.epub", "epub_url": "/downloads/ai-09/AI_for_HVAC_Plumbing_&_Home_Services.epub", "epub_size_mb": 0.32}, {"id": "ai-10", "category": "ai", "category_label": "AI Receptionist • Professional Practices", "author": "Sanjay Shharma", "title": "AI Front Desk for Law Firms, Dentists & Real Estate", "subtitle": "Qualifying High-Net-Worth Consultations and Managing Appointments Without Burnout", "price_usd": "$19.99", "price_inr": "₹1,899", "gumroad_url": "https://adorisedigital.gumroad.com/l/ai-front-desk-for-law-firms-dentists-real-estate", "superprofile_url": "https://superprofile.bio/adorisedigital", "pain_point": "Attorneys and dentists flooded with tire-kickers while missing high-value retained clients.", "takeaways": ["Pre-qualifying legal case merits and insurance coverage politely and legally.", "Eliminating no-shows through smart automated WhatsApp and SMS confirmation sequences.", "Integrating with Clio, Dentrix, and real estate CRMs for instant conflict checks."], "excerpt": "A lawyer's time is billed in six-minute increments. Spending twenty minutes answering the phone to explain you don't take traffic tickets is financial insanity. Let AI gatekeeper your calendar.", "pdf_name": "AI_for_Law_Firms_Dentists_&_Real_Estate.pdf", "pdf_url": "/downloads/ai-10/AI_for_Law_Firms_Dentists_&_Real_Estate.pdf", "pdf_size_mb": 0.73, "epub_name": "AI_for_Law_Firms_Dentists_&_Real_Estate.epub", "epub_url": "/downloads/ai-10/AI_for_Law_Firms_Dentists_&_Real_Estate.epub", "epub_size_mb": 0.3}];
+
+        let currentBook = null;
+        let currentFilter = 'all';
+
+        // Parse Query Parameters
+        function getQueryParams() {
+            const p = new URLSearchParams(window.location.search);
+            return {
+                book: p.get('book') || p.get('id') || p.get('item_number') || p.get('custom') || p.get('slug'),
+                item_name: p.get('item_name'),
+                tx: p.get('tx') || p.get('paymentId') || p.get('token') || p.get('txn_id'),
+                amt: p.get('amt') || p.get('amount'),
+                cc: p.get('cc') || p.get('currency_code') || 'USD',
+                st: p.get('st') || p.get('payment_status') || 'Completed',
+                payer_email: p.get('payer_email') || p.get('email') || ''
+            };
+        }
+
+        // Match requested book from query string
+        function resolveBook(query) {
+            if (!query) return CATALOG[0]; // Default to first book (The AI Agent Blueprint)
+
+            const qLower = query.toLowerCase().trim();
+            // 1. Direct ID match
+            let found = CATALOG.find(b => b.id.toLowerCase() === qLower);
+            if (found) return found;
+
+            // 2. Exact or partial title match
+            found = CATALOG.find(b => b.title.toLowerCase().includes(qLower) || qLower.includes(b.title.toLowerCase()));
+            if (found) return found;
+
+            // 3. Slug / URL match
+            found = CATALOG.find(b => (b.gumroad_url && b.gumroad_url.toLowerCase().includes(qLower)) || (b.pdf_name && b.pdf_name.toLowerCase().includes(qLower)));
+            if (found) return found;
+
+            return CATALOG[0];
+        }
+
+        // Render Book in Hero Download Container
+        function selectBook(bookId) {
+            const book = CATALOG.find(b => b.id === bookId);
+            if (!book) return;
+            currentBook = book;
+
+            // Update UI fields
+            document.getElementById('heroBookTitle').textContent = book.title;
+            document.getElementById('heroBookSubtitle').textContent = book.subtitle;
+            document.getElementById('heroCoverTitle').textContent = book.title;
+            document.getElementById('heroCategoryLabel').textContent = book.category_label || book.category.toUpperCase();
+            document.getElementById('heroBookCatBadge').textContent = book.category.toUpperCase();
+
+            // Set buttons
+            const btnPdf = document.getElementById('btnDownloadPdf');
+            const btnEpub = document.getElementById('btnDownloadEpub');
+            const btnDirectRead = document.getElementById('btnDirectRead');
+            const btnPdfMeta = document.getElementById('btnPdfMeta');
+            const btnEpubMeta = document.getElementById('btnEpubMeta');
+
+            if (book.pdf_url) {
+                btnPdf.href = book.pdf_url;
+                btnPdf.style.display = 'flex';
+                btnPdfMeta.textContent = `${book.pdf_name} • ${book.pdf_size_mb || 1.5} MB`;
+                btnPdf.onclick = () => showToast(`Starting download: ${book.pdf_name}`);
+                btnDirectRead.href = book.pdf_url;
+                btnDirectRead.style.display = 'inline-block';
+            } else {
+                btnPdf.style.display = 'none';
+                btnDirectRead.style.display = 'none';
+            }
+
+            if (book.epub_url) {
+                btnEpub.href = book.epub_url;
+                btnEpub.style.display = 'flex';
+                btnEpubMeta.textContent = `${book.epub_name} • Kindle / Apple Books`;
+                btnEpub.onclick = () => showToast(`Starting download: ${book.epub_name}`);
+            } else {
+                btnEpub.style.display = 'none';
+            }
+
+            // Highlight selected in grid
+            document.querySelectorAll('.catalog-card').forEach(c => {
+                if (c.dataset.id === book.id) {
+                    c.classList.add('border-cyan-500', 'bg-cyan-500/10');
+                } else {
+                    c.classList.remove('border-cyan-500', 'bg-cyan-500/10');
+                }
+            });
+        }
+
+        // Render the Catalog Grid for title switching
+        function renderCatalogGrid() {
+            const grid = document.getElementById('catalogGrid');
+            const searchVal = (document.getElementById('catalogSearchInput').value || '').toLowerCase();
+
+            grid.innerHTML = '';
+            const filtered = CATALOG.filter(b => {
+                const matchesCat = currentFilter === 'all' || b.category === currentFilter;
+                const matchesSearch = !searchVal || b.title.toLowerCase().includes(searchVal) || b.id.toLowerCase().includes(searchVal);
+                return matchesCat && matchesSearch;
+            });
+
+            filtered.forEach(b => {
+                const isSelected = currentBook && currentBook.id === b.id;
+                const card = document.createElement('div');
+                card.className = `catalog-card p-3 rounded-xl border ${isSelected ? 'border-cyan-500 bg-cyan-500/10' : 'border-slate-800 bg-slate-900/60'} hover:border-cyan-500/50 cursor-pointer transition flex items-center justify-between gap-3`;
+                card.dataset.id = b.id;
+                card.onclick = () => {
+                    selectBook(b.id);
+                    document.getElementById('heroBookContainer').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                };
+
+                card.innerHTML = `
+                    <div class="overflow-hidden">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-cyan-400 font-bold">${b.id}</span>
+                            <span class="text-[10px] font-mono text-slate-500 uppercase">${b.category}</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-white truncate mt-1">${b.title}</h4>
+                    </div>
+                    <button class="text-xs px-2.5 py-1 rounded bg-slate-800 hover:bg-cyan-500 hover:text-slate-950 font-mono text-slate-300 font-bold transition">
+                        Select
+                    </button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function setCategoryFilter(cat) {
+            currentFilter = cat;
+            document.querySelectorAll('.cat-pill').forEach(btn => {
+                if (btn.dataset.cat === cat) {
+                    btn.classList.add('bg-cyan-500', 'text-slate-950', 'font-bold');
+                    btn.classList.remove('bg-slate-900', 'text-slate-300');
+                } else {
+                    btn.classList.remove('bg-cyan-500', 'text-slate-950', 'font-bold');
+                    btn.classList.add('bg-slate-900', 'text-slate-300');
+                }
+            });
+            renderCatalogGrid();
+        }
+
+        function filterCatalog() {
+            renderCatalogGrid();
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('downloadToast');
+            document.getElementById('toastMessage').textContent = msg;
+            t.classList.remove('hidden');
+            setTimeout(() => t.classList.add('hidden'), 3500);
+        }
+
+        function copyTxId() {
+            const tx = document.getElementById('receiptTx').textContent;
+            navigator.clipboard.writeText(tx);
+            showToast(`Copied Transaction ID: ${tx}`);
+        }
+
+        // =========================================================================
+        // GOHIGHLEVEL (GHL) IPN / WEBHOOK FULFILLMENT NOTIFICATION SCAFFOLD
+        // =========================================================================
+        function triggerGHLWebhook(payload) {
+            // Configure your GHL or n8n Webhook URL here:
+            const GHL_WEBHOOK_URL = window.GHL_WEBHOOK_URL || "https://services.leadconnectorhq.com/hooks/adorise-book-purchase-fulfillment";
+
+            console.log("[GHL FULFILLMENT SCAFFOLD] Triggering webhook notification:", payload);
+
+            // Deduplication via LocalStorage
+            try {
+                const processed = JSON.parse(localStorage.getItem('adorise_processed_tx') || '[]');
+                if (payload.transaction_id && processed.includes(payload.transaction_id)) {
+                    console.log("[GHL FULFILLMENT] Transaction already processed previously:", payload.transaction_id);
+                    return;
+                }
+                if (payload.transaction_id) {
+                    processed.push(payload.transaction_id);
+                    localStorage.setItem('adorise_processed_tx', JSON.stringify(processed));
+                }
+            } catch(e) {}
+
+            // If a live webhook URL is configured, perform async dispatch
+            if (GHL_WEBHOOK_URL && !GHL_WEBHOOK_URL.includes("adorise-book-purchase-fulfillment")) {
+                fetch(GHL_WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                }).then(res => console.log("[GHL FULFILLMENT] Webhook response:", res.status))
+                  .catch(err => console.warn("[GHL FULFILLMENT] Webhook error:", err));
+            }
+        }
+
+        // Init page on DOM Load
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = getQueryParams();
+            const resolved = resolveBook(params.book || params.item_name);
+            selectBook(resolved.id);
+
+            // Update receipt details from PayPal parameters
+            const txId = params.tx || ('ADR-ORD-' + Math.random().toString(36).substring(2, 9).toUpperCase());
+            document.getElementById('receiptTx').textContent = txId;
+            document.getElementById('receiptAmount').textContent = params.amt ? (`$${params.amt} ${params.cc}`) : resolved.price_usd;
+            document.getElementById('receiptStatus').textContent = params.st;
+            document.getElementById('receiptTimestamp').textContent = `Order Verified: ${new Date().toLocaleString()}`;
+
+            renderCatalogGrid();
+
+            // Dispatch GHL Webhook Notification
+            triggerGHLWebhook({
+                event: 'digital_book_download_accessed',
+                transaction_id: txId,
+                book_id: resolved.id,
+                book_title: resolved.title,
+                category: resolved.category,
+                amount: params.amt || resolved.price_usd,
+                currency: params.cc,
+                payer_email: params.payer_email,
+                status: params.st,
+                timestamp: new Date().toISOString()
+            });
+        });
+    </script>
+</body>
+</html>

@@ -150,9 +150,13 @@ def make_flourish_image(color, size=800, scale=1.0):
                       (int(s * 0.3), int(s * 5.8), int(s * 0.07))]:
         filled(cx, cy, r)
 
-    # Outward L-line (extends toward page corner)
-    d.line([(int(s * 5.8), 0), (int(s * 5.8), int(s * 5.8))], fill=c, width=4)
-    d.line([(0, int(s * 5.8)), (int(s * 5.8), int(s * 5.8))], fill=c, width=4)
+    # Outward L-line (extends toward page corner) — kept short so it doesn't reach title area
+    d.line([(int(s * 5.2), 0), (int(s * 5.2), int(s * 5.2))], fill=c, width=4)
+    d.line([(0, int(s * 5.2)), (int(s * 5.2), int(s * 5.2))], fill=c, width=4)
+    # Small end-dots on the L-arm
+    filled(int(s * 5.2), 0, 8)
+    filled(0, int(s * 5.2), 8)
+    filled(int(s * 5.2), int(s * 5.2), 10)
 
     return img
 

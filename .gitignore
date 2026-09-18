@@ -6,4 +6,6 @@ __pycache__/
 *.zip
 adorise-core-private/
 adorise-frontend/books/GUMROAD_READY_UPLOAD_PACK/
+adorise-frontend/books/AI_SERIES_GUMROAD_READY_UPLOAD_PACK/
 adorise-frontend/books/manuscripts/
+adorise-frontend/books/downloads/

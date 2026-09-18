@@ -397,10 +397,6 @@ def main():
     pdf = OUT / "Complete-ITR-GST-TDS-Filing-Kit-2026.pdf"
     epub_out = OUT / "Complete-ITR-GST-TDS-Filing-Kit-2026.epub"
 
-    print(f"Building cover -> {cover.name}")
-    build_cover(cover, title, subtitle, author)
-    print(f"  cover: {cover.stat().st_size:,} bytes")
-
     print(f"Building PDF   -> {pdf.name}")
     build_pdf(blocks, front, pdf, cover)
     print(f"  pdf:   {pdf.stat().st_size:,} bytes")
