@@ -1,0 +1,6 @@
+books/GUMROAD_READY_UPLOAD_PACK/
+books/manuscripts/
+*.rar
+*.zip
+*.py
+.git*
