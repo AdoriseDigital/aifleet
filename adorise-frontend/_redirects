@@ -1,4 +1,6 @@
 /api/* https://api.adorisedigital.com/api/:splat 301
+/books/GUMROAD_READY_UPLOAD_PACK/* /404 404
+/books/manuscripts/* /404 404
 /scout/* /scout/index.html 200
 /dearmee/* /dearmee/index.html 200
 /books/* /books/index.html 200
