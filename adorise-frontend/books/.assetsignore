@@ -1,0 +1,9 @@
+GUMROAD_READY_UPLOAD_PACK
+GUMROAD_READY_UPLOAD_PACK/**
+manuscripts
+manuscripts/**
+*.rar
+*.zip
+*.py
+*.csv
+.git*
