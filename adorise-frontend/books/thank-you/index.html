@@ -521,15 +521,67 @@
         // Init page on DOM Load
         document.addEventListener('DOMContentLoaded', () => {
             const params = getQueryParams();
-            const resolved = resolveBook(params.book || params.item_name);
-            selectBook(resolved.id);
 
-            // Update receipt details from PayPal parameters
-            const txId = params.tx || ('ADR-ORD-' + Math.random().toString(36).substring(2, 9).toUpperCase());
-            document.getElementById('receiptTx').textContent = txId;
-            document.getElementById('receiptAmount').textContent = params.amt ? (`$${params.amt} ${params.cc}`) : resolved.price_usd;
-            document.getElementById('receiptStatus').textContent = params.st;
-            document.getElementById('receiptTimestamp').textContent = `Order Verified: ${new Date().toLocaleString()}`;
+            // Check if user purchased a bundle
+            if (params.bundle) {
+                const bKey = params.bundle.toLowerCase();
+                let bundleTitle = "Adorise Digital Master Collection";
+                let bundleSubtitle = "Your complete digital vault is unlocked. Select any of the included titles below to download:";
+                let bundleCat = "care";
+                let bundlePrice = "$79.00 USD";
+
+                if (bKey.includes('care')) {
+                    bundleTitle = "Complete 14-Book Care & Healing Vault";
+                    bundleSubtitle = "All 14 published books by Sanjay Shharma with uncompressed Master PDFs, Kindle EPUBs, and implementation worksheets.";
+                    bundleCat = "care";
+                    bundlePrice = "$79.00 USD";
+                } else if (bKey.includes('agent')) {
+                    bundleTitle = "5-Book Autonomous AI Agency Wealth Stack";
+                    bundleSubtitle = "Complete blueprints, agency playbooks, content agents, workbooks, and cheat sheets for building autonomous software fleets.";
+                    bundleCat = "ai";
+                    bundlePrice = "$79.99 USD";
+                } else if (bKey.includes('rec') || bKey.includes('receptionist')) {
+                    bundleTitle = "5-Book AI Voice Receptionist Empire Stack";
+                    bundleSubtitle = "Complete 24/7 AI voice receptionist blueprints for HVAC, Law, Dentistry, and high-ticket service dispatch businesses.";
+                    bundleCat = "ai";
+                    bundlePrice = "$79.99 USD";
+                }
+
+                // Automatically switch category filter to the bundle's collection
+                currentFilter = bundleCat;
+                document.querySelectorAll('.cat-pill').forEach(btn => {
+                    if (btn.dataset.cat === bundleCat) {
+                        btn.className = 'cat-pill px-3 py-1.5 rounded-lg bg-cyan-500 text-slate-950 font-bold';
+                    } else {
+                        btn.className = 'cat-pill px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-white';
+                    }
+                });
+
+                // Select first book of that bundle
+                const firstBundleBook = CATALOG.find(b => b.category === bundleCat) || CATALOG[0];
+                selectBook(firstBundleBook.id);
+
+                // Update UI for bundle
+                document.getElementById('heroBookTitle').textContent = bundleTitle;
+                document.getElementById('heroBookSubtitle').textContent = bundleSubtitle;
+                document.getElementById('heroCategoryLabel').textContent = "SPECIAL DIGITAL VAULT • ALL TITLES UNLOCKED";
+
+                const txId = params.tx || ('ADR-BND-' + Math.random().toString(36).substring(2, 9).toUpperCase());
+                document.getElementById('receiptTx').textContent = txId;
+                document.getElementById('receiptAmount').textContent = params.amt ? (`$${params.amt} ${params.cc || 'USD'}`) : bundlePrice;
+                document.getElementById('receiptStatus').textContent = params.st || 'Completed';
+                document.getElementById('receiptTimestamp').textContent = `Vault Verified: ${new Date().toLocaleString()}`;
+            } else {
+                const resolved = resolveBook(params.book || params.item_name);
+                selectBook(resolved.id);
+
+                // Update receipt details from PayPal parameters
+                const txId = params.tx || ('ADR-ORD-' + Math.random().toString(36).substring(2, 9).toUpperCase());
+                document.getElementById('receiptTx').textContent = txId;
+                document.getElementById('receiptAmount').textContent = params.amt ? (`$${params.amt} ${params.cc || 'USD'}`) : resolved.price_usd;
+                document.getElementById('receiptStatus').textContent = params.st || 'Completed';
+                document.getElementById('receiptTimestamp').textContent = `Order Verified: ${new Date().toLocaleString()}`;
+            }
 
             renderCatalogGrid();
 

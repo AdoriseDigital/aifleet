@@ -1,0 +1,470 @@
+Three of these (Scout, ClipCalm, Social) have a decision point flagged at the top that needs your call before Mika can
+  build the right thing — worth reading those three first. All six share the same acceptance-criteria method, so once
+  each is deployed, ping me and I'll re-audit it live the same way, one at a time.
+
+✻ Churned for 1m 6s · done 3:31 AM
+
+> every detailed report print here each apps one by one as other agebts will visit your folder
+
+● Here's the full content of everything, printed directly so it's visible in this session's transcript.
+
+  ---
+
+  APP-LAUNCH-READINESS-AUDIT.md
+
+  # App Launch-Readiness Audit: 6-App Suite
+
+  **Audit Date:** 2026-09-16
+  **Apps checked:** scout, outreach, social, clipcalm, inboxcalm, dearmee (all `.adorisedigital.com`)
+  **Method:** Live HTTP checks (curl status codes, byte-diffing routes), raw HTML inspection, embedded JS review — all
+  read-only, no changes made.
+
+  ---
+
+  ## Headline Finding (applies to all 6)
+
+  **None of the 6 apps has a real backend behind it.** Every domain returns HTTP 200 for `/login`, `/signin`, `/auth`,
+  `/app`, `/dashboard`, `/signup`, `/register` — but in every single case, those routes serve **byte-identical HTML to
+  the homepage**. There is no server-side routing at all. Where a "login" UI exists (Scout, DearMee), it's a JS modal
+  that writes a name to `localStorage` and shows an `alert()` — no password check, no OAuth, zero `fetch()`/API calls
+  anywhere in the page. Checkout/payment is handled entirely off-site via Whop links.
+
+  **This means: right now, none of these are functioning products — they're static marketing pages.** This is a single
+  shared-template issue, not 6 independent bugs, and needs to be the first thing fixed before "bringing live" means
+  anything for any of them.
+
+  ---
+
+  ## Per-App Findings
+
+  ### 1. Scout — scout.adorisedigital.com
+  - **Market fit:** Strong, specific copy ("Built for High-Execution Small Businesses"), full pricing tiers.
+  - **Login:** Fake — `localStorage` + `alert()`, no real auth of any kind.
+  - **⚠️ Distinct risk:** The "live leads" feed on the landing page (real-looking usernames, "identified in the last 4
+  hours") is **static demo data presented as live functionality** — this reads as a misleading claim to a prospective
+  buyer, not just a missing feature. Recommend labeling it as a sample/demo explicitly, or wiring it to real data,
+  before this goes live.
+  - Other gaps: Tailwind Play CDN in production (dev-only tool), no favicon/OG tags.
+
+  ### 2. Outreach — outreach.adorisedigital.com
+  - **Market fit:** Strongest copy of all 6 — correctly targets medium B2B, specific deliverability numbers (99.4% inbox
+  placement, 8 rotating mailboxes), clear tiered pricing.
+  - **Login:** None at all — no modal, no form, nothing. CTAs route straight to Whop checkout.
+  - Other gaps: zero `<img>` tags (all emoji icons), no favicon, no OG/Twitter tags.
+
+  ### 3. Social — social.adorisedigital.com
+  - **Market fit:** Pricing clear, but **only 4 of the claimed 7 platforms (X, LinkedIn, Instagram, TikTok) actually
+  appear in the copy** — Threads, YouTube, and Facebook-as-publish-target are missing.
+  - **Login:** Same fake-route pattern as the others.
+  - **⚠️ Distinct risk — highest severity of the six:** The page's `<title>` tag, meta description, and a persistent UI
+  badge explicitly brand it as **"Blotato-Style Social Media Automation,"** directly invoking a real named competitor in
+  production metadata. This is a brand/liability problem, not a cosmetic one — recommend stripping every "Blotato"
+  reference before this is public-facing.
+
+  ### 4. ClipCalm — clipcalm.adorisedigital.com
+  - **Market fit:** Good hook, but **live pricing ($19/mo, $49/mo) directly contradicts the $297–797/mo agency-tier
+  positioning** from the original business plan — as-is, this reads as a budget prosumer tool, which won't support
+  outreach to creator-tier prospects (Ali Abdaal/Hormozi-tier).
+  - **Login:** Same fake-route pattern.
+  - No real demo clips — the "preview" is a static CSS mockup with a `simulateDownload()` button, not an actual
+  before/after.
+
+  ### 5. InboxCalm — inboxcalm.adorisedigital.com
+  - **Market fit:** Best of the six — clear dual-persona targeting (business + individual), a real interactive demo
+  widget scoring a sample hostile email live on the page.
+  - **Login:** Same fake-route pattern.
+  - Minor: missing the cyan brand accent the rest of the suite uses (slate/purple only).
+
+  ### 6. DearMee — dearmee.adorisedigital.com
+  - **Market fit:** Good, appropriately empathetic tone — no overreaching clinical/therapy claims found. Pink/rose
+  accent instead of cyan/purple reads as an intentional, fitting choice for the positioning, not a clash.
+  - **Login:** Fake, same `localStorage`/`alert()` pattern as Scout.
+  - **⚠️ Distinct risk:** The flagship AI companion chat is **not connected to any real model** — the send handler calls
+  a local hardcoded `generateEmpatheticFallback()` JS function, not an LLM API. The core product experience is
+  scripted, not real.
+
+  ---
+
+  ## Cross-App Priority Fix List
+
+  **Blocking (must fix before any app is truly "live"):**
+  1. Build real server-side routing + authentication for all 6 apps (or at minimum, have unimplemented routes 404
+  properly instead of silently serving the homepage).
+  2. Social: remove all "Blotato" branding from title/meta/UI — real liability.
+  3. Scout: label the live-leads feed as a demo, or connect it to real data.
+  4. DearMee: connect the companion chat to a real model, or clearly relabel it as a preview/demo.
+  5. ClipCalm: reconcile the $19–49/mo live pricing against the $297–797/mo agency positioning — pick one.
+
+  **High (fix before serious marketing push):**
+  6. Social: add Threads/YouTube/Facebook as actual publish targets, or stop claiming 7-platform support.
+  7. Add favicon + Open Graph/Twitter meta tags across all 6 (currently missing/thin on every app — link shares will
+  show no preview anywhere).
+  8. Replace Tailwind Play CDN with a production build (Scout, Social at minimum — flagged explicitly in both).
+
+  **Medium:**
+  9. Add real product screenshots/demo clips where missing (Outreach, ClipCalm — currently emoji-only or fake mockups).
+  10. InboxCalm: align brand accent color (cyan) with the rest of the suite.
+
+  ---
+
+  ## Suggested Order to Bring Apps Live
+
+  1. **InboxCalm** — best landing page, only generic blockers (no auth backend, missing meta tags).
+  2. **Outreach** — best-in-class copy, only generic blockers, no app-specific liability issues.
+  3. **DearMee** — strong positioning, but the fake-AI-chat issue needs a real fix before launch (not just auth).
+  4. **Scout** — good copy, but the fake live-leads data needs to be addressed for trust/legal reasons.
+  5. **ClipCalm** — needs a pricing-vs-positioning decision before it's ready to pitch to its intended (higher-tier)
+  audience.
+  6. **Social** — furthest from ready: needs the competitor-branding removed, missing-platform claims resolved, in
+  addition to the generic auth work.
+
+  ---
+
+  *Generated via 6 parallel live audits (HTTP/HTML/embedded-JS inspection), same methodology as the GEO audit.*
+
+  ---
+
+  INBOXCALM-AUTH-FIX-SPEC.md
+
+  # InboxCalm — Auth & Routing Fix Spec
+
+  **For:** Mika (implementation in Multica)
+  **Source:** Launch-readiness audit, 2026-09-16 (`Claude/Output/APP-LAUNCH-READINESS-AUDIT.md`)
+  **Goal:** Make `inboxcalm.adorisedigital.com` a real, logged-in product instead of a static marketing page with an
+  external checkout link.
+
+  ---
+
+  ## Problem (confirmed live, 2026-09-16)
+
+  - `/login`, `/signin`, `/auth`, `/app`, `/dashboard`, `/signup`, `/register` all return HTTP 200 but serve
+  byte-identical HTML to the homepage — no server-side routing exists at all.
+  - There is no `<form>`, no `type="password"`/`type="email"` input anywhere on the site.
+  - All CTAs ("Try 7 Days Free," "Get Pro Protection") link directly to `https://whop.com/adorise-digital-usa/` — Whop
+  handles checkout, but nothing hands the user back into a real account or dashboard afterward.
+  - Net effect: a paying customer has nowhere to actually log in and use the product.
+
+  ## What already exists to build on
+
+  Per the business's own infra docs (`Claude/Wiki/vps-infrastructure.md`, `agent-fleet-and-approval-gates.md`):
+  - Self-hosted **Composio API** (FastAPI) already handles OAuth for other apps — reuse this rather than building a new
+  OAuth stack.
+  - **Postgres 16** + **Redis 7.2** already running on the shared VPS, isolated per-app via Docker networks.
+  - **Whop** is already the monetization/entitlement system site-wide — don't replace it, wire it in properly.
+  - All 6 apps sit behind **Caddy + Cloudflare**, so TLS/routing infra is already in place; this is purely an app-layer
+  gap.
+
+  ## Required changes
+
+  ### 1. Real routing
+  Replace the current "everything 200s to the homepage" behavior with actual routes:
+  - `/login`, `/signup` → dedicated pages with real email/password form (or OAuth via Composio) — not a JS modal on the
+  homepage.
+  - `/app`, `/dashboard` → must **require an active session**; unauthenticated visitors get redirected to `/login`, not
+  served the dashboard or the homepage.
+  - Any route with no real implementation yet should return a proper 404, not a silent copy of the homepage — a 200 on a
+  dead route is worse than an honest 404.
+
+  ### 2. Real authentication
+  - Email/password signup with hashed passwords (bcrypt/argon2) stored in Postgres, **or** OAuth (Google) via the
+  existing Composio integration — pick whichever the other apps already standardized on, for consistency.
+  - Server-side session (signed cookie or JWT), not `localStorage` — a purely client-side "login" (as seen on
+  Scout/DearMee) is not real auth and shouldn't be the pattern copied here.
+  - No fake/mock login paths — every login attempt must hit a real backend check.
+
+  ### 3. Whop entitlement sync
+  InboxCalm's pricing is Free (5 scans/day) / Pro $19/mo / Business $49/mo. The dashboard needs to know which tier a
+  logged-in user is on:
+  - Listen for Whop webhook events (subscription created/renewed/cancelled) and store the resulting plan tier against
+  the user's account in Postgres.
+  - Gate scan volume server-side against that stored tier (not client-side), so the daily/monthly limits are actually
+  enforced.
+  - On first login after a Whop purchase, match the account by email to link the Whop membership to the InboxCalm
+  account.
+
+  ### 4. Data model (minimum viable)
+  - `users`: id, email, password_hash (nullable if OAuth-only), created_at
+  - `subscriptions`: user_id, whop_membership_id, plan_tier, status, renewed_at
+  - `scans`: id, user_id, input_email_text, toxicity_score, suggested_reply, created_at — this also gives you scan
+  history in the dashboard, which the current site doesn't offer at all.
+
+  ### 5. Don't touch (already working)
+  - Landing page copy, demo widget, and pricing display — the audit rated these the best of all 6 apps. No changes
+  needed there.
+  - Whop as the checkout/payment processor — keep it, just close the loop after checkout instead of leaving the user
+  stranded on an external page.
+
+  ---
+
+  ## Acceptance criteria (how I'll re-verify once deployed)
+
+  1. `curl` diff of `/login`, `/dashboard`, `/` — must no longer be byte-identical.
+  2. `/dashboard` without a valid session must redirect to `/login`, not 200 with dashboard content or homepage content.
+  3. A real `<form>` with password input must be present on `/login`.
+  4. No `alert()`/`localStorage`-only auth logic in the page JS.
+  5. Grep for `fetch(`/`/api/` calls confirming the login form actually talks to a backend.
+
+  Ping me once it's deployed and I'll re-audit this one app the same way we did the first pass.
+
+  ---
+
+  OUTREACH-AUTH-FIX-SPEC.md
+
+  # Outreach — Auth & Routing Fix Spec
+
+  **For:** Mika (implementation in Multica)
+  **Source:** Launch-readiness audit, 2026-09-16 (`Claude/Output/APP-LAUNCH-READINESS-AUDIT.md`)
+  **Goal:** Make `outreach.adorisedigital.com` a real, logged-in product instead of a static marketing page.
+
+  ---
+
+  ## Problem (confirmed live, 2026-09-16)
+
+  - All 9 tested paths (`/`, `/login`, `/signin`, `/sign-in`, `/auth`, `/app`, `/dashboard`, `/signup`, `/register`)
+  return byte-identical HTML (23,882 bytes) — no routing, no login form, no auth UI anywhere. This app doesn't even have
+  a fake modal like Scout/DearMee — there's simply nothing.
+  - Every CTA links straight to `https://whop.com/adorise-digital-usa/`, so the page functions purely as a sales page.
+
+  ## What already exists to build on
+
+  Same shared infra as the rest of the suite: self-hosted Composio API for OAuth, Postgres/Redis on the VPS, Whop for
+  checkout/entitlements. See `Claude/Wiki/vps-infrastructure.md`.
+
+  ## Required changes
+
+  Apply the same pattern as the InboxCalm spec (`INBOXCALM-AUTH-FIX-SPEC.md`):
+  1. **Real routing** — `/login`, `/signup` as dedicated pages; `/app`, `/dashboard` gated behind a real session;
+  unimplemented routes should 404, not silently serve the homepage.
+  2. **Real authentication** — server-side session, email/password or OAuth via Composio. No client-side-only auth.
+  3. **Whop entitlement sync** — this app's pricing (Starter $39, Scale Growth $99, Agency Infrastructure $199, 7-day
+  trial w/ 2 free inboxes) needs to map to actual mailbox-count entitlements in the dashboard, enforced server-side.
+  4. **Data model additions specific to this app**: beyond `users`/`subscriptions` (same as InboxCalm), add a
+  `mailboxes` table (user_id, email_address, warmup_status, rotation_group) and a `campaigns` table, since the core
+  product is managing rotating mailbox infrastructure — the dashboard needs to show this, not just gate a login.
+
+  ## Also flagged (lower priority, same pass if convenient)
+  - Zero `<img>` tags anywhere (all icons are emoji) — add real product screenshots.
+  - No favicon, no Open Graph/Twitter meta tags.
+
+  ## Acceptance criteria
+  Same method as InboxCalm: route byte-diff check, session-gated dashboard, real `<form>` with backend calls, no
+  `localStorage`-only auth. Ping me once deployed and I'll re-audit live.
+
+  ---
+
+  DEARMEE-AUTH-FIX-SPEC.md
+
+  # DearMee — Auth, Routing & Real-AI Fix Spec
+
+  **For:** Mika (implementation in Multica)
+  **Source:** Launch-readiness audit, 2026-09-16 (`Claude/Output/APP-LAUNCH-READINESS-AUDIT.md`)
+  **Goal:** Make `dearmee.adorisedigital.com` a real, logged-in product with an actual AI companion — not a static page
+  with a fake login and a scripted chat.
+
+  ---
+
+  ## Problem (confirmed live, 2026-09-16)
+
+  - Same routing issue as the rest of the suite: `/login`, `/signin`, `/auth`, `/app`, `/dashboard`, `/signup`,
+  `/register` all serve the identical homepage HTML.
+  - "Sign In" is a JS modal only. `handleDearmeeSocial()` fabricates a name (`"Friend (Google)"`) and shows an `alert()`
+  — no real OAuth. `handleDearmeeEmail()` writes to `localStorage` with no password check and no backend call at all
+  (confirmed: zero `fetch()`/`api.`/`axios` calls anywhere in the page).
+  - **The flagship AI companion chat is not connected to any model.** The send handler calls a local hardcoded JS
+  function `generateEmpatheticFallback(msg, companionConfig)` — it's a scripted response generator, not a live LLM call.
+  This is the core product experience and it doesn't function yet.
+
+  ## Required changes
+
+  ### 1. Auth & routing
+  Same pattern as InboxCalm/Outreach specs: real server-side session, real `/login`/`/signup` pages, `/app`/`/dashboard`
+  gated by session, Whop entitlement sync for the Freemium/$9.99/mo Plus/$49 Lifetime tiers.
+
+  ### 2. Real AI integration (this app's distinct, higher-priority gap)
+  - Replace `generateEmpatheticFallback()` with an actual model call. Given this session's own model is Claude Sonnet 5,
+  and the business already has Claude Code / Anthropic API usage elsewhere in its stack, route this through the
+  Anthropic API directly rather than building a new model integration from scratch.
+  - System prompt should encode the "caring confidant, not a licensed therapist" boundary the landing page copy already
+  sets correctly (audit confirmed: no diagnose/treat/therapist claims found in current copy — keep that boundary in the
+  actual model prompt too, not just the marketing page).
+  - Persist conversation history per user (Postgres) so returning users have continuity — currently there's no account
+  system at all, so nothing persists between sessions.
+  - Rate-limit free-tier usage (1 reflection/day per the pricing page) server-side against the real usage, not a
+  client-side counter.
+
+  ## Acceptance criteria
+  Same route/auth checks as the other specs, **plus**: confirm the chat send handler makes a real network call to an LLM
+  endpoint (not a local JS function), and that a response varies meaningfully for different inputs rather than
+  following the old scripted-fallback pattern. Ping me once deployed and I'll re-audit live, including a couple of live
+  chat exchanges to sanity-check real model responses are coming back.
+
+  ---
+
+  SCOUT-AUTH-FIX-SPEC.md
+
+  # Scout — Auth, Routing & Live-Data Fix Spec
+
+  **For:** Mika (implementation in Multica)
+  **Source:** Launch-readiness audit, 2026-09-16 (`Claude/Output/APP-LAUNCH-READINESS-AUDIT.md`)
+  **Goal:** Make `scout.adorisedigital.com` a real, logged-in product — and resolve the fabricated-leads issue before
+  this is pitched to any real buyer.
+
+  ---
+
+  ## Problem (confirmed live, 2026-09-16)
+
+  - Same routing issue as the rest of the suite: all 8 auth-related paths serve the identical homepage HTML.
+  - "Login" is fake: `handleScoutEmail()` never validates a password — it just calls `loginScout(name)`, which does
+  `localStorage.setItem('scout_user', name)` and shows `alert("Welcome...")`. The Google button does the same thing with
+  a hardcoded name. Zero `fetch()`/API calls anywhere.
+  - **⚠️ Needs a decision from San before Mika builds anything here:** the landing page shows a "Today's Verified
+  High-Intent Buyer Leads" feed with specific-looking entries (e.g. "u/ecommerce_dan," "@sarah_growth_cmo," "identified
+  in the last 4 hours") that are static demo content, not real data. As-is, this reads as a live product capability to a
+  prospective buyer, which is a trust/liability risk once real traffic hits this page.
+
+  ## Decision needed (before implementation)
+  Pick one:
+  - **(A) Wire it to real data** — connect the feed to Scout's actual lead-sourcing pipeline (per
+  `Claude/Memory/areas/radar-lead-scoring.md`, the Radar engine already does SerpAPI→Firecrawl→Gemini scoring for this
+  exact purpose) so the landing page shows genuinely live results.
+  - **(B) Label it as a sample** — keep the current static content but add explicit "Sample results" / "Example output"
+  labeling so it's honest about not being live.
+
+  Once San picks A or B, the rest of this spec applies either way.
+
+  ## Required changes
+
+  ### 1. Auth & routing
+  Same pattern as the other specs: real server-side session, real `/login`/`/signup`, `/app`/`/dashboard` gated by
+  session, Whop entitlement sync for Free trial / Solo Hunter $49 / Growth Auto-Pilot $149 tiers, enforced server-side
+  against the 10/300 and 30/900 lead caps.
+
+  ### 2. Also flagged
+  - Tailwind Play CDN in production — swap for a compiled build.
+  - No favicon/OG/Twitter meta tags.
+
+  ## Acceptance criteria
+  Same route/auth checks as the other specs, plus confirmation that the leads feed is either genuinely live (option A)
+  or clearly labeled as a sample (option B) — not presented ambiguously as it is now. Ping me once deployed and I'll
+  re-audit live.
+
+  ---
+
+  CLIPCALM-AUTH-FIX-SPEC.md
+
+  # ClipCalm — Auth, Routing & Pricing Fix Spec
+
+  **For:** Mika (implementation in Multica)
+  **Source:** Launch-readiness audit, 2026-09-16 (`Claude/Output/APP-LAUNCH-READINESS-AUDIT.md`)
+  **Goal:** Make `clipcalm.adorisedigital.com` a real, logged-in product — but this one needs a business decision before
+  engineering work starts.
+
+  ---
+
+  ## ⚠️ Decision needed first (not an engineering task)
+
+  Live pricing on the site: Free trial → Creator Pro $19/mo → Agency Scale $49/mo (both link to Whop checkout).
+  Business plan (`Claude/Memory/areas/clipcalm-adorisedigital.md`): positioned as a $297–797/mo productized service sold
+  directly to creators (Ali Abdaal/Hormozi-tier outreach targets).
+
+  **These two can't both be true.** At $19–49/mo this reads as a budget prosumer tool and won't hold up in outreach to
+  agency-tier prospects; at $297–797/mo the current page's self-serve trial flow doesn't fit (that price point usually
+  means a sales conversation, not a credit-card signup). San needs to pick a direction — self-serve budget tool, or
+  higher-touch agency service — before Mika builds the account/billing tiers, since the tier structure itself depends on
+  the answer.
+
+  ## Problem (confirmed live, 2026-09-16) — applies regardless of pricing decision
+
+  - Same routing issue as the rest of the suite: all 8 auth paths serve identical homepage HTML, no login form or auth
+  UI at all.
+  - The "preview" demo is a static CSS mockup with a `simulateDownload()` button — no real before/after clip, no actual
+  product output shown anywhere.
+  - No social proof (testimonials, logos, case studies) anywhere on the page.
+
+  ## Required changes (once pricing direction is confirmed)
+
+  1. **Auth & routing** — same pattern as the other specs: real server-side session, real `/login`/`/signup`,
+  `/app`/`/dashboard` gated by session, Whop entitlement sync matching whichever tier structure San confirms.
+  2. **Real demo content** — replace the fake `simulateDownload()` mockup with an actual before/after clip or embedded
+  sample output. This matters more here than on the other apps, since "show, don't tell" is core to a video product's
+  credibility.
+  3. Add at least basic social proof once available (even one real result beats none).
+
+  ## Acceptance criteria
+  Same route/auth checks as the other specs, plus: pricing on the live site matches whatever tier San confirmed, and the
+  demo section shows a real clip rather than a simulated download. Ping me once deployed and I'll re-audit live.
+
+  ---
+
+  SOCIAL-AUTH-FIX-SPEC.md
+
+  # Social — Auth, Routing & Brand Fix Spec
+
+  **For:** Mika (implementation in Multica)
+  **Source:** Launch-readiness audit, 2026-09-16 (`Claude/Output/APP-LAUNCH-READINESS-AUDIT.md`)
+  **Goal:** Make `social.adorisedigital.com` a real, logged-in product and remove a real brand liability — this is the
+  furthest from ready of all 6 apps.
+
+  ---
+
+  ## ⚠️ Highest priority: remove competitor branding
+
+  The page `<title>` tag, meta description, and a persistent UI badge all explicitly brand the product as
+  **"Blotato-Style Social Media Automation"** — directly invoking a real, named competitor tool in production metadata,
+  not just casual internal comparison copy. Confirmed: `<title>Adorise Social — Blotato-Style AI Social Growth &
+  Auto-Scheduler</title>`.
+
+  **This should be fixed before anything else on this list**, independent of the auth/routing work — it's a live
+  liability the moment this page gets real traffic or is shared anywhere (a competitor could reasonably object; it also
+  just looks unprofessional). Rewrite the positioning to stand on its own without naming another product.
+
+  ## Also needs a decision: platform claims
+
+  Business docs describe Social as supporting 7 platforms (X/LinkedIn/Threads/Facebook/Instagram/TikTok/YouTube). The
+  live page's actual copy only mentions **4**: X, LinkedIn, Instagram, TikTok. Facebook appears only as a social-login
+  button, not a publishing target; Threads and YouTube aren't mentioned at all.
+
+  San/Mika need to confirm: are Threads/YouTube/Facebook-publishing actually built and just missing from the marketing
+  copy, or not built yet? The fix differs — either update the UI to expose them, or stop claiming 7-platform support
+  until they exist.
+
+  ## Problem (confirmed live, 2026-09-16)
+
+  - Same routing issue as the rest of the suite: all 8 tested paths serve the identical 34,704-byte homepage HTML. "Sign
+  In" is a JS modal trigger only, not a real page.
+  - Cannot confirm from outside whether the OAuth/Composio flow for connecting social accounts actually works — this
+  needs direct testing once real auth exists, since there's currently no session-gated area to test it in at all.
+
+  ## Required changes
+
+  1. **Remove all "Blotato" references** (title, meta description, hero copy, UI badge) — do this first, independent of
+  everything else.
+  2. **Auth & routing** — same pattern as the other specs: real server-side session, real `/login`/`/signup`,
+  `/app`/`/dashboard` gated by session, Whop entitlement sync for Starter $29 / Growth $79 / Agency $149 tiers.
+  3. **Reconcile platform claims** per the decision above.
+  4. Swap Tailwind Play CDN for a production build; add favicon + OG/Twitter meta tags (currently completely absent —
+  notably ironic for a social scheduling tool).
+
+  ## Acceptance criteria
+  Same route/auth checks as the other specs, plus: zero occurrences of "Blotato" anywhere in page source, and the
+  platform list shown in the UI matches what's actually functional. Ping me once deployed and I'll re-audit live.
+
+  ---
+
+  That's all 7 files (1 consolidated audit + 6 per-app specs), all also sitting in Claude/Output/ for any other agent to
+  read directly.
+
+✻ Brewed for 1m 4s · done 3:33 AM
+
+> not visit your folder
+
+● Understood — that's exactly why I printed everything above instead of just pointing to the files. All 7 reports (the
+  consolidated audit + all 6 per-app specs) are now in full in this transcript, so any agent reading this conversation
+  has everything without needing filesystem access. Let me know when Mika's ready with the first fix and I'll re-audit.
+
+✻ Sautéed for 3s · done 3:33 AM
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+> 
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ⏵⏵ auto mode on (shift+tab to cycle) · ← for agents                            √ Update installed · Restart to apply

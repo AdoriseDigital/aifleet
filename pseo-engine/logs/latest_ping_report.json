@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-19T20:43:34.667Z",
+  "timestamp": "2026-09-19T23:12:43.591Z",
   "sitemap_url": "https://adorisedigital.com/sitemap.xml",
   "pings": [
     {
@@ -22,7 +22,7 @@
       "statusCode": 200,
       "success": true,
       "response": "",
-      "submitted_urls": 12
+      "submitted_urls": 10
     }
   ]
 }

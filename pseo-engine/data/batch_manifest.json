@@ -1,7 +1,7 @@
 {
   "sla_target_daily_pages": 10,
   "last_batch_date": "2026-09-19",
-  "total_published_pages": 24,
+  "total_published_pages": 70,
   "batches": [
     {
       "batch_id": 1,
@@ -66,6 +66,168 @@
         "totalUrls": 32,
         "chunksCount": 1,
         "lastmod": "2026-09-19T20:43:34.647Z"
+      },
+      "ping_status": [
+        {
+          "engine": "Google Search Console",
+          "success": false,
+          "status": 404
+        },
+        {
+          "engine": "Bing",
+          "success": false,
+          "status": 410
+        },
+        {
+          "engine": "IndexNow",
+          "success": true,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "batch_id": 3,
+      "timestamp": "2026-09-19T23:12:25.915Z",
+      "page_count": 12,
+      "slugs": [
+        "/solutions/fintech/web-app-engineering",
+        "/solutions/fintech/composio-integrations",
+        "/solutions/fintech/whop-monetization",
+        "/solutions/fintech/cloud-vps-hardening",
+        "/solutions/healthtech-biotech/pseo-engine",
+        "/solutions/healthtech-biotech/web-app-engineering",
+        "/solutions/healthtech-biotech/outbound-infrastructure",
+        "/solutions/healthtech-biotech/composio-integrations",
+        "/solutions/healthtech-biotech/whop-monetization",
+        "/solutions/healthtech-biotech/cloud-vps-hardening",
+        "/solutions/proptech-realestate/ai-agents",
+        "/solutions/proptech-realestate/web-app-engineering"
+      ],
+      "sitemap_stats": {
+        "totalUrls": 44,
+        "chunksCount": 1,
+        "lastmod": "2026-09-19T23:12:20.957Z"
+      },
+      "ping_status": [
+        {
+          "engine": "Google Search Console",
+          "success": false,
+          "status": 404
+        },
+        {
+          "engine": "Bing",
+          "success": false,
+          "status": 410
+        },
+        {
+          "engine": "IndexNow",
+          "success": true,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "batch_id": 4,
+      "timestamp": "2026-09-19T23:12:33.909Z",
+      "page_count": 12,
+      "slugs": [
+        "/solutions/proptech-realestate/outbound-infrastructure",
+        "/solutions/proptech-realestate/composio-integrations",
+        "/solutions/proptech-realestate/whop-monetization",
+        "/solutions/proptech-realestate/cloud-vps-hardening",
+        "/solutions/legaltech-professional/pseo-engine",
+        "/solutions/legaltech-professional/web-app-engineering",
+        "/solutions/legaltech-professional/outbound-infrastructure",
+        "/solutions/legaltech-professional/composio-integrations",
+        "/solutions/legaltech-professional/whop-monetization",
+        "/solutions/legaltech-professional/cloud-vps-hardening",
+        "/solutions/venture-capital-private-equity/pseo-engine",
+        "/solutions/venture-capital-private-equity/ai-agents"
+      ],
+      "sitemap_stats": {
+        "totalUrls": 56,
+        "chunksCount": 1,
+        "lastmod": "2026-09-19T23:12:29.726Z"
+      },
+      "ping_status": [
+        {
+          "engine": "Google Search Console",
+          "success": false,
+          "status": 404
+        },
+        {
+          "engine": "Bing",
+          "success": false,
+          "status": 410
+        },
+        {
+          "engine": "IndexNow",
+          "success": true,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "batch_id": 5,
+      "timestamp": "2026-09-19T23:12:40.987Z",
+      "page_count": 12,
+      "slugs": [
+        "/solutions/venture-capital-private-equity/web-app-engineering",
+        "/solutions/venture-capital-private-equity/composio-integrations",
+        "/solutions/venture-capital-private-equity/whop-monetization",
+        "/solutions/venture-capital-private-equity/cloud-vps-hardening",
+        "/solutions/edtech/ai-agents",
+        "/solutions/edtech/web-app-engineering",
+        "/solutions/edtech/outbound-infrastructure",
+        "/solutions/edtech/composio-integrations",
+        "/solutions/edtech/whop-monetization",
+        "/solutions/edtech/cloud-vps-hardening",
+        "/solutions/cybersecurity/pseo-engine",
+        "/solutions/cybersecurity/ai-agents"
+      ],
+      "sitemap_stats": {
+        "totalUrls": 68,
+        "chunksCount": 1,
+        "lastmod": "2026-09-19T23:12:36.705Z"
+      },
+      "ping_status": [
+        {
+          "engine": "Google Search Console",
+          "success": false,
+          "status": 404
+        },
+        {
+          "engine": "Bing",
+          "success": false,
+          "status": 410
+        },
+        {
+          "engine": "IndexNow",
+          "success": true,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "batch_id": 6,
+      "timestamp": "2026-09-19T23:12:48.139Z",
+      "page_count": 10,
+      "slugs": [
+        "/solutions/cybersecurity/web-app-engineering",
+        "/solutions/cybersecurity/outbound-infrastructure",
+        "/solutions/cybersecurity/composio-integrations",
+        "/solutions/cybersecurity/whop-monetization",
+        "/solutions/agency-consultancy/ai-agents",
+        "/solutions/agency-consultancy/web-app-engineering",
+        "/solutions/agency-consultancy/outbound-infrastructure",
+        "/solutions/agency-consultancy/composio-integrations",
+        "/solutions/agency-consultancy/whop-monetization",
+        "/solutions/agency-consultancy/cloud-vps-hardening"
+      ],
+      "sitemap_stats": {
+        "totalUrls": 78,
+        "chunksCount": 1,
+        "lastmod": "2026-09-19T23:12:43.586Z"
       },
       "ping_status": [
         {
