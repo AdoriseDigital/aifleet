@@ -386,7 +386,7 @@ def generate_all_pages():
             </a>
           </div>"""
 
-        paypal_email = "adorisedigital@gmail.com"
+        paypal_email = "sanjay.shharma@hotmail.com"
         paypal_amount = clean_usd if clean_usd else "9.99"
         return_url = f"https://books.adorisedigital.com/thank-you/?book={slug}&gateway=paypal"
         cancel_url = f"https://books.adorisedigital.com/{slug}/"
