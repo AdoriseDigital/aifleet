@@ -2,6 +2,7 @@ import os
 import csv
 import re
 import json
+import urllib.parse
 from pathlib import Path
 
 BASE_DIR = Path(r"C:\Users\HOME_PC\Documents\antigravity\calm-carson\adorise-frontend\books")
@@ -75,7 +76,14 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     "offers": [
       {{
         "@type": "Offer",
-        "name": "Global Digital Edition (PDF + EPUB)",
+        "name": "Global Digital Edition (PayPal Direct)",
+        "price": "{clean_price_usd}",
+        "priceCurrency": "USD",
+        "url": "{paypal_url}"
+      }},
+      {{
+        "@type": "Offer",
+        "name": "Global Digital Edition (Gumroad)",
         "price": "{clean_price_usd}",
         "priceCurrency": "USD",
         "url": "{gumroad_url}"
@@ -115,12 +123,12 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       <span class="font-extrabold text-lg tracking-tight text-white font-display">ADORISE <span class="text-cyan-400">BOOKS</span></span>
     </a>
 
-    <div class="flex items-center space-x-3">
-      <a href="https://books.adorisedigital.com" class="text-xs font-semibold px-4 py-2 rounded-full bg-slate-900 border border-slate-800 text-slate-300 hover:text-white transition">
+    <div class="flex items-center space-x-2 sm:space-x-3">
+      <a href="https://books.adorisedigital.com" class="text-xs font-semibold px-3 py-2 rounded-full bg-slate-900 border border-slate-800 text-slate-300 hover:text-white transition">
         ← All 48 Books
       </a>
-      <a href="{gumroad_url}" target="_blank" rel="noopener noreferrer" class="text-xs font-bold px-4 py-2 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-lg shadow-emerald-500/20 transition">
-        Buy Now ({price_usd}) ⚡
+      <a href="{paypal_url}" target="_blank" rel="noopener noreferrer" class="text-xs font-bold px-3.5 py-2 rounded-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-lg shadow-cyan-500/20 transition flex items-center gap-1">
+        <span>⚡ PayPal ({price_usd})</span>
       </a>
     </div>
   </header>
@@ -173,11 +181,14 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             </div>
 
             <div class="flex flex-wrap items-center gap-2">
-              <a href="{gumroad_url}" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs shadow-lg shadow-emerald-500/20 transition cursor-pointer">
-                Buy via Gumroad (Global) &rarr;
+              <a href="{paypal_url}" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs shadow-lg shadow-cyan-500/20 transition cursor-pointer flex items-center gap-1.5">
+                <span>⚡ Pay with PayPal ({price_usd})</span>
               </a>
-              <a href="{superprofile_url}" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs border border-slate-700 transition cursor-pointer">
-                Pay with UPI (India) 🇮🇳
+              <a href="{gumroad_url}" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs shadow-lg shadow-emerald-500/20 transition cursor-pointer">
+                Buy on Gumroad ({price_usd})
+              </a>
+              <a href="{superprofile_url}" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs shadow-lg shadow-amber-500/20 transition cursor-pointer">
+                Pay with UPI ({price_inr}) 🇮🇳
               </a>
             </div>
           </div>
@@ -239,19 +250,25 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     </section>
 
     <!-- Bottom Purchase Bar -->
-    <div class="glass-card p-6 rounded-2xl border-2 border-emerald-500/40 text-center bg-gradient-to-r from-slate-950 via-slate-900 to-emerald-950/20">
+    <div class="glass-card p-6 rounded-2xl border-2 border-cyan-500/40 text-center bg-gradient-to-r from-slate-950 via-slate-900 to-cyan-950/20">
       <h3 class="text-lg font-bold text-white mb-2">Get Instant Access to "{title}"</h3>
       <p class="text-xs text-slate-400 mb-6 max-w-lg mx-auto">
         Lifetime digital ownership. Read on Kindle, iPad, phone, or laptop. No subscription fees.
       </p>
       <div class="flex flex-wrap justify-center gap-3">
-        <a href="{gumroad_url}" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs shadow-lg shadow-emerald-500/25 transition">
-          Buy Now via Gumroad ({price_usd}) &rarr;
+        <a href="{paypal_url}" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs shadow-lg shadow-cyan-500/25 transition flex items-center gap-1.5">
+          <span>⚡ Pay with PayPal ({price_usd})</span>
         </a>
-        <a href="{superprofile_url}" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs border border-slate-700 transition">
+        <a href="{gumroad_url}" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs shadow-lg shadow-emerald-500/25 transition">
+          Buy on Gumroad ({price_usd})
+        </a>
+        <a href="{superprofile_url}" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs shadow-lg shadow-amber-500/25 transition">
           Pay with UPI ({price_inr}) 🇮🇳
         </a>
       </div>
+      <p class="mt-4 text-[11px] text-slate-400">
+        Direct fulfillment: Instant PDF & EPUB download links unlocked immediately after checkout via PayPal, Gumroad, or SuperProfile.
+      </p>
     </div>
 
   </main>
@@ -369,6 +386,24 @@ def generate_all_pages():
             </a>
           </div>"""
 
+        paypal_email = "adorisedigital@gmail.com"
+        paypal_amount = clean_usd if clean_usd else "9.99"
+        return_url = f"https://books.adorisedigital.com/thank-you/?book={slug}&gateway=paypal"
+        cancel_url = f"https://books.adorisedigital.com/{slug}/"
+        paypal_params = {
+            "cmd": "_xclick",
+            "business": paypal_email,
+            "item_name": title,
+            "item_number": slug,
+            "amount": paypal_amount,
+            "currency_code": "USD",
+            "no_shipping": "1",
+            "no_note": "1",
+            "return": return_url,
+            "cancel_return": cancel_url
+        }
+        paypal_url = "https://www.paypal.com/cgi-bin/webscr?" + urllib.parse.urlencode(paypal_params)
+
         page_html = HTML_TEMPLATE.format(
             meta_title=meta_title,
             meta_desc=meta_desc.replace('"', '&quot;'),
@@ -381,6 +416,7 @@ def generate_all_pages():
             price_inr=price_inr,
             clean_price_usd=clean_usd,
             clean_price_inr=clean_inr,
+            paypal_url=paypal_url,
             gumroad_url=gumroad_url,
             superprofile_url=superprofile_url,
             pain_point=pain_point,

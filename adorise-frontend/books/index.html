@@ -76,9 +76,10 @@
                 Authored by <strong class="text-cyan-400">Sanjay Shharma</strong> (Author, Businessman & Coach • IIM Calcutta Alumni). Covering The Care Collection (14), AI Wealth & Autonomous Agency (10), and Indian Financial Stack (24).
             </p>
             <div class="flex flex-wrap items-center justify-center gap-2 mt-4 text-xs font-mono text-slate-400">
-                <span class="px-3 py-1 bg-slate-900 rounded-full border border-slate-800">✅ Instant PDF / Zip Download</span>
-                <span class="px-3 py-1 bg-slate-900 rounded-full border border-slate-800">✅ Amazon KDP & Google Play Verified</span>
-                <span class="px-3 py-1 bg-slate-900 rounded-full border border-slate-800">✅ Razorpay / Whop / SuperProfile Secure</span>
+                <span class="px-3 py-1 bg-slate-900 rounded-full border border-slate-800">✅ Instant DRM-Free PDF + EPUB Download</span>
+                <span class="px-3 py-1 bg-slate-900 rounded-full border border-slate-800">⚡ PayPal Direct Instant Checkout ($ USD)</span>
+                <span class="px-3 py-1 bg-slate-900 rounded-full border border-slate-800">💳 Gumroad Global Checkout</span>
+                <span class="px-3 py-1 bg-slate-900 rounded-full border border-slate-800">🇮🇳 SuperProfile India (UPI / RuPay)</span>
             </div>
         </div>
 
@@ -99,8 +100,8 @@
                         <span class="text-xs text-slate-500 line-through mr-1.5">$139.86</span>
                         <span class="text-xl font-bold text-emerald-400 font-mono">$79.00</span>
                     </div>
-                    <button onclick="openWhopCheckout('plan_care_vault_79', 'Complete 14-Book Care Vault ($79)')" class="px-4 py-2 rounded-xl text-xs font-bold bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition shadow-md">
-                        Get Full Vault ⚡
+                    <button onclick="triggerBundleCheckout('care-vault')" class="px-4 py-2 rounded-xl text-xs font-bold bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition shadow-md">
+                        Get Full Vault ($79) ⚡
                     </button>
                 </div>
             </div>
@@ -120,8 +121,8 @@
                         <span class="text-xs text-slate-500 line-through mr-1.5">$99.95</span>
                         <span class="text-xl font-bold text-cyan-400 font-mono">$79.99</span>
                     </div>
-                    <button onclick="openWhopCheckout('plan_ai_agent_bundle_79', '5-Book AI Agent Stack ($79.99)')" class="px-4 py-2 rounded-xl text-xs font-bold bg-cyan-500 hover:bg-cyan-400 text-slate-950 transition shadow-md">
-                        Get 5-Book Stack ⚡
+                    <button onclick="triggerBundleCheckout('ai-agent-bundle')" class="px-4 py-2 rounded-xl text-xs font-bold bg-cyan-500 hover:bg-cyan-400 text-slate-950 transition shadow-md">
+                        Get 5-Book Stack ($79.99) ⚡
                     </button>
                 </div>
             </div>
@@ -141,8 +142,8 @@
                         <span class="text-xs text-slate-500 line-through mr-1.5">$99.95</span>
                         <span class="text-xl font-bold text-purple-400 font-mono">$79.99</span>
                     </div>
-                    <button onclick="openWhopCheckout('plan_ai_rec_bundle_79', '5-Book AI Receptionist Stack ($79.99)')" class="px-4 py-2 rounded-xl text-xs font-bold bg-purple-500 hover:bg-purple-400 text-white transition shadow-md">
-                        Get 5-Book Stack ⚡
+                    <button onclick="triggerBundleCheckout('ai-receptionist-bundle')" class="px-4 py-2 rounded-xl text-xs font-bold bg-purple-500 hover:bg-purple-400 text-white transition shadow-md">
+                        Get 5-Book Stack ($79.99) ⚡
                     </button>
                 </div>
             </div>
@@ -1559,18 +1560,43 @@
                     </div>
                 </div>
 
-                <!-- Action Button -->
-                <div class="pt-2">
-                    <a id="checkoutDirectButton" href="#" target="_blank" rel="noopener noreferrer" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-emerald-400 via-teal-500 to-cyan-500 hover:from-emerald-300 hover:to-cyan-400 text-slate-950 font-black text-sm uppercase tracking-wider flex items-center justify-center gap-3 shadow-xl shadow-emerald-500/20 transition transform hover:scale-[1.01]">
-                        <span>🔒 Proceed to Secure Checkout</span>
-                        <span>➔</span>
+                <!-- Multi-Gateway Payment Action Buttons -->
+                <div class="space-y-3 pt-2">
+                    <div class="text-[11px] uppercase font-mono tracking-wider text-slate-400 font-bold">Select Preferred Payment Gateway:</div>
+                    
+                    <!-- 1. PayPal Direct (USD) -->
+                    <a id="modalPaypalBtn" href="#" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-5 rounded-2xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs uppercase tracking-wider flex items-center justify-between shadow-lg shadow-cyan-500/20 transition transform hover:scale-[1.01]">
+                        <span class="flex items-center gap-2">
+                            <span>⚡</span>
+                            <span class="btn-label font-extrabold">Pay with PayPal ($ USD)</span>
+                        </span>
+                        <span class="text-[10px] font-mono bg-slate-950/20 px-2.5 py-1 rounded-lg">Instant Download ➔</span>
                     </a>
-                    <div class="flex items-center justify-center gap-2.5 mt-3 text-[11px] text-slate-400 font-medium">
-                        <span>💳 Visa, Mastercard, Amex</span>
+
+                    <!-- 2. Gumroad Global Checkout -->
+                    <a id="modalGumroadBtn" href="#" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-between border border-slate-700 transition transform hover:scale-[1.01]">
+                        <span class="flex items-center gap-2">
+                            <span>💳</span>
+                            <span class="btn-label font-extrabold">Buy on Gumroad (Cards / Apple Pay)</span>
+                        </span>
+                        <span class="text-[10px] font-mono text-slate-400">Global Checkout ↗</span>
+                    </a>
+
+                    <!-- 3. SuperProfile India (UPI / RuPay) -->
+                    <a id="modalSuperprofileBtn" href="#" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-5 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-bold text-xs uppercase tracking-wider flex items-center justify-between shadow-lg shadow-amber-500/20 transition transform hover:scale-[1.01]">
+                        <span class="flex items-center gap-2">
+                            <span>🇮🇳</span>
+                            <span class="btn-label font-extrabold">Pay via UPI / RuPay / NetBanking (₹ INR)</span>
+                        </span>
+                        <span class="text-[10px] font-mono bg-slate-950/20 px-2.5 py-1 rounded-lg">SuperProfile ➔</span>
+                    </a>
+
+                    <div class="flex items-center justify-center gap-2.5 mt-2 text-[11px] text-slate-400 font-medium">
+                        <span>⚡ Instant Delivery</span>
                         <span>•</span>
-                        <span>🍏 Apple Pay</span>
+                        <span>🔒 256-Bit Encryption</span>
                         <span>•</span>
-                        <span>📱 Google Pay</span>
+                        <span>📄 DRM-Free PDF + EPUB</span>
                     </div>
                 </div>
             </div>
@@ -1579,7 +1605,7 @@
             <div class="px-6 py-3 border-t border-slate-800 bg-slate-950 flex items-center justify-between text-xs text-slate-400">
                 <div class="flex items-center gap-2">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span class="text-[11px]">256-Bit SSL Protection via Whop</span>
+                    <span class="text-[11px]">Direct Merchant Fulfillment • Zero Intermediary Lock-In</span>
                 </div>
                 <button onclick="closeCheckoutModal()" class="text-slate-400 hover:text-white text-[11px] transition">
                     Cancel
@@ -1695,14 +1721,14 @@
 
                     <!-- Multi-Gateway Instant Checkout -->
                     <div class="flex flex-col sm:flex-row items-center gap-3 w-full max-w-md">
-                        <!-- Global USD: Whop / Cards / Apple Pay -->
-                        <button onclick="triggerCheckoutFromReader('usd')" class="w-full sm:flex-1 py-3.5 px-4 rounded-xl font-extrabold text-xs uppercase tracking-wider bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 shadow-xl shadow-emerald-500/25 transition hover:scale-[1.02] flex flex-col items-center justify-center">
-                            <span>Pay in USD ($9.99) ⚡</span>
-                            <span class="text-[10px] font-normal opacity-85 font-mono">Cards • Apple Pay • Whop</span>
+                        <!-- Global USD: PayPal Direct -->
+                        <button onclick="triggerCheckoutFromReader('paypal')" class="w-full sm:flex-1 py-3.5 px-4 rounded-xl font-extrabold text-xs uppercase tracking-wider bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-xl shadow-cyan-500/25 transition hover:scale-[1.02] flex flex-col items-center justify-center">
+                            <span>Pay with PayPal ($ USD) ⚡</span>
+                            <span class="text-[10px] font-normal opacity-85 font-mono">Instant Download • Zero Hassle</span>
                         </button>
                         <!-- Indian INR: SuperProfile UPI / RuPay -->
                         <button onclick="triggerCheckoutFromReader('upi')" class="w-full sm:flex-1 py-3.5 px-4 rounded-xl font-extrabold text-xs uppercase tracking-wider bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 shadow-xl shadow-amber-500/25 transition hover:scale-[1.02] flex flex-col items-center justify-center">
-                            <span>Pay in INR (₹899) 🇮🇳</span>
+                            <span>Pay in INR (₹) 🇮🇳</span>
                             <span class="text-[10px] font-normal opacity-85 font-mono">UPI • PhonePe • GPay</span>
                         </button>
                     </div>
@@ -1713,7 +1739,7 @@
                             <span>Or buy on Gumroad</span> ➔
                         </button>
                         <span class="text-slate-700">•</span>
-                        <button onclick="openWhopCheckout('plan_care_vault_79', 'Complete 14-Book Care Vault ($79)', '$79.00')" class="text-emerald-400 hover:text-emerald-300 font-bold transition text-[11px] flex items-center gap-1">
+                        <button onclick="triggerBundleCheckout('care-vault')" class="text-emerald-400 hover:text-emerald-300 font-bold transition text-[11px] flex items-center gap-1">
                             <span>Get All 14 Books ($79)</span> ⚡
                         </button>
                     </div>
@@ -2806,14 +2832,22 @@
                     <div class="pt-4 border-t border-slate-800/80 flex flex-col gap-2.5">
                         <div class="flex items-center justify-between gap-2">
                             <button onclick="openPreview('${b.id}')" class="text-xs font-semibold text-slate-400 hover:text-cyan-400 flex items-center space-x-1 transition">
-                                <span>Overview →</span>
+                                <span>Overview & Preview →</span>
                             </button>
                             <button onclick="openLockedReader('${b.id}')" class="px-3 py-1.5 rounded-xl text-xs font-bold ${bookPreviewMap[b.id] ? 'bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border-emerald-500/40' : 'bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border-cyan-500/30'} border flex items-center gap-1.5 transition hover:scale-105 shadow-sm">
                                 <span>📖 Read 3 Chapters</span>
                             </button>
                         </div>
-                        <button onclick="triggerCheckout('${b.id}')" class="w-full py-2 rounded-xl text-xs font-bold ${b.category === 'indian' ? 'bg-amber-500 hover:bg-amber-400 text-slate-950' : 'bg-cyan-500 hover:bg-cyan-400 text-slate-950'} transition shadow-md">
-                            ${b.category === 'indian' ? 'Order on SuperProfile (UPI / ₹) ⚡' : 'Buy & Instant Download ($ USD) ⚡'}
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="triggerCheckout('${b.id}', 'paypal')" class="py-2.5 px-2 rounded-xl text-xs font-bold bg-cyan-500 hover:bg-cyan-400 text-slate-950 transition shadow-md flex items-center justify-center gap-1">
+                                <span>⚡ PayPal (${b.price_usd})</span>
+                            </button>
+                            <button onclick="triggerCheckout('${b.id}', '${b.category === 'indian' ? 'superprofile' : 'gumroad'}')" class="py-2.5 px-2 rounded-xl text-xs font-bold ${b.category === 'indian' ? 'bg-amber-500 hover:bg-amber-400 text-slate-950' : 'bg-slate-800 hover:bg-slate-700 text-white border border-slate-700'} transition shadow-md flex items-center justify-center gap-1">
+                                <span>${b.category === 'indian' ? 'UPI (' + b.price_inr + ') 🇮🇳' : 'Gumroad ↗'}</span>
+                            </button>
+                        </div>
+                        <button onclick="openCheckoutModalForBook('${b.id}')" class="text-[11px] text-slate-400 hover:text-cyan-400 font-mono transition text-center py-0.5">
+                            All payment options (PayPal / Gumroad / UPI) →
                         </button>
                     </div>
                 `;
@@ -2868,14 +2902,20 @@
                     </ul>
                 </div>
 
-                <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800/80 flex flex-col md:flex-row items-center justify-between gap-4">
                     <div>
-                        <span class="text-xs text-slate-400 block">Instant Digital Access</span>
-                        <span class="text-lg font-bold text-white font-mono">${b.price_inr} / ${b.price_usd}</span>
+                        <span class="text-xs text-slate-400 block font-mono">Instant Digital Access (PDF + EPUB)</span>
+                        <span class="text-lg font-bold text-white font-mono">${b.price_usd} / ${b.price_inr}</span>
                     </div>
-                    <div class="flex items-center space-x-3 w-full sm:w-auto">
-                        <button onclick="triggerCheckout('${b.id}')" class="w-full sm:w-auto px-6 py-2.5 rounded-xl text-xs font-bold bg-cyan-500 hover:bg-cyan-400 text-slate-950 transition shadow-lg shadow-cyan-500/20">
-                            Instant Checkout & Download ⚡
+                    <div class="flex flex-wrap items-center gap-2 w-full md:w-auto">
+                        <button onclick="triggerCheckout('${b.id}', 'paypal')" class="flex-1 md:flex-initial px-4 py-2.5 rounded-xl text-xs font-bold bg-cyan-500 hover:bg-cyan-400 text-slate-950 transition shadow-lg shadow-cyan-500/20">
+                            ⚡ PayPal (${b.price_usd})
+                        </button>
+                        <button onclick="triggerCheckout('${b.id}', 'gumroad')" class="flex-1 md:flex-initial px-4 py-2.5 rounded-xl text-xs font-bold bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 transition">
+                            Gumroad (${b.price_usd}) ↗
+                        </button>
+                        <button onclick="triggerCheckout('${b.id}', 'superprofile')" class="flex-1 md:flex-initial px-4 py-2.5 rounded-xl text-xs font-bold bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 transition shadow-lg shadow-amber-500/20">
+                            UPI (${b.price_inr}) 🇮🇳
                         </button>
                     </div>
                 </div>
@@ -2888,27 +2928,151 @@
             document.getElementById('previewModal').classList.add('hidden');
         }
 
-        
-        function openWhopCheckout(planId, planName, price) {
+        const PAYPAL_BUSINESS_EMAIL = "adorisedigital@gmail.com";
+
+        function getBookSlug(b) {
+            if (b.gumroad_permalink) return b.gumroad_permalink;
+            return b.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+        }
+
+        function getBookPayPalUrl(b) {
+            const slug = getBookSlug(b);
+            const cleanAmount = (b.price_usd || '$9.99').replace(/[^0-9.]/g, '') || '9.99';
+            const params = new URLSearchParams({
+                cmd: '_xclick',
+                business: PAYPAL_BUSINESS_EMAIL,
+                item_name: b.title + ' - Digital Edition (PDF + EPUB)',
+                item_number: slug,
+                amount: cleanAmount,
+                currency_code: 'USD',
+                no_shipping: '1',
+                no_note: '1',
+                return: `https://books.adorisedigital.com/thank-you/?book=${slug}&gateway=paypal`,
+                cancel_return: `https://books.adorisedigital.com/${slug}/`
+            });
+            return 'https://www.paypal.com/cgi-bin/webscr?' + params.toString();
+        }
+
+        function getBookGumroadUrl(b) {
+            const slug = getBookSlug(b);
+            return b.gumroad_url || `https://adorisedigital.gumroad.com/l/${slug}`;
+        }
+
+        function getBookSuperprofileUrl(b) {
+            return b.superprofile_url || 'https://superprofile.bio/adorisedigital';
+        }
+
+        function openCheckoutModalForBook(bookId) {
+            const b = books.find(item => item.id === bookId);
+            if (!b) return;
+
             const modal = document.getElementById('checkoutModal');
             const title = document.getElementById('modalPlanTitle');
             const priceEl = document.getElementById('modalPlanPrice');
-            const directBtn = document.getElementById('checkoutDirectButton');
+            const paypalBtn = document.getElementById('modalPaypalBtn');
+            const gumroadBtn = document.getElementById('modalGumroadBtn');
+            const superprofileBtn = document.getElementById('modalSuperprofileBtn');
 
-            if (title) title.textContent = planName;
-            if (priceEl && price) {
-                priceEl.textContent = price;
-            } else if (priceEl) {
-                const match = planName.match(/\(\$?[0-9.]+(\/mo)?\)/);
-                if (match) priceEl.textContent = match[0].replace(/[()]/g, '');
+            if (title) title.textContent = b.title;
+            if (priceEl) priceEl.textContent = `${b.price_usd} / ${b.price_inr}`;
+
+            if (paypalBtn) {
+                paypalBtn.href = getBookPayPalUrl(b);
+                const paypalLabel = paypalBtn.querySelector('.btn-label');
+                if (paypalLabel) paypalLabel.textContent = `Pay with PayPal (${b.price_usd})`;
             }
-
-            const checkoutUrl = 'https://whop.com/checkout/' + planId;
-            if (directBtn) directBtn.href = checkoutUrl;
+            if (gumroadBtn) {
+                gumroadBtn.href = getBookGumroadUrl(b);
+                const gumroadLabel = gumroadBtn.querySelector('.btn-label');
+                if (gumroadLabel) gumroadLabel.textContent = `Buy on Gumroad (${b.price_usd}) ↗`;
+            }
+            if (superprofileBtn) {
+                superprofileBtn.href = getBookSuperprofileUrl(b);
+                const superprofileLabel = superprofileBtn.querySelector('.btn-label');
+                if (superprofileLabel) superprofileLabel.textContent = `Pay via UPI / RuPay (${b.price_inr}) 🇮🇳`;
+            }
 
             modal.classList.remove('hidden');
             modal.classList.add('flex');
             document.body.style.overflow = 'hidden';
+        }
+
+        function triggerBundleCheckout(bundleKey) {
+            let title = "Adorise Digital Bundle";
+            let amount = "79.00";
+            let inrPrice = "₹6,999";
+            if (bundleKey === 'care-vault') {
+                title = "Complete 14-Book Care Vault - Digital Bundle (PDF + EPUB)";
+                amount = "79.00";
+                inrPrice = "₹6,999";
+            } else if (bundleKey === 'ai-agent-bundle') {
+                title = "5-Book Autonomous Agency Stack (PDF + Code)";
+                amount = "79.99";
+                inrPrice = "₹6,999";
+            } else if (bundleKey === 'ai-receptionist-bundle') {
+                title = "5-Book AI Receptionist Stack (PDF + Prompts)";
+                amount = "79.99";
+                inrPrice = "₹6,999";
+            }
+
+            const params = new URLSearchParams({
+                cmd: '_xclick',
+                business: PAYPAL_BUSINESS_EMAIL,
+                item_name: title,
+                item_number: bundleKey,
+                amount: amount,
+                currency_code: 'USD',
+                no_shipping: '1',
+                no_note: '1',
+                return: `https://books.adorisedigital.com/thank-you/?bundle=${bundleKey}&gateway=paypal`,
+                cancel_return: 'https://books.adorisedigital.com/'
+            });
+
+            const paypalUrl = 'https://www.paypal.com/cgi-bin/webscr?' + params.toString();
+            const gumroadUrl = 'https://adorisedigital.gumroad.com';
+            const superprofileUrl = 'https://superprofile.bio/adorisedigital';
+
+            const modal = document.getElementById('checkoutModal');
+            const titleEl = document.getElementById('modalPlanTitle');
+            const priceEl = document.getElementById('modalPlanPrice');
+            const paypalBtn = document.getElementById('modalPaypalBtn');
+            const gumroadBtn = document.getElementById('modalGumroadBtn');
+            const superprofileBtn = document.getElementById('modalSuperprofileBtn');
+
+            if (titleEl) titleEl.textContent = title;
+            if (priceEl) priceEl.textContent = `$${amount} / ${inrPrice}`;
+
+            if (paypalBtn) {
+                paypalBtn.href = paypalUrl;
+                const label = paypalBtn.querySelector('.btn-label');
+                if (label) label.textContent = `Pay with PayPal ($${amount})`;
+            }
+            if (gumroadBtn) {
+                gumroadBtn.href = gumroadUrl;
+                const label = gumroadBtn.querySelector('.btn-label');
+                if (label) label.textContent = `Buy on Gumroad ($${amount}) ↗`;
+            }
+            if (superprofileBtn) {
+                superprofileBtn.href = superprofileUrl;
+                const label = superprofileBtn.querySelector('.btn-label');
+                if (label) label.textContent = `Pay via UPI / SuperProfile (${inrPrice}) 🇮🇳`;
+            }
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function openWhopCheckout(planId, planName, price) {
+            if (planId && (planId.includes('care_vault') || planId.includes('care-vault'))) {
+                triggerBundleCheckout('care-vault');
+            } else if (planId && planId.includes('ai_agent')) {
+                triggerBundleCheckout('ai-agent-bundle');
+            } else if (planId && (planId.includes('rec') || planId.includes('receptionist'))) {
+                triggerBundleCheckout('ai-receptionist-bundle');
+            } else {
+                triggerBundleCheckout('care-vault');
+            }
         }
 
         function closeCheckoutModal() {
@@ -2922,17 +3086,14 @@
             const b = books.find(item => item.id === bookId);
             if (!b) return;
 
-            if (gateway === 'upi' || gateway === 'superprofile' || (gateway === 'auto' && b.category === 'indian')) {
-                // Indian Audience -> SuperProfile.bio (UPI / RuPay / NetBanking)
-                window.open(b.superprofile_url || 'https://superprofile.bio/adorisedigital', '_blank');
+            if (gateway === 'paypal') {
+                window.open(getBookPayPalUrl(b), '_blank');
             } else if (gateway === 'gumroad') {
-                // Gumroad direct checkout
-                const gumroadUrl = b.gumroad_url || ('https://adorisedigital.gumroad.com/l/' + b.id.replace('care-', 'care-book-'));
-                window.open(gumroadUrl, '_blank');
+                window.open(getBookGumroadUrl(b), '_blank');
+            } else if (gateway === 'superprofile' || gateway === 'upi') {
+                window.open(getBookSuperprofileUrl(b), '_blank');
             } else {
-                // Global Audience -> Whop Modal (Credit Cards, Apple Pay, Google Pay)
-                const planId = b.whop_plan || 'plan_adorise_ebook_9';
-                openWhopCheckout(planId, b.title, b.price_usd);
+                openCheckoutModalForBook(bookId);
             }
         }
 
@@ -3179,15 +3340,15 @@
             currentReaderBook = null;
         }
 
-        function triggerCheckoutFromReader(gateway = 'auto') {
+        function triggerCheckoutFromReader(gateway = 'paypal') {
             if (currentReaderBook) {
                 triggerCheckout(currentReaderBook.id, gateway);
-            } else if (gateway === 'upi') {
+            } else if (gateway === 'upi' || gateway === 'superprofile') {
                 window.open('https://superprofile.bio/adorisedigital', '_blank');
             } else if (gateway === 'gumroad') {
                 window.open('https://adorisedigital.gumroad.com', '_blank');
             } else {
-                openWhopCheckout('plan_adorise_ebook_9', 'Adorise Digital Blueprint', '$9.99');
+                triggerBundleCheckout('care-vault');
             }
         }
 
