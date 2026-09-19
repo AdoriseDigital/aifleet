@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-11T11:45:34.742Z",
+  "timestamp": "2026-09-19T20:43:34.667Z",
   "sitemap_url": "https://adorisedigital.com/sitemap.xml",
   "pings": [
     {
@@ -19,7 +19,7 @@
     {
       "engine": "IndexNow",
       "endpoint": "https://api.indexnow.org/indexnow",
-      "statusCode": 202,
+      "statusCode": 200,
       "success": true,
       "response": "",
       "submitted_urls": 12

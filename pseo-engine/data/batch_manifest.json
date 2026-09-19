@@ -1,7 +1,7 @@
 {
   "sla_target_daily_pages": 10,
-  "last_batch_date": "2026-09-11",
-  "total_published_pages": 12,
+  "last_batch_date": "2026-09-19",
+  "total_published_pages": 24,
   "batches": [
     {
       "batch_id": 1,
@@ -41,6 +41,47 @@
           "engine": "IndexNow",
           "success": true,
           "status": 202
+        }
+      ]
+    },
+    {
+      "batch_id": 2,
+      "timestamp": "2026-09-19T20:43:39.852Z",
+      "page_count": 12,
+      "slugs": [
+        "/solutions/b2b-saas/ai-agents",
+        "/solutions/b2b-saas/web-app-engineering",
+        "/solutions/b2b-saas/composio-integrations",
+        "/solutions/b2b-saas/whop-monetization",
+        "/solutions/b2b-saas/cloud-vps-hardening",
+        "/solutions/ecommerce-d2c/web-app-engineering",
+        "/solutions/ecommerce-d2c/outbound-infrastructure",
+        "/solutions/ecommerce-d2c/composio-integrations",
+        "/solutions/ecommerce-d2c/whop-monetization",
+        "/solutions/ecommerce-d2c/cloud-vps-hardening",
+        "/solutions/fintech/pseo-engine",
+        "/solutions/fintech/ai-agents"
+      ],
+      "sitemap_stats": {
+        "totalUrls": 32,
+        "chunksCount": 1,
+        "lastmod": "2026-09-19T20:43:34.647Z"
+      },
+      "ping_status": [
+        {
+          "engine": "Google Search Console",
+          "success": false,
+          "status": 404
+        },
+        {
+          "engine": "Bing",
+          "success": false,
+          "status": 410
+        },
+        {
+          "engine": "IndexNow",
+          "success": true,
+          "status": 200
         }
       ]
     }

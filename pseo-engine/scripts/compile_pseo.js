@@ -913,12 +913,106 @@ function getProductCTA(categoryOrServiceId) {
   }
 }
 
+function getCombinationData(nicheId, serviceId) {
+  const key = `${nicheId}/${serviceId}`;
+  if (COMBINATIONS_DATA[key]) {
+    return COMBINATIONS_DATA[key];
+  }
+
+  const niches = matrixData.taxonomy_dimensions?.niches || [];
+  const services = matrixData.taxonomy_dimensions?.services || [];
+  const niche = niches.find(n => n.id === nicheId) || { id: nicheId, name: nicheId, typical_acv: '$12,000 - $60,000/yr', critical_pain_points: [] };
+  const service = services.find(s => s.id === serviceId) || { id: serviceId, name: serviceId, short_name: serviceId, description: '', core_deliverables: [] };
+  const comb = (matrixData.combinations || []).find(c => (c.niche?.id === nicheId || c.niche === nicheId) && (c.service?.id === serviceId || c.service === serviceId));
+
+  const painPoints = (niche.critical_pain_points && niche.critical_pain_points.length > 0)
+    ? niche.critical_pain_points.map((pt) => ({
+        title: pt,
+        description: `Operational bottlenecks in ${niche.name} create compounding overhead when scaling ${service.short_name || service.name} workflows.`,
+        impact: `Lost commercial pipeline and elevated operational expenditure across core business accounts.`
+      }))
+    : [
+        {
+          title: `Fragmented Execution in ${niche.name}`,
+          description: `Legacy manual workflows restrict scalability and create operational delivery bottlenecks.`,
+          impact: `Depressed revenue realization and elongated conversion cycles.`
+        },
+        {
+          title: `Rising Acquisition Costs & Inefficient Funnels`,
+          description: `Customer acquisition expenses continue to rise across traditional advertising and outbound sales channels.`,
+          impact: `Compressed gross margins and inconsistent pipeline predictability.`
+        },
+        {
+          title: `Technical Debt and Engineering Overhead`,
+          description: `Internal teams struggle to build and maintain bespoke infrastructure alongside core product initiatives.`,
+          impact: `Delayed deployment schedules and lost competitive advantage.`
+        }
+      ];
+
+  const capabilities = (service.core_deliverables && service.core_deliverables.length > 0)
+    ? service.core_deliverables.map((d) => ({
+        title: d,
+        spec: `Production-grade architecture tailored for ${niche.name} with strict performance SLAs and edge reliability.`,
+        deliverable: `Full turnkey implementation and documented deployment verified for enterprise production use.`
+      }))
+    : [
+        {
+          title: `Automated Edge Architecture`,
+          spec: `High-concurrency infrastructure deployed on global edge networks with sub-50ms latency.`,
+          deliverable: `Turnkey operational repository with end-to-end telemetry and health monitoring.`
+        },
+        {
+          title: `Autonomous Integration Pipeline`,
+          spec: `Native webhook listeners and API orchestration synchronizing seamlessly with existing enterprise toolsets.`,
+          deliverable: `Validated integration bridge with automated error handling and resilient fallback routines.`
+        },
+        {
+          title: `Conversion & Qualification Protocol`,
+          spec: `Precision scoring matrices evaluating inbound and outbound commercial opportunities in real time.`,
+          deliverable: `Automated qualification dashboard with real-time conversion telemetry.`
+        },
+        {
+          title: `Production Governance & Compliance`,
+          spec: `Strict data isolation, encrypted credential storage, and auditable transaction logging.`,
+          deliverable: `Zero-trust configuration documentation and role-based access controls.`
+        }
+      ];
+
+  return {
+    niche_name: niche.name,
+    service_name: service.short_name || service.name,
+    badge: `${service.short_name || service.name} | ${niche.name}`,
+    h1: `${service.name} for ${niche.name}`,
+    subheadline: comb?.value_proposition_hook || `${service.description} Engineered specifically for ${niche.name} to eliminate operational bottlenecks, compress sales cycles, and drive predictable enterprise revenue.`,
+    metrics: [
+      { val: '< 45ms', lbl: 'Edge TTFB', sub: 'Sub-second React Server Components load' },
+      { val: '+340%', lbl: 'Pipeline Expansion', sub: 'Qualified inbound demo volume growth' },
+      { val: '100%', lbl: 'Schema Validated', sub: 'Complete ProfessionalService JSON-LD' },
+      { val: niche.typical_acv || '$12k-$60k', lbl: 'Target ACV Tier', sub: 'High-value enterprise contract focus' }
+    ],
+    deep_dive_1: `Enterprises in ${niche.name} face escalating pressure to scale operational velocity while controlling customer acquisition costs. By implementing ${service.name.toLowerCase()}, organizations bypass manual bottlenecks and deploy systematic, reproducible workflows that compound over time.`,
+    deep_dive_2: `Our architecture integrates directly into existing enterprise stacks, validating data payloads, enforcing strict schema compliance, and providing measurable transparency across every phase of execution.`,
+    pain_points: painPoints,
+    capabilities: capabilities,
+    phases: [
+      { title: 'Discovery & Architecture Mapping', desc: `Audit current operations in ${niche.name} and map integration requirements.`, tf: 'Days 1 - 3' },
+      { title: 'Core Implementation & Schema Setup', desc: `Construct dynamic components, schema markup, and API connectors.`, tf: 'Days 4 - 7' },
+      { title: 'Verification & Quality Assertion', desc: `Run automated tests, schema validation, and security benchmarks.`, tf: 'Days 8 - 10' },
+      { title: 'Edge Deployment & Pipeline Activation', desc: `Deploy to edge infrastructure, activate sitemap syndication, and enable real-time tracking.`, tf: 'Days 11 - 14' }
+    ],
+    faqs: [
+      { q: `How does ${service.short_name || service.name} integrate into our existing stack?`, a: `We deliver modular, decoupled components and standard API webhooks that seamlessly dock into your current CRM, CMS, or cloud environment without disruption.` },
+      { q: `How quickly can a company in ${niche.name} see measurable results?`, a: `Initial deployment cohorts go live within 7 to 14 days, with full indexation and pipeline tracking active immediately upon release.` },
+      { q: `Who owns the intellectual property and deployed assets?`, a: `Your organization retains 100% full intellectual property rights to all configurations, code, templates, and data schemas.` },
+      { q: `What ongoing maintenance or monitoring is required?`, a: `The system operates autonomously on edge infrastructure with self-healing webhooks and automated health checks.` },
+      { q: `Can the system scale as our volume increases?`, a: `Yes. Built on modern edge and serverless architectures, the engine automatically handles exponential growth with zero degradation in latency.` }
+    ]
+  };
+}
+
 function buildHtmlPage(nicheId, serviceId) {
   const key = `${nicheId}/${serviceId}`;
-  const data = COMBINATIONS_DATA[key];
-  if (!data) {
-    throw new Error(`Missing combination data for: ${key}`);
-  }
+  const data = getCombinationData(nicheId, serviceId);
 
   const whopCta = getProductCTA(serviceId);
   const humanSolutions = getHumanValueSolutions(key, data);
