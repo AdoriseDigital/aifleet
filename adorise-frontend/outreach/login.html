@@ -53,14 +53,24 @@
   <!-- Login Container -->
   <main class="pt-32 pb-16 px-6 max-w-md mx-auto w-full flex-1 flex flex-col justify-center">
     <div class="glass-card p-8 rounded-3xl shadow-2xl border border-slate-800 relative">
-      <div class="text-center mb-8">
+      <!-- Tab Selector -->
+      <div class="flex items-center justify-center space-x-4 mb-6 border-b border-slate-800 pb-3">
+        <button type="button" id="tabSignIn" onclick="setAuthMode('signin')" class="text-sm font-bold text-indigo-400 border-b-2 border-indigo-500 pb-2 cursor-pointer">
+          Sign In
+        </button>
+        <button type="button" id="tabSignUp" onclick="setAuthMode('signup')" class="text-sm font-semibold text-slate-400 hover:text-white pb-2 cursor-pointer">
+          Create Account (3 Free Dispatches)
+        </button>
+      </div>
+
+      <div class="text-center mb-6">
         <span class="px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-[10px] font-mono uppercase tracking-wider inline-block mb-3">SECURE INFRASTRUCTURE ACCESS</span>
-        <h1 class="text-2xl font-black text-white tracking-tight">Sign In to Outreach</h1>
-        <p class="text-xs text-slate-400 mt-1.5">Manage multi-inbox rotation, warmup health & automated outbound</p>
+        <h1 class="text-2xl font-black text-white tracking-tight" id="authTitle">Sign In to Outreach</h1>
+        <p class="text-xs text-slate-400 mt-1.5" id="authSubtitle">Manage multi-inbox rotation, warmup health & automated outbound</p>
       </div>
 
       <!-- Quick Test Drive Accounts -->
-      <div class="mb-6 p-4 rounded-2xl bg-indigo-950/30 border border-indigo-500/30">
+      <div id="testDriveSection" class="mb-6 p-4 rounded-2xl bg-indigo-950/30 border border-indigo-500/30">
         <div class="flex items-center justify-between mb-2">
           <span class="text-[10px] font-mono font-bold text-indigo-400 uppercase tracking-wide">Instant Test-Drive</span>
           <span class="text-[10px] text-slate-400">Click to autofill</span>
@@ -72,7 +82,7 @@
           </button>
           <button type="button" onclick="fillTestAccount('starter')" class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-700 hover:border-indigo-400 text-left transition text-xs group cursor-pointer">
             <div class="font-bold text-slate-200 group-hover:text-indigo-300">Starter Trial</div>
-            <div class="text-[10px] text-slate-400">5 sending inboxes</div>
+            <div class="text-[10px] text-slate-400">3 free dispatches</div>
           </button>
         </div>
       </div>
@@ -85,6 +95,17 @@
 
       <!-- Authentication Form -->
       <form id="authForm" onsubmit="handleAuthSubmit(event)" class="space-y-4">
+        <div id="nameGroup" class="hidden">
+          <label for="name" class="block text-xs font-semibold text-slate-300 mb-1.5">Your Full Name</label>
+          <input 
+            type="text" 
+            id="name" 
+            name="name" 
+            placeholder="Jane Doe"
+            class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white text-sm focus:outline-none focus:border-indigo-500 transition"
+          >
+        </div>
+
         <div>
           <label for="email" class="block text-xs font-semibold text-slate-300 mb-1.5">Work Email Address</label>
           <input 
@@ -130,7 +151,7 @@
           target="_blank"
           class="inline-flex items-center space-x-1.5 text-xs text-indigo-400 hover:text-indigo-300 font-semibold transition"
         >
-          <span>Subscribe via Whop (7-Day Trial)</span>
+          <span>Subscribe via Whop</span>
           <span>&rarr;</span>
         </a>
       </div>
@@ -143,15 +164,46 @@
   </footer>
 
   <script>
+    let authMode = 'signin';
+
+    function setAuthMode(mode) {
+      authMode = mode;
+      const tabSignIn = document.getElementById('tabSignIn');
+      const tabSignUp = document.getElementById('tabSignUp');
+      const nameGroup = document.getElementById('nameGroup');
+      const authTitle = document.getElementById('authTitle');
+      const authSubtitle = document.getElementById('authSubtitle');
+      const submitBtnText = document.getElementById('submitBtnText');
+      const testDrive = document.getElementById('testDriveSection');
+
+      if (mode === 'signup') {
+        tabSignUp.className = "text-sm font-bold text-indigo-400 border-b-2 border-indigo-500 pb-2 cursor-pointer";
+        tabSignIn.className = "text-sm font-semibold text-slate-400 hover:text-white pb-2 cursor-pointer";
+        nameGroup.classList.remove('hidden');
+        authTitle.textContent = "Start Free Outreach Trial";
+        authSubtitle.textContent = "Test 3 multi-inbox dispatches with zero commitments";
+        submitBtnText.textContent = "Create Free Account (3 Dispatches)";
+        if (testDrive) testDrive.classList.add('hidden');
+      } else {
+        tabSignIn.className = "text-sm font-bold text-indigo-400 border-b-2 border-indigo-500 pb-2 cursor-pointer";
+        tabSignUp.className = "text-sm font-semibold text-slate-400 hover:text-white pb-2 cursor-pointer";
+        nameGroup.classList.add('hidden');
+        authTitle.textContent = "Sign In to Outreach";
+        authSubtitle.textContent = "Manage multi-inbox rotation, warmup health & automated outbound";
+        submitBtnText.textContent = "Sign In to Outreach Console";
+        if (testDrive) testDrive.classList.remove('hidden');
+      }
+    }
+
     function fillTestAccount(type) {
       const emailInput = document.getElementById('email');
       const passInput = document.getElementById('password');
-      if (type === 'scale') {
+      if (type === 'scale' || type === 'pro') {
         emailInput.value = 'pro@adorisedigital.com';
-        passInput.value = 'AdorisePro2026!';
+        passInput.value = 'pro_growth_2026';
       } else {
         emailInput.value = 'trial@adorisedigital.com';
-        passInput.value = 'AdoriseTrial2026!';
+        passInput.value = 'trial_pass_2026';
       }
       document.getElementById('errorBox').classList.add('hidden');
     }
@@ -160,6 +212,7 @@
       e.preventDefault();
       const email = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value;
+      const name = document.getElementById('name') ? document.getElementById('name').value.trim() : '';
       const errorBox = document.getElementById('errorBox');
       const errorMsg = document.getElementById('errorMessage');
       const submitBtn = document.getElementById('submitBtn');
@@ -168,14 +221,15 @@
 
       errorBox.classList.add('hidden');
       submitBtn.disabled = true;
-      btnText.textContent = "Authenticating Infrastructure...";
+      btnText.textContent = authMode === 'signup' ? "Creating Free Account..." : "Authenticating Infrastructure...";
       spinner.classList.remove('hidden');
 
       try {
-        const res = await fetch('/api/auth/login', {
+        const endpoint = authMode === 'signup' ? '/api/auth/signup' : '/api/auth/login';
+        const res = await fetch(endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, password })
+          body: JSON.stringify({ email, password, name })
         });
 
         const data = await res.json();
@@ -188,10 +242,10 @@
         const redirectPath = urlParams.get('redirect') || '/dashboard';
         window.location.href = redirectPath;
       } catch (err) {
-        errorMsg.textContent = err.message || 'Login failed. Please check credentials.';
+        errorMsg.textContent = err.message || 'Action failed. Please check credentials.';
         errorBox.classList.remove('hidden');
         submitBtn.disabled = false;
-        btnText.textContent = "Sign In to Outreach Console";
+        btnText.textContent = authMode === 'signup' ? "Create Free Account (3 Dispatches)" : "Sign In to Outreach Console";
         spinner.classList.add('hidden');
       }
     }

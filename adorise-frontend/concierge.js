@@ -106,7 +106,23 @@
     }
 
     // 2. Check for requirement selection
-    if (lower.includes("lead") || lower.includes("prospect") || lower.includes("outreach") || lower.includes("cold email") || lower.includes("client")) {
+    if (lower.includes("voice") || lower.includes("receptionist") || lower.includes("call") || lower.includes("telephony") || lower.includes("phone") || lower.includes("vimeo")) {
+      return "Our **Autonomous AI Voice Agent** answers inbound calls under 480ms, qualifies commercial intent, and locks appointments directly into your GoHighLevel / CRM calendar 24/7.\n\n" +
+             "▶ **Watch the Live Telephony Demo**: [Vimeo AI Voice Agent Demo](https://vimeo.com/1040917253)\n\n" +
+             "Would you like to schedule an architecture call to test a live voice agent tailored for your business?\n\n" +
+             "<div class=\"ac-chips\">" +
+             "<span class=\"ac-chip\" data-q=\"Book 1-on-1 Strategy Call\">📅 Book Call Now</span>" +
+             "<span class=\"ac-chip\" data-q=\"What does the voice agent cost?\">💰 Voice Agent Pricing</span>" +
+             "</div>";
+    } else if (lower.includes("pseo") || lower.includes("seo") || lower.includes("resource") || lower.includes("article") || lower.includes("library") || lower.includes("blueprint")) {
+      return "We have over **350 programmatic SEO (pSEO) pages** and 80+ enterprise blueprints live right now!\n\n" +
+             "Explore our full searchable library here: **[Adorise Knowledge Hub & pSEO Directory](/resources/)**\n\n" +
+             "Which industry would you like to explore? (e.g. B2B SaaS, Agencies, Real Estate, HealthTech)";
+    } else if (lower.includes("book") || lower.includes("consult") || lower.includes("calendar") || lower.includes("schedule") || lower.includes("meeting")) {
+      return "You can book directly with our systems engineers here:\n\n" +
+             "👉 **[Schedule 1-on-1 Architecture Call](https://api.leadconnectorhq.com/widget/booking/adorise-digital-consult)**\n\n" +
+             "Or email our team directly at `support@adorisedigital.com`. We respond within 4 hours.";
+    } else if (lower.includes("lead") || lower.includes("prospect") || lower.includes("outreach") || lower.includes("cold email") || lower.includes("client")) {
       conversationState.requirement = "leads";
       return buildRequirementResponse("leads");
     } else if (lower.includes("content") || lower.includes("social") || lower.includes("post") || lower.includes("linkedin") || lower.includes("x") || lower.includes("twitter")) {
@@ -137,10 +153,10 @@
              renderRequirementChips();
     }
 
-    return "Got it! To match the exact solution for your business:\n\n" +
+    return "Got it! How may I best assist you today?\n\n" +
            "What is your #1 priority right now?\n\n" +
            renderRequirementChips() +
-           "\n\n*(Feel free to drop your business email below to receive our full pricing & architecture deck)*";
+           "\n\n*(Feel free to drop your business email below or reach us directly at `support@adorisedigital.com`)*";
   }
 
   function renderRequirementChips() {
@@ -455,6 +471,41 @@
       .ac-send-btn:hover {
         background: #22d3ee;
       }
+      .ac-teaser-bubble {
+        position: fixed;
+        bottom: 78px;
+        right: 20px;
+        background: #0f172a;
+        border: 1px solid rgba(6, 182, 212, 0.45);
+        color: #f8fafc;
+        padding: 10px 14px;
+        border-radius: 16px;
+        font-size: 12px;
+        font-weight: 500;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 0 15px rgba(6, 182, 212, 0.2);
+        z-index: 99998;
+        display: none;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+      .ac-teaser-bubble:hover {
+        border-color: #22d3ee;
+        transform: translateY(-2px);
+      }
+      .ac-teaser-close {
+        background: none;
+        border: none;
+        color: #94a3b8;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 0 2px;
+        line-height: 1;
+      }
+      .ac-teaser-close:hover {
+        color: #fff;
+      }
       @keyframes acPulse {
         0% { transform: scale(1); }
         50% { transform: scale(1.06); }
@@ -463,10 +514,20 @@
     `;
     document.head.appendChild(style);
 
+    const teaser = document.createElement('div');
+    teaser.id = 'adorise-concierge-teaser';
+    teaser.className = 'ac-teaser-bubble';
+    teaser.innerHTML = `
+      <span>👋 <strong>How can we automate your client acquisition today?</strong> Tap to chat</span>
+      <button class="ac-teaser-close" id="ac-teaser-close" title="Dismiss">&times;</button>
+    `;
+    document.body.appendChild(teaser);
+
     const btn = document.createElement('div');
     btn.id = 'adorise-concierge-btn';
     btn.innerHTML = `
-      <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#10b981;box-shadow:0 0 8px #10b981;"></span>
+      <img src="/assets/creator/creator_avatar_512.jpg" style="width:22px;height:22px;border-radius:50%;object-fit:cover;border:1px solid #06b6d4;" alt="Mika">
+      <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#10b981;box-shadow:0 0 8px #10b981;"></span>
       <span>Adorise Mika</span>
       <span style="background:rgba(0,0,0,0.25);padding:2px 8px;border-radius:8px;font-size:11px;">Voice + Text</span>
     `;
@@ -477,8 +538,7 @@
     modal.innerHTML = `
       <div class="ac-header">
         <div class="ac-header-info">
-          <div class="ac-avatar">
-            M
+          <div class="ac-avatar" style="background: url('/assets/creator/creator_avatar_512.jpg') center/cover no-repeat; border: 1.5px solid #06b6d4; color: transparent;">
             <span class="ac-online-dot"></span>
           </div>
           <div>
@@ -493,13 +553,14 @@
       </div>
       <div class="ac-body" id="ac-messages">
         <div class="ac-msg ac-msg-bot">
-          👋 Hi, I'm <strong>Adorise Mika</strong>.<br><br>
-          What is your primary business or operational requirement right now?<br>
+          👋 Hi there! Welcome to <strong>Adorise Digital</strong>.<br><br>
+          <strong>How can we automate your client acquisition today?</strong><br><br>
+          I'm Mika, your 24/7 AI Concierge. What would you like to explore?
           <div class="ac-chips">
-            <span class="ac-chip" data-q="Need B2B Leads & Cold Outreach">🎯 B2B Leads & Outreach</span>
-            <span class="ac-chip" data-q="Need AI Social Media Content">📱 Social Media & Content</span>
-            <span class="ac-chip" data-q="Need 24/7 AI Customer Support">🤖 Customer Support Bot</span>
-            <span class="ac-chip" data-q="Need Full Autonomous AI Suite">⚡ Full Autonomous Fleet</span>
+            <span class="ac-chip" data-q="Listen to AI Voice Demo">🎙️ Hear Voice Agent Demo</span>
+            <span class="ac-chip" data-q="Automate Inbound Leads & pSEO">📈 Inbound Leads & pSEO</span>
+            <span class="ac-chip" data-q="Deploy Cold Outreach Engine">✉️ Cold Outreach Engine</span>
+            <span class="ac-chip" data-q="Book 1-on-1 Strategy Call">📅 Book Strategy Call</span>
           </div>
         </div>
       </div>
@@ -526,13 +587,49 @@
     const micText = micBtn.querySelector('.ac-mic-text');
     const voiceToggle = document.getElementById('ac-voice-toggle');
     const closeBtn = document.getElementById('ac-close-btn');
+    const teaserClose = document.getElementById('ac-teaser-close');
+
+    function openModal() {
+      modal.classList.add('active');
+      teaser.style.display = 'none';
+      inputEl.focus();
+    }
 
     btn.addEventListener('click', () => {
-      modal.classList.toggle('active');
-      if (modal.classList.contains('active')) inputEl.focus();
+      if (modal.classList.contains('active')) {
+        modal.classList.remove('active');
+      } else {
+        openModal();
+      }
     });
 
-    closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+    teaser.addEventListener('click', (e) => {
+      if (e.target !== teaserClose) {
+        openModal();
+      }
+    });
+
+    teaserClose.addEventListener('click', (e) => {
+      e.stopPropagation();
+      teaser.style.display = 'none';
+      try { sessionStorage.setItem('adorise_teaser_dismissed', '1'); } catch(e) {}
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('active');
+      try { sessionStorage.setItem('adorise_mika_dismissed', '1'); } catch(e) {}
+    });
+
+    // Proactive Auto-Greeting after 8 seconds to capture visitor attention
+    setTimeout(() => {
+      try {
+        if (!sessionStorage.getItem('adorise_mika_dismissed') && !sessionStorage.getItem('adorise_teaser_dismissed') && !modal.classList.contains('active')) {
+          teaser.style.display = 'flex';
+          teaser.style.animation = 'acPulse 1.5s infinite';
+          btn.style.animation = 'acPulse 1.5s infinite';
+        }
+      } catch(e) {}
+    }, 8000);
 
     voiceToggle.addEventListener('click', () => {
       voiceEnabled = !voiceEnabled;

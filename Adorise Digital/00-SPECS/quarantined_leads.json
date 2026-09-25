@@ -1,0 +1,67 @@
+[
+  {
+    "lead": {
+      "email": "webuser@mebebot.com",
+      "first_name": "Mebebot",
+      "surname": "Team",
+      "business": "Mebebot",
+      "matched_service": "ai_customer_service",
+      "url": "https://www.mebebot.com/post/agentic-ai-helpdesk-automation-hr-it",
+      "composite_score": 0.67,
+      "research_score": 0.82
+    },
+    "reason": "Fabricated generic prefix: webuser"
+  },
+  {
+    "lead": {
+      "email": "webuser@drata.com",
+      "first_name": "Drata",
+      "surname": "Team",
+      "business": "Drata",
+      "matched_service": "ai_automation_suite",
+      "url": "https://drata.com/products/governance/custom-workflows",
+      "composite_score": 0.67,
+      "research_score": 0.74
+    },
+    "reason": "Fabricated generic prefix: webuser"
+  },
+  {
+    "lead": {
+      "email": "webuser@zenphi.com",
+      "first_name": "Zenphi",
+      "surname": "Team",
+      "business": "Zenphi",
+      "matched_service": "ai_automation_suite",
+      "url": "https://zenphi.com/zapier-alternative/",
+      "composite_score": 0.67,
+      "research_score": 0.66
+    },
+    "reason": "Fabricated generic prefix: webuser"
+  },
+  {
+    "lead": {
+      "email": "webuser@community.n8n.io",
+      "first_name": "n8n",
+      "surname": "Community",
+      "business": "n8n Community",
+      "matched_service": "ai_automation_suite",
+      "url": "https://community.n8n.io/t/n8n-ai-automation-freelancer-for-digital-agency/79602",
+      "composite_score": 0.53,
+      "research_score": 0.63
+    },
+    "reason": "Blacklisted domain: community.n8n.io"
+  },
+  {
+    "lead": {
+      "email": "webuser@rippling.com",
+      "first_name": "Rippling",
+      "surname": "Team",
+      "business": "Rippling",
+      "matched_service": "ai_automation_suite",
+      "url": "https://www.rippling.com/blog/small-business-automation",
+      "composite_score": 0.53,
+      "research_score": 0.83
+    },
+    "reason": "Fabricated generic prefix: webuser"
+  }
+]

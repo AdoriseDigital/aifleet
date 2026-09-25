@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resources, Consultative FAQs & Programmatic SEO Library | Adorise Digital</title>
+  <meta name="description" content="Explore Adorise Digital's complete library of 80+ enterprise AI architecture blueprints, programmatic SEO case studies, and comprehensive consultative FAQs across 10 commercial sectors.">
+  <link rel="canonical" href="https://adorisedigital.com/resources/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Adorise Digital Resources & FAQ Knowledge Hub">
+  <meta property="og:description" content="Comprehensive directory of autonomous AI agents, programmatic SEO blueprints, and consultative FAQ guides across 10 industries.">
+  <meta property="og:url" content="https://adorisedigital.com/resources/">
+
+  <!-- Fonts & Tailwind -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    h1, h2, h3, h4, .font-display { font-family: 'Outfit', sans-serif; }
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease-out, opacity 0.3s ease;
+      opacity: 0;
+    }
+    .faq-item.active .faq-content {
+      max-height: 500px;
+      opacity: 1;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-cyan-500 selection:text-slate-950 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/85 border-b border-slate-800/60">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="/" class="flex items-center space-x-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 via-indigo-500 to-purple-600 p-0.5 shadow-lg shadow-cyan-500/20 group-hover:shadow-cyan-500/40 transition">
+          <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+            <span class="font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 text-xl">A</span>
+          </div>
+        </div>
+        <span class="font-extrabold text-xl tracking-tight text-white font-display">ADORISE <span class="text-cyan-400 font-light">DIGITAL</span></span>
+      </a>
+
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+        <a href="/" class="hover:text-cyan-400 transition">Home</a>
+        <a href="/solutions/" class="hover:text-cyan-400 transition">Solutions Matrix</a>
+        <a href="/services/" class="hover:text-cyan-400 transition">Services Storefront</a>
+        <a href="/resources/" class="text-cyan-400 font-semibold transition">Resources & pSEO Hub</a>
+        <a href="#faq" class="hover:text-cyan-400 transition">Consultative FAQs</a>
+        <a href="https://books.adorisedigital.com" class="hover:text-cyan-400 transition">48-Book Hub</a>
+      </nav>
+
+      <div class="flex items-center space-x-4">
+        <a href="https://api.leadconnectorhq.com/widget/booking/adorise-digital-consult" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-full text-sm font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25 hover:scale-[1.02] transition">
+          Book Architecture Call
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative pt-16 pb-12 overflow-hidden border-b border-slate-800/50">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(6,182,212,0.12),transparent_50%),radial-gradient(circle_at_top_left,rgba(147,51,234,0.1),transparent_50%)] pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+      <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-xs font-semibold text-cyan-400 mb-6 shadow-inner">
+        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+        <span>Knowledge Center & Programmatic Library</span>
+      </div>
+
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white font-display mb-6">
+        Enterprise AI Resources & <br class="hidden sm:inline" />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-indigo-300 to-purple-400">Programmatic SEO Articles</span>
+      </h1>
+
+      <p class="text-base md:text-lg text-slate-400 max-w-3xl mx-auto font-light leading-relaxed mb-8">
+        Search our complete library of 81+ tailored blueprints, programmatic SEO use cases, and consultative guides across 10 commercial industries. Filter by keyword, industry, or technical capability.
+      </p>
+
+      <!-- Instant Live Search Bar -->
+      <div class="max-w-3xl mx-auto mb-8">
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+            <svg class="h-5 w-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+          </div>
+          <input type="text" id="searchInput" 
+                 class="block w-full pl-11 pr-28 py-4 bg-slate-900/90 border border-slate-700/80 rounded-2xl text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 text-base shadow-2xl transition"
+                 placeholder="Search articles by topic, keyword, or industry (e.g. 'SaaS AI Agents', 'pSEO', 'Real Estate')...">
+          <button id="clearSearchBtn" class="hidden absolute right-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-lg bg-slate-800 text-xs text-slate-400 hover:text-white transition">
+            Clear
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Filter Pills -->
+      <div class="flex flex-wrap items-center justify-center gap-2 max-w-4xl mx-auto mb-4" id="industryPills">
+        <button class="filter-pill active px-3.5 py-1.5 rounded-full text-xs font-semibold bg-cyan-500 text-slate-950 transition" data-filter="all">All Industries (81)</button>
+        <button class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 transition" data-filter="b2b-saas">B2B SaaS</button>
+        <button class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 transition" data-filter="agency-consultancy">Agencies & Consultancies</button>
+        <button class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 transition" data-filter="fintech">FinTech</button>
+        <button class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 transition" data-filter="healthtech-biotech">HealthTech</button>
+        <button class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 transition" data-filter="ecommerce-d2c">E-Commerce</button>
+        <button class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 transition" data-filter="proptech-realestate">Real Estate</button>
+        <button class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 transition" data-filter="cybersecurity">Cybersecurity</button>
+        <button class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 transition" data-filter="edtech">EdTech</button>
+        <button class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 transition" data-filter="legaltech-professional">LegalTech</button>
+        <button class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 transition" data-filter="venture-capital-private-equity">VC & PE</button>
+      </div>
+
+      <!-- Live Counter -->
+      <div class="text-xs text-slate-500 font-medium mt-3" id="resultsCounter">
+        Showing all <span class="text-cyan-400 font-bold">81</span> resource blueprints
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Grid -->
+  <main class="max-w-7xl mx-auto px-6 py-12 flex-grow">
+    
+    <!-- No Results Placeholder -->
+    <div id="noResults" class="hidden text-center py-20">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-600">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+      </div>
+      <h3 class="text-xl font-bold text-white font-display mb-2">No matching blueprints found</h3>
+      <p class="text-slate-400 text-sm max-w-md mx-auto mb-6">Try searching for broader keywords like "agents", "SEO", "outreach", or clear your industry filter.</p>
+      <button id="resetFilterBtn" class="px-5 py-2.5 rounded-xl bg-cyan-500 text-slate-950 font-bold text-sm hover:bg-cyan-400 transition">
+        Reset Search & Filters
+      </button>
+    </div>
+
+    <!-- Articles Grid Container -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="articlesGrid">
+      <!-- Populated via JavaScript -->
+    </div>
+  </main>
+
+  <!-- Featured Voice Demo Section (Vimeo) -->
+  <section class="border-t border-slate-800/80 bg-slate-900/40 py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="p-8 md:p-12 rounded-3xl bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 shadow-2xl">
+        <div class="text-center max-w-2xl mx-auto mb-8">
+          <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-semibold mb-3">
+            <span>▶ Live Audio/Video Demonstration</span>
+          </div>
+          <h2 class="text-2xl md:text-4xl font-extrabold text-white font-display">
+            Listen to the AI Voice Agent in Real Time
+          </h2>
+          <p class="text-slate-400 text-sm md:text-base mt-2">
+            Watch how our conversational voice architecture handles inbound inquiries, qualifies commercial intent, and directly books calendar appointments.
+          </p>
+        </div>
+
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-800 bg-slate-900 aspect-video max-w-3xl mx-auto mb-8">
+          <iframe src="https://player.vimeo.com/video/1040917253?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+                  class="absolute top-0 left-0 w-full h-full" 
+                  frameborder="0" 
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
+                  title="Adorise AI Voice Agent Live Demo">
+          </iframe>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 text-center">
+          <a href="https://api.leadconnectorhq.com/widget/booking/adorise-digital-consult" target="_blank" rel="noopener noreferrer" class="px-7 py-3 rounded-xl font-bold bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25 hover:scale-[1.02] transition text-sm">
+            Book 1-on-1 Architecture Call &rarr;
+          </a>
+          <a href="mailto:support@adorisedigital.com?subject=Custom%20AI%20Architecture%20Inquiry" class="px-7 py-3 rounded-xl font-semibold bg-slate-900 border border-slate-800 text-slate-300 hover:text-white transition text-sm">
+            Email: support@adorisedigital.com
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Consultative FAQ Section -->
+  <section class="border-t border-slate-800/80 bg-slate-950 py-20" id="faq">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-semibold mb-3">
+          <span>Consultative Knowledge & FAQs</span>
+        </div>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-white font-display">
+          Frequently Asked Questions
+        </h2>
+        <p class="text-slate-400 text-base mt-3 max-w-2xl mx-auto">
+          Clear, direct answers regarding our autonomous AI growth fleet, technical implementation, qualification logic, and onboarding process.
+        </p>
+      </div>
+
+      <div class="space-y-4" id="faqAccordion">
+        <!-- FAQ Item 1 -->
+        <div class="faq-item rounded-2xl bg-slate-900/60 border border-slate-800/90 overflow-hidden transition">
+          <button class="w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none" onclick="toggleFaq(this)">
+            <span class="font-bold text-base md:text-lg text-white font-display">1. How does the Adorise Autonomous AI Growth Engine work?</span>
+            <svg class="faq-icon w-5 h-5 text-cyan-400 transition-transform duration-300 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-content px-6 pb-6 text-sm text-slate-400 leading-relaxed">
+            Our ecosystem unifies two core flywheels: <strong>Inbound Acquisition</strong> via hundreds of programmatic SEO pages indexed on Google, and <strong>Outbound Intent Capture</strong> via continuous social radar listening across Reddit, X, and LinkedIn. When qualified prospects engage, our autonomous voice & chat agents qualify their budget, need, and urgency before booking confirmed appointments directly onto your sales calendar.
+          </div>
+        </div>
+
+        <!-- FAQ Item 2 -->
+        <div class="faq-item rounded-2xl bg-slate-900/60 border border-slate-800/90 overflow-hidden transition">
+          <button class="w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none" onclick="toggleFaq(this)">
+            <span class="font-bold text-base md:text-lg text-white font-display">2. How does the AI Voice Agent qualify callers and book calendar slots?</span>
+            <svg class="faq-icon w-5 h-5 text-cyan-400 transition-transform duration-300 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-content px-6 pb-6 text-sm text-slate-400 leading-relaxed">
+            The voice agent uses ultra-low-latency conversational speech synthesis powered by custom enterprise prompt engineering. It listens, responds with realistic cadence, and executes real-time function calls to check calendar availability (e.g. GoHighLevel, Calendly, or Google Calendar). Once the caller confirms a time, the agent locks the appointment, dispatches an SMS confirmation, and notifies your team.
+          </div>
+        </div>
+
+        <!-- FAQ Item 3 -->
+        <div class="faq-item rounded-2xl bg-slate-900/60 border border-slate-800/90 overflow-hidden transition">
+          <button class="w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none" onclick="toggleFaq(this)">
+            <span class="font-bold text-base md:text-lg text-white font-display">3. What is Programmatic SEO (pSEO) and why is it superior to traditional blogging?</span>
+            <svg class="faq-icon w-5 h-5 text-cyan-400 transition-transform duration-300 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-content px-6 pb-6 text-sm text-slate-400 leading-relaxed">
+            Traditional content marketing produces 2–4 manual blog posts a week targeting hyper-competitive head terms. Programmatic SEO programmatically generates hundreds of high-intent, hyper-specific landing pages (e.g. "AI Lead Gen for B2B SaaS", "Cold Email Infrastructure for Roofing"). These capture high-converting, long-tail search intent that competitors overlook, generating compounded organic pipeline with zero ongoing ad spend.
+          </div>
+        </div>
+
+        <!-- FAQ Item 4 -->
+        <div class="faq-item rounded-2xl bg-slate-900/60 border border-slate-800/90 overflow-hidden transition">
+          <button class="w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none" onclick="toggleFaq(this)">
+            <span class="font-bold text-base md:text-lg text-white font-display">4. How does Radar Social Intent Listening capture live buying signals?</span>
+            <svg class="faq-icon w-5 h-5 text-cyan-400 transition-transform duration-300 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-content px-6 pb-6 text-sm text-slate-400 leading-relaxed">
+            Our Radar pipeline monitors communities on Reddit, IndieHackers, and social channels 24/7. When a prospect posts looking for software recommendations, agency partners, or expressing dissatisfaction with an incumbent tool, Radar scores the buying intent (0-100). High-intent leads (80+) are automatically routed to our Outreach Engine for consultative, non-spammy outreach.
+          </div>
+        </div>
+
+        <!-- FAQ Item 5 -->
+        <div class="faq-item rounded-2xl bg-slate-900/60 border border-slate-800/90 overflow-hidden transition">
+          <button class="w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none" onclick="toggleFaq(this)">
+            <span class="font-bold text-base md:text-lg text-white font-display">5. How do the 6 Micro-SaaS applications protect and empower my business?</span>
+            <svg class="faq-icon w-5 h-5 text-cyan-400 transition-transform duration-300 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-content px-6 pb-6 text-sm text-slate-400 leading-relaxed">
+            Each app solves a specific business bottleneck:
+            <ul class="list-disc pl-5 mt-2 space-y-1">
+              <li><strong>Scout:</strong> Real-time intent-scored lead radar.</li>
+              <li><strong>Outreach:</strong> High-deliverability automated cold sequences.</li>
+              <li><strong>Social:</strong> Automated multi-channel content scheduling.</li>
+              <li><strong>DearMee:</strong> DeepSeek-powered executive mental grounding companion.</li>
+              <li><strong>ClipCalm:</strong> Automated video copyright and fair-use shield.</li>
+              <li><strong>InboxCalm:</strong> NLP firewall neutralizing passive-aggressive client emails and drafting de-escalating replies.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- FAQ Item 6 -->
+        <div class="faq-item rounded-2xl bg-slate-900/60 border border-slate-800/90 overflow-hidden transition">
+          <button class="w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none" onclick="toggleFaq(this)">
+            <span class="font-bold text-base md:text-lg text-white font-display">6. Will cold outbound outreach burn or blacklist our primary company domain?</span>
+            <svg class="faq-icon w-5 h-5 text-cyan-400 transition-transform duration-300 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-content px-6 pb-6 text-sm text-slate-400 leading-relaxed">
+            Never. We mandate a strict secondary domain architecture. All outbound communications run across dedicated secondary domains (e.g. <code>get-adorise.com</code>, <code>adorise-partners.com</code>) equipped with SPF, DKIM, DMARC, and automated warmup schedules. Your primary corporate domain is completely insulated and untouched.
+          </div>
+        </div>
+
+        <!-- FAQ Item 7 -->
+        <div class="faq-item rounded-2xl bg-slate-900/60 border border-slate-800/90 overflow-hidden transition">
+          <button class="w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none" onclick="toggleFaq(this)">
+            <span class="font-bold text-base md:text-lg text-white font-display">7. Can this system integrate with our existing CRM and calendar tools?</span>
+            <svg class="faq-icon w-5 h-5 text-cyan-400 transition-transform duration-300 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-content px-6 pb-6 text-sm text-slate-400 leading-relaxed">
+            Yes. We provide native webhooks and API bridges for GoHighLevel (GHL), HubSpot, Salesforce, Slack, and Google Calendar. Every qualified lead, booked appointment, and conversation transcript syncs automatically with zero manual data entry.
+          </div>
+        </div>
+
+        <!-- FAQ Item 8 -->
+        <div class="faq-item rounded-2xl bg-slate-900/60 border border-slate-800/90 overflow-hidden transition">
+          <button class="w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none" onclick="toggleFaq(this)">
+            <span class="font-bold text-base md:text-lg text-white font-display">8. How fast can we get an autonomous growth fleet deployed?</span>
+            <svg class="faq-icon w-5 h-5 text-cyan-400 transition-transform duration-300 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-content px-6 pb-6 text-sm text-slate-400 leading-relaxed">
+            Standard turnaround is 5 to 7 business days from onboarding call to live deployment. We configure the domain infrastructure, deploy your customized pSEO keyword directory, train your voice/chat agent on your offer and pricing, and run complete end-to-end booking tests before going live.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA Banner -->
+  <section class="border-t border-slate-800 bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 py-16">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <h3 class="text-2xl md:text-4xl font-extrabold text-white font-display mb-4">
+        Ready to Automate Your Commercial Growth?
+      </h3>
+      <p class="text-slate-400 text-sm md:text-base max-w-2xl mx-auto mb-8">
+        Speak directly with our systems architects. We will audit your current pipeline and map a tailored autonomous AI strategy for your business.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="https://api.leadconnectorhq.com/widget/booking/adorise-digital-consult" target="_blank" rel="noopener noreferrer" class="px-8 py-3.5 rounded-xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-xl shadow-cyan-500/20 hover:scale-105 transition text-sm">
+          Schedule Free Strategy Call &rarr;
+        </a>
+        <a href="mailto:support@adorisedigital.com" class="px-8 py-3.5 rounded-xl font-semibold bg-slate-900 border border-slate-800 text-slate-300 hover:text-white transition text-sm">
+          Email Support: support@adorisedigital.com
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 bg-slate-950 py-12 mt-auto text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center space-x-3">
+        <span class="font-extrabold text-base tracking-tight text-white font-display">ADORISE <span class="text-cyan-400 font-light">DIGITAL</span></span>
+        <span>&copy; 2026 Trendy DigiStore LLC. All rights reserved.</span>
+      </div>
+      <div class="flex flex-wrap items-center gap-6">
+        <a href="/" class="hover:text-cyan-400 transition">Home</a>
+        <a href="/solutions/" class="hover:text-cyan-400 transition">Solutions</a>
+        <a href="/services/" class="hover:text-cyan-400 transition">Services</a>
+        <a href="/resources/" class="text-cyan-400 font-semibold transition">Resources & FAQs</a>
+        <a href="https://books.adorisedigital.com" class="hover:text-cyan-400 transition">48-Book Hub</a>
+        <a href="mailto:support@adorisedigital.com" class="hover:text-cyan-400 transition">support@adorisedigital.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Client-side Interactive Search & Filtering Script -->
+  <script>
+    const articles = [{"title": "Enterprise AI & Automation Solutions Matrix", "url": "/solutions/", "description": "Explore autonomous AI agents, programmatic SEO architecture, and cold outbound systems across 10 commercial enterprise sectors.", "industry": "Enterprise Automation", "industry_slug": "", "capability": "Overview", "capability_slug": ""}, {"title": "Digital Agencies & High-Growth Consultancies AI & Automation Solutions", "url": "/solutions/agency-consultancy/", "description": "Deploy custom autonomous AI agents, programmatic SEO systems, and automated revenue engines for Digital Agencies & High-Growth Consultancies.", "industry": "Digital Agencies & Consultancies", "industry_slug": "agency-consultancy", "capability": "Overview", "capability_slug": ""}, {"title": "Autonomous AI Agents for Digital Agencies & High-Growth Consultancies", "url": "/solutions/agency-consultancy/ai-agents/", "description": "Multiply agency output without headcount growth by engineering autonomous client fulfillment and reporting agents.", "industry": "Digital Agencies & Consultancies", "industry_slug": "agency-consultancy", "capability": "Ai Agents", "capability_slug": "ai-agents"}, {"title": "Cloudflare & VPS Infrastructure for Digital Agencies & High-Growth Consultancies", "url": "/solutions/agency-consultancy/cloud-vps-hardening/", "description": "Host 50+ client web applications and backends on secure, containerized VPS clusters with automated SSL and 99.99% uptime.", "industry": "Digital Agencies & Consultancies", "industry_slug": "agency-consultancy", "capability": "Cloud Vps Hardening", "capability_slug": "cloud-vps-hardening"}, {"title": "Composio Agent Integrations for Digital Agencies & High-Growth Consultancies", "url": "/solutions/agency-consultancy/composio-integrations/", "description": "Connect your custom client fulfillment agents directly into 250+ cloud apps with battle-tested OAuth callbacks and sandbox testing.", "industry": "Digital Agencies & Consultancies", "industry_slug": "agency-consultancy", "capability": "Composio Integrations", "capability_slug": "composio-integrations"}, {"title": "Cold Outbound & Lead Engine for Digital Agencies & High-Growth Consultancies", "url": "/solutions/agency-consultancy/outbound-infrastructure/", "description": "Fill your agency sales calendar with Fortune 500 brand decision-makers using a multi-channel outbound infrastructure operating on autopilot.", "industry": "Digital Agencies & Consultancies", "industry_slug": "agency-consultancy", "capability": "Outbound Infrastructure", "capability_slug": "outbound-infrastructure"}, {"title": "Programmatic SEO Engine for Digital Agencies & High-Growth Consultancies", "url": "/solutions/agency-consultancy/pseo-engine/", "description": "End the feast-or-famine client acquisition cycle. Deploy a scalable, database-driven programmatic SEO engine to capture high-value retainer clients and expand agency margins.", "industry": "Digital Agencies & Consultancies", "industry_slug": "agency-consultancy", "capability": "Pseo Engine", "capability_slug": "pseo-engine"}, {"title": "Next.js Web Engineering for Digital Agencies & High-Growth Consultancies", "url": "/solutions/agency-consultancy/web-app-engineering/", "description": "Partner with elite Next.js App Router engineers in New York to build bespoke, mission-critical web applications for high-growth enterprises.", "industry": "Digital Agencies & Consultancies", "industry_slug": "agency-consultancy", "capability": "Web App Engineering", "capability_slug": "web-app-engineering"}, {"title": "Whop Monetization Systems for Digital Agencies & High-Growth Consultancies", "url": "/solutions/agency-consultancy/whop-monetization/", "description": "Productize high-ticket agency services into automated recurring retainers, paid mastermind portals, and private asset vaults on Whop.", "industry": "Digital Agencies & Consultancies", "industry_slug": "agency-consultancy", "capability": "Whop Monetization", "capability_slug": "whop-monetization"}, {"title": "B2B SaaS & Enterprise Software AI & Automation Solutions", "url": "/solutions/b2b-saas/", "description": "Deploy custom autonomous AI agents, programmatic SEO systems, and automated revenue engines for B2B SaaS & Enterprise Software.", "industry": "B2B SaaS & Cloud Software", "industry_slug": "b2b-saas", "capability": "Overview", "capability_slug": ""}, {"title": "Autonomous AI Agents for B2B SaaS & Enterprise Software", "url": "/solutions/b2b-saas/ai-agents/", "description": "Deploy production-grade autonomous agent squads in San Francisco that automate end-to-end customer onboarding, data enrichment, and back-office ops.", "industry": "B2B SaaS & Cloud Software", "industry_slug": "b2b-saas", "capability": "Ai Agents", "capability_slug": "ai-agents"}, {"title": "Cloudflare & VPS Infrastructure for B2B SaaS & Enterprise Software", "url": "/solutions/b2b-saas/cloud-vps-hardening/", "description": "Slash AWS/GCP bills by 70% with hardened single-tenant Ubuntu VPS environments running isolated Docker Compose topologies and automated backups.", "industry": "B2B SaaS & Cloud Software", "industry_slug": "b2b-saas", "capability": "Cloud Vps Hardening", "capability_slug": "cloud-vps-hardening"}, {"title": "Composio Agent Integrations for B2B SaaS & Enterprise Software", "url": "/solutions/b2b-saas/composio-integrations/", "description": "Deploy a private, self-hosted Composio API environment that empowers your AI agents to execute actions across GitHub, Slack, Jira, and CRM tools securely.", "industry": "B2B SaaS & Cloud Software", "industry_slug": "b2b-saas", "capability": "Composio Integrations", "capability_slug": "composio-integrations"}, {"title": "Cold Outbound & Lead Engine for B2B SaaS & Enterprise Software", "url": "/solutions/b2b-saas/outbound-infrastructure/", "description": "Fill your demo calendar with qualified software decision-makers. Autonomous intent scraping across X, Reddit, and LinkedIn paired with multi-domain cold email deliverability.", "industry": "B2B SaaS & Cloud Software", "industry_slug": "b2b-saas", "capability": "Outbound Infrastructure", "capability_slug": "outbound-infrastructure"}, {"title": "Programmatic SEO Engine for B2B SaaS & Enterprise Software", "url": "/solutions/b2b-saas/pseo-engine/", "description": "Capture high-intent enterprise software buyers searching for specific software integrations, competitor alternatives, and automated workflows. Engineered on Next.js App Router with ISR to reduce customer acquisition costs and scale organic demo requests.", "industry": "B2B SaaS & Cloud Software", "industry_slug": "b2b-saas", "capability": "Pseo Engine", "capability_slug": "pseo-engine"}, {"title": "Next.js Web Engineering for B2B SaaS & Enterprise Software", "url": "/solutions/b2b-saas/web-app-engineering/", "description": "Architect production Next.js App Router applications with sub-second performance, strict TypeScript guarantees, and enterprise scalability in San Francisco.", "industry": "B2B SaaS & Cloud Software", "industry_slug": "b2b-saas", "capability": "Web App Engineering", "capability_slug": "web-app-engineering"}, {"title": "Whop Monetization Systems for B2B SaaS & Enterprise Software", "url": "/solutions/b2b-saas/whop-monetization/", "description": "Turn enterprise software templates, private developer APIs, and premium compute access into recurring revenue using custom Whop store integrations.", "industry": "B2B SaaS & Cloud Software", "industry_slug": "b2b-saas", "capability": "Whop Monetization", "capability_slug": "whop-monetization"}, {"title": "Enterprise Cybersecurity & DevSecOps AI & Automation Solutions", "url": "/solutions/cybersecurity/", "description": "Deploy custom autonomous AI agents, programmatic SEO systems, and automated revenue engines for Enterprise Cybersecurity & DevSecOps.", "industry": "Cybersecurity & Compliance", "industry_slug": "cybersecurity", "capability": "Overview", "capability_slug": ""}, {"title": "Autonomous AI Agents for Enterprise Cybersecurity & DevSecOps", "url": "/solutions/cybersecurity/ai-agents/", "description": "Harden your security operations center with containerized agents that parse telemetry, correlate logs, and draft containment plans.", "industry": "Cybersecurity & Compliance", "industry_slug": "cybersecurity", "capability": "Ai Agents", "capability_slug": "ai-agents"}, {"title": "Cloudflare & VPS Hardening for Enterprise Cybersecurity & DevSecOps", "url": "/solutions/cybersecurity/cloud-vps-hardening/", "description": "Eliminate public IP attack surfaces with Cloudflare zero-trust tunnels, automated edge WAF rules, and isolated Docker container bridge networks on Linux VPS instances.", "industry": "Cybersecurity & Compliance", "industry_slug": "cybersecurity", "capability": "Cloud Vps Hardening", "capability_slug": "cloud-vps-hardening"}, {"title": "Composio Agent Integrations for Enterprise Cybersecurity & DevSecOps", "url": "/solutions/cybersecurity/composio-integrations/", "description": "Safeguard enterprise API keys with local token vaults, automated secret rotation, and immutable tool-call audit logs for autonomous LLM runs.", "industry": "Cybersecurity & Compliance", "industry_slug": "cybersecurity", "capability": "Composio Integrations", "capability_slug": "composio-integrations"}, {"title": "Cold Outbound & Lead Engine for Enterprise Cybersecurity & DevSecOps", "url": "/solutions/cybersecurity/outbound-infrastructure/", "description": "Reach CISOs and security directors at the exact moment their public repositories or job boards indicate a critical architecture shift.", "industry": "Cybersecurity & Compliance", "industry_slug": "cybersecurity", "capability": "Outbound Infrastructure", "capability_slug": "outbound-infrastructure"}, {"title": "Programmatic SEO Engine for Enterprise Cybersecurity & DevSecOps", "url": "/solutions/cybersecurity/pseo-engine/", "description": "Index hundreds of regulatory framework (SOC2, HIPAA, ISO) and vulnerability comparison pages to capture enterprise security buyers.", "industry": "Cybersecurity & Compliance", "industry_slug": "cybersecurity", "capability": "Pseo Engine", "capability_slug": "pseo-engine"}, {"title": "Next.js Web Engineering for Enterprise Cybersecurity & DevSecOps", "url": "/solutions/cybersecurity/web-app-engineering/", "description": "Build intuitive, low-latency telemetry consoles, policy builders, and compliance auditing interfaces across the European Union.", "industry": "Cybersecurity & Compliance", "industry_slug": "cybersecurity", "capability": "Web App Engineering", "capability_slug": "web-app-engineering"}, {"title": "Whop Monetization Systems for Enterprise Cybersecurity & DevSecOps", "url": "/solutions/cybersecurity/whop-monetization/", "description": "Distribute commercial threat feeds, zero-day alerts, and compliance runbooks via automated Whop API key provisioning and revoking.", "industry": "Cybersecurity & Compliance", "industry_slug": "cybersecurity", "capability": "Whop Monetization", "capability_slug": "whop-monetization"}, {"title": "High-Volume E-Commerce & D2C Brands AI & Automation Solutions", "url": "/solutions/ecommerce-d2c/", "description": "Deploy custom autonomous AI agents, programmatic SEO systems, and automated revenue engines for High-Volume E-Commerce & D2C Brands.", "industry": "E-Commerce & D2C Brands", "industry_slug": "ecommerce-d2c", "capability": "Overview", "capability_slug": ""}, {"title": "Autonomous AI Agents for High-Volume E-Commerce & D2C Brands", "url": "/solutions/ecommerce-d2c/ai-agents/", "description": "Deploy 24/7 autonomous support bots and real-time voice agents that handle order status lookups, return requests, and product recommendations directly inside Shopify and Gorgias.", "industry": "E-Commerce & D2C Brands", "industry_slug": "ecommerce-d2c", "capability": "Ai Agents", "capability_slug": "ai-agents"}, {"title": "Cloudflare & VPS Infrastructure for High-Volume E-Commerce & D2C Brands", "url": "/solutions/ecommerce-d2c/cloud-vps-hardening/", "description": "Absorb 50,000+ concurrent flash-sale shoppers without crashing your backend using Cloudflare Edge Workers and stale-while-revalidate caching.", "industry": "E-Commerce & D2C Brands", "industry_slug": "ecommerce-d2c", "capability": "Cloud Vps Hardening", "capability_slug": "cloud-vps-hardening"}, {"title": "Composio Agent Integrations for High-Volume E-Commerce & D2C Brands", "url": "/solutions/ecommerce-d2c/composio-integrations/", "description": "Empower LLM customer support and logistics agents to modify Shopify orders, initiate refunds, and query warehouse ERPs securely.", "industry": "E-Commerce & D2C Brands", "industry_slug": "ecommerce-d2c", "capability": "Composio Integrations", "capability_slug": "composio-integrations"}, {"title": "Cold Outbound & Lead Engine for High-Volume E-Commerce & D2C Brands", "url": "/solutions/ecommerce-d2c/outbound-infrastructure/", "description": "Multi-channel intent scraping, social signal listening, AI-personalized sequence generation, and deliverability infrastructure. Engineered specifically for High-Volume E-Commerce & D2C Brands to eliminate operational bottlenecks, compress sales cycles, and drive predictable enterprise revenue.", "industry": "E-Commerce & D2C Brands", "industry_slug": "ecommerce-d2c", "capability": "Outbound Infrastructure", "capability_slug": "outbound-infrastructure"}, {"title": "Programmatic SEO Engine for High-Volume E-Commerce & D2C Brands", "url": "/solutions/ecommerce-d2c/pseo-engine/", "description": "Index thousands of long-tail product queries, variant attributes, and localized inventory without slowing down your Shopify store. Built on Next.js edge caching for sub-second page loads.", "industry": "E-Commerce & D2C Brands", "industry_slug": "ecommerce-d2c", "capability": "Pseo Engine", "capability_slug": "pseo-engine"}, {"title": "Next.js Web Engineering for High-Volume E-Commerce & D2C Brands", "url": "/solutions/ecommerce-d2c/web-app-engineering/", "description": "Deliver ultra-fast headless storefronts with 99+ Core Web Vitals that double mobile checkout conversions for scaling D2C brands.", "industry": "E-Commerce & D2C Brands", "industry_slug": "ecommerce-d2c", "capability": "Web App Engineering", "capability_slug": "web-app-engineering"}, {"title": "Whop Monetization Systems for High-Volume E-Commerce & D2C Brands", "url": "/solutions/ecommerce-d2c/whop-monetization/", "description": "Launch exclusive VIP buyer clubs, secret discount vaults, and early-access drop portals powered by Whop membership entitlements.", "industry": "E-Commerce & D2C Brands", "industry_slug": "ecommerce-d2c", "capability": "Whop Monetization", "capability_slug": "whop-monetization"}, {"title": "EdTech & Online Learning Platforms AI & Automation Solutions", "url": "/solutions/edtech/", "description": "Deploy custom autonomous AI agents, programmatic SEO systems, and automated revenue engines for EdTech & Online Learning Platforms.", "industry": "EdTech & Learning Platforms", "industry_slug": "edtech", "capability": "Overview", "capability_slug": ""}, {"title": "Autonomous AI Agents for EdTech & Online Learning Platforms", "url": "/solutions/edtech/ai-agents/", "description": "Engineer autonomous AI tutoring squads that evaluate student code submissions, provide step-by-step Socratic hints, and adapt to individual pace.", "industry": "EdTech & Learning Platforms", "industry_slug": "edtech", "capability": "Ai Agents", "capability_slug": "ai-agents"}, {"title": "Cloudflare & VPS Infrastructure for EdTech & Online Learning Platforms", "url": "/solutions/edtech/cloud-vps-hardening/", "description": "Deploy scalable, GDPR-compliant learning management backends on dedicated Linux VPS nodes in Frankfurt and Berlin.", "industry": "EdTech & Learning Platforms", "industry_slug": "edtech", "capability": "Cloud Vps Hardening", "capability_slug": "cloud-vps-hardening"}, {"title": "Composio Agent Integrations for EdTech & Online Learning Platforms", "url": "/solutions/edtech/composio-integrations/", "description": "Link AI tutor agents into Canvas, Discord, and Google Classroom via self-hosted Composio execution bridges with GDPR-compliant data masking.", "industry": "EdTech & Learning Platforms", "industry_slug": "edtech", "capability": "Composio Integrations", "capability_slug": "composio-integrations"}, {"title": "Cold Outbound & Lead Engine for EdTech & Online Learning Platforms", "url": "/solutions/edtech/outbound-infrastructure/", "description": "Connect with university deans, corporate L&D executives, and school administrators with personalized pitch angles and automated follow-ups.", "industry": "EdTech & Learning Platforms", "industry_slug": "edtech", "capability": "Outbound Infrastructure", "capability_slug": "outbound-infrastructure"}, {"title": "Programmatic SEO Engine for EdTech & Online Learning Platforms", "url": "/solutions/edtech/pseo-engine/", "description": "Index your entire course catalog, lesson syllabi, and skill certification matrices to capture prospective students searching for specific career skills and technical credentials.", "industry": "EdTech & Learning Platforms", "industry_slug": "edtech", "capability": "Pseo Engine", "capability_slug": "pseo-engine"}, {"title": "Next.js Web Engineering for EdTech & Online Learning Platforms", "url": "/solutions/edtech/web-app-engineering/", "description": "Develop engaging, interactive learning platforms with real-time video streaming, quiz engines, and student progress tracking.", "industry": "EdTech & Learning Platforms", "industry_slug": "edtech", "capability": "Web App Engineering", "capability_slug": "web-app-engineering"}, {"title": "Whop Monetization Systems for EdTech & Online Learning Platforms", "url": "/solutions/edtech/whop-monetization/", "description": "Architect frictionless student checkout, tier-gated Discord/Telegram access, and automated curriculum unlocking through Whop's robust API.", "industry": "EdTech & Learning Platforms", "industry_slug": "edtech", "capability": "Whop Monetization", "capability_slug": "whop-monetization"}, {"title": "FinTech & Digital Financial Services AI & Automation Solutions", "url": "/solutions/fintech/", "description": "Deploy custom autonomous AI agents, programmatic SEO systems, and automated revenue engines for FinTech & Digital Financial Services.", "industry": "FinTech & Wealth Management", "industry_slug": "fintech", "capability": "Overview", "capability_slug": ""}, {"title": "Autonomous AI Agents for FinTech & Digital Financial Services", "url": "/solutions/fintech/ai-agents/", "description": "Build audit-logged, deterministic AI agents in New York for financial reconciliation, portfolio analytics, and automated credit assessment.", "industry": "FinTech & Wealth Management", "industry_slug": "fintech", "capability": "Ai Agents", "capability_slug": "ai-agents"}, {"title": "Cloudflare & VPS Infrastructure for FinTech & Digital Financial Services", "url": "/solutions/fintech/cloud-vps-hardening/", "description": "Protect financial APIs against zero-day exploits, credential stuffing, and volumetric DDoS attacks with enterprise Cloudflare WAF engineering.", "industry": "FinTech & Wealth Management", "industry_slug": "fintech", "capability": "Cloud Vps Hardening", "capability_slug": "cloud-vps-hardening"}, {"title": "Composio Agent Integrations for FinTech & Digital Financial Services", "url": "/solutions/fintech/composio-integrations/", "description": "Guarantee strict data sovereignty and zero token leaks by deploying self-hosted Composio tool execution gateways behind VPC firewalls.", "industry": "FinTech & Wealth Management", "industry_slug": "fintech", "capability": "Composio Integrations", "capability_slug": "composio-integrations"}, {"title": "Cold Outbound & Lead Engine for FinTech & Digital Financial Services", "url": "/solutions/fintech/outbound-infrastructure/", "description": "Identify and engage institutional treasury heads, CFOs, and compliance executives actively discussing payment rail migration, banking-as-a-service, and AML automation.", "industry": "FinTech & Wealth Management", "industry_slug": "fintech", "capability": "Outbound Infrastructure", "capability_slug": "outbound-infrastructure"}, {"title": "Programmatic SEO Engine for FinTech & Digital Financial Services", "url": "/solutions/fintech/pseo-engine/", "description": "Capture high-LTV institutional and consumer finance queries across London and Europe with compliant, data-driven programmatic pages.", "industry": "FinTech & Wealth Management", "industry_slug": "fintech", "capability": "Pseo Engine", "capability_slug": "pseo-engine"}, {"title": "Next.js Web Engineering for FinTech & Digital Financial Services", "url": "/solutions/fintech/web-app-engineering/", "description": "Build high-throughput financial dashboards, real-time portfolio monitors, and bank-grade web applications in New York City.", "industry": "FinTech & Wealth Management", "industry_slug": "fintech", "capability": "Web App Engineering", "capability_slug": "web-app-engineering"}, {"title": "Whop Monetization Systems for FinTech & Digital Financial Services", "url": "/solutions/fintech/whop-monetization/", "description": "Gate proprietary quantitative trading algorithms, market reports, and private investor Discord channels with tamper-proof Whop license checks.", "industry": "FinTech & Wealth Management", "industry_slug": "fintech", "capability": "Whop Monetization", "capability_slug": "whop-monetization"}, {"title": "HealthTech & Digital Health Platforms AI & Automation Solutions", "url": "/solutions/healthtech-biotech/", "description": "Deploy custom autonomous AI agents, programmatic SEO systems, and automated revenue engines for HealthTech & Digital Health Platforms.", "industry": "HealthTech & Telehealth", "industry_slug": "healthtech-biotech", "capability": "Overview", "capability_slug": ""}, {"title": "Autonomous AI Agents for HealthTech & Digital Health Platforms", "url": "/solutions/healthtech-biotech/ai-agents/", "description": "Automate patient onboarding, clinical appointment scheduling, and provider credentialing with HIPAA-compliant, zero-hallucination autonomous agent workflows.", "industry": "HealthTech & Telehealth", "industry_slug": "healthtech-biotech", "capability": "Ai Agents", "capability_slug": "ai-agents"}, {"title": "Cloudflare & VPS Infrastructure for HealthTech & Digital Health Platforms", "url": "/solutions/healthtech-biotech/cloud-vps-hardening/", "description": "Architect private, air-gapped Docker Compose database and backend topologies on isolated VPS hosts that satisfy strict HIPAA auditing rules.", "industry": "HealthTech & Telehealth", "industry_slug": "healthtech-biotech", "capability": "Cloud Vps Hardening", "capability_slug": "cloud-vps-hardening"}, {"title": "Composio Agent Integrations for HealthTech & Digital Health Platforms", "url": "/solutions/healthtech-biotech/composio-integrations/", "description": "Integrate EHR and telemedicine APIs into secure autonomous agent workflows with strict cryptographic token storage and zero PHI leakage.", "industry": "HealthTech & Telehealth", "industry_slug": "healthtech-biotech", "capability": "Composio Integrations", "capability_slug": "composio-integrations"}, {"title": "Cold Outbound & Lead Engine for HealthTech & Digital Health Platforms", "url": "/solutions/healthtech-biotech/outbound-infrastructure/", "description": "Acquire licensed medical practitioners, clinic directors, and specialized researchers with verified clinical email deliverability workflows.", "industry": "HealthTech & Telehealth", "industry_slug": "healthtech-biotech", "capability": "Outbound Infrastructure", "capability_slug": "outbound-infrastructure"}, {"title": "Programmatic SEO Engine for HealthTech & Digital Health Platforms", "url": "/solutions/healthtech-biotech/pseo-engine/", "description": "Rank for thousands of specialized diagnostic, provider, and clinical search terms with medically accurate, schema-verified templates.", "industry": "HealthTech & Telehealth", "industry_slug": "healthtech-biotech", "capability": "Pseo Engine", "capability_slug": "pseo-engine"}, {"title": "Next.js Web Engineering for HealthTech & Digital Health Platforms", "url": "/solutions/healthtech-biotech/web-app-engineering/", "description": "Engineer HIPAA-ready patient portals, telemedicine dashboards, and clinical data interfaces with Next.js and Supabase in Boston.", "industry": "HealthTech & Telehealth", "industry_slug": "healthtech-biotech", "capability": "Web App Engineering", "capability_slug": "web-app-engineering"}, {"title": "Whop Monetization Systems for HealthTech & Digital Health Platforms", "url": "/solutions/healthtech-biotech/whop-monetization/", "description": "End-to-end monetization architecture, tier entitlement logic, community access gating, and payment webhooks on Whop. Engineered specifically for HealthTech & Digital Health Platforms to eliminate operational bottlenecks, compress sales cycles, and drive predictable enterprise revenue.", "industry": "HealthTech & Telehealth", "industry_slug": "healthtech-biotech", "capability": "Whop Monetization", "capability_slug": "whop-monetization"}, {"title": "LegalTech & High-Ticket Professional Services AI & Automation Solutions", "url": "/solutions/legaltech-professional/", "description": "Deploy custom autonomous AI agents, programmatic SEO systems, and automated revenue engines for LegalTech & High-Ticket Professional Services.", "industry": "LegalTech & Professional Services", "industry_slug": "legaltech-professional", "capability": "Overview", "capability_slug": ""}, {"title": "Autonomous AI Agents for LegalTech & High-Ticket Professional Services", "url": "/solutions/legaltech-professional/ai-agents/", "description": "Eliminate partner administrative overhead with intelligent legal intake screening, preliminary conflict-check automation, and practice area qualification bots.", "industry": "LegalTech & Professional Services", "industry_slug": "legaltech-professional", "capability": "Ai Agents", "capability_slug": "ai-agents"}, {"title": "Cloudflare & VPS Infrastructure for LegalTech & High-Ticket Professional Services", "url": "/solutions/legaltech-professional/cloud-vps-hardening/", "description": "Deploy sovereign, UK-hosted legal applications on hardened Linux VPS instances behind Caddy reverse proxies with automated TLS certificates.", "industry": "LegalTech & Professional Services", "industry_slug": "legaltech-professional", "capability": "Cloud Vps Hardening", "capability_slug": "cloud-vps-hardening"}, {"title": "Composio Agent Integrations for LegalTech & High-Ticket Professional Services", "url": "/solutions/legaltech-professional/composio-integrations/", "description": "Bridge LLM review agents directly with Clio, DocuSign, and NetDocuments through self-hosted, authenticated Composio tool calling.", "industry": "LegalTech & Professional Services", "industry_slug": "legaltech-professional", "capability": "Composio Integrations", "capability_slug": "composio-integrations"}, {"title": "Cold Outbound & Lead Engine for LegalTech & High-Ticket Professional Services", "url": "/solutions/legaltech-professional/outbound-infrastructure/", "description": "Target General Counsels and compliance chiefs when federal court dockets or regulatory filings indicate active commercial litigation.", "industry": "LegalTech & Professional Services", "industry_slug": "legaltech-professional", "capability": "Outbound Infrastructure", "capability_slug": "outbound-infrastructure"}, {"title": "Programmatic SEO Engine for LegalTech & High-Ticket Professional Services", "url": "/solutions/legaltech-professional/pseo-engine/", "description": "Replace $100+/click Google Ads with an organic programmatic search engine covering every jurisdiction, legal specialty, and case archetype.", "industry": "LegalTech & Professional Services", "industry_slug": "legaltech-professional", "capability": "Pseo Engine", "capability_slug": "pseo-engine"}, {"title": "Next.js Web Engineering for LegalTech & High-Ticket Professional Services", "url": "/solutions/legaltech-professional/web-app-engineering/", "description": "Develop enterprise legal client portals with encrypted document sharing, timestamped audit trails, and integrated billing in Singapore.", "industry": "LegalTech & Professional Services", "industry_slug": "legaltech-professional", "capability": "Web App Engineering", "capability_slug": "web-app-engineering"}, {"title": "Whop Monetization Systems for LegalTech & High-Ticket Professional Services", "url": "/solutions/legaltech-professional/whop-monetization/", "description": "Monetize standardized legal contracts, compliance checklists, and corporate filing templates through frictionless Whop digital delivery.", "industry": "LegalTech & Professional Services", "industry_slug": "legaltech-professional", "capability": "Whop Monetization", "capability_slug": "whop-monetization"}, {"title": "PropTech & Commercial Real Estate Platforms AI & Automation Solutions", "url": "/solutions/proptech-realestate/", "description": "Deploy custom autonomous AI agents, programmatic SEO systems, and automated revenue engines for PropTech & Commercial Real Estate Platforms.", "industry": "PropTech & Commercial Real Estate", "industry_slug": "proptech-realestate", "capability": "Overview", "capability_slug": ""}, {"title": "Autonomous AI Agents for PropTech & Commercial Real Estate Platforms", "url": "/solutions/proptech-realestate/ai-agents/", "description": "Automate commercial lease abstraction, tenant inquiry triage, and maintenance dispatching with custom Python FastAPI agents.", "industry": "PropTech & Commercial Real Estate", "industry_slug": "proptech-realestate", "capability": "Ai Agents", "capability_slug": "ai-agents"}, {"title": "Cloudflare & VPS Infrastructure for PropTech & Commercial Real Estate Platforms", "url": "/solutions/proptech-realestate/cloud-vps-hardening/", "description": "Ensure Canadian data residency and high availability for property database clusters with containerized Redis, Postgres, and automated failover.", "industry": "PropTech & Commercial Real Estate", "industry_slug": "proptech-realestate", "capability": "Cloud Vps Hardening", "capability_slug": "cloud-vps-hardening"}, {"title": "Composio Agent Integrations for PropTech & Commercial Real Estate Platforms", "url": "/solutions/proptech-realestate/composio-integrations/", "description": "Hardened self-hosted Composio execution environment connecting LLM agents directly to external APIs, SaaS tools, and databases. Engineered specifically for PropTech & Commercial Real Estate Platforms to eliminate operational bottlenecks, compress sales cycles, and drive predictable enterprise revenue.", "industry": "PropTech & Commercial Real Estate", "industry_slug": "proptech-realestate", "capability": "Composio Integrations", "capability_slug": "composio-integrations"}, {"title": "Cold Outbound & Lead Engine for PropTech & Commercial Real Estate Platforms", "url": "/solutions/proptech-realestate/outbound-infrastructure/", "description": "Source off-market real estate assets, institutional LPs, and tenant acquisitions with an automated scraping and multi-inbox outreach system.", "industry": "PropTech & Commercial Real Estate", "industry_slug": "proptech-realestate", "capability": "Outbound Infrastructure", "capability_slug": "outbound-infrastructure"}, {"title": "Programmatic SEO Engine for PropTech & Commercial Real Estate Platforms", "url": "/solutions/proptech-realestate/pseo-engine/", "description": "Dominate localized commercial real estate queries across metropolitan sub-markets, zoning classifications, and industrial asset types with automated Next.js landing pages.", "industry": "PropTech & Commercial Real Estate", "industry_slug": "proptech-realestate", "capability": "Pseo Engine", "capability_slug": "pseo-engine"}, {"title": "Next.js Web Engineering for PropTech & Commercial Real Estate Platforms", "url": "/solutions/proptech-realestate/web-app-engineering/", "description": "Build property search engines featuring dynamic vector maps, real-time availability filters, and instant listing updates in Austin.", "industry": "PropTech & Commercial Real Estate", "industry_slug": "proptech-realestate", "capability": "Web App Engineering", "capability_slug": "web-app-engineering"}, {"title": "Whop Monetization Systems for PropTech & Commercial Real Estate Platforms", "url": "/solutions/proptech-realestate/whop-monetization/", "description": "Automate accreditation vetting and monthly membership subscription billing for commercial real estate syndicate networks.", "industry": "PropTech & Commercial Real Estate", "industry_slug": "proptech-realestate", "capability": "Whop Monetization", "capability_slug": "whop-monetization"}, {"title": "Venture Capital & Private Equity Firms AI & Automation Solutions", "url": "/solutions/venture-capital-private-equity/", "description": "Deploy custom autonomous AI agents, programmatic SEO systems, and automated revenue engines for Venture Capital & Private Equity Firms.", "industry": "Venture Capital & Private Equity", "industry_slug": "venture-capital-private-equity", "capability": "Overview", "capability_slug": ""}, {"title": "Autonomous AI Agents for Venture Capital & Private Equity Firms", "url": "/solutions/venture-capital-private-equity/ai-agents/", "description": "Automate deal memo drafting, company pitch deck parsing, and founder pipeline tracking with custom agentic workflows for London funds.", "industry": "Venture Capital & Private Equity", "industry_slug": "venture-capital-private-equity", "capability": "Ai Agents", "capability_slug": "ai-agents"}, {"title": "Cloudflare & VPS Infrastructure for Venture Capital & Private Equity Firms", "url": "/solutions/venture-capital-private-equity/cloud-vps-hardening/", "description": "Safeguard sensitive M&A and portfolio financials with isolated VPC infrastructure, WireGuard VPN tunnels, and encrypted volume snapshots.", "industry": "Venture Capital & Private Equity", "industry_slug": "venture-capital-private-equity", "capability": "Cloud Vps Hardening", "capability_slug": "cloud-vps-hardening"}, {"title": "Composio Agent Integrations for Venture Capital & Private Equity Firms", "url": "/solutions/venture-capital-private-equity/composio-integrations/", "description": "Enable investment research agents to query Crunchbase, send PitchBook alerts, and populate Airtable CRM pipelines without manual API coding.", "industry": "Venture Capital & Private Equity", "industry_slug": "venture-capital-private-equity", "capability": "Composio Integrations", "capability_slug": "composio-integrations"}, {"title": "Cold Outbound & Lead Engine for Venture Capital & Private Equity Firms", "url": "/solutions/venture-capital-private-equity/outbound-infrastructure/", "description": "Systematically identify, score, and engage breakout technology founders and acquisition targets with autonomous multi-channel social listening and personalized outreach.", "industry": "Venture Capital & Private Equity", "industry_slug": "venture-capital-private-equity", "capability": "Outbound Infrastructure", "capability_slug": "outbound-infrastructure"}, {"title": "Programmatic SEO Engine for Venture Capital & Private Equity Firms", "url": "/solutions/venture-capital-private-equity/pseo-engine/", "description": "Transform fund portfolio investments into high-ranking programmatic profile pages that drive top-tier inbound founder applications.", "industry": "Venture Capital & Private Equity", "industry_slug": "venture-capital-private-equity", "capability": "Pseo Engine", "capability_slug": "pseo-engine"}, {"title": "Next.js Web Engineering for Venture Capital & Private Equity Firms", "url": "/solutions/venture-capital-private-equity/web-app-engineering/", "description": "Create institutional LP reporting portals, secure deal rooms, and capital call management interfaces with granular role-based access.", "industry": "Venture Capital & Private Equity", "industry_slug": "venture-capital-private-equity", "capability": "Web App Engineering", "capability_slug": "web-app-engineering"}, {"title": "Whop Monetization Systems for Venture Capital & Private Equity Firms", "url": "/solutions/venture-capital-private-equity/whop-monetization/", "description": "Manage angel community subscriptions, carry agreements, and diligence room access passes with automated Whop license issuance.", "industry": "Venture Capital & Private Equity", "industry_slug": "venture-capital-private-equity", "capability": "Whop Monetization", "capability_slug": "whop-monetization"}];
+
+    let activeFilter = 'all';
+    let searchQuery = '';
+
+    const grid = document.getElementById('articlesGrid');
+    const searchInput = document.getElementById('searchInput');
+    const clearBtn = document.getElementById('clearSearchBtn');
+    const counter = document.getElementById('resultsCounter');
+    const noResults = document.getElementById('noResults');
+    const resetBtn = document.getElementById('resetFilterBtn');
+    const pills = document.querySelectorAll('.filter-pill');
+
+    function renderArticles() {
+      const q = searchQuery.toLowerCase().trim();
+      const filtered = articles.filter(a => {
+        const matchesFilter = activeFilter === 'all' || a.industry_slug === activeFilter;
+        if (!matchesFilter) return false;
+        if (!q) return true;
+        const text = (a.title + ' ' + a.description + ' ' + a.industry + ' ' + a.capability).toLowerCase();
+        return text.includes(q);
+      });
+
+      grid.innerHTML = '';
+
+      if (filtered.length === 0) {
+        grid.classList.add('hidden');
+        noResults.classList.remove('hidden');
+        counter.innerHTML = 'Showing <span class="text-rose-400 font-bold">0</span> blueprints';
+        return;
+      }
+
+      grid.classList.remove('hidden');
+      noResults.classList.add('hidden');
+      counter.innerHTML = `Showing <span class="text-cyan-400 font-bold">${filtered.length}</span> of ${articles.length} resource blueprints`;
+
+      filtered.forEach(a => {
+        const card = document.createElement('div');
+        card.className = "p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-cyan-500/40 hover:bg-slate-900/90 transition flex flex-col justify-between group";
+        
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="text-[11px] font-bold px-2.5 py-1 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 truncate">
+                ${a.industry}
+              </span>
+              <span class="text-[11px] text-purple-400 font-medium px-2 py-0.5 rounded bg-purple-500/10 border border-purple-500/20 whitespace-nowrap">
+                ${a.capability}
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-white font-display mb-2 group-hover:text-cyan-300 transition line-clamp-2">
+              <a href="${a.url}">${a.title}</a>
+            </h3>
+            <p class="text-xs text-slate-400 leading-relaxed line-clamp-3 mb-4">
+              ${a.description || "Comprehensive architectural blueprint detailing implementation frameworks, security parameters, and growth automation workflows."}
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-800/70 flex items-center justify-between text-xs">
+            <span class="text-slate-500">Adorise Production Blueprint</span>
+            <a href="${a.url}" class="font-semibold text-cyan-400 hover:text-cyan-300 group-hover:translate-x-1 transition-transform inline-flex items-center space-x-1">
+              <span>Explore</span>
+              <span>&rarr;</span>
+            </a>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Filter pills click
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        pills.forEach(p => {
+          p.classList.remove('bg-cyan-500', 'text-slate-950');
+          p.classList.add('bg-slate-900', 'border', 'border-slate-800', 'text-slate-400');
+        });
+        pill.classList.remove('bg-slate-900', 'border', 'border-slate-800', 'text-slate-400');
+        pill.classList.add('bg-cyan-500', 'text-slate-950');
+        activeFilter = pill.getAttribute('data-filter');
+        renderArticles();
+      });
+    });
+
+    // Live Search
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      if (searchQuery.length > 0) {
+        clearBtn.classList.remove('hidden');
+      } else {
+        clearBtn.classList.add('hidden');
+      }
+      renderArticles();
+    });
+
+    // Clear Search
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      searchQuery = '';
+      clearBtn.classList.add('hidden');
+      renderArticles();
+      searchInput.focus();
+    });
+
+    // Reset All Filters
+    resetBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      searchQuery = '';
+      clearBtn.classList.add('hidden');
+      activeFilter = 'all';
+      pills.forEach(p => {
+        if (p.getAttribute('data-filter') === 'all') {
+          p.classList.add('bg-cyan-500', 'text-slate-950');
+          p.classList.remove('bg-slate-900', 'border', 'border-slate-800', 'text-slate-400');
+        } else {
+          p.classList.remove('bg-cyan-500', 'text-slate-950');
+          p.classList.add('bg-slate-900', 'border', 'border-slate-800', 'text-slate-400');
+        }
+      });
+      renderArticles();
+    });
+
+    // Accordion Toggle
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isActive = item.classList.contains('active');
+      document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    }
+
+    // Initial render
+    renderArticles();
+  </script>
+  <script src="/concierge.js?v=20260925_proactive"></script>
+</body>
+</html>

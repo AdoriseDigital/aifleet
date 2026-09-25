@@ -1,0 +1,68 @@
+[
+  {
+    "post_id": "soc_2026-09-21_morning_instagram",
+    "platform": "instagram",
+    "result": {
+      "status": "active_staged",
+      "platform": "instagram",
+      "account_id": "ca_Op45N88E_Uz7",
+      "note": "Queued in live slot schedule",
+      "dispatched_at": "2026-09-21T02:47:14.698415"
+    }
+  },
+  {
+    "post_id": "soc_2026-09-21_morning_facebook",
+    "platform": "facebook",
+    "result": {
+      "status": "active_staged",
+      "platform": "facebook",
+      "account_id": "ca_MgB81OXe5Y61",
+      "note": "Queued in live slot schedule",
+      "dispatched_at": "2026-09-21T02:47:16.358685"
+    }
+  },
+  {
+    "post_id": "soc_2026-09-21_morning_pinterest",
+    "platform": "pinterest",
+    "result": {
+      "status": "active_staged",
+      "platform": "pinterest",
+      "account_id": "ca_-__zKRUT-1_J",
+      "note": "Queued in live slot schedule",
+      "dispatched_at": "2026-09-21T02:47:18.014152"
+    }
+  },
+  {
+    "post_id": "soc_2026-09-21_morning_reddit",
+    "platform": "reddit",
+    "result": {
+      "status": "active_staged",
+      "platform": "reddit",
+      "account_id": "ca_bpi7ozDUBqyp",
+      "note": "Queued in live slot schedule",
+      "dispatched_at": "2026-09-21T02:47:19.772126"
+    }
+  },
+  {
+    "post_id": "soc_2026-09-21_morning_youtube",
+    "platform": "youtube",
+    "result": {
+      "status": "active_staged",
+      "platform": "youtube",
+      "account_id": "ca_0yenexSvzmMY",
+      "note": "Queued in live slot schedule",
+      "dispatched_at": "2026-09-21T02:47:21.164903"
+    }
+  },
+  {
+    "post_id": "soc_2026-09-21_morning_telegram",
+    "platform": "telegram",
+    "result": {
+      "status": "active_staged",
+      "platform": "telegram",
+      "account_id": "ca_kNPbIMecBajf",
+      "note": "Queued in live slot schedule",
+      "dispatched_at": "2026-09-21T02:47:22.840521"
+    }
+  }
+]

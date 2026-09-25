@@ -1,0 +1,34 @@
+[
+  {
+    "platform": "reddit",
+    "username": "Clicknify",
+    "profile_url": "https://www.reddit.com/user/Clicknify",
+    "context_url": "https://www.reddit.com/r/ecommerce/comments/1vv6dyr/what_actually_cut_our_support_ticket_volume_on/",
+    "matched_service": "ai_customer_service",
+    "created_at": "2026-09-20T23:38:23.683634"
+  },
+  {
+    "platform": "reddit",
+    "username": "Successful_Mode8468",
+    "profile_url": "https://www.reddit.com/user/Successful_Mode8468",
+    "context_url": "https://www.reddit.com/r/u_Successful_Mode8468/comments/1w7e061/rselfhosted_hark_a_selfhosted_support_chatbot/",
+    "matched_service": "ai_customer_service",
+    "created_at": "2026-09-20T23:38:23.683669"
+  },
+  {
+    "platform": "reddit",
+    "username": "Cute_Olivia_Park",
+    "profile_url": "https://www.reddit.com/user/Cute_Olivia_Park",
+    "context_url": "https://www.reddit.com/r/b2bmarketing/comments/1r0zz27/what_tools_do_you_recommend_for_automating_b2b/",
+    "matched_service": "ai_lead_generation",
+    "created_at": "2026-09-20T23:38:23.683718"
+  },
+  {
+    "platform": "reddit",
+    "username": "Rifalixa",
+    "profile_url": "https://www.reddit.com/user/Rifalixa",
+    "context_url": "https://www.reddit.com/r/ChatGPT/comments/14xt5e3/ceo_replaced_90_of_support_staff_with_an_ai/",
+    "matched_service": "ai_customer_service",
+    "created_at": "2026-09-20T23:38:23.683742"
+  }
+]

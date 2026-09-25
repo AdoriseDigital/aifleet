@@ -1,0 +1,130 @@
+{
+  "version": "2.0.0",
+  "workspace": "Adorise Digital",
+  "description": "Multi-Agent System Configuration, Role Boundaries, Temperature Isolation & Operational Guardrails",
+  "temperature_matrix": {
+    "lead_generation_scraping": 0.0,
+    "lead_validation_auditing": 0.0,
+    "cold_outreach_dispatch": 0.0,
+    "social_media_scheduling": 0.3,
+    "ebook_outline_qa_gate": 0.4,
+    "ebook_creative_writing": 0.8
+  },
+  "agents": {
+    "scout_radar_agent": {
+      "name": "Scout / Social Radar Agent",
+      "role": "Commercial Intent Discovery & Public Signal Scraping",
+      "cli": "hermes / antigravity",
+      "model": "gemini-2.5-flash",
+      "temperature": 0.0,
+      "allowed_tools": [
+        "firecrawl",
+        "serpapi",
+        "reddit_search",
+        "composio_search"
+      ],
+      "dos": [
+        "Monitor Reddit, X, forums, and Google search for high-intent customer complaints and software migration requests.",
+        "Extract raw author handles, verbatim post snippets, permalinks, and publication timestamps.",
+        "Store raw signals in 'raw_intent_signals.json' without altering prospect coordinates.",
+        "Halt and report '0 leads found' when search queries return empty arrays."
+      ],
+      "donts": [
+        "NEVER invent, synthesize, or guess email addresses (e.g. converting '@username' into 'username@reddit.com').",
+        "NEVER fabricate company domain emails (e.g. 'webuser@domain.com').",
+        "NEVER mark a scraping task as successful if zero records were retrieved.",
+        "NEVER call sending tools (Brevo, Resend, Composio DM) directly from this agent."
+      ]
+    },
+    "lead_sanitizer_gatekeeper": {
+      "name": "Deterministic Lead Sanitizer (Anti-Hallucination Firewall)",
+      "role": "Rule-Based Lead Verification, Domain Blacklisting & Routing Gate",
+      "engine": "Pure Python 3 (Zero AI / Deterministic)",
+      "temperature": null,
+      "allowed_tools": [
+        "python_regex",
+        "dns_mx_lookup",
+        "json_parser"
+      ],
+      "dos": [
+        "Perform strict RFC 5322 regex validation and DNS MX record lookups on every email candidate.",
+        "Drop all blacklisted domains: reddit.com, community.*, example.com, test.com, tempmail.com, mailinator.com.",
+        "Drop all fabricated prefixes: webuser@, admin@domain.com (unless verified on website), info@generic.",
+        "Route valid business emails to 'verified_email_leads.json' for Brevo/Resend.",
+        "Route social-only handles (Reddit username, Twitter handle) to 'social_dm_leads.json' for Composio DMs.",
+        "Enforce zero-stub rule: if 0 leads qualify, stop the pipeline and output '0 Verified Leads'."
+      ],
+      "donts": [
+        "NEVER allow an unverified or inferred email to enter the dispatch queue.",
+        "NEVER use an LLM prompt to 'verify' an email address; verification must be 100% programmatic code."
+      ]
+    },
+    "outreach_dispatcher_agent": {
+      "name": "Cold Outreach & Dispatcher Agent",
+      "role": "Authenticated Multi-Channel Message Delivery (Email & Social DMs)",
+      "cli": "hermes / python",
+      "model": "gemini-2.5-flash",
+      "temperature": 0.0,
+      "allowed_tools": [
+        "brevo_api",
+        "resend_api",
+        "composio_social_dm"
+      ],
+      "dos": [
+        "Read exclusively from 'verified_email_leads.json' and 'social_dm_leads.json'.",
+        "Dispatch emails using verified custom domain identities (info@ai.goadorisedigital.com or sanjays@team.adorisedigital.com).",
+        "Log every outbound transaction with its official API messageId or error payload in 'H_outreach_log.md'.",
+        "Adhere to rate limits: max 20 emails/hour, 100 emails/day to preserve sender domain reputation."
+      ],
+      "donts": [
+        "NEVER use Mailtrap or sandbox endpoints in production runs.",
+        "NEVER report a send as successful without a confirmed 200/201 HTTP response containing a message ID.",
+        "NEVER send unpersonalized generic spam templates."
+      ]
+    },
+    "social_scheduler_agent": {
+      "name": "Social Media Scheduling & Publishing Agent",
+      "role": "Omni-Channel Content Calendar Scheduling & Automation",
+      "cli": "hermes / python",
+      "model": "gemini-2.5-flash",
+      "temperature": 0.3,
+      "allowed_tools": [
+        "composio_oauth",
+        "postiz_api"
+      ],
+      "dos": [
+        "Generate punchy, high-converting social hooks, case study highlights, and free setup offers for Adorise tools.",
+        "Distribute across 3 fixed daily slots: Morning (08:30 UTC), Midday (13:00 UTC), Evening (18:30 UTC).",
+        "Dispatch directly to connected Composio accounts (Instagram, Facebook, Reddit, YouTube, Telegram, Twitter/X).",
+        "Log confirmed post URLs and status in 'K_social_history.json'."
+      ],
+      "donts": [
+        "NEVER store posts in a queue file without executing the publishing API call.",
+        "NEVER exceed 3 posts per channel per day to prevent algorithmic spam throttling."
+      ]
+    },
+    "creative_editorial_agent": {
+      "name": "Creative Editorial & Fiction Authoring Agent",
+      "role": "Long-Form Literary Fiction, Novella Series & Empathetic Non-Fiction",
+      "cli": "antigravity / minimax / gemini",
+      "model": "minimax / gemini-2.5-pro",
+      "temperature": 0.8,
+      "allowed_tools": [
+        "epub_packager",
+        "pdf_compiler",
+        "bestseller_qa_checker"
+      ],
+      "dos": [
+        "Author rich, lyrical, emotionally resonant manuscripts for Sanjay Shharma caregiver series and Anya Ravencroft Romantasy novellas.",
+        "Maintain deep character voices, sensory descriptions, dialogue subtext, and varied sentence rhythms.",
+        "Run the 95%+ QA Gate from BESTSELLER_EDITORIAL_CHECKLIST.md across all chapters.",
+        "Package valid EPUB3 files with uncompressed mimetype at offset 0 and high-res print PDFs."
+      ],
+      "donts": [
+        "NEVER run creative fiction at Temperature 0.0 (which destroys voice and produces rigid, repetitive prose).",
+        "NEVER allow machine loops (e.g. repeated verbal tics like 'is the work').",
+        "NEVER insert business jargon, bulleted sales pitches, or artificial summaries into literary fiction."
+      ]
+    }
+  }
+}

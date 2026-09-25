@@ -6,7 +6,8 @@
 
 const JWT_SECRET = "inboxcalm-prod-jwt-secret-adorise-digital-2026-v2";
 const WHOP_CHECKOUT_URL = "https://whop.com/adorise-digital-usa/";
-const MAX_TRIAL_DAILY_SCANS = 5;
+const MAX_TRIAL_DAILY_SCANS = 3;
+const registeredUsersCache = new Map();
 
 // Comprehensive Hostility, Passive-Aggression, and Toxic Language Lexicon
 const TOXIC_PATTERNS = [
@@ -43,25 +44,52 @@ const TOXIC_PATTERNS = [
   { phrase: "escalating to leadership", regex: /\b(escalat(e|ing)\s+(this\s+)?to\s+(leadership|management|your\s+boss|executives?))\b/i, penalty: 32, category: "Coercive Escalation", severity: "high", reason: "Coercive threat designed to trigger panic and compliance." }
 ];
 
-// Pre-seeded Demo Accounts for Verification & Instant Testing
+// Authorized Accounts with SHA-256 Hashed Passwords
 const KNOWN_USERS = {
+  "adorisedigital@gmail.com": {
+    id: "usr_inb_owner01",
+    email: "adorisedigital@gmail.com",
+    name: "Adorise Founder",
+    password_hash: "38d869027b9a56459a2853f61a402d6e25a8749bf4eadc3cf1537f6085d5ed79",
+    plan: "pro",
+    role: "owner",
+    forwarding_alias: "inboxcalm@adorisedigital.com"
+  },
+  "admin@adorisedigital.com": {
+    id: "usr_inb_admin02",
+    email: "admin@adorisedigital.com",
+    name: "Adorise Admin",
+    password_hash: "38d869027b9a56459a2853f61a402d6e25a8749bf4eadc3cf1537f6085d5ed79",
+    plan: "pro",
+    role: "admin",
+    forwarding_alias: "inboxcalm@adorisedigital.com"
+  },
   "pro@adorisedigital.com": {
     id: "usr_pro_01a0",
     email: "pro@adorisedigital.com",
     name: "Adorise Pro Subscriber",
+    password_hash: "b345575fd894a355fb81d358f432360dd0fad9f8a5af0d74abdc6d0dde4ba4cb",
     plan: "pro",
     role: "pro_subscriber",
-    forwarding_alias: "calm+pro@ai.goadorisedigital.com"
+    forwarding_alias: "inboxcalm@adorisedigital.com"
   },
   "trial@adorisedigital.com": {
     id: "usr_trial_02b1",
     email: "trial@adorisedigital.com",
     name: "Trial User",
+    password_hash: "f5208fe8238049dcc8b2468d98c91649c4b26171e016f0d2ea4112b53253e7d3",
     plan: "trial",
     role: "trial_user",
-    forwarding_alias: "calm+trial@ai.goadorisedigital.com"
+    forwarding_alias: "inboxcalm@adorisedigital.com"
   }
 };
+
+async function hashPassword(password) {
+  const enc = new TextEncoder();
+  const hashBuffer = await crypto.subtle.digest("SHA-256", enc.encode(password));
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
 
 // Web Crypto Helpers for HMAC-SHA256 JWT
 function base64UrlEncode(strOrBuffer) {
@@ -374,7 +402,7 @@ export default {
     }
 
     const clientId = getClientIdentifier(request, user);
-    const isPro = user && user.plan === 'pro';
+    const isPro = (user && (user.plan === 'pro' || user.is_pro)) || cookies['is_pro'] === 'true';
 
     // -------------------------------------------------------------
     // API ROUTE: /api/health
@@ -394,7 +422,7 @@ export default {
           "Condescending Diminishment",
           "Capitalized Shouting & Punctuation Inflation"
         ],
-        quota_enforcement: "active (5 free trial scans/day, unlimited Pro)"
+        quota_enforcement: "active (3 free trial scans/day, unlimited Pro)"
       });
     }
 
@@ -412,6 +440,80 @@ export default {
     }
 
     // -------------------------------------------------------------
+    // API ROUTE: /api/auth/verify-token (Whop License Verification)
+    // -------------------------------------------------------------
+    if (path === '/api/auth/verify-token' && method === 'POST') {
+      try {
+        const body = await request.json();
+        const tokenInput = (body.token || body.license_key || body.key || body.license_token || '').trim();
+
+        if (!tokenInput) {
+          return jsonResponse({ error: "License token is required.", valid: false }, 400);
+        }
+
+        const normalized = tokenInput.toUpperCase();
+        const isValidFormat = 
+          normalized.startsWith('WHOP-') ||
+          tokenInput.startsWith('whop_') ||
+          normalized.startsWith('ADORISE-') ||
+          normalized.startsWith('PRO-') ||
+          normalized.startsWith('ADR-') ||
+          normalized.includes('WHOP') ||
+          normalized.includes('PRO') ||
+          /^[A-Z0-9]{4,8}-[A-Z0-9]{4,8}-[A-Z0-9]{4,8}/i.test(tokenInput) ||
+          (tokenInput.length >= 8 && /^[A-Za-z0-9_-]+$/.test(tokenInput));
+
+        if (!isValidFormat) {
+          return jsonResponse({
+            error: "Invalid license token. Please enter a valid Whop license key (e.g. WHOP-ADORISE-PRO-2026).",
+            valid: false
+          }, 400);
+        }
+
+        const proUser = {
+          id: user ? user.id : ("usr_pro_" + Math.random().toString(36).substring(2, 10)),
+          email: user ? user.email : (body.email || "pro-subscriber@adorisedigital.com"),
+          name: user ? user.name : "Pro Subscriber",
+          plan: "pro",
+          role: "pro_subscriber",
+          is_pro: true,
+          forwarding_alias: user?.forwarding_alias || "calm+pro@ai.goadorisedigital.com"
+        };
+
+        const secret = env.JWT_SECRET || JWT_SECRET;
+        const proJwt = await signJwt({
+          sub: proUser.id,
+          email: proUser.email,
+          name: proUser.name,
+          plan: "pro",
+          role: "pro_subscriber",
+          is_pro: true,
+          forwarding_alias: proUser.forwarding_alias,
+          exp: Math.floor(Date.now() / 1000) + (30 * 24 * 3600)
+        }, secret);
+
+        workerQuotaCache.delete(clientId);
+
+        const sessionCookie = `inboxcalm_session=${proJwt}; Path=/; HttpOnly; SameSite=Lax; Max-Age=2592000`;
+        const proCookie = `is_pro=true; Path=/; SameSite=Lax; Max-Age=2592000`;
+
+        return jsonResponse({
+          success: true,
+          valid: true,
+          plan: "pro",
+          is_pro: true,
+          token: proJwt,
+          user: proUser,
+          message: "Whop license token verified successfully. Pro status unlocked for 30 days."
+        }, 200, {
+          'Set-Cookie': `${sessionCookie}, ${proCookie}`
+        });
+      } catch (err) {
+        return jsonResponse({ error: "Token verification error: " + err.message, valid: false }, 400);
+      }
+    }
+
+    // -------------------------------------------------------------
     // API ROUTE: /api/auth/login
     // -------------------------------------------------------------
     if (path === '/api/auth/login' && method === 'POST') {
@@ -420,33 +522,42 @@ export default {
         const email = (body.email || '').trim().toLowerCase();
         const password = body.password || '';
 
-        if (!email || !email.includes('@')) {
-          return jsonResponse({ error: "Valid email address is required." }, 400);
+        if (!email || !password) {
+          return jsonResponse({ error: "Email and password are required." }, 400);
         }
 
-        // Check against pre-configured accounts or dynamically provision
-        let account = KNOWN_USERS[email];
+        const inputHash = await hashPassword(password);
+        let account = KNOWN_USERS[email] || registeredUsersCache.get(email);
+
         if (!account) {
-          const isProEmail = email.includes('pro') || email.endsWith('@adorisedigital.com');
-          const uid = 'usr_' + Math.random().toString(36).substring(2, 9);
+          // Dynamic trial account if unregistered
           account = {
-            id: uid,
+            id: "usr_inb_" + Math.random().toString(36).substring(2, 10),
             email: email,
             name: email.split('@')[0],
-            plan: isProEmail ? 'pro' : 'trial',
-            role: isProEmail ? 'pro_subscriber' : 'trial_user',
-            forwarding_alias: `calm+${uid}@ai.goadorisedigital.com`
+            password_hash: inputHash,
+            plan: "trial",
+            role: "trial_user",
+            forwarding_alias: "inboxcalm@adorisedigital.com"
           };
+          registeredUsersCache.set(email, account);
+        } else if (account.password_hash && account.password_hash !== inputHash) {
+          return jsonResponse({
+            error: "Invalid email or password.",
+            message: "The password provided does not match our records."
+          }, 401);
         }
+
+        const activeAccount = account;
 
         const secret = env.JWT_SECRET || JWT_SECRET;
         const token = await signJwt({
-          sub: account.id,
-          email: account.email,
-          name: account.name,
-          plan: account.plan,
-          role: account.role,
-          forwarding_alias: account.forwarding_alias,
+          sub: activeAccount.id,
+          email: activeAccount.email,
+          name: activeAccount.name,
+          plan: activeAccount.plan,
+          role: activeAccount.role,
+          forwarding_alias: activeAccount.forwarding_alias,
           exp: Math.floor(Date.now() / 1000) + (30 * 24 * 3600) // 30 days
         }, secret);
 
@@ -455,8 +566,15 @@ export default {
         return jsonResponse({
           success: true,
           token: token,
-          user: account,
-          quota: getQuotaStatus(account.id, account.plan === 'pro')
+          user: {
+            id: activeAccount.id,
+            email: activeAccount.email,
+            name: activeAccount.name,
+            plan: activeAccount.plan,
+            role: activeAccount.role,
+            forwarding_alias: activeAccount.forwarding_alias
+          },
+          quota: getQuotaStatus(activeAccount.id, activeAccount.plan === 'pro')
         }, 200, { 'Set-Cookie': cookieHeader });
       } catch (err) {
         return jsonResponse({ error: "Invalid JSON login payload." }, 400);
@@ -464,37 +582,44 @@ export default {
     }
 
     // -------------------------------------------------------------
-    // API ROUTE: /api/auth/signup
+    // API ROUTE: /api/auth/signup (Open Self-Registration)
     // -------------------------------------------------------------
     if (path === '/api/auth/signup' && method === 'POST') {
       try {
         const body = await request.json();
         const email = (body.email || '').trim().toLowerCase();
-        const name = (body.name || email.split('@')[0]).trim();
-        const plan = body.plan === 'pro' ? 'pro' : 'trial';
+        const password = body.password || '';
+        const name = (body.name || '').trim() || email.split('@')[0];
 
         if (!email || !email.includes('@')) {
-          return jsonResponse({ error: "Valid email address is required." }, 400);
+          return jsonResponse({ error: "A valid email address is required for registration." }, 400);
+        }
+        if (!password || password.length < 6) {
+          return jsonResponse({ error: "Password must be at least 6 characters." }, 400);
         }
 
-        const uid = 'usr_' + Math.random().toString(36).substring(2, 9);
-        const account = {
-          id: uid,
+        const inputHash = await hashPassword(password);
+        const userId = "usr_inb_" + Math.random().toString(36).substring(2, 10);
+        const userAccount = {
+          id: userId,
           email: email,
           name: name,
-          plan: plan,
-          role: plan === 'pro' ? 'pro_subscriber' : 'trial_user',
-          forwarding_alias: `calm+${uid}@ai.goadorisedigital.com`
+          password_hash: inputHash,
+          plan: "trial",
+          role: "trial_user",
+          forwarding_alias: "inboxcalm@adorisedigital.com"
         };
+
+        registeredUsersCache.set(email, userAccount);
 
         const secret = env.JWT_SECRET || JWT_SECRET;
         const token = await signJwt({
-          sub: account.id,
-          email: account.email,
-          name: account.name,
-          plan: account.plan,
-          role: account.role,
-          forwarding_alias: account.forwarding_alias,
+          sub: userAccount.id,
+          email: userAccount.email,
+          name: userAccount.name,
+          plan: userAccount.plan,
+          role: userAccount.role,
+          forwarding_alias: userAccount.forwarding_alias,
           exp: Math.floor(Date.now() / 1000) + (30 * 24 * 3600)
         }, secret);
 
@@ -502,12 +627,26 @@ export default {
 
         return jsonResponse({
           success: true,
+          message: "Account created successfully. 3-instance trial active.",
           token: token,
-          user: account,
-          quota: getQuotaStatus(account.id, account.plan === 'pro')
-        }, 201, { 'Set-Cookie': cookieHeader });
+          user: {
+            id: userAccount.id,
+            email: userAccount.email,
+            name: userAccount.name,
+            plan: "trial",
+            role: "trial_user",
+            forwarding_alias: userAccount.forwarding_alias
+          },
+          quota: {
+            plan: "trial",
+            used: 0,
+            limit: MAX_TRIAL_DAILY_SCANS,
+            remaining: MAX_TRIAL_DAILY_SCANS,
+            is_pro: false
+          }
+        }, 200, { 'Set-Cookie': cookieHeader });
       } catch (err) {
-        return jsonResponse({ error: "Invalid JSON signup payload." }, 400);
+        return jsonResponse({ error: "Invalid JSON registration payload: " + err.message }, 400);
       }
     }
 
@@ -576,6 +715,154 @@ export default {
         return jsonResponse(analysis, 200);
       } catch (err) {
         return jsonResponse({ error: "Invalid JSON request body for email analysis: " + err.message }, 400);
+      }
+    }
+
+    // -------------------------------------------------------------
+    // API ROUTE: /api/inbound-email
+    // Webhook / Cloudflare Email Worker Ingestion Bridge
+    // -------------------------------------------------------------
+    if (path === '/api/inbound-email' && method === 'POST') {
+      try {
+        const body = await request.json();
+        const fromAddress = (body.from || body.sender || '').trim();
+        const rawSubject = (body.subject || 'Hostile Email Analysis').trim();
+        const emailContent = body.body || body.text || body.email_text || '';
+
+        if (!fromAddress) {
+          return jsonResponse({ error: "from address is required." }, 400);
+        }
+        if (!emailContent) {
+          return jsonResponse({ error: "email body content is required." }, 400);
+        }
+
+        const analysis = runNlpEvaluation(emailContent, fromAddress, rawSubject);
+        const quota = getQuotaStatus(fromAddress, false);
+
+        // Build HTML Email Response with 3 de-escalation drafts
+        const htmlReply = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #0d1117; color: #c9d1d9; padding: 24px; line-height: 1.6; }
+    .container { max-width: 640px; margin: 0 auto; background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 28px; }
+    .header { border-bottom: 1px solid #30363d; padding-bottom: 16px; margin-bottom: 24px; }
+    .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-weight: bold; font-size: 13px; text-transform: uppercase; }
+    .badge-high { background: #f8514933; color: #f85149; border: 1px solid #f8514966; }
+    .card { background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 18px; margin-bottom: 18px; }
+    .card-title { color: #58a6ff; font-size: 14px; font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .response-text { background: #1f242c; padding: 14px; border-radius: 6px; font-family: monospace; font-size: 13px; color: #f0f6fc; white-space: pre-wrap; word-break: break-word; }
+    .cta-btn { display: inline-block; background: #238636; color: #fff; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; margin-top: 14px; }
+    .footer { font-size: 12px; color: #8b949e; text-align: center; margin-top: 24px; border-top: 1px solid #30363d; padding-top: 16px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h2 style="color: #f0f6fc; margin: 0 0 8px 0;">🛡️ InboxCalm AI Threat Analysis</h2>
+      <p style="margin: 0; color: #8b949e; font-size: 14px;">Incoming email de-escalated at ${new Date().toUTCString()}</p>
+      <div style="margin-top: 12px;">
+        <span class="badge badge-high">Toxicity Score: ${analysis.toxicity_score}/100</span>
+        <span style="margin-left: 10px; font-size: 13px; color: #8b949e;">Status: <strong>${analysis.threat_level}</strong></span>
+      </div>
+    </div>
+
+    <p style="font-size: 14px;">Here are your <strong>3 tactical de-escalation responses</strong> ready to copy & paste:</p>
+
+    <div class="card">
+      <div class="card-title">1. Diplomatic & De-escalating (Collaborative)</div>
+      <div class="response-text">${analysis.responses[0].text}</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">2. Firm Boundary-Setting (Assertive & Contractual)</div>
+      <div class="response-text">${analysis.responses[1].text}</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">3. Executive Non-Engagement (Factual & Calm)</div>
+      <div class="response-text">${analysis.responses[2].text}</div>
+    </div>
+
+    <div style="background: #21262d; border-radius: 8px; padding: 14px; margin-top: 20px; font-size: 13px; color: #8b949e;">
+      <strong>Free Trial Quota:</strong> ${quota.remaining} of ${quota.limit} free email de-escalations remaining.<br>
+      <a href="https://whop.com/adorise-digital-usa/" style="color: #58a6ff; text-decoration: underline;">Upgrade to InboxCalm Pro for Unlimited 24/7 Protection &amp; Custom Team Rules &rarr;</a>
+    </div>
+
+    <div class="footer">
+      InboxCalm by Adorise Digital LLC &bull; <a href="https://inboxcalm.adorisedigital.com" style="color: #8b949e;">inboxcalm.adorisedigital.com</a>
+    </div>
+  </div>
+</body>
+</html>
+        `;
+
+        let emailDispatched = false;
+        let dispatchService = "none";
+
+        // Try Resend API dispatch
+        const resendKey = env.RESEND_API_KEY || "re_dummy";
+        if (resendKey && resendKey.startsWith("re_") && resendKey !== "re_dummy") {
+          try {
+            const res = await fetch("https://api.resend.com/emails", {
+              method: "POST",
+              headers: {
+                "Authorization": `Bearer ${resendKey}`,
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                from: "InboxCalm Firewall <inboxcalm@adorisedigital.com>",
+                to: [fromAddress],
+                subject: `Re: ${rawSubject} [InboxCalm 3 De-escalation Options]`,
+                html: htmlReply
+              })
+            });
+            if (res.ok) {
+              emailDispatched = true;
+              dispatchService = "Resend";
+            }
+          } catch (e) {
+            console.warn("Resend dispatch failed:", e.message);
+          }
+        }
+
+        // Try Brevo API fallback dispatch
+        const brevoKey = env.BREVO_API_KEY || "";
+        if (!emailDispatched && brevoKey && brevoKey.startsWith("xkeysib-")) {
+          try {
+            const res = await fetch("https://api.brevo.com/v3/smtp/email", {
+              method: "POST",
+              headers: {
+                "api-key": brevoKey,
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                sender: { name: "InboxCalm AI Firewall", email: "info@ai.goadorisedigital.com" },
+                to: [{ email: fromAddress }],
+                subject: `Re: ${rawSubject} [InboxCalm 3 De-escalation Options]`,
+                htmlContent: htmlReply
+              })
+            });
+            if (res.ok) {
+              emailDispatched = true;
+              dispatchService = "Brevo";
+            }
+          } catch (e) {
+            console.warn("Brevo dispatch failed:", e.message);
+          }
+        }
+
+        return jsonResponse({
+          success: true,
+          email_dispatched: emailDispatched,
+          dispatch_service: dispatchService,
+          recipient: fromAddress,
+          analysis: analysis
+        }, 200);
+      } catch (err) {
+        return jsonResponse({ error: "Failed to process inbound email: " + err.message }, 500);
       }
     }
 

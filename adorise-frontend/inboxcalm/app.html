@@ -154,7 +154,7 @@
               <span class="px-1.5 py-0.5 rounded text-[9px] bg-cyan-500/20 text-cyan-300 font-mono">ACTIVE</span>
             </div>
             <p class="text-[11px] text-slate-400">Forward raw hostile emails directly to your defense mailbox:</p>
-            <div class="text-xs font-mono text-white select-all font-bold">calm@ai.goadorisedigital.com</div>
+            <div class="text-xs font-mono text-white select-all font-bold">inboxcalm@adorisedigital.com</div>
           </div>
           <button onclick="copyForwarding()" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-medium text-cyan-300 transition whitespace-nowrap">
             Copy Address
@@ -260,14 +260,16 @@
       }
     };
 
-    function loadPreset(key) {
+    function loadPreset(key, autoRun = false) {
       const p = PRESETS[key];
       if (!p) return;
       document.getElementById('senderInput').value = p.sender;
       document.getElementById('subjectInput').value = p.subject;
       document.getElementById('emailInput').value = p.text;
       updateCharCount();
-      runEmailScan();
+      if (autoRun) {
+        runEmailScan();
+      }
     }
 
     function clearInput() {
@@ -287,8 +289,8 @@
     document.getElementById('emailInput').addEventListener('input', updateCharCount);
 
     function copyForwarding() {
-      navigator.clipboard.writeText('calm@ai.goadorisedigital.com').then(() => {
-        alert("Forwarding address copied: calm@ai.goadorisedigital.com");
+      navigator.clipboard.writeText('inboxcalm@adorisedigital.com').then(() => {
+        alert("Forwarding address copied: inboxcalm@adorisedigital.com");
       });
     }
 
@@ -393,6 +395,15 @@
       const headers = { 'Content-Type': 'application/json' };
       if (token) headers['Authorization'] = `Bearer ${token}`;
 
+      if (currentQuota && !currentQuota.is_pro && currentQuota.remaining <= 0) {
+        openPaywallModal("You have reached your 3 free email de-escalation analyses. Enter your Whop license token to continue with unlimited Pro scans, or upgrade on Whop.");
+        scanBtn.disabled = false;
+        scanBtnText.textContent = "Analyze Hostility & Generate Replies";
+        scanBtnIcon.className = "";
+        scanBtnIcon.textContent = "🛡️";
+        return;
+      }
+
       try {
         const res = await fetch('/api/analyze-email', {
           method: 'POST',
@@ -405,7 +416,7 @@
         if (res.status === 429) {
           document.getElementById('quotaAlert').classList.remove('hidden');
           document.getElementById('quotaAlertMsg').textContent = data.error;
-          alert(data.error);
+          openPaywallModal(data.error || "Free trial limit reached (3 of 3 scans used). Upgrade to Pro or enter your license token!");
           return;
         }
 
@@ -476,8 +487,136 @@
     // Initialize on page load
     window.addEventListener('DOMContentLoaded', () => {
       checkAuthAndQuota();
-      loadPreset('passive');
+      loadPreset('passive', false);
     });
+
+    function openPaywallModal(msg) {
+      const modal = document.getElementById('whopPaywallModal');
+      if (modal) {
+        if (msg && document.getElementById('paywallSubtitle')) {
+          document.getElementById('paywallSubtitle').textContent = msg;
+        }
+        modal.classList.remove('hidden');
+      }
+    }
+
+    function closePaywallModal() {
+      const modal = document.getElementById('whopPaywallModal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    async function submitWhopToken() {
+      const input = document.getElementById('whopLicenseInput');
+      const token = (input ? input.value : '').trim();
+      const statusDiv = document.getElementById('tokenVerifyStatus');
+      const btnText = document.getElementById('verifyTokenBtnText');
+      const spinner = document.getElementById('verifyTokenSpinner');
+
+      if (!token) {
+        if (statusDiv) {
+          statusDiv.className = 'text-xs p-2.5 rounded-xl bg-rose-500/20 text-rose-300 border border-rose-500/40 block';
+          statusDiv.textContent = 'Please enter a license token.';
+        }
+        return;
+      }
+
+      btnText.textContent = 'Verifying...';
+      spinner.classList.remove('hidden');
+
+      try {
+        const res = await fetch('/api/auth/verify-token', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token: token })
+        });
+        const data = await res.json();
+
+        if (!res.ok || !data.success) {
+          throw new Error(data.error || 'Invalid license token.');
+        }
+
+        if (statusDiv) {
+          statusDiv.className = 'text-xs p-2.5 rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 block';
+          statusDiv.textContent = '✅ Pro License Activated! Unlocking unrestricted email defense...';
+        }
+
+        localStorage.setItem('is_pro', 'true');
+        if (data.token) {
+          localStorage.setItem('inboxcalm_token', data.token);
+          localStorage.setItem('inboxcalm_user', JSON.stringify(data.user));
+        }
+
+        setTimeout(() => {
+          closePaywallModal();
+          window.location.reload();
+        }, 1000);
+
+      } catch (err) {
+        if (statusDiv) {
+          statusDiv.className = 'text-xs p-2.5 rounded-xl bg-rose-500/20 text-rose-300 border border-rose-500/40 block';
+          statusDiv.textContent = '⚠️ ' + err.message;
+        }
+      } finally {
+        btnText.textContent = 'Activate License Token';
+        spinner.classList.add('hidden');
+      }
+    }
   </script>
+
+  <!-- Standardized Whop Paywall Modal -->
+  <div id="whopPaywallModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+    <div class="relative w-full max-w-md p-6 sm:p-8 rounded-3xl bg-slate-900 border border-slate-800 shadow-2xl space-y-6">
+      <button onclick="closePaywallModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg cursor-pointer">✕</button>
+
+      <div class="text-center space-y-2">
+        <div class="inline-flex p-3 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-2xl mb-1">
+          🔒
+        </div>
+        <h3 class="text-xl font-black text-white tracking-tight" id="paywallTitle">Free Trial Limit Reached</h3>
+        <p class="text-xs text-slate-400" id="paywallSubtitle">
+          You've used all 3 free email de-escalation analyses. Upgrade to unrestricted Pro to continue, or activate your Whop license token below.
+        </p>
+      </div>
+
+      <div class="p-4 rounded-2xl bg-gradient-to-br from-cyan-950/40 to-blue-950/40 border border-cyan-500/30 space-y-3">
+        <div class="flex items-center justify-between text-xs">
+          <span class="font-bold text-white">InboxCalm Pro Shield</span>
+          <span class="text-cyan-400 font-mono font-bold">$19/mo</span>
+        </div>
+        <ul class="text-[11px] text-slate-300 space-y-1">
+          <li class="flex items-center gap-1.5"><span class="text-emerald-400">✓</span> Unlimited Hostility & De-escalation Scans</li>
+          <li class="flex items-center gap-1.5"><span class="text-emerald-400">✓</span> Automated Forwarding Bot & Email Defense</li>
+          <li class="flex items-center gap-1.5"><span class="text-emerald-400">✓</span> 30-Day Instant Access</li>
+        </ul>
+        <a href="https://whop.com/adorise-digital-usa/" target="_blank" rel="noopener noreferrer" class="block w-full py-3 rounded-xl bg-gradient-to-r from-red-500 via-purple-600 to-cyan-500 hover:opacity-90 text-white font-black text-xs text-center uppercase tracking-wider transition shadow-lg shadow-cyan-500/20 cursor-pointer">
+          Upgrade on Whop &rarr;
+        </a>
+      </div>
+
+      <div class="space-y-3 pt-2 border-t border-slate-800">
+        <label class="block text-xs font-semibold text-slate-300">
+          Already have a Whop License Token?
+        </label>
+        <div class="space-y-2">
+          <input 
+            type="text" 
+            id="whopLicenseInput" 
+            placeholder="e.g. WHOP-ADORISE-PRO-2026" 
+            class="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-600 text-xs focus:outline-none focus:border-cyan-500 font-mono transition"
+          >
+          <button 
+            type="button" 
+            id="verifyTokenBtn" 
+            onclick="submitWhopToken()" 
+            class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs border border-slate-700 hover:border-cyan-500/50 transition cursor-pointer flex items-center justify-center gap-2"
+          >
+            <span id="verifyTokenBtnText">Activate License Token</span>
+            <span id="verifyTokenSpinner" class="hidden animate-spin">🌀</span>
+          </button>
+        </div>
+        <div id="tokenVerifyStatus" class="hidden text-xs p-2.5 rounded-xl"></div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

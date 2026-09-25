@@ -53,14 +53,20 @@
   <!-- Login Container -->
   <main class="pt-32 pb-16 px-6 max-w-md mx-auto w-full flex-1 flex flex-col justify-center">
     <div class="glass-card p-8 rounded-3xl shadow-2xl border border-slate-800 relative">
-      <div class="text-center mb-8">
+      <div class="text-center mb-6">
         <span class="px-3 py-1 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-400 text-[10px] font-mono uppercase tracking-wider inline-block mb-3">PRIVATE CONFIDENTIAL SANCTUARY</span>
-        <h1 class="text-2xl font-black text-white tracking-tight">Enter Your Sanctuary</h1>
-        <p class="text-xs text-slate-400 mt-1.5">Zero judgment, zero tracking. A caring confidant always listening.</p>
+        <h1 class="text-2xl font-black text-white tracking-tight" id="authTitle">Enter Your Sanctuary</h1>
+        <p class="text-xs text-slate-400 mt-1.5" id="authSubtitle">Zero judgment, zero tracking. A caring confidant always listening.</p>
+      </div>
+
+      <!-- Tab Buttons -->
+      <div class="flex p-1 bg-slate-900/80 rounded-xl mb-6 border border-slate-800">
+        <button id="tabSignIn" onclick="switchAuthTab('signin')" class="flex-1 py-2 text-xs font-bold rounded-lg bg-slate-800 text-white shadow transition cursor-pointer">Sign In</button>
+        <button id="tabSignUp" onclick="switchAuthTab('signup')" class="flex-1 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-white transition cursor-pointer">Create Account</button>
       </div>
 
       <!-- Quick Test Drive Accounts -->
-      <div class="mb-6 p-4 rounded-2xl bg-pink-950/30 border border-pink-500/30">
+      <div id="testDriveBox" class="mb-6 p-4 rounded-2xl bg-pink-950/30 border border-pink-500/30">
         <div class="flex items-center justify-between mb-2">
           <span class="text-[10px] font-mono font-bold text-pink-400 uppercase tracking-wide">Instant Test-Drive</span>
           <span class="text-[10px] text-slate-400">Click to autofill</span>
@@ -71,8 +77,8 @@
             <div class="text-[10px] text-slate-400">Unlimited 24/7 access</div>
           </button>
           <button type="button" onclick="fillTestAccount('trial')" class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-700 hover:border-pink-400 text-left transition text-xs group cursor-pointer">
-            <div class="font-bold text-slate-200 group-hover:text-pink-300">7-Day Free Trial</div>
-            <div class="text-[10px] text-slate-400">5 reflections / day</div>
+            <div class="font-bold text-slate-200 group-hover:text-pink-300">Free Trial</div>
+            <div class="text-[10px] text-slate-400">3 free reflections</div>
           </button>
         </div>
       </div>
@@ -85,6 +91,17 @@
 
       <!-- Authentication Form -->
       <form id="authForm" onsubmit="handleAuthSubmit(event)" class="space-y-4">
+        <div id="nameFieldContainer" class="hidden">
+          <label for="name" class="block text-xs font-semibold text-slate-300 mb-1.5">Your Name / Alias</label>
+          <input 
+            type="text" 
+            id="name" 
+            name="name" 
+            placeholder="Maya"
+            class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white text-sm focus:outline-none focus:border-pink-500 transition"
+          >
+        </div>
+
         <div>
           <label for="email" class="block text-xs font-semibold text-slate-300 mb-1.5">Email Address</label>
           <input 
@@ -100,7 +117,7 @@
         <div>
           <div class="flex items-center justify-between mb-1.5">
             <label for="password" class="block text-xs font-semibold text-slate-300">Passphrase</label>
-            <span class="text-[11px] text-slate-500">Min. 8 characters</span>
+            <span class="text-[11px] text-slate-500">Min. 6 characters</span>
           </div>
           <input 
             type="password" 
@@ -143,15 +160,49 @@
   </footer>
 
   <script>
+    let authMode = 'signin';
+
+    function switchAuthTab(mode) {
+      authMode = mode;
+      const tabSignIn = document.getElementById('tabSignIn');
+      const tabSignUp = document.getElementById('tabSignUp');
+      const nameContainer = document.getElementById('nameFieldContainer');
+      const title = document.getElementById('authTitle');
+      const subtitle = document.getElementById('authSubtitle');
+      const btnText = document.getElementById('submitBtnText');
+      const testDrive = document.getElementById('testDriveBox');
+      const errorBox = document.getElementById('errorBox');
+      errorBox.classList.add('hidden');
+
+      if (mode === 'signup') {
+        tabSignUp.className = 'flex-1 py-2 text-xs font-bold rounded-lg bg-pink-600 text-white shadow transition cursor-pointer';
+        tabSignIn.className = 'flex-1 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-white transition cursor-pointer';
+        nameContainer.classList.remove('hidden');
+        if (testDrive) testDrive.classList.add('hidden');
+        title.textContent = "Create an Account";
+        subtitle.textContent = "Start your 3-reflection free trial without requiring pre-existing Whop invite";
+        btnText.textContent = "Create Account & Enter Sanctuary";
+      } else {
+        tabSignIn.className = 'flex-1 py-2 text-xs font-bold rounded-lg bg-slate-800 text-white shadow transition cursor-pointer';
+        tabSignUp.className = 'flex-1 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-white transition cursor-pointer';
+        nameContainer.classList.add('hidden');
+        if (testDrive) testDrive.classList.remove('hidden');
+        title.textContent = "Enter Your Sanctuary";
+        subtitle.textContent = "Zero judgment, zero tracking. A caring confidant always listening.";
+        btnText.textContent = "Open Sanctuary Session";
+      }
+    }
+
     function fillTestAccount(type) {
+      switchAuthTab('signin');
       const emailInput = document.getElementById('email');
       const passInput = document.getElementById('password');
-      if (type === 'plus') {
+      if (type === 'plus' || type === 'pro') {
         emailInput.value = 'pro@adorisedigital.com';
-        passInput.value = 'AdorisePro2026!';
+        passInput.value = 'pro_growth_2026';
       } else {
         emailInput.value = 'trial@adorisedigital.com';
-        passInput.value = 'AdoriseTrial2026!';
+        passInput.value = 'trial_pass_2026';
       }
       document.getElementById('errorBox').classList.add('hidden');
     }
@@ -160,6 +211,7 @@
       e.preventDefault();
       const email = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value;
+      const name = document.getElementById('name') ? document.getElementById('name').value.trim() : '';
       const errorBox = document.getElementById('errorBox');
       const errorMsg = document.getElementById('errorMessage');
       const submitBtn = document.getElementById('submitBtn');
@@ -168,30 +220,38 @@
 
       errorBox.classList.add('hidden');
       submitBtn.disabled = true;
-      btnText.textContent = "Opening Sanctuary...";
+      btnText.textContent = authMode === 'signup' ? "Creating Account..." : "Opening Sanctuary...";
       spinner.classList.remove('hidden');
 
+      const endpoint = authMode === 'signup' ? '/api/auth/signup' : '/api/auth/login';
+      const payload = authMode === 'signup' ? { email, password, name } : { email, password };
+
       try {
-        const res = await fetch('/api/auth/login', {
+        const res = await fetch(endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, password })
+          body: JSON.stringify(payload)
         });
 
         const data = await res.json();
 
-        if (!res.ok) {
+        if (!res.ok || !data.success) {
           throw new Error(data.error || 'Authentication failed');
+        }
+
+        if (data.token) {
+          localStorage.setItem('dearmee_token', data.token);
+          localStorage.setItem('dearmee_user', JSON.stringify(data.user));
         }
 
         const urlParams = new URLSearchParams(window.location.search);
         const redirectPath = urlParams.get('redirect') || '/dashboard';
         window.location.href = redirectPath;
       } catch (err) {
-        errorMsg.textContent = err.message || 'Login failed. Please check credentials.';
+        errorMsg.textContent = err.message || 'Authentication failed. Please check credentials.';
         errorBox.classList.remove('hidden');
         submitBtn.disabled = false;
-        btnText.textContent = "Open Sanctuary Session";
+        btnText.textContent = authMode === 'signup' ? "Create Account & Enter Sanctuary" : "Open Sanctuary Session";
         spinner.classList.add('hidden');
       }
     }

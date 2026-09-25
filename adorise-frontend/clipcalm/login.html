@@ -53,14 +53,20 @@
   <!-- Login Container -->
   <main class="pt-32 pb-16 px-6 max-w-md mx-auto w-full flex-1 flex flex-col justify-center">
     <div class="glass-card p-8 rounded-3xl shadow-2xl border border-slate-800 relative">
-      <div class="text-center mb-8">
+      <div class="text-center mb-6">
         <span class="px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-[10px] font-mono uppercase tracking-wider inline-block mb-3">SECURE STUDIO ACCESS</span>
-        <h1 class="text-2xl font-black text-white tracking-tight">Sign In to ClipCalm</h1>
-        <p class="text-xs text-slate-400 mt-1.5">Access your video render queue, hook scores & vertical exports</p>
+        <h1 class="text-2xl font-black text-white tracking-tight" id="authTitle">Sign In to ClipCalm</h1>
+        <p class="text-xs text-slate-400 mt-1.5" id="authSubtitle">Access your video render queue, hook scores & vertical exports</p>
+      </div>
+
+      <!-- Tab Buttons -->
+      <div class="flex p-1 bg-slate-900/80 rounded-xl mb-6 border border-slate-800">
+        <button id="tabSignIn" onclick="switchAuthTab('signin')" class="flex-1 py-2 text-xs font-bold rounded-lg bg-slate-800 text-white shadow transition cursor-pointer">Sign In</button>
+        <button id="tabSignUp" onclick="switchAuthTab('signup')" class="flex-1 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-white transition cursor-pointer">Create Account</button>
       </div>
 
       <!-- Quick Test Drive Accounts -->
-      <div class="mb-6 p-4 rounded-2xl bg-cyan-950/30 border border-cyan-500/30">
+      <div id="testDriveBox" class="mb-6 p-4 rounded-2xl bg-cyan-950/30 border border-cyan-500/30">
         <div class="flex items-center justify-between mb-2">
           <span class="text-[10px] font-mono font-bold text-cyan-400 uppercase tracking-wide">Instant Test-Drive</span>
           <span class="text-[10px] text-slate-400">Click to autofill</span>
@@ -68,7 +74,7 @@
         <div class="grid grid-cols-2 gap-2">
           <button type="button" onclick="fillTestAccount('pro')" class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-700 hover:border-cyan-400 text-left transition text-xs group cursor-pointer">
             <div class="font-bold text-slate-200 group-hover:text-cyan-300">Creator Pro</div>
-            <div class="text-[10px] text-slate-400">30 shorts / month</div>
+            <div class="text-[10px] text-slate-400">Unlimited / 30 mo</div>
           </button>
           <button type="button" onclick="fillTestAccount('trial')" class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-700 hover:border-cyan-400 text-left transition text-xs group cursor-pointer">
             <div class="font-bold text-slate-200 group-hover:text-cyan-300">Free Trial</div>
@@ -85,6 +91,17 @@
 
       <!-- Authentication Form -->
       <form id="authForm" onsubmit="handleAuthSubmit(event)" class="space-y-4">
+        <div id="nameFieldContainer" class="hidden">
+          <label for="name" class="block text-xs font-semibold text-slate-300 mb-1.5">Creator Name</label>
+          <input 
+            type="text" 
+            id="name" 
+            name="name" 
+            placeholder="Alex Rivers"
+            class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white text-sm focus:outline-none focus:border-cyan-500 transition"
+          >
+        </div>
+
         <div>
           <label for="email" class="block text-xs font-semibold text-slate-300 mb-1.5">Creator Email</label>
           <input 
@@ -100,7 +117,7 @@
         <div>
           <div class="flex items-center justify-between mb-1.5">
             <label for="password" class="block text-xs font-semibold text-slate-300">Password</label>
-            <span class="text-[11px] text-slate-500">Min. 8 characters</span>
+            <span class="text-[11px] text-slate-500">Min. 6 characters</span>
           </div>
           <input 
             type="password" 
@@ -143,15 +160,49 @@
   </footer>
 
   <script>
+    let authMode = 'signin';
+
+    function switchAuthTab(mode) {
+      authMode = mode;
+      const tabSignIn = document.getElementById('tabSignIn');
+      const tabSignUp = document.getElementById('tabSignUp');
+      const nameContainer = document.getElementById('nameFieldContainer');
+      const title = document.getElementById('authTitle');
+      const subtitle = document.getElementById('authSubtitle');
+      const btnText = document.getElementById('submitBtnText');
+      const testDrive = document.getElementById('testDriveBox');
+      const errorBox = document.getElementById('errorBox');
+      errorBox.classList.add('hidden');
+
+      if (mode === 'signup') {
+        tabSignUp.className = 'flex-1 py-2 text-xs font-bold rounded-lg bg-cyan-600 text-white shadow transition cursor-pointer';
+        tabSignIn.className = 'flex-1 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-white transition cursor-pointer';
+        nameContainer.classList.remove('hidden');
+        if (testDrive) testDrive.classList.add('hidden');
+        title.textContent = "Create an Account";
+        subtitle.textContent = "Start your 3-clip free trial without requiring pre-existing Whop invite";
+        btnText.textContent = "Create Account & Start Studio";
+      } else {
+        tabSignIn.className = 'flex-1 py-2 text-xs font-bold rounded-lg bg-slate-800 text-white shadow transition cursor-pointer';
+        tabSignUp.className = 'flex-1 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-white transition cursor-pointer';
+        nameContainer.classList.add('hidden');
+        if (testDrive) testDrive.classList.remove('hidden');
+        title.textContent = "Sign In to ClipCalm";
+        subtitle.textContent = "Access your video render queue, hook scores & vertical exports";
+        btnText.textContent = "Sign In to Studio";
+      }
+    }
+
     function fillTestAccount(type) {
+      switchAuthTab('signin');
       const emailInput = document.getElementById('email');
       const passInput = document.getElementById('password');
       if (type === 'pro') {
         emailInput.value = 'pro@adorisedigital.com';
-        passInput.value = 'AdorisePro2026!';
+        passInput.value = 'pro_growth_2026';
       } else {
         emailInput.value = 'trial@adorisedigital.com';
-        passInput.value = 'AdoriseTrial2026!';
+        passInput.value = 'trial_pass_2026';
       }
       document.getElementById('errorBox').classList.add('hidden');
     }
@@ -160,6 +211,7 @@
       e.preventDefault();
       const email = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value;
+      const name = document.getElementById('name') ? document.getElementById('name').value.trim() : '';
       const errorBox = document.getElementById('errorBox');
       const errorMsg = document.getElementById('errorMessage');
       const submitBtn = document.getElementById('submitBtn');
@@ -168,30 +220,38 @@
 
       errorBox.classList.add('hidden');
       submitBtn.disabled = true;
-      btnText.textContent = "Connecting to Studio...";
+      btnText.textContent = authMode === 'signup' ? "Creating Account..." : "Connecting to Studio...";
       spinner.classList.remove('hidden');
 
+      const endpoint = authMode === 'signup' ? '/api/auth/signup' : '/api/auth/login';
+      const payload = authMode === 'signup' ? { email, password, name } : { email, password };
+
       try {
-        const res = await fetch('/api/auth/login', {
+        const res = await fetch(endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, password })
+          body: JSON.stringify(payload)
         });
 
         const data = await res.json();
 
-        if (!res.ok) {
+        if (!res.ok || !data.success) {
           throw new Error(data.error || 'Authentication failed');
+        }
+
+        if (data.token) {
+          localStorage.setItem('clipcalm_token', data.token);
+          localStorage.setItem('clipcalm_user', JSON.stringify(data.user));
         }
 
         const urlParams = new URLSearchParams(window.location.search);
         const redirectPath = urlParams.get('redirect') || '/dashboard';
         window.location.href = redirectPath;
       } catch (err) {
-        errorMsg.textContent = err.message || 'Login failed. Please check credentials.';
+        errorMsg.textContent = err.message || 'Authentication failed. Please check credentials.';
         errorBox.classList.remove('hidden');
         submitBtn.disabled = false;
-        btnText.textContent = "Sign In to Studio";
+        btnText.textContent = authMode === 'signup' ? "Create Account & Start Studio" : "Sign In to Studio";
         spinner.classList.add('hidden');
       }
     }

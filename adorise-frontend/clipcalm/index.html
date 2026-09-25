@@ -518,21 +518,44 @@
 
   <script>
     let clipsUsed = 0;
+    let isProUser = false;
+
+    async function syncQuota() {
+      try {
+        const res = await fetch('/api/quota');
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.quota) {
+            isProUser = data.quota.is_pro;
+            clipsUsed = data.quota.used || 0;
+            const counter = document.getElementById('trialCounter');
+            if (counter) {
+              if (isProUser) {
+                counter.textContent = "Creator Pro: Unlimited Clips";
+              } else {
+                counter.textContent = `${clipsUsed} / 3 Free Clips Used`;
+              }
+            }
+          }
+        }
+      } catch (e) {
+        console.error("Quota sync failed:", e);
+      }
+    }
 
     function loadSampleUrl() {
       document.getElementById('video-url').value = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
     }
 
-    function runAiExtract() {
+    async function runAiExtract() {
       const url = document.getElementById('video-url').value.trim();
       if (!url) {
         alert("Please enter a video URL first.");
         return;
       }
 
-      if (clipsUsed >= 3) {
-        alert("You have reached the 3 free clips limit for your 7-day trial. Please upgrade to Creator Pro for unlimited renders!");
-        window.location.href = "#pricing";
+      if (!isProUser && clipsUsed >= 3) {
+        openPaywallModal("You have reached your 3 free clip extractions trial limit. Enter your Whop license token to unlock unlimited renders, or upgrade on Whop.");
         return;
       }
 
@@ -543,24 +566,62 @@
       const stepSub = document.getElementById('step-subtitle');
       const prog = document.getElementById('progress-bar');
 
+      prog.style.width = "25%";
+      stepTitle.textContent = "Connecting to Neural Ingestion Node...";
+      stepSub.textContent = "Validating video stream and initializing FFmpeg pipeline...";
+
       setTimeout(() => {
-        prog.style.width = "50%";
+        prog.style.width = "65%";
         stepTitle.textContent = "AI Vision Auto-Framing Active Speaker...";
-        stepSub.textContent = "Cropping 16:9 canvas to 9:16 vertical while centering eyes and lips...";
-      }, 1200);
+        stepSub.textContent = "Cropping canvas to 9:16 vertical while centering face anchor...";
+      }, 800);
 
-      setTimeout(() => {
-        prog.style.width = "85%";
-        stepTitle.textContent = "Rendering Dynamic Animated Karaoke Subtitles...";
-        stepSub.textContent = "Burning word-by-word highlighted text onto vertical stream...";
-      }, 2500);
+      try {
+        const res = await fetch('/api/process-clip', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ video_url: url })
+        });
 
-      setTimeout(() => {
-        clipsUsed++;
-        document.getElementById('trialCounter').textContent = `${clipsUsed} / 3 Free Clips Used`;
+        const data = await res.json();
+
+        if (res.status === 429) {
+          document.getElementById('processing-box').classList.add('hidden');
+          document.getElementById('studio-form').classList.remove('hidden');
+          openPaywallModal(data.error || "Free trial clip limit reached (3 of 3 used). Upgrade to Creator Pro or activate your license token!");
+          return;
+        }
+
+        if (!res.ok || !data.success) {
+          throw new Error(data.error || "Video processing failed.");
+        }
+
+        prog.style.width = "100%";
+        stepTitle.textContent = "Viral Short Ready!";
+        stepSub.textContent = "Render completed at 1080p 60fps vertical format.";
+
+        if (data.quota) {
+          clipsUsed = data.quota.used || (clipsUsed + 1);
+          isProUser = data.quota.is_pro;
+        } else {
+          clipsUsed++;
+        }
+
+        const counter = document.getElementById('trialCounter');
+        if (counter) {
+          counter.textContent = isProUser ? "Creator Pro: Unlimited Clips" : `${clipsUsed} / 3 Free Clips Used`;
+        }
+
+        setTimeout(() => {
+          document.getElementById('processing-box').classList.add('hidden');
+          document.getElementById('result-box').classList.remove('hidden');
+        }, 600);
+
+      } catch (err) {
         document.getElementById('processing-box').classList.add('hidden');
-        document.getElementById('result-box').classList.remove('hidden');
-      }, 3800);
+        document.getElementById('studio-form').classList.remove('hidden');
+        alert("Extraction error: " + err.message);
+      }
     }
 
     function resetStudio() {
@@ -569,8 +630,140 @@
     }
 
     function simulateDownload() {
-      alert("Downloading your 1080p watermark-free short: 'adorise_viral_short_01.mp4' ✅");
+      alert("Downloading your 1080p watermark-free short: 'clipcalm_viral_short_01.mp4' ✅");
     }
+
+    function openPaywallModal(msg) {
+      const modal = document.getElementById('whopPaywallModal');
+      if (modal) {
+        if (msg && document.getElementById('paywallSubtitle')) {
+          document.getElementById('paywallSubtitle').textContent = msg;
+        }
+        modal.classList.remove('hidden');
+      }
+    }
+
+    function closePaywallModal() {
+      const modal = document.getElementById('whopPaywallModal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    async function submitWhopToken() {
+      const input = document.getElementById('whopLicenseInput');
+      const token = (input ? input.value : '').trim();
+      const statusDiv = document.getElementById('tokenVerifyStatus');
+      const btnText = document.getElementById('verifyTokenBtnText');
+      const spinner = document.getElementById('verifyTokenSpinner');
+
+      if (!token) {
+        if (statusDiv) {
+          statusDiv.className = 'text-xs p-2.5 rounded-xl bg-rose-500/20 text-rose-300 border border-rose-500/40 block';
+          statusDiv.textContent = 'Please enter a license token.';
+        }
+        return;
+      }
+
+      btnText.textContent = 'Verifying...';
+      spinner.classList.remove('hidden');
+
+      try {
+        const res = await fetch('/api/auth/verify-token', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token: token })
+        });
+        const data = await res.json();
+
+        if (!res.ok || !data.success) {
+          throw new Error(data.error || 'Invalid license token.');
+        }
+
+        if (statusDiv) {
+          statusDiv.className = 'text-xs p-2.5 rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 block';
+          statusDiv.textContent = '✅ Pro License Activated! Unlocking unrestricted renders...';
+        }
+
+        localStorage.setItem('is_pro', 'true');
+        if (data.token) {
+          localStorage.setItem('clipcalm_token', data.token);
+          localStorage.setItem('clipcalm_user', JSON.stringify(data.user));
+        }
+
+        setTimeout(() => {
+          closePaywallModal();
+          window.location.reload();
+        }, 1000);
+
+      } catch (err) {
+        if (statusDiv) {
+          statusDiv.className = 'text-xs p-2.5 rounded-xl bg-rose-500/20 text-rose-300 border border-rose-500/40 block';
+          statusDiv.textContent = '⚠️ ' + err.message;
+        }
+      } finally {
+        btnText.textContent = 'Activate License Token';
+        spinner.classList.add('hidden');
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      syncQuota();
+    });
   </script>
+
+  <!-- Standardized Whop Paywall Modal -->
+  <div id="whopPaywallModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+    <div class="relative w-full max-w-md p-6 sm:p-8 rounded-3xl bg-slate-900 border border-slate-800 shadow-2xl space-y-6">
+      <button onclick="closePaywallModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg cursor-pointer">✕</button>
+
+      <div class="text-center space-y-2">
+        <div class="inline-flex p-3 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-2xl mb-1">
+          🎬
+        </div>
+        <h3 class="text-xl font-black text-white tracking-tight" id="paywallTitle">Free Trial Limit Reached</h3>
+        <p class="text-xs text-slate-400" id="paywallSubtitle">
+          You've used all 3 free short-form video extractions. Upgrade to unrestricted Creator Pro to continue, or activate your Whop license token below.
+        </p>
+      </div>
+
+      <div class="p-4 rounded-2xl bg-gradient-to-br from-cyan-950/40 to-blue-950/40 border border-cyan-500/30 space-y-3">
+        <div class="flex items-center justify-between text-xs">
+          <span class="font-bold text-white">ClipCalm Creator Pro</span>
+          <span class="text-cyan-400 font-mono font-bold">$19/mo</span>
+        </div>
+        <ul class="text-[11px] text-slate-300 space-y-1">
+          <li class="flex items-center gap-1.5"><span class="text-emerald-400">✓</span> Unlimited 1080p 60fps Video Renders</li>
+          <li class="flex items-center gap-1.5"><span class="text-emerald-400">✓</span> Dynamic Karaoke Subtitles & Face-Tracking</li>
+          <li class="flex items-center gap-1.5"><span class="text-emerald-400">✓</span> No Watermarks • Instant GPU Priority</li>
+        </ul>
+        <a href="https://whop.com/adorise-digital-usa/" target="_blank" rel="noopener noreferrer" class="block w-full py-3 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-600 hover:from-cyan-300 hover:to-blue-500 text-slate-950 font-black text-xs text-center uppercase tracking-wider transition shadow-lg shadow-cyan-500/20 cursor-pointer">
+          Upgrade on Whop &rarr;
+        </a>
+      </div>
+
+      <div class="space-y-3 pt-2 border-t border-slate-800">
+        <label class="block text-xs font-semibold text-slate-300">
+          Already have a Whop License Token?
+        </label>
+        <div class="space-y-2">
+          <input 
+            type="text" 
+            id="whopLicenseInput" 
+            placeholder="e.g. WHOP-ADORISE-PRO-2026" 
+            class="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-600 text-xs focus:outline-none focus:border-cyan-500 font-mono transition"
+          >
+          <button 
+            type="button" 
+            id="verifyTokenBtn" 
+            onclick="submitWhopToken()" 
+            class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs border border-slate-700 hover:border-cyan-500/50 transition cursor-pointer flex items-center justify-center gap-2"
+          >
+            <span id="verifyTokenBtnText">Activate License Token</span>
+            <span id="verifyTokenSpinner" class="hidden animate-spin">🌀</span>
+          </button>
+        </div>
+        <div id="tokenVerifyStatus" class="hidden text-xs p-2.5 rounded-xl"></div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

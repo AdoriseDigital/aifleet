@@ -123,6 +123,38 @@
 
   </main>
 
+  <!-- Whop Paywall & Token Modal -->
+  <div id="scoutPaywallModal" class="hidden fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 flex items-center justify-center p-4">
+    <div class="glass-card max-w-md w-full p-6 sm:p-8 rounded-3xl border border-cyan-500/40 shadow-2xl relative">
+      <button onclick="closeScoutPaywallModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-base cursor-pointer">✕</button>
+      <div class="text-center mb-6">
+        <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-slate-950 font-black text-2xl shadow-lg shadow-cyan-500/30">
+          🎯
+        </div>
+        <h3 class="text-xl font-bold text-white mb-1">Upgrade to Scout Pro</h3>
+        <p class="text-xs text-slate-300">You've reached the 3 Free Leads Trial limit. Unlock unlimited commercial intent leads and automated multichannel outreach.</p>
+      </div>
+
+      <div class="space-y-4 mb-6">
+        <a href="https://whop.com/adorise-digital-usa/" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-black text-center block text-sm shadow-lg shadow-cyan-500/25 transition">
+          Unlock Unlimited Leads on Whop ($49/mo) &rarr;
+        </a>
+        <div class="relative flex items-center justify-center my-4">
+          <div class="border-t border-slate-800 w-full"></div>
+          <span class="bg-slate-950 px-3 text-[10px] uppercase font-mono text-slate-500 absolute">Or enter license token</span>
+        </div>
+        <div class="space-y-2">
+          <input type="text" id="scoutTokenInput" placeholder="e.g. WHOP-ADORISE-PRO-2026" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs outline-none focus:border-cyan-500 font-mono">
+          <button onclick="submitScoutToken()" id="scoutTokenBtn" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-cyan-300 font-semibold text-xs transition">
+            Verify & Activate Pro
+          </button>
+          <p id="scoutTokenMsg" class="text-[11px] text-center hidden"></p>
+        </div>
+      </div>
+      <p class="text-[10px] text-center text-slate-500">PCI-DSS Compliant Whop checkout for global cards, Apple Pay & Google Pay.</p>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer class="py-6 border-t border-slate-900 text-center text-xs text-slate-400">
     <p>&copy; 2026 Adorise Digital LLC / Trendy DigiStore LLC. Scout Autonomous Radar v2.4.</p>
@@ -284,7 +316,61 @@
       alert("Scout Radar checked: 14 qualified buyer signals refreshed.");
     }
 
+    function openScoutPaywallModal() {
+      document.getElementById('scoutPaywallModal').classList.remove('hidden');
+    }
+
+    function closeScoutPaywallModal() {
+      document.getElementById('scoutPaywallModal').classList.add('hidden');
+    }
+
+    async function submitScoutToken() {
+      const token = document.getElementById('scoutTokenInput').value.trim();
+      const msgEl = document.getElementById('scoutTokenMsg');
+      const btn = document.getElementById('scoutTokenBtn');
+      if (!token) {
+        msgEl.textContent = "Please enter a valid license token.";
+        msgEl.className = "text-[11px] text-center text-rose-400 block";
+        return;
+      }
+      btn.disabled = true;
+      btn.textContent = "Verifying...";
+      try {
+        const res = await fetch('/api/auth/verify-token', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token })
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          msgEl.textContent = "Token verified! Unlimited Pro active.";
+          msgEl.className = "text-[11px] text-center text-emerald-400 block";
+          setTimeout(() => {
+            closeScoutPaywallModal();
+            checkAuth();
+          }, 1200);
+        } else {
+          msgEl.textContent = data.error || "Invalid token. Try WHOP-ADORISE-PRO-2026";
+          msgEl.className = "text-[11px] text-center text-rose-400 block";
+        }
+      } catch (err) {
+        msgEl.textContent = "Verification failed. Check your network.";
+        msgEl.className = "text-[11px] text-center text-rose-400 block";
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Verify & Activate Pro";
+      }
+    }
+
+    let isCurrentUserPro = false;
+    let leadsUsedCount = 0;
+
     function exportLeadsCsv() {
+      if (!isCurrentUserPro && leadsUsedCount >= 3) {
+        openScoutPaywallModal();
+        return;
+      }
+
       let csvContent = "data:text/csv;charset=utf-8,Platform,Username,IntentScore,TargetOffer,Excerpt\n";
       SAMPLE_LEADS.forEach(l => {
         csvContent += `"${l.platform}","${l.username}","${l.intent_score}%","${l.target_offer}","${l.quote.replace(/"/g, '""')}"\n`;
@@ -307,12 +393,21 @@
           return;
         }
 
+        let quotaData = { used: 0, is_pro: false };
+        try {
+          const qRes = await fetch('/api/quota');
+          if (qRes.ok) quotaData = await qRes.json();
+        } catch(e) {}
+
+        const isPro = data.user.plan === 'pro' || quotaData.is_pro;
+        isCurrentUserPro = isPro;
+        leadsUsedCount = quotaData.used || 0;
+
         document.getElementById('userEmail').textContent = data.user.email;
-        const isPro = data.user.plan === 'pro';
         document.getElementById('userTier').textContent = isPro ? 'Growth Auto-Pilot (Active)' : 'Solo Hunter Trial (Active)';
         document.getElementById('statPlanName').textContent = isPro ? 'Growth Auto-Pilot' : 'Solo Hunter (Trial)';
-        document.getElementById('statQuotaUsed').textContent = isPro ? '3 / 30 Used' : '1 / 3 Used';
-        document.getElementById('quotaBar').style.width = isPro ? '10%' : '33%';
+        document.getElementById('statQuotaUsed').textContent = isPro ? '3 / 30 Used' : `${leadsUsedCount} / 3 Free Leads Used`;
+        document.getElementById('quotaBar').style.width = isPro ? '10%' : `${Math.min(100, Math.round((leadsUsedCount / 3) * 100))}%`;
       } catch (e) {
         window.location.href = '/login?redirect=/dashboard';
       }

@@ -1,0 +1,5 @@
+/api/queue-post https://api.adorisedigital.com/social/api/queue-post 302
+/api/social-profiles https://api.adorisedigital.com/social/api/social-profiles 302
+/api/trigger-publish https://api.adorisedigital.com/social/api/trigger-publish 302
+/api/queue https://api.adorisedigital.com/social/api/queue 302
+/* /index.html 200

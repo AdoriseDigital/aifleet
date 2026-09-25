@@ -99,8 +99,8 @@
             <label class="p-2.5 rounded-xl border border-slate-800 bg-slate-900 cursor-pointer flex items-center space-x-2 text-xs">
               <input type="radio" name="planChoice" value="trial" checked class="text-cyan-500">
               <div>
-                <div class="font-bold text-white">7-Day Trial</div>
-                <div class="text-[10px] text-slate-400">5 scans/day</div>
+                <div class="font-bold text-white">3-Action Free Trial</div>
+                <div class="text-[10px] text-slate-400">3 free scans</div>
               </div>
             </label>
             <label class="p-2.5 rounded-xl border border-cyan-500/40 bg-cyan-950/20 cursor-pointer flex items-center space-x-2 text-xs">
@@ -140,7 +140,7 @@
               <span class="text-[9px] bg-slate-800 text-slate-400 px-1.5 py-0.5 rounded font-mono">TRIAL</span>
             </div>
             <div class="text-[10px] text-slate-400 font-mono mt-0.5">trial@adorisedigital.com</div>
-            <div class="text-[9px] text-slate-400 mt-1 font-medium">● 5 free scans daily</div>
+            <div class="text-[9px] text-slate-400 mt-1 font-medium">● 3 free trial scans</div>
           </button>
         </div>
       </div>
@@ -172,7 +172,7 @@
         nameContainer.classList.remove('hidden');
         planContainer.classList.remove('hidden');
         title.textContent = "Create an Account";
-        subtitle.textContent = "Start your 7-day email defense trial with 5 daily scans";
+        subtitle.textContent = "Start your 3-scan free trial without pre-existing Whop invite";
         btnText.textContent = "Create Account & Start Free";
       } else {
         tabSignIn.className = 'flex-1 py-2 text-xs font-bold rounded-lg bg-slate-800 text-white shadow transition';
@@ -204,10 +204,10 @@
     function fillTestAccount(type) {
       if (type === 'pro') {
         document.getElementById('emailInput').value = 'pro@adorisedigital.com';
-        document.getElementById('passwordInput').value = 'ProDefense2026!';
+        document.getElementById('passwordInput').value = 'pro_growth_2026';
       } else {
         document.getElementById('emailInput').value = 'trial@adorisedigital.com';
-        document.getElementById('passwordInput').value = 'TrialCalm2026!';
+        document.getElementById('passwordInput').value = 'trial_pass_2026';
       }
       switchTab('signin');
       showAlert(`Loaded ${type === 'pro' ? 'Pro Unlimited' : 'Trial'} demo credentials. Click "Sign In" to authenticate.`, false);

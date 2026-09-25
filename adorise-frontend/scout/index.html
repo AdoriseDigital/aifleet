@@ -189,8 +189,8 @@
         </div>
 
         <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
-          <span class="text-xs font-mono text-cyan-300 bg-slate-950 px-3 py-1.5 rounded-xl border border-cyan-500/30 font-bold">
-            Today: 3 / 3 Leads Ready
+          <span id="scoutQuotaBanner" class="text-xs font-mono text-cyan-300 bg-slate-950 px-3 py-1.5 rounded-xl border border-cyan-500/30 font-bold">
+            0 / 3 Free Actions Used
           </span>
           <button onclick="toggleIcpModal()" class="text-xs font-semibold px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 transition">
             ⚙️ Edit Business ICP
@@ -578,9 +578,41 @@
         </div>
 
         <button type="submit" id="scoutSubmitBtn" class="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-bold shadow-lg shadow-cyan-500/20 hover:scale-[1.01] active:scale-[0.99] transition cursor-pointer text-xs">
-          Activate 7-Day Free Trial (3 Leads Today)
+          Activate Free Trial (3 Leads Free)
         </button>
       </form>
+    </div>
+  </div>
+
+  <!-- Whop Paywall & Token Modal -->
+  <div id="scoutPaywallModal" class="hidden fixed inset-0 modal-backdrop z-50 flex items-center justify-center p-4">
+    <div class="glass-card max-w-md w-full p-6 sm:p-8 rounded-3xl border border-cyan-500/40 shadow-2xl relative">
+      <button onclick="closeScoutPaywallModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-base cursor-pointer">✕</button>
+      <div class="text-center mb-6">
+        <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-slate-950 font-black text-2xl shadow-lg shadow-cyan-500/30">
+          🎯
+        </div>
+        <h3 class="text-xl font-bold text-white mb-1">Upgrade to Scout Pro</h3>
+        <p class="text-xs text-slate-300">You've reached the 3 Free Leads Trial limit. Unlock unlimited commercial intent leads and automated multichannel outreach.</p>
+      </div>
+
+      <div class="space-y-4 mb-6">
+        <a href="https://whop.com/adorise-digital-usa/" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-black text-center block text-sm shadow-lg shadow-cyan-500/25 transition">
+          Unlock Unlimited Leads on Whop ($49/mo) &rarr;
+        </a>
+        <div class="relative flex items-center justify-center my-4">
+          <div class="border-t border-slate-800 w-full"></div>
+          <span class="bg-slate-950 px-3 text-[10px] uppercase font-mono text-slate-500 absolute">Or enter license token</span>
+        </div>
+        <div class="space-y-2">
+          <input type="text" id="scoutTokenInput" placeholder="e.g. WHOP-ADORISE-PRO-2026" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs outline-none focus:border-cyan-500 font-mono">
+          <button onclick="submitScoutToken()" id="scoutTokenBtn" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-cyan-300 font-semibold text-xs transition">
+            Verify & Activate Pro
+          </button>
+          <p id="scoutTokenMsg" class="text-[11px] text-center hidden"></p>
+        </div>
+      </div>
+      <p class="text-[10px] text-center text-slate-500">PCI-DSS Compliant Whop checkout for global cards, Apple Pay & Google Pay.</p>
     </div>
   </div>
 
@@ -622,6 +654,67 @@
   <div id="scoutToastContainer" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
   <script>
+    let scoutActionsCount = parseInt(localStorage.getItem('scout_actions') || '0', 10);
+
+    function updateScoutQuotaDisplay() {
+      const isPro = localStorage.getItem('scout_pro') === 'true';
+      const quotaEl = document.getElementById('scoutQuotaBanner');
+      if (quotaEl) {
+        if (isPro) {
+          quotaEl.textContent = "PRO Plan: Unlimited Leads";
+        } else {
+          quotaEl.textContent = `${scoutActionsCount} / 3 Free Actions Used`;
+        }
+      }
+    }
+
+    function openScoutPaywallModal() {
+      document.getElementById('scoutPaywallModal').classList.remove('hidden');
+    }
+
+    function closeScoutPaywallModal() {
+      document.getElementById('scoutPaywallModal').classList.add('hidden');
+    }
+
+    async function submitScoutToken() {
+      const token = document.getElementById('scoutTokenInput').value.trim();
+      const msgEl = document.getElementById('scoutTokenMsg');
+      const btn = document.getElementById('scoutTokenBtn');
+      if (!token) {
+        msgEl.textContent = "Please enter a valid license token.";
+        msgEl.className = "text-[11px] text-center text-rose-400 block";
+        return;
+      }
+      btn.disabled = true;
+      btn.textContent = "Verifying...";
+      try {
+        const res = await fetch('/api/auth/verify-token', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token })
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          localStorage.setItem('scout_pro', 'true');
+          msgEl.textContent = "Token verified! Unrestricted Pro radar active.";
+          msgEl.className = "text-[11px] text-center text-emerald-400 block";
+          updateScoutQuotaDisplay();
+          setTimeout(() => {
+            closeScoutPaywallModal();
+          }, 1200);
+        } else {
+          msgEl.textContent = data.error || "Invalid token. Try WHOP-ADORISE-PRO-2026";
+          msgEl.className = "text-[11px] text-center text-rose-400 block";
+        }
+      } catch (err) {
+        msgEl.textContent = "Verification failed. Check your network.";
+        msgEl.className = "text-[11px] text-center text-rose-400 block";
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Verify & Activate Pro";
+      }
+    }
+
     function showScoutToast(title, msg, type = 'success') {
       const c = document.getElementById('scoutToastContainer');
       const t = document.createElement('div');
@@ -662,7 +755,7 @@
         regTab.className = "text-sm font-bold text-cyan-400 border-b-2 border-cyan-500 pb-2 cursor-pointer";
         signTab.className = "text-sm font-semibold text-slate-400 hover:text-white pb-2 cursor-pointer";
         nameField.classList.remove('hidden');
-        submitBtn.textContent = "Activate 7-Day Free Trial (3 Leads Today)";
+        submitBtn.textContent = "Activate Free Trial (3 Leads Free)";
       } else {
         signTab.className = "text-sm font-bold text-cyan-400 border-b-2 border-cyan-500 pb-2 cursor-pointer";
         regTab.className = "text-sm font-semibold text-slate-400 hover:text-white pb-2 cursor-pointer";
@@ -679,21 +772,50 @@
 
     function handleScoutSocial(provider) {
       const name = provider === 'Google' ? "Founder (Google)" : "Founder (Facebook)";
-      loginScout(name, "7-Day Free Trial");
+      loginScout(name, "Free Trial");
       closeScoutAuthModal();
       showScoutToast("Authenticated", `Logged in via ${provider}. 3 verified buyer leads available today.`);
     }
 
-    function handleScoutEmail(e) {
+    async function handleScoutEmail(e) {
       e.preventDefault();
       const email = document.getElementById('scoutEmail').value;
+      const password = document.getElementById('scoutPass').value;
       const name = document.getElementById('scoutName').value || email.split('@')[0];
-      loginScout(name, "7-Day Free Trial");
-      closeScoutAuthModal();
-      showScoutToast(`Welcome ${name}!`, "7-Day Free Trial activated. 3 verified buyer leads ready.");
+      const submitBtn = document.getElementById('scoutSubmitBtn');
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Connecting...";
+
+      try {
+        const isReg = !document.getElementById('scoutNameField').classList.contains('hidden');
+        const endpoint = isReg ? '/api/auth/signup' : '/api/auth/login';
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password, name })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          loginScout(data.user?.name || name, data.is_pro ? "Growth Auto-Pilot" : "Free Trial");
+          if (data.is_pro) {
+            localStorage.setItem('scout_pro', 'true');
+            updateScoutQuotaDisplay();
+          }
+          closeScoutAuthModal();
+          showScoutToast(`Welcome ${name}!`, "Account authenticated. Real radar session active.");
+        } else {
+          alert(data.error || "Authentication failed.");
+        }
+      } catch (err) {
+        loginScout(name, "Free Trial");
+        closeScoutAuthModal();
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Sign In / Register";
+      }
     }
 
-    function loginScout(name, tier = "7-Day Free Trial") {
+    function loginScout(name, tier = "Free Trial") {
       localStorage.setItem('scout_user', name);
       localStorage.setItem('scout_tier', tier);
       document.getElementById('scoutLoggedOut').classList.add('hidden');
@@ -704,9 +826,11 @@
     function signOutScout() {
       localStorage.removeItem('scout_user');
       localStorage.removeItem('scout_tier');
+      localStorage.removeItem('scout_pro');
       document.getElementById('scoutLoggedIn').classList.add('hidden');
       document.getElementById('scoutLoggedOut').classList.remove('hidden');
       showScoutToast("Signed Out", "Logged out of Scout Radar.");
+      updateScoutQuotaDisplay();
     }
 
     function toggleIcpModal() {
@@ -731,6 +855,18 @@
     };
 
     function triggerOutreach(platform, lead) {
+      const isPro = localStorage.getItem('scout_pro') === 'true';
+      if (!isPro && scoutActionsCount >= 3) {
+        openScoutPaywallModal();
+        return;
+      }
+
+      if (!isPro) {
+        scoutActionsCount++;
+        localStorage.setItem('scout_actions', scoutActionsCount);
+        updateScoutQuotaDisplay();
+      }
+
       const pitch = LEAD_PITCHES[lead] || `Hi! Noticed your inquiry regarding digital services. We would love to assist: https://adorisedigital.com/services/`;
       if (platform === 'WhatsApp') {
         const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(pitch)}`;
@@ -747,13 +883,26 @@
     }
 
     function triggerComposioAuto(lead) {
-      showScoutToast("Automated Sequence Queued", `Autonomous outreach for ${lead} dispatched via Composio & Buffer background workflow!`);
+      const isPro = localStorage.getItem('scout_pro') === 'true';
+      if (!isPro && scoutActionsCount >= 3) {
+        openScoutPaywallModal();
+        return;
+      }
+
+      if (!isPro) {
+        scoutActionsCount++;
+        localStorage.setItem('scout_actions', scoutActionsCount);
+        updateScoutQuotaDisplay();
+      }
+
+      showScoutToast("Automated Sequence Queued", `Autonomous outreach for ${lead} dispatched via Composio & Buffer background workflow! (${scoutActionsCount}/3 Free Actions Used)`);
     }
 
     window.addEventListener('DOMContentLoaded', () => {
       const user = localStorage.getItem('scout_user');
-      const tier = localStorage.getItem('scout_tier') || "7-Day Free Trial";
+      const tier = localStorage.getItem('scout_tier') || "Free Trial";
       if (user) loginScout(user, tier);
+      updateScoutQuotaDisplay();
     });
   </script>
 </body>
