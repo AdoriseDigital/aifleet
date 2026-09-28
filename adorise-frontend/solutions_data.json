@@ -727,5 +727,95 @@
     "industry_slug": "venture-capital-private-equity",
     "capability": "Whop Monetization",
     "capability_slug": "whop-monetization"
+  },
+  {
+    "title": "Logistics & Supply Chain AI & Automation Solutions",
+    "url": "/solutions/logistics-supply-chain/",
+    "description": "Deploy custom autonomous AI dispatch agents, programmatic freight SEO systems, and TMS/WMS integrations for Logistics & Supply Chain operators.",
+    "industry": "Logistics & Supply Chain Automation",
+    "industry_slug": "logistics-supply-chain",
+    "capability": "Overview",
+    "capability_slug": ""
+  },
+  {
+    "title": "Autonomous AI Agents for Logistics & Supply Chain",
+    "url": "/solutions/logistics-supply-chain/ai-agents/",
+    "description": "Deploy autonomous AI agents that handle carrier dispatch, load exception tracking, and automated bill of lading processing 24/7.",
+    "industry": "Logistics & Supply Chain",
+    "industry_slug": "logistics-supply-chain",
+    "capability": "Ai Agents",
+    "capability_slug": "ai-agents"
+  },
+  {
+    "title": "Cold Outbound & Freight Pipeline for Logistics",
+    "url": "/solutions/logistics-supply-chain/outbound-infrastructure/",
+    "description": "High-deliverability cold outbound pipeline filling 3PL and freight brokerage sales calendars with enterprise shippers and supply chain directors.",
+    "industry": "Logistics & Supply Chain",
+    "industry_slug": "logistics-supply-chain",
+    "capability": "Outbound Infrastructure",
+    "capability_slug": "outbound-infrastructure"
+  },
+  {
+    "title": "Programmatic SEO Engine for Logistics & 3PL Warehousing",
+    "url": "/solutions/logistics-supply-chain/pseo-engine/",
+    "description": "Capture commercial intent search volume for hundreds of freight shipping lanes, cold storage locations, and 3PL warehousing corridors.",
+    "industry": "Logistics & Supply Chain",
+    "industry_slug": "logistics-supply-chain",
+    "capability": "Pseo Engine",
+    "capability_slug": "pseo-engine"
+  },
+  {
+    "title": "Composio TMS & WMS Integrations for Logistics",
+    "url": "/solutions/logistics-supply-chain/composio-integrations/",
+    "description": "Connect autonomous AI agents directly to McLeod, MercuryGate, Samsara, and SAP ERP with hardened Composio API tool calling.",
+    "industry": "Logistics & Supply Chain",
+    "industry_slug": "logistics-supply-chain",
+    "capability": "Composio Integrations",
+    "capability_slug": "composio-integrations"
+  },
+  {
+    "title": "Manufacturing & Industrial AI & Automation Solutions",
+    "url": "/solutions/manufacturing-industrial/",
+    "description": "Deploy custom autonomous AI agents, contract manufacturing outbound pipelines, and IoT ERP integrations for Manufacturing & Industrial plants.",
+    "industry": "Manufacturing & Industrial Operations",
+    "industry_slug": "manufacturing-industrial",
+    "capability": "Overview",
+    "capability_slug": ""
+  },
+  {
+    "title": "Autonomous AI Agents for Manufacturing & Industrial Operations",
+    "url": "/solutions/manufacturing-industrial/ai-agents/",
+    "description": "Deploy autonomous AI agents that analyze plant floor IoT telemetry, parse engineering drawings for RFQs, and optimize machine uptime 24/7.",
+    "industry": "Manufacturing & Industrial",
+    "industry_slug": "manufacturing-industrial",
+    "capability": "Ai Agents",
+    "capability_slug": "ai-agents"
+  },
+  {
+    "title": "B2B Contract Manufacturing Outbound Pipeline",
+    "url": "/solutions/manufacturing-industrial/outbound-infrastructure/",
+    "description": "Fill machine capacity with high-margin contract manufacturing orders. Automated outbound engine targeting VP of Procurement and OEM engineering buyers.",
+    "industry": "Manufacturing & Industrial",
+    "industry_slug": "manufacturing-industrial",
+    "capability": "Outbound Infrastructure",
+    "capability_slug": "outbound-infrastructure"
+  },
+  {
+    "title": "Programmatic SEO Engine for Industrial Equipment & CNC Parts",
+    "url": "/solutions/manufacturing-industrial/pseo-engine/",
+    "description": "Capture industrial engineers and buyers searching for specific material grades, CNC tolerances, and custom manufactured components.",
+    "industry": "Manufacturing & Industrial",
+    "industry_slug": "manufacturing-industrial",
+    "capability": "Pseo Engine",
+    "capability_slug": "pseo-engine"
+  },
+  {
+    "title": "Composio Industrial IoT & SAP ERP Automation",
+    "url": "/solutions/manufacturing-industrial/composio-integrations/",
+    "description": "Connect autonomous AI agents directly to SAP, NetSuite, Rockwell Automation, and Siemens PLC streams with secure Composio tool execution.",
+    "industry": "Manufacturing & Industrial",
+    "industry_slug": "manufacturing-industrial",
+    "capability": "Composio Integrations",
+    "capability_slug": "composio-integrations"
   }
 ]
