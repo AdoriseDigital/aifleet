@@ -913,6 +913,16 @@ function getProductCTA(categoryOrServiceId) {
   }
 }
 
+const allCombosPath = path.resolve(__dirname, '../data/all_70_combinations.json');
+if (fs.existsSync(allCombosPath)) {
+  try {
+    const loadedCombos = JSON.parse(fs.readFileSync(allCombosPath, 'utf8'));
+    Object.assign(COMBINATIONS_DATA, loadedCombos);
+  } catch (e) {
+    console.error('Failed to load all_70_combinations.json:', e);
+  }
+}
+
 function getCombinationData(nicheId, serviceId) {
   const key = `${nicheId}/${serviceId}`;
   if (COMBINATIONS_DATA[key]) {
@@ -1943,7 +1953,8 @@ module.exports = {
 
 if (require.main === module) {
   const targetDir = path.resolve(__dirname, '../../adorise-frontend');
-  const defaultSlugs = [
+  const manifestPath = path.resolve(__dirname, '../data/batch_manifest.json');
+  let slugs = [
     '/solutions/b2b-saas/pseo-engine',
     '/solutions/ecommerce-d2c/ai-agents',
     '/solutions/fintech/outbound-infrastructure',
@@ -1957,5 +1968,15 @@ if (require.main === module) {
     '/solutions/b2b-saas/outbound-infrastructure',
     '/solutions/ecommerce-d2c/pseo-engine'
   ];
-  compileBatch(defaultSlugs, targetDir);
+  if (fs.existsSync(manifestPath)) {
+    try {
+      const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+      if (manifest.batches && manifest.batches.length > 0) {
+        slugs = manifest.batches.flatMap(b => b.slugs);
+      }
+    } catch (e) {
+      console.error('Error loading batch_manifest.json:', e);
+    }
+  }
+  compileBatch(slugs, targetDir);
 }

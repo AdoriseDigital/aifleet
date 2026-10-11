@@ -571,9 +571,24 @@ const HUMAN_VALUE_SOLUTIONS = {
   }
 };
 
+const fs = require('fs');
+const path = require('path');
+const allHumanPath = path.resolve(__dirname, '../data/all_70_human_solutions.json');
+if (fs.existsSync(allHumanPath)) {
+  try {
+    const loaded = JSON.parse(fs.readFileSync(allHumanPath, 'utf8'));
+    Object.assign(HUMAN_VALUE_SOLUTIONS, loaded);
+  } catch (e) {
+    console.error('Failed to load all_70_human_solutions.json:', e);
+  }
+}
+
 function getHumanValueSolutions(key, data) {
   if (HUMAN_VALUE_SOLUTIONS[key]) {
     return HUMAN_VALUE_SOLUTIONS[key];
+  }
+  if (data && data.humanSolutions) {
+    return data.humanSolutions;
   }
   // Deterministic fallback
   return {

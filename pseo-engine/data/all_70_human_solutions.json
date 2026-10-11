@@ -1,0 +1,3222 @@
+{
+  "b2b-saas/pseo-engine": {
+    "businessTitle": "Ending the $50/Click CPC Treadmill & SDR Domain Burn for SaaS",
+    "businessStory": "SaaS companies get trapped spending tens of thousands on Google Ads for software integration terms where paid CPC exceeds $50 per click. When ad spend pauses, demo flow dies. Simultaneously, junior SDRs blast generic cold emails that burn corporate domain reputation.",
+    "businessPillars": [
+      {
+        "title": "Programmatic Organic Lead Pipeline",
+        "desc": "Deploys hundreds of comparison, integration, and alternative routes on Next.js edge caching, capturing high-intent software buyers actively researching solutions.",
+        "product": "pSEO Engine & AI Lead Generation ($297/mo)"
+      },
+      {
+        "title": "Social Intent Prospect Radar",
+        "desc": "Monitors real-time discussions on Reddit (r/saas, r/startups) and X for software pain points, piping pre-qualified buyers directly to sales reps.",
+        "product": "Scout Intent Radar & Outreach Pipeline"
+      },
+      {
+        "title": "Daily Thought Leadership Omnipresence",
+        "desc": "Establishes founder and brand authority on autopilot with 30 to 60 high-signal posts per month formatted for LinkedIn and X.",
+        "product": "AI Content Automation ($197/mo)"
+      }
+    ],
+    "personalTitle": "Protecting SaaS Founders from Context-Switching Panic & Midnight Burnout",
+    "personalStory": "SaaS founders juggle product architecture, investor updates, and frantic customer escalation emails at midnight. The sheer cognitive load leads to insomnia, decision paralysis, and emotional depletion.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Inbox Anxiety & Hostile Escalations",
+        "desc": "Demanding enterprise clients send furious emails when bugs arise. InboxCalm scores toxicity, quarantines hostile trigger phrases, and drafts 3 calm de-escalating replies instantly.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Product Demo & Feature Video Fatigue",
+        "desc": "Recording walkthroughs and product updates is easy; spending 8 hours cutting them into vertical shorts for social media is exhausting. ClipCalm AI generates viral 9:16 clips automatically.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "Founder Loneliness & Decision Overload",
+        "desc": "When investor pressure and sprint deadlines feel overwhelming, DearMee provides a private, non-judgmental conversational co-pilot for emotional grounding and mental clarity.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "ecommerce-d2c/ai-agents": {
+    "businessTitle": "Eliminating Black Friday Support Backlogs & $2,000/mo Rep Churn for D2C",
+    "businessStory": "Peak promotional drops flood e-commerce support desks with thousands of repetitive order status and return inquiries. Support wait times balloon past 12 hours, driving furious customers to file chargebacks and post damaging public reviews.",
+    "businessPillars": [
+      {
+        "title": "Sub-60s Order & Return Resolution",
+        "desc": "Autonomous support bots connect directly to Shopify Plus and Gorgias to verify tracking numbers and issue return labels within policy guidelines.",
+        "product": "AI Customer Service ($147/mo)"
+      },
+      {
+        "title": "Conversational Checkout Rescue",
+        "desc": "Recovers abandoned carts by instantly answering last-minute ingredient, sizing, and shipping questions before the shopper leaves.",
+        "product": "Autonomous Support Bot & Webhook Triage"
+      },
+      {
+        "title": "Omnichannel B2B Wholesaler Outreach",
+        "desc": "Identifies boutique retail buyers and department store purchasing managers looking for trending consumer products.",
+        "product": "AI Lead Generation ($297/mo)"
+      }
+    ],
+    "personalTitle": "Freeing D2C Brand Owners from Phone Notification Terror & Weekend Lost Time",
+    "personalStory": "E-commerce brand owners live in a state of high vigilance—waking up in cold sweats about angry chargeback emails, lost shipments, and supply chain breakdowns that ruin family dinners and personal downtime.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Furious Customer Chargeback Defense",
+        "desc": "When an impatient customer fires off an aggressive email threatening credit card disputes, InboxCalm diffuses the hostility with polite, policy-accurate resolution drafts.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "TikTok & Reels Content Creation Drain",
+        "desc": "Cutting long podcast reviews and unboxing streams into 9:16 TikTok and Reels videos used to steal entire Sundays. ClipCalm auto-crops and detects viral hooks in 60 seconds.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "Late-Night Inventory Anxiety Reset",
+        "desc": "When shipping delays and cash flow crunches create unbearable mental tension, DearMee provides immediate reflective listening to restore calm and perspective.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "fintech/outbound-infrastructure": {
+    "businessTitle": "Ending Corporate Domain Blacklisting & Cold Pipeline Drought for FinTech",
+    "businessStory": "Financial technology companies selling core banking and compliance software cannot rely on generic email blasts that get primary corporate domains blacklisted by strict financial firewall filters like Proofpoint and Mimecast.",
+    "businessPillars": [
+      {
+        "title": "Isolated Multi-Domain Outbound Infrastructure",
+        "desc": "Provisions dedicated secondary domains with automated SPF, DKIM, and DMARC rotation, ensuring high inbox placement with zero risk to main corporate domains.",
+        "product": "Outreach Pipeline & Composio Connectors"
+      },
+      {
+        "title": "Banking & Compliance Social Intent Radar",
+        "desc": "Listens for financial executives discussing PCI-DSS audits, FedNow integration, and core banking migration across LinkedIn and X.",
+        "product": "Scout Intent Radar & Lead Engine ($297/mo)"
+      },
+      {
+        "title": "Technical Institutional Content Engine",
+        "desc": "Publishes 30 to 60 data-backed regulatory breakdown posts per month to position leadership as trusted financial infrastructure authorities.",
+        "product": "AI Content Automation ($197/mo)"
+      }
+    ],
+    "personalTitle": "Relieving FinTech Leaders from Regulatory Dread & High-Stakes Paranoia",
+    "personalStory": "Operating in regulated financial markets creates acute personal stress. A single misworded email to an institutional partner, auditor, or tier-1 bank can trigger legal reviews and sleepless nights.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "High-Stakes Hostile Email Quarantine",
+        "desc": "Sanitizes tense correspondence from demanding institutional clients, auditors, or unhappy partners. Auto-drafts measured, dispute-neutral responses that prevent escalation.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Institutional Explainer Video Friction",
+        "desc": "Transforms complex technical webinars and keynotes into punchy vertical video clips for executive LinkedIn distribution without hiring media agencies.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "Executive Isolation & Board Pressure",
+        "desc": "When fundraising stress and capital adequacy discussions become overwhelming, DearMee provides a confidential, non-judgmental space for emotional decompression.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "healthtech-biotech/ai-agents": {
+    "businessTitle": "Eliminating Administrative Intake Chokeholds & Patient No-Shows in HealthTech",
+    "businessStory": "Clinics and digital health platforms lose thousands of dollars weekly from manual patient onboarding paperwork, slow insurance verification, and high appointment no-show rates that drain clinician capacity.",
+    "businessPillars": [
+      {
+        "title": "Conversational HIPAA Patient Intake Triage",
+        "desc": "Automates symptom questionnaires, insurance eligibility verification, and specialist scheduling in under 30 seconds with zero-trust encrypted audit trails.",
+        "product": "AI Customer Service ($147/mo)"
+      },
+      {
+        "title": "Automated SMS Confirmation Workflows",
+        "desc": "Sends contextual mobile reminders that reduce clinical no-show rates below 4% without requiring staff telephone follow-ups.",
+        "product": "Autonomous Agent Workflows"
+      },
+      {
+        "title": "Provider & Healthcare Lead Generation",
+        "desc": "Identifies independent medical practices, specialized clinics, and hospital administrators searching for modern practice management tools.",
+        "product": "AI Lead Generation ($297/mo)"
+      }
+    ],
+    "personalTitle": "Protecting Medical Staff & Healthcare Founders from Compassion Fatigue",
+    "personalStory": "Healthcare professionals face profound emotional exhaustion from caring for distressed patients all day while carrying heavy administrative paperwork home at night, leading to clinical burnout.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Hostile Patient & Billing Complaint Buffer",
+        "desc": "Patients frustrated with billing or insurance denials often write emotionally charged emails. InboxCalm de-escalates tense correspondence with empathetic, professional drafts.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Patient Education Video Snippets",
+        "desc": "Converts lengthy medical webinars and patient care instructions into digestible vertical video clips for social feeds and patient portals.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "Clinician Emotional Reset Co-Pilot",
+        "desc": "Provides healthcare practitioners and clinic managers a safe, private sounding board to release daily clinical stress and recharge after exhausting shifts.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "proptech-realestate/pseo-engine": {
+    "businessTitle": "Breaking Legacy Aggregator Monopolies for Commercial Real Estate Portals",
+    "businessStory": "Commercial real estate brokerages struggle to rank for neighborhood and zoning-specific property searches because authoring thousands of localized pages manually is impossible, surrendering deals to legacy aggregators.",
+    "businessPillars": [
+      {
+        "title": "Automated Sub-Market Inbound Engine",
+        "desc": "Ingests MLS and commercial feeds to generate thousands of hyper-local landing pages targeting specific commercial asset classes and cap rates.",
+        "product": "pSEO Engine & Static Edge Pages"
+      },
+      {
+        "title": "Active Real Estate Investor Radar",
+        "desc": "Listens for family offices and institutional buyers seeking commercial properties, 1031 exchanges, and industrial leases.",
+        "product": "AI Lead Generation ($297/mo)"
+      },
+      {
+        "title": "24/7 Investor Inquiry Qualification",
+        "desc": "Immediately triages investor inquiries, answers zoning questions, and dispatches offering memorandums in under 60 seconds.",
+        "product": "AI Customer Service ($147/mo)"
+      }
+    ],
+    "personalTitle": "Giving Commercial Real Estate Brokers Their Weekends & Sanity Back",
+    "personalStory": "Commercial brokers work 7 days a week, chained to their smartphones, terrified that missing an impatient investor email will cost them a six-figure commission.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Demanding Weekend Client Boundary Defense",
+        "desc": "Demanding property buyers sending aggressive late-night emails are filtered through InboxCalm, which drafts polite, firm boundary-protecting responses.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Property Walkthrough & Tour Video Clipping",
+        "desc": "Turn 20-minute property walkthroughs and aerial drone footage into viral vertical video tours for TikTok and Instagram Reels in 60 seconds.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "Deal-Pressure Decompression",
+        "desc": "When high-stakes commercial lease negotiations stall and transaction anxiety peaks, DearMee provides grounded clarity to help brokers stay centered.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "legaltech-professional/ai-agents": {
+    "businessTitle": "Stopping $600/hr Billable Partner Waste on Routine Client Intake in Law Firms",
+    "businessStory": "Senior legal partners waste dozens of hours every month conducting preliminary client conflict checks, manual document collections, and answering routine administrative status inquiries.",
+    "businessPillars": [
+      {
+        "title": "Autonomous Legal Intake & Conflict Screening",
+        "desc": "Constrained AI intake agents guide prospective clients through structured questionnaires, capturing case facts without exposing attorney-client privilege.",
+        "product": "AI Customer Service ($147/mo)"
+      },
+      {
+        "title": "High-Value Corporate Counsel Prospecting",
+        "desc": "Monitors corporate M&A announcements, regulatory filings, and executive hiring to identify companies seeking specialized outside counsel.",
+        "product": "AI Lead Generation ($297/mo)"
+      },
+      {
+        "title": "Legal Precedent Thought Leadership",
+        "desc": "Publishes 30 to 60 authoritative regulatory and case breakdown posts across LinkedIn to establish firm dominance in specialized practice areas.",
+        "product": "AI Content Automation ($197/mo)"
+      }
+    ],
+    "personalTitle": "Shielding Attorneys from Adversarial Toxicity & Litigation Burnout",
+    "personalStory": "Lawyers endure relentless adversarial conflict, combative emails from opposing counsel, and desperate clients demanding immediate answers, leading to severe chronic stress.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Hostile Opposing Counsel Email Quarantine",
+        "desc": "InboxCalm strips the emotional venom from aggressive litigation emails, highlights trigger phrases, and auto-drafts strictly objective, professional replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Legal Explainer & Case Study Video Shorts",
+        "desc": "Extracts clear, engaging 9:16 vertical clips from recorded legal seminars and webinars to attract new clients on professional feeds.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "Trial Pressure & Billable Fatigue Decompression",
+        "desc": "A quiet, confidential conversational space for attorneys to decompress after grueling court appearances and 80-hour trial preparation weeks.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "venture-capital-private-equity/outbound-infrastructure": {
+    "businessTitle": "Eliminating Analyst Fatigue & Missing Breakout Deal Flow in Venture Capital",
+    "businessStory": "VC and PE investment teams drown in unvetted cold pitch decks while missing fast-growing stealth startups because manual scout research across GitHub, ProductHunt, and LinkedIn is too slow.",
+    "businessPillars": [
+      {
+        "title": "Autonomous Breakout Founder Radar",
+        "desc": "Continuously monitors technical repositories, social hiring signals, and product launches to identify breakout founders before syndicates bid up valuations.",
+        "product": "Scout Intent Radar & Outbound Engine"
+      },
+      {
+        "title": "Institutional LP Pipeline Engine",
+        "desc": "Engages family offices, endowments, and sovereign wealth advisors with verified intent data to accelerate fund close cycles.",
+        "product": "AI Lead Generation ($297/mo)"
+      },
+      {
+        "title": "Portfolio Founder Showcases",
+        "desc": "Generates consistent weekly spotlight posts celebrating portfolio wins and attracting tier-1 engineering talent to backed companies.",
+        "product": "AI Content Automation ($197/mo)"
+      }
+    ],
+    "personalTitle": "Calming Venture Partners from 24/7 Deal FOMO & Portfolio Firefighting",
+    "personalStory": "Venture capitalists and fund partners suffer from relentless deal anxiety, endless board room conflicts, and late-night LP reporting pressures that crowd out personal presence.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Tense Founder & LP Dispute Buffer",
+        "desc": "When portfolio founders panic or institutional LPs question performance, InboxCalm filters hostility and drafts diplomatic, fact-based responses in seconds.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Podcast & Keynote Repurposing",
+        "desc": "Repurposes fund partner podcast appearances and annual meeting keynotes into viral vertical short videos for executive brand building.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "High-Stakes Decision Sounding Board",
+        "desc": "Offers a private, reflective space to organize thoughts before contentious board meetings and multi-million dollar term sheet negotiations.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "edtech/pseo-engine": {
+    "businessTitle": "Shattering Student Acquisition Ad Fatigue & Course Churn in EdTech",
+    "businessStory": "Online academies and educational platforms watch Facebook and Google ad costs eat their course margins, while frustrated students waiting for answers abandon courses before completion.",
+    "businessPillars": [
+      {
+        "title": "Skill-Specific Organic Discovery Pages",
+        "desc": "Publishes thousands of programmatic landing pages targeting exact career skill gaps, tools, and certifications to drive zero-CAC student enrollments.",
+        "product": "pSEO Engine & Dynamic Next.js Routes"
+      },
+      {
+        "title": "24/7 AI Teaching Assistant Triage",
+        "desc": "Instantly resolves curriculum doubts, assignment guidelines, and billing inquiries at any time of day, keeping student completion rates high.",
+        "product": "AI Customer Service ($147/mo)"
+      },
+      {
+        "title": "B2B Enterprise Upskilling Outreach",
+        "desc": "Directly contacts VP of People and L&D managers at corporations seeking employee upskilling programs.",
+        "product": "AI Lead Generation ($297/mo)"
+      }
+    ],
+    "personalTitle": "Freeing Course Creators from Video Editing Traps & Furious Student Demands",
+    "personalStory": "Educators and academy founders burn out spending 20 hours a week inside video editors and dealing with frustrated student emails late into the night.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Hostile Student Refund Demand Firewall",
+        "desc": "InboxCalm neutralizes aggressive refund demands and toxic student messages, drafting calm, policy-adherent solutions without emotional friction.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Lecture-to-Lesson Automated Video Slicing",
+        "desc": "Transforms 60-minute recorded webinars and lectures into dozens of viral micro-lessons for TikTok, YouTube Shorts, and Reels in seconds.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "Creator Burnout & Emotional Reset",
+        "desc": "Provides a caring, supportive space when curriculum creation fatigue and public creator vulnerability feel overwhelming.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "cybersecurity/cloud-vps-hardening": {
+    "businessTitle": "Ending Public Port Vulnerabilities & Infrastructure Sprawl in Cybersecurity",
+    "businessStory": "Self-hosted AI applications and internal databases deployed without hardened Docker Compose topologies or WAF rate limits invite unauthorized intrusions and compliance breaches.",
+    "businessPillars": [
+      {
+        "title": "Isolated Zero-Trust Container Topology",
+        "desc": "Deploys hardened Docker bridge networks with non-root runtime permissions, automated volume backups, and zero public database port exposure.",
+        "product": "Hardened VPS Stack & Docker Orchestration"
+      },
+      {
+        "title": "Cloudflare Edge WAF & Bot Defense",
+        "desc": "Blocks malicious crawlers and enforces strict 60 req/min endpoint rate limits with automated SSL certificate lifecycle management.",
+        "product": "Cloudflare Edge Security Architecture"
+      },
+      {
+        "title": "Enterprise CISO Account Prospecting",
+        "desc": "Identifies security directors and compliance officers actively evaluating internal data protection and self-hosted AI models.",
+        "product": "AI Lead Generation ($297/mo)"
+      }
+    ],
+    "personalTitle": "Ending the 3 AM Incident Alarm Panic & On-Call Anxiety for Security Leads",
+    "personalStory": "Security engineers and DevOps founders suffer from acute on-call paranoia—constantly terrified of waking up to a catastrophic breach or scathing executive audit.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Crisis Incident Email De-escalation",
+        "desc": "When an executive fires off a panic-filled email during a security alert, InboxCalm filters the hysteria and drafts clear, objective incident status updates.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Threat Briefing Video Snippets",
+        "desc": "Turns detailed security webinars and vulnerability breakdowns into sharp vertical video clips for technical LinkedIn authority.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "On-Call Stress & Burnout Relief",
+        "desc": "Offers an immediate, confidential conversational co-pilot to ground your nervous system during grueling multi-day incident response shifts.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "agency-consultancy/pseo-engine": {
+    "businessTitle": "Ending the Feast-or-Famine Rollercoaster & $4,000/mo SDR Payroll for Agencies",
+    "businessStory": "Digital agencies spend months pitching for clients, only to watch retainers churn suddenly. Hiring internal business development reps or buying bloated software stacks burns cash without predictable pipeline.",
+    "businessPillars": [
+      {
+        "title": "All-in-One Autonomous Agency Growth Engine",
+        "desc": "Combines 200 verified B2B leads per month, 30 to 60 authority posts across LinkedIn & X, and 24/7 client ticket triage in one unified system.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Programmatic Agency Inbound Engine",
+        "desc": "Deploys localized industry agency pages that attract high-budget founders searching for specialized growth and technical architecture.",
+        "product": "pSEO Engine & Static Edge Pages"
+      },
+      {
+        "title": "Verified B2B Decision Maker Prospecting",
+        "desc": "Pipes 200 verified work emails and direct phone numbers matching your agency ICP directly into your GoHighLevel or CRM pipeline weekly.",
+        "product": "AI Lead Generation ($297/mo)"
+      }
+    ],
+    "personalTitle": "Freeing Agency Founders from Scope-Creep Fury & 9 PM Client Dread",
+    "personalStory": "Agency owners live in constant dread of demanding clients who text after hours, dispute scope, and threaten to cancel retainers, ruining family evenings and causing severe burnout.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Toxic Client Email & Scope Creep Firewall",
+        "desc": "When an aggressive client sends a furious email demanding free revisions, InboxCalm filters the emotional trigger and drafts polite, firm, contract-backed boundaries.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Agency Case Study Viral Video Clipping",
+        "desc": "Transform client interviews and loom walkthroughs into viral short clips for TikTok and Reels without hiring expensive video editors.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "Retainer Anxiety & Founder Sanity Reset",
+        "desc": "A private companion to decompress when a big client threatens to churn or when cash flow pressures feel suffocating.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "b2b-saas/outbound-infrastructure": {
+    "businessTitle": "Fixing Broken SDR Quotas & Burned Secondary Domains for B2B SaaS",
+    "businessStory": "SaaS sales development reps spend 70% of their workday copy-pasting LinkedIn profiles into spreadsheets and blasting generic templates that land in corporate spam folders.",
+    "businessPillars": [
+      {
+        "title": "Multi-Domain Graduated Warmup Architecture",
+        "desc": "Rotates outbound sequences across dedicated secondary domains to sustain enterprise deliverability and 99%+ inbox placement.",
+        "product": "Cold Outbound Engine & Composio API"
+      },
+      {
+        "title": "Real-Time Buying Intent Lead Qualification",
+        "desc": "Scores inbound and social intent signals to ensure sales development reps focus only on enterprise buyers with budget authority.",
+        "product": "AI Lead Generation ($297/mo)"
+      },
+      {
+        "title": "Automated Multi-Channel Follow-Up",
+        "desc": "Executes context-aware touchpoints across verified email and social channels without manual rep friction.",
+        "product": "AI Automation Suite ($497/mo)"
+      }
+    ],
+    "personalTitle": "Rescuing Sales Teams & Founders from Relentless Rejection Fatigue",
+    "personalStory": "SaaS sales leaders and SDRs face soul-crushing rejection daily, carrying intense quota pressure that leads to cynicism, anxiety, and rapid team turnover.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Hostile Prospect Reply Buffer",
+        "desc": "When an angry prospect sends an aggressive or profane response, InboxCalm filters the hostility and generates professional unsubscribe acknowledgments.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Sales Pitch & Demo Video Snippets",
+        "desc": "Converts long Zoom product demos into punchy 30-second personalized video clips that achieve 3x higher reply rates in cold sequences.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "Quota Pressure Mental Reset",
+        "desc": "Provides sales professionals and founders a compassionate, motivating sounding board to shake off tough rejections and regain confidence.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "ecommerce-d2c/pseo-engine": {
+    "businessTitle": "Unlocking Zero-CAC Organic Customer Acquisition for Large D2C Catalogs",
+    "businessStory": "Multi-category e-commerce brands cannot afford to bid on competitive paid keywords for every single product SKU. Relying solely on paid ads erodes profit margins to zero.",
+    "businessPillars": [
+      {
+        "title": "Programmatic Catalog Category Landing Pages",
+        "desc": "Generates thousands of high-speed static edge landing pages targeting long-tail shopper search queries with verified Schema.org Product microdata.",
+        "product": "pSEO Engine & Static Edge Pages"
+      },
+      {
+        "title": "24/7 Autonomous Buyer Support",
+        "desc": "Answers pre-purchase sizing, materials, and delivery questions in real time, converting organic search visitors into paying customers.",
+        "product": "AI Customer Service ($147/mo)"
+      },
+      {
+        "title": "Wholesale & B2B Stockist Acquisition",
+        "desc": "Reaches commercial distributors and boutique buyers looking to stock high-growth consumer products.",
+        "product": "AI Lead Generation ($297/mo)"
+      }
+    ],
+    "personalTitle": "Ending 18-Hour Launch Days & Inventory Panic for Consumer Founders",
+    "personalStory": "D2C operators work exhausting 18-hour shifts during product drops, overwhelmed by inventory logistics, delayed freight, and angry supplier messages.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Supplier & Shipping Dispute De-escalation",
+        "desc": "InboxCalm diffuses heated supplier disputes and freight delay correspondence with measured, diplomatic responses that protect working relationships.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Daily Social Video Content Machine",
+        "desc": "Turns raw product videos and unboxing recordings into daily viral TikTok, Shorts, and Reels clips in 60 seconds without manual editing.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "Launch Stress & Sleep Restoration",
+        "desc": "A calming companion to help founders switch off their racing minds after high-adrenaline sales drops and regain restorative sleep.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "b2b-saas/ai-agents": {
+    "businessTitle": "Freeing Core Software Engineers from Support Queue Hell",
+    "businessStory": "Growing B2B SaaS firms find their best engineering talent drowned in tier-2 support queues, resetting API keys and debugging tenant configs. Our autonomous agent clusters resolve 70%+ of technical inquiries instantly, letting developers focus purely on shipping core software roadmap features.",
+    "businessPillars": [
+      {
+        "title": "Sub-90s Technical Ticket Resolution",
+        "desc": "Autonomous bots verify organization IDs, query read-only database replicas, and diagnose configuration errors instantly.",
+        "product": "AI Customer Service ($147/mo)"
+      },
+      {
+        "title": "Automated Onboarding & Self-Serve Setup",
+        "desc": "Guides new workspace admins through SSO SAML configurations and API token provisioning without human hand-holding.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Outbound Trial-to-Paid Expansion Triggers",
+        "desc": "Identifies high-usage trial accounts and automatically alerts account executives with customized upgrade proposals.",
+        "product": "AI Lead Generation ($297/mo)"
+      }
+    ],
+    "personalTitle": "Rescuing SaaS Technical Founders from Midnight Onboarding Fire Drills",
+    "personalStory": "SaaS founders know the dread of watching an enterprise prospect run into onboarding bugs on a Friday night. The founder cancels dinner plans, opens their laptop, and spends hours troubleshooting tenant settings under intense pressure.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Furious Customer Escalation Emails",
+        "desc": "When angry enterprise clients vent frustration over platform downtime, InboxCalm filters hostility and drafts composed de-escalating replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Feature Release Video Repurposing",
+        "desc": "Converts 20-minute Zoom sprint demos into 60-second vertical social clips showcasing new product capabilities without editing work.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "Executive Burnout & Runway Dread",
+        "desc": "When fundraising timelines and customer churn create overwhelming anxiety, DearMee provides private emotional grounding and tactical perspective.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "b2b-saas/web-app-engineering": {
+    "businessTitle": "Eliminating Sluggish Dashboard Load Times That Kill SaaS Retainers",
+    "businessStory": "Enterprise software clients judge platform quality by the speed of their everyday workflow. When dashboards take 5 seconds to load, users complain to executive sponsors, creating retention risks. Our Next.js engineering delivers instantaneous screen transitions that make your software feel enterprise-grade.",
+    "businessPillars": [
+      {
+        "title": "Sub-35ms Edge Rendering Speed",
+        "desc": "Renders analytical charts and transaction logs at edge CDN locations near the user.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Flawless Multi-Tenant Custom Domains",
+        "desc": "Enables white-label subdomains and custom SSL certificates for enterprise tier accounts.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "Automated Onboarding Funnel Optimization",
+        "desc": "Replaces multi-step friction with instant sign-up and OAuth verification flows.",
+        "product": "AI Lead Generation ($297/mo)"
+      }
+    ],
+    "personalTitle": "Freeing SaaS Technical Leads from Constant Performance Complaints",
+    "personalStory": "There is nothing more exhausting for a SaaS engineering lead than opening Slack every morning to find messages from sales reps complaining that customer demos froze or took too long to load.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Hostile Client Feedback Over Sluggish UI",
+        "desc": "InboxCalm de-escalates abrasive feedback from enterprise stakeholders and drafts diplomatic, solution-oriented replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Technical Architecture Video Walkthroughs",
+        "desc": "Turns system architecture diagrams and code reviews into clean vertical video explainers for marketing teams.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "Late-Night Sprint Anxiety & Founder Fatigue",
+        "desc": "Provides a safe, confidential conversational space to process leadership stress and regain mental clarity.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "b2b-saas/composio-integrations": {
+    "businessTitle": "Stopping the Endless Cycle of Brittle Third-Party API Bridges",
+    "businessStory": "Every enterprise customer asks for different integrations: Salesforce, Jira, HubSpot, GitHub. Custom-coding each connector drains months of engineering time and creates perpetual maintenance debt. Composio gives your agents instant, secure access to hundreds of tools with a single unified interface.",
+    "businessPillars": [
+      {
+        "title": "Instant 250+ Enterprise API Connectors",
+        "desc": "Connects agents to CRM, issue tracker, and messaging platforms without manual coding.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Zero-Trust Credential Security",
+        "desc": "Protects enterprise API keys in an isolated vault so LLMs never see raw secrets.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "Autonomous Customer Data Synchronization",
+        "desc": "Keeps records synchronized across sales and support platforms on autopilot.",
+        "product": "AI Customer Service ($147/mo)"
+      }
+    ],
+    "personalTitle": "Ending the Weekend Panic Over Broken Webhook Integrations",
+    "personalStory": "When a third-party API deprecates an endpoint over the weekend, customer accounts break silently until the founder gets an angry call on Sunday morning. Composio eliminates this fragility with standardized schemas and automated error recovery.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Partner Disputes Over Failed API Webhooks",
+        "desc": "When integration partners send urgent, aggressive messages, InboxCalm analyzes the tone and drafts calm, objective explanations.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Integration Demo Videos for Sales Teams",
+        "desc": "Transforms technical API walkthroughs into quick, engaging vertical videos for prospective enterprise buyers.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "Cognitive Overload from Technical Complexity",
+        "desc": "When architectural decisions become overwhelming, DearMee provides a quiet, supportive sounding board for mental decompression.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "b2b-saas/whop-monetization": {
+    "businessTitle": "Unlocking Frictionless Self-Serve Monetization Without Billing Headaches",
+    "businessStory": "Nothing accelerates SaaS growth faster than a self-serve checkout where customers can buy tiers, add seats, and upgrade without waiting for a sales call. Whop provides an ultra-fast checkout experience that eliminates drop-off while handling global tax compliance automatically.",
+    "businessPillars": [
+      {
+        "title": "Self-Serve Instant Checkout Conversion",
+        "desc": "Frictionless checkout pages with one-click payment methods that maximize buyer conversion.",
+        "product": "AI Content Automation ($197/mo)"
+      },
+      {
+        "title": "Zero-Touch License Provisioning",
+        "desc": "Automatically activates workspace accounts and delivers API tokens within seconds of purchase.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Automated Dunning & Revenue Defense",
+        "desc": "Recovers failed card charges with smart retry schedules that save thousands in monthly ARR.",
+        "product": "AI Lead Generation ($297/mo)"
+      }
+    ],
+    "personalTitle": "Freeing SaaS Founders from Manual Invoicing & Payment Chasing",
+    "personalStory": "Few tasks are more demoralizing for a software founder than spending hours drafting manual invoices, tracking down expired cards, and replying to customers whose access was cut off by buggy billing scripts.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Angry Customers Locked Out by Billing Glitches",
+        "desc": "When billing disputes generate hostile emails, InboxCalm de-escalates frustration and prepares polite, reassuring solutions.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "SaaS Product Tour Videos for Social Feeds",
+        "desc": "Turns product onboarding screens into high-converting vertical video snippets for Twitter and LinkedIn.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "Financial Runway Stress & Cash Flow Worries",
+        "desc": "Provides a safe, confidential space for founders to reflect, recharge, and maintain emotional equilibrium.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "b2b-saas/cloud-vps-hardening": {
+    "businessTitle": "Sleeping Soundly with Ironclad Infrastructure Defense",
+    "businessStory": "Every SaaS founder fears the 3:00 AM notification that an origin server was compromised or held for ransom. By closing all public ports behind Cloudflare Zero Trust and sandboxing container runtimes, we turn your infrastructure into a fortress that repels automated attacks effortlessly.",
+    "businessPillars": [
+      {
+        "title": "Zero Public Ports Origin Stealth",
+        "desc": "Hides your server IP address completely from port scanners and distributed denial-of-service attacks.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "SOC2-Ready Access & Audit Trails",
+        "desc": "Restricts administrative access behind corporate SSO with full session recording for security audits.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "Encrypted Off-Site Disaster Recovery",
+        "desc": "Protects tenant data with automated daily encrypted snapshots stored in isolated cloud vaults.",
+        "product": "Cloud Infrastructure Hardening"
+      }
+    ],
+    "personalTitle": "Eliminating 3:00 AM Security Panic for SaaS Technical Founders",
+    "personalStory": "Living with fragile Linux servers creates chronic underlying dread. Every news report of a zero-day vulnerability sends chills down the founder spine, wondering if their own servers are next.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "False Alarm & Urgent Security Vendor Inquiries",
+        "desc": "When security questions arrive from demanding enterprise procurement teams, InboxCalm drafts clear, authoritative security compliance responses.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Security Trust & Compliance Explainer Videos",
+        "desc": "Turns complex security architecture diagrams into polished vertical clips that help close enterprise security audits.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "The Weight of Enterprise Data Responsibility",
+        "desc": "Provides a safe, confidential conversational space to process high-stakes technical anxiety and reset your focus.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "ecommerce-d2c/web-app-engineering": {
+    "businessTitle": "Stopping the 5-Second Mobile Load Times Burning Your Ad Spend",
+    "businessStory": "D2C founders spend fortunes driving traffic from Instagram and TikTok, only to lose 30% of visitors who refuse to wait for sluggish mobile product pages to load. Our headless Next.js storefronts load in under a second, capturing impulse buyers and maximizing return on every advertising dollar.",
+    "businessPillars": [
+      {
+        "title": "Sub-Second Mobile Storefront Speed",
+        "desc": "Renders product collections instantly, eliminating mobile drop-off and cart abandonment.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Server-Side Pixel & Attribution Tracking",
+        "desc": "Bypasses iOS ad blockers with direct server-to-server conversion reporting for Meta and TikTok.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "Instant Express Checkout Modules",
+        "desc": "Empowers shoppers to complete purchases in seconds via Shop Pay and Apple Pay.",
+        "product": "AI Lead Generation ($297/mo)"
+      }
+    ],
+    "personalTitle": "Protecting E-Commerce Founders from the Agony of Slow Storefronts",
+    "personalStory": "Few things cause more anxiety for a brand founder than watching their paid ad budget burn while potential customers leave sluggish mobile landing pages before ever seeing the add-to-cart button.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Angry Shopper Messages Over Checkout Glitches",
+        "desc": "When customers vent frustration about payment errors, InboxCalm drafts empathetic, reassuring de-escalation messages.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "UGC & Product Unboxing Video Repurposing",
+        "desc": "Transforms long customer reviews and unboxing clips into high-converting 9:16 vertical video shorts for TikTok.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "Late-Night Inventory & Ad Fatigue Anxiety",
+        "desc": "Provides a safe, confidential space for founders to decompress from volatile inventory and ad performance cycles.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "ecommerce-d2c/outbound-infrastructure": {
+    "businessTitle": "Recruiting Hundreds of Affiliates Without Touching Primary Brand Domains",
+    "businessStory": "Growing D2C brands cannot afford to rely entirely on paid ads. They need an army of creators, brand ambassadors, and wholesale retailers driving organic demand. Our dedicated outbound infrastructure builds these partnerships at scale without risking your primary domain.",
+    "businessPillars": [
+      {
+        "title": "Zero-Risk Domain Isolation",
+        "desc": "Protects store transactional emails by running all partnership pitches through isolated secondary inboxes.",
+        "product": "AI Lead Generation ($297/mo)"
+      },
+      {
+        "title": "Automated Creator & Buyer Scraping",
+        "desc": "Continuously discovers relevant micro-influencers and retail store buyers with verified emails.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Daily Partnership Pipeline Flow",
+        "desc": "Generates steady incoming replies from creators wanting product samples and affiliate codes.",
+        "product": "AI Content Automation ($197/mo)"
+      }
+    ],
+    "personalTitle": "Rescuing Brand Founders from the Daily Grind of Cold Outreach",
+    "personalStory": "Spending hours manually browsing Instagram profiles, typing copy-pasted DM messages, and praying for replies is soul-draining work for an ambitious brand founder.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Demanding Creator Fee Negotiations",
+        "desc": "When high-profile influencers make aggressive demands, InboxCalm drafts calm, firm counter-proposals within your budget.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Product Pitch Video Shorts for Brands",
+        "desc": "Transforms product demo footage into short, punchy vertical videos to pitch retail buyers and partners.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "Founder Stress Over Customer Acquisition Spikes",
+        "desc": "Provides a safe, confidential space to process business volatility and maintain emotional grounding.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "ecommerce-d2c/composio-integrations": {
+    "businessTitle": "Unifying Your E-Commerce Tech Stack with Autonomous Agent Bridges",
+    "businessStory": "Managing customer support across Shopify, Gorgias, Klaviyo, and 3PL fulfillment portals forces support reps to copy paste customer data across 5 different browser tabs. Composio connects all these tools to autonomous agents that handle order status, returns, and address updates in seconds.",
+    "businessPillars": [
+      {
+        "title": "Unified Multi-App Tool Execution",
+        "desc": "Empowers AI agents to query orders, check warehouse stock, and update tickets in one unified step.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Strict Financial Guardrails",
+        "desc": "Guarantees that agents never issue refunds or discounts beyond verified policy limits.",
+        "product": "AI Customer Service ($147/mo)"
+      },
+      {
+        "title": "Cross-Platform Data Synchronization",
+        "desc": "Updates customer sentiment and VIP tags across Klaviyo and Shopify in real time.",
+        "product": "Production Architecture Retainer"
+      }
+    ],
+    "personalTitle": "Freeing E-Commerce Operators from Tab-Switching Burnout",
+    "personalStory": "Operating a fast-growing brand should not mean spending your evenings manually checking 3PL shipping portals and cross-referencing tracking numbers across multiple disconnected dashboards.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Hostile Lost-Package Customer Inquiries",
+        "desc": "When delivery delays trigger furious customer emails, InboxCalm drafts calm, empathetic explanations with exact tracking data.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Behind-the-Scenes Product Packaging Clips",
+        "desc": "Turns warehouse fulfillment recordings into captivating vertical video shorts that build brand authenticity.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "Peak Promotional Stress & Operational Overwhelm",
+        "desc": "Provides a safe, confidential space for brand leaders to recharge and maintain mental resilience.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "ecommerce-d2c/whop-monetization": {
+    "businessTitle": "Unlocking Predictable Recurring Revenue for Direct-to-Consumer Brands",
+    "businessStory": "Transforming a portion of your customer base into monthly club members creates stable recurring cash flow that insulates your brand from paid ad volatility. Whop makes launching and managing a VIP brand club completely frictionless.",
+    "businessPillars": [
+      {
+        "title": "Predictable Recurring Cash Flow",
+        "desc": "Builds a reliable monthly recurring revenue baseline alongside one-off retail sales.",
+        "product": "AI Content Automation ($197/mo)"
+      },
+      {
+        "title": "Zero-Touch Member Management",
+        "desc": "Automates discount code distribution, community role assignment, and access gating.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Dramatically Higher Customer Lifetime Value",
+        "desc": "Keeps your most passionate brand advocates engaged with exclusive perks and insider access.",
+        "product": "AI Lead Generation ($297/mo)"
+      }
+    ],
+    "personalTitle": "Freeing Brand Founders from the Stress of Volatile Sales Cycles",
+    "personalStory": "Waking up on the first day of the month with zero guaranteed revenue and wondering how much you will have to spend on ads to hit target is an exhausting cycle. Recurring membership revenue restores peace of mind.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "VIP Member Inquiries & Billing Questions",
+        "desc": "When top-tier members have questions about subscription perks, InboxCalm drafts white-glove, appreciative replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Exclusive Member-Only Video Announcements",
+        "desc": "Turns founder product announcements into polished vertical video snippets for your VIP community.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "Mental Relief from Constant Ad Budget Pressure",
+        "desc": "Provides a safe, confidential conversational space to decompress from marketing anxiety and plan long-term growth.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "ecommerce-d2c/cloud-vps-hardening": {
+    "businessTitle": "Bulletproofing Your Brand Against Flash-Sale Crashes and Scalper Bots",
+    "businessStory": "There is nothing more devastating than spending months preparing for a major product launch, only to watch your website crash the second the announcement drops. We build ironclad infrastructure that handles massive traffic surges effortlessly.",
+    "businessPillars": [
+      {
+        "title": "100% Launch Day Uptime Guarantee",
+        "desc": "Absorbs extreme traffic spikes with edge caching and isolated server architecture.",
+        "product": "Cloud Infrastructure Hardening"
+      },
+      {
+        "title": "Aggressive Bot & Scalper Mitigation",
+        "desc": "Blocks malicious automated checkout bots so your genuine customers get the products.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Zero-Trust Internal Access Security",
+        "desc": "Protects store databases and backend tools behind corporate multi-factor authentication.",
+        "product": "Production Architecture Retainer"
+      }
+    ],
+    "personalTitle": "Eliminating the Launch-Day Panic That Ruins Every Holiday Promotion",
+    "personalStory": "E-commerce founders should be celebrating record-breaking sales days with their families, not staring frantically at server monitoring dashboards praying that the checkout server does not crash.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Furious Messages During Accidental Downtime",
+        "desc": "When unexpected technical glitches cause customer panic, InboxCalm crafts composed, reassuring de-escalation messages.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Product Drop Countdown Videos for Socials",
+        "desc": "Turns product teaser photos into high-energy vertical countdown clips that build massive launch anticipation.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "The Stress of High-Stakes Promotional Deadlines",
+        "desc": "Provides a safe, confidential conversational space to process high-pressure retail anxiety and maintain focus.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "fintech/pseo-engine": {
+    "businessTitle": "Ending the $90/Click Google Ads Treadmill for FinTech Platforms",
+    "businessStory": "FinTech companies burn massive venture capital budgets bidding against traditional banks for commercial keywords. When paid ads pause, inbound demo flow dies instantly. Programmatic SEO creates permanent organic inbound pipelines capturing enterprise treasury and payments buyers.",
+    "businessPillars": [
+      {
+        "title": "Permanent Organic Deal Pipeline",
+        "desc": "Captures high-intent buyers searching for payment rail comparisons and banking integrations.",
+        "product": "AI Content Automation ($197/mo)"
+      },
+      {
+        "title": "Zero-Touch Compliance Disclosures",
+        "desc": "Automatically injects verified legal and regulatory disclosures into every published route.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "Sub-40ms Edge Global Speed",
+        "desc": "Delivers instantaneous page transitions that convey institutional-grade security and reliability.",
+        "product": "AI Automation Suite ($497/mo)"
+      }
+    ],
+    "personalTitle": "Freeing FinTech Growth Leaders from Sky-High CAC Anxiety",
+    "personalStory": "Few things cause more executive stress in FinTech than presenting marketing spend reports to the board showing skyrocketing customer acquisition costs with diminishing pipeline returns.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Hostile Board & Investor Email Inquiries",
+        "desc": "When investors send tense queries about marketing CAC, InboxCalm helps draft calm, data-backed strategic updates.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Financial Technology Teardown Videos",
+        "desc": "Transforms technical banking whitepapers into short, authoritative vertical clips for LinkedIn.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "The Stress of FinTech Market Volatility",
+        "desc": "Provides a safe, confidential space for executives to process industry turbulence and regain mental balance.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "fintech/ai-agents": {
+    "businessTitle": "Clearing the KYC Bottleneck That Chokes FinTech Account Growth",
+    "businessStory": "Nothing is more frustrating than spending hundreds of dollars to acquire a FinTech user, only to lose them in a 24-hour document review backlog. Our autonomous KYC agents verify legitimate users in seconds, while empowering human analysts with instant summaries on complex cases.",
+    "businessPillars": [
+      {
+        "title": "Sub-2s Identity Verification",
+        "desc": "Verifies passports and utility bills instantly, driving record signup completion rates.",
+        "product": "AI Customer Service ($147/mo)"
+      },
+      {
+        "title": "Zero-PII Leakage Architecture",
+        "desc": "Tokenizes and protects customer PII so sensitive financial data never leaves your private cloud.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Audit-Ready Compliance Telemetry",
+        "desc": "Maintains tamper-proof records that streamline regulatory audits and partner bank reviews.",
+        "product": "Production Architecture Retainer"
+      }
+    ],
+    "personalTitle": "Freeing Chief Compliance Officers from 80-Hour Audit Weeks",
+    "personalStory": "Compliance leaders in FinTech live under constant regulatory scrutiny. The fear of missing an illicit transaction keeps executives awake at night, buried in endless spreadsheets and manual review queues.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Tense Inquiries from Banking Partners & Regulators",
+        "desc": "When partner banks request urgent compliance clarifications, InboxCalm drafts clear, authoritative, de-escalating replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Regulatory Compliance Video Briefings",
+        "desc": "Turns dry compliance updates into short, digestible vertical video briefings for your internal team.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "The Psychological Burden of Regulatory Liability",
+        "desc": "Provides a safe, confidential space for financial executives to process high-stakes regulatory pressure.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "fintech/web-app-engineering": {
+    "businessTitle": "Delivering the Flawless Speed Demanded by Institutional Investors",
+    "businessStory": "Corporate treasury teams and institutional investors move fast. When your financial portal delivers sub-30ms load times and seamless transaction navigation, users feel the precision of institutional-grade software, solidifying trust and client retention.",
+    "businessPillars": [
+      {
+        "title": "Sub-30ms Ledger Navigation Speed",
+        "desc": "Streams transaction data from edge servers for instant balance verification.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Zero-Scope PCI-DSS Architecture",
+        "desc": "Protects payment inputs with hosted tokenized fields, simplifying security audits.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "A+ Security Header Hardening",
+        "desc": "Defends customer sessions against XSS and session hijacking with strict CSP policies.",
+        "product": "AI Content Automation ($197/mo)"
+      }
+    ],
+    "personalTitle": "Freeing FinTech CTOs from Security Audit Paranoia",
+    "personalStory": "Leading engineering at a financial platform means constant worry about web vulnerabilities and failed penetration tests. We build hardened web applications that pass enterprise security reviews on the first submission.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Urgent Security Questionnaire Escalations",
+        "desc": "When institutional partners send exhausting security questionnaires, InboxCalm drafts clear, authoritative technical answers.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Security Trust & Encryption Explainer Videos",
+        "desc": "Transforms technical architecture diagrams into concise vertical videos that reassure institutional clients.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "Late-Night Financial Architecture Pressure",
+        "desc": "Provides a safe, confidential conversational space to process leadership anxiety and maintain emotional clarity.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "fintech/composio-integrations": {
+    "businessTitle": "Unlocking Safe, Governed AI Automation for Financial Workflows",
+    "businessStory": "FinTech leaders know that autonomous AI can eliminate thousands of hours of manual ledger reconciliation and account verification, but they cannot risk compliance breaches. Composio provides the secure, auditable bridge that makes financial AI safe for enterprise deployment.",
+    "businessPillars": [
+      {
+        "title": "Read-Only Banking Tool Boundaries",
+        "desc": "Enforces strict read boundaries so agents can verify data without risking unauthorized transfers.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Encrypted Credential Protection",
+        "desc": "Shields banking API keys in an isolated vault so LLMs never see raw credentials.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "Examiner-Ready Audit Trails",
+        "desc": "Generates immutable cryptographic transaction logs that satisfy bank examiners and auditors.",
+        "product": "AI Customer Service ($147/mo)"
+      }
+    ],
+    "personalTitle": "Protecting FinTech Engineering Leaders from Compliance Anxiety",
+    "personalStory": "Integrating third-party banking APIs creates constant fear of unexpected downtime or security breaches. Composio eliminates this anxiety with battle-tested schemas and automated token management.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Hostile Inquiries Over API Integration Delays",
+        "desc": "When financial partners question integration timelines, InboxCalm drafts calm, authoritative progress reports.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Financial API Architecture Explainer Videos",
+        "desc": "Transforms complex API diagrams into engaging vertical videos for institutional partners and investors.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "Mental Overload from High-Stakes Architecture",
+        "desc": "Provides a safe, confidential space for engineering leaders to decompress and reset their focus.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "fintech/whop-monetization": {
+    "businessTitle": "Monetizing Proprietary Financial Insights with Zero Operational Drag",
+    "businessStory": "Publishing high-value financial analysis should be profitable, not an endless administrative headache of chasing invoices and resetting passwords. Whop provides an enterprise-ready monetization infrastructure that automates billing, access gating, and customer retention.",
+    "businessPillars": [
+      {
+        "title": "Frictionless Institutional Checkout",
+        "desc": "Converts prospective readers into paying subscribers with one-click payment flows.",
+        "product": "AI Content Automation ($197/mo)"
+      },
+      {
+        "title": "Zero-Touch Access Gating",
+        "desc": "Automatically grants and revokes research portal and community access based on live billing status.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Automated Dunning & Retention",
+        "desc": "Recovers failed corporate card charges without manual administrative follow-ups.",
+        "product": "AI Lead Generation ($297/mo)"
+      }
+    ],
+    "personalTitle": "Freeing Financial Analysts from Invoicing Administrative Drudgery",
+    "personalStory": "Financial analysts and quantitative researchers should spend their time analyzing markets and uncovering alpha, not chasing past-due invoices or arguing with customers over billing errors.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Demanding Subscriber Billing Inquiries",
+        "desc": "When corporate finance departments send frustrating invoice requests, InboxCalm drafts clear, professional replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Financial Research Video Highlights",
+        "desc": "Transforms lengthy market analysis reports into compelling vertical video summaries for social channels.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "Market Volatility & Performance Anxiety",
+        "desc": "Provides a safe, confidential space for analysts to decompress from market stress and maintain clarity.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "fintech/cloud-vps-hardening": {
+    "businessTitle": "Sleeping Soundly with Institutional-Grade Security Architecture",
+    "businessStory": "FinTech executives bear immense responsibility for protecting customer capital and sensitive financial data. By closing all public ports behind Cloudflare Zero Trust and enforcing mutual TLS client certificates, we make your servers virtually impenetrable to outside attackers.",
+    "businessPillars": [
+      {
+        "title": "Zero Public Listening Ports",
+        "desc": "Hides your server IP address completely from port scanners and automated cyberattacks.",
+        "product": "Cloud Infrastructure Hardening"
+      },
+      {
+        "title": "Banking Examiner-Ready Security",
+        "desc": "Directly satisfies strict SOC2 Type II and partner bank cybersecurity audit mandates.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "GPG-Encrypted Off-Site Disaster Recovery",
+        "desc": "Protects ledger balances with automated hourly encrypted snapshots stored in isolated cloud vaults.",
+        "product": "AI Automation Suite ($497/mo)"
+      }
+    ],
+    "personalTitle": "Eliminating 3:00 AM Security Panic for FinTech Technical Leaders",
+    "personalStory": "The psychological burden of managing servers holding millions in financial transactions is immense. Every news report of a cybersecurity breach creates acute anxiety. Our zero-trust hardening restores peace of mind.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Urgent Security Inquiries from Banking Regulators",
+        "desc": "When bank examiners send demanding cybersecurity queries, InboxCalm drafts clear, authoritative compliance replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Zero-Trust Architecture Explainer Videos",
+        "desc": "Turns technical security diagrams into compelling vertical video briefings that impress institutional partners.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "The Weight of Financial Infrastructure Responsibility",
+        "desc": "Provides a safe, confidential conversational space for executives to process high-stakes pressure and maintain focus.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "healthtech-biotech/pseo-engine": {
+    "businessTitle": "Freeing Digital Health Clinics from the $70/Click Paid Search Treadmill",
+    "businessStory": "HealthTech founders burn millions on Google Ads competing for patient searches. When budgets pause, appointment calendars dry up. Programmatic SEO creates a permanent organic patient acquisition engine that drives qualified clinic bookings at zero incremental ad cost.",
+    "businessPillars": [
+      {
+        "title": "Permanent Organic Patient Inflow",
+        "desc": "Captures high-intent patients searching for specialized treatments and insurance coverage.",
+        "product": "AI Content Automation ($197/mo)"
+      },
+      {
+        "title": "100% HIPAA-Ready Architecture",
+        "desc": "Deploys static edge landing pages that protect patient privacy without third-party tracking leaks.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "Sub-45ms Edge Global Speed",
+        "desc": "Loads clinical information instantaneously, building immediate trust with patients in distress.",
+        "product": "AI Automation Suite ($497/mo)"
+      }
+    ],
+    "personalTitle": "Protecting HealthTech Founders from Burnout & High-Stakes Patient Pressure",
+    "personalStory": "Leading a healthcare company means carrying the immense moral responsibility of patient well-being while navigating regulatory scrutiny and unpredictable patient acquisition costs.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Distressed Patient & Family Email Inquiries",
+        "desc": "When patients or families send emotional, urgent messages, InboxCalm drafts compassionate, clear, de-escalating replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Medical Protocol & Patient Education Videos",
+        "desc": "Transforms complex medical whitepapers into accessible vertical video explainers for social media.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "The Emotional Weight of Healthcare Leadership",
+        "desc": "Provides a safe, confidential conversational space for healthcare leaders to decompress and maintain mental strength.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "healthtech-biotech/web-app-engineering": {
+    "businessTitle": "Building HIPAA-Compliant Web Applications Without Sacrificing Speed",
+    "businessStory": "Healthcare providers should not have to choose between strict HIPAA compliance and modern user experience. Our Next.js web engineering delivers blistering sub-35ms speed and elegant design while maintaining an unshakeable privacy perimeter that protects patient health information.",
+    "businessPillars": [
+      {
+        "title": "Zero-Tracking Privacy Perimeter",
+        "desc": "Guarantees complete protection against illegal pixel tracking and HHS regulatory audits.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "Sub-35ms Clinical Record Speed",
+        "desc": "Empowers physicians to access patient charts and lab results with instantaneous page loads.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Frictionless Mobile Intake Forms",
+        "desc": "Simplifies complex medical questionnaires so patients complete intake before appointments.",
+        "product": "AI Content Automation ($197/mo)"
+      }
+    ],
+    "personalTitle": "Freeing HealthTech Engineering Leaders from HIPAA Privacy Nightmares",
+    "personalStory": "The threat of a HIPAA violation or OCR investigation keeps healthcare CTOs awake at night. We build hardened web architectures that eliminate third-party data leaks, allowing leaders to sleep with complete confidence.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Urgent Security & Compliance Audit Requests",
+        "desc": "When hospital procurement teams send demanding privacy questionnaires, InboxCalm drafts clear, authoritative technical responses.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Patient Care & Product Explainer Videos",
+        "desc": "Transforms complex clinical workflows into clear, reassuring vertical videos that comfort patients.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "The Weight of Clinical Data Stewardship",
+        "desc": "Provides a safe, confidential space for healthcare executives to process leadership stress and regain focus.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "healthtech-biotech/outbound-infrastructure": {
+    "businessTitle": "Booking High-Value Hospital Contracts Without Burning Primary Domains",
+    "businessStory": "Signing enterprise healthcare contracts and recruiting top-tier physicians is essential for HealthTech growth. Our dedicated outbound infrastructure builds clinical partnerships at scale while keeping your core medical domain 100% safe from spam filters.",
+    "businessPillars": [
+      {
+        "title": "Zero-Risk Healthcare Domain Isolation",
+        "desc": "Protects patient clinical correspondence by running all outreach on isolated secondary domains.",
+        "product": "AI Lead Generation ($297/mo)"
+      },
+      {
+        "title": "Verified Physician & Director Outreach",
+        "desc": "Directly reaches decision-makers at hospitals and clinics with evidence-based peer copy.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Predictable Enterprise Dealflow",
+        "desc": "Generates steady incoming discovery calls with hospital procurement and clinical directors.",
+        "product": "AI Content Automation ($197/mo)"
+      }
+    ],
+    "personalTitle": "Freeing HealthTech Founders from Slow Enterprise Sales Cycles",
+    "personalStory": "Waiting months for enterprise hospital procurement committees to reply to passive inbound inquiries is agonizing for a founder. Our outbound engine generates consistent executive conversations on your calendar every week.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Tense Hospital Procurement Negotiations",
+        "desc": "When hospital purchasing directors push for aggressive contract discounts, InboxCalm drafts calm, firm, value-driven counter-proposals.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Clinical Case Study Video Summaries",
+        "desc": "Transforms complex clinical trial results into compelling vertical video briefs for healthcare executives.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "The Stress of Enterprise Healthcare Contracting",
+        "desc": "Provides a safe, confidential space for founders to decompress from long sales cycles and stay focused.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "healthtech-biotech/composio-integrations": {
+    "businessTitle": "Connecting AI Agents to Hospital EHRs with Ironclad HIPAA Governance",
+    "businessStory": "Healthcare leaders want autonomous agents to automate patient scheduling, intake, and lab routing, but they cannot risk a patient data breach. Composio provides the secure, auditable tool-calling bridge that makes clinical AI safe for enterprise healthcare deployment.",
+    "businessPillars": [
+      {
+        "title": "Read-Only Clinical Tool Boundaries",
+        "desc": "Restricts agents to safe data lookups, preventing unauthorized modifications to medical records.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Encrypted Credential Protection",
+        "desc": "Shields EHR API tokens in an isolated vault so LLMs never see raw credentials.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "HIPAA-Ready Audit Trails",
+        "desc": "Generates immutable cryptographic logs that satisfy hospital security committees and auditors.",
+        "product": "AI Customer Service ($147/mo)"
+      }
+    ],
+    "personalTitle": "Freeing HealthTech Engineering Leaders from Compliance Anxiety",
+    "personalStory": "Integrating third-party hospital APIs creates constant anxiety over unexpected downtime or data compliance breaches. Composio eliminates this stress with standardized clinical schemas and automated token management.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Hostile Inquiries Over EHR Integration Delays",
+        "desc": "When hospital IT departments question integration timelines, InboxCalm drafts calm, authoritative technical progress reports.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Clinical Architecture Explainer Videos",
+        "desc": "Transforms technical EHR integration diagrams into engaging vertical videos for hospital procurement committees.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "Mental Overload from High-Stakes Clinical Engineering",
+        "desc": "Provides a safe, confidential space for engineering leaders to decompress and reset their focus.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "healthtech-biotech/whop-monetization": {
+    "businessTitle": "Monetizing Medical Expertise with Zero Administrative Drag",
+    "businessStory": "Publishing high-value clinical protocols and accredited training should be profitable, not an endless administrative headache of chasing invoices and resetting passwords. Whop provides an enterprise-ready monetization infrastructure that automates billing, access gating, and customer retention.",
+    "businessPillars": [
+      {
+        "title": "Frictionless Clinician Checkout",
+        "desc": "Converts medical professionals into paying subscribers with one-click payment flows.",
+        "product": "AI Content Automation ($197/mo)"
+      },
+      {
+        "title": "Zero-Touch Access Gating",
+        "desc": "Automatically grants and revokes training portal and community access based on live billing status.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Automated Dunning & Retention",
+        "desc": "Recovers failed practice card charges without manual administrative follow-ups.",
+        "product": "AI Lead Generation ($297/mo)"
+      }
+    ],
+    "personalTitle": "Freeing Medical Educators from Invoicing Administrative Drudgery",
+    "personalStory": "Medical educators and clinical researchers should spend their time advancing patient care, not chasing past-due invoices or arguing with customers over billing errors.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Demanding Subscriber Billing Inquiries",
+        "desc": "When medical practice managers send frustrating invoice requests, InboxCalm drafts clear, professional replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Clinical Training Video Highlights",
+        "desc": "Transforms lengthy medical webinars into compelling vertical video summaries for professional channels.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "The Stress of Medical Educational Leadership",
+        "desc": "Provides a safe, confidential space for clinicians to decompress from high-pressure responsibilities.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "healthtech-biotech/cloud-vps-hardening": {
+    "businessTitle": "Sleeping Soundly with Ironclad HIPAA-Compliant Infrastructure",
+    "businessStory": "HealthTech founders carry immense responsibility for safeguarding patient records. By closing all public ports behind Cloudflare Zero Trust and sandboxing container runtimes, we turn your servers into an impenetrable fortress that repels cyberattacks and satisfies hospital security reviews.",
+    "businessPillars": [
+      {
+        "title": "Zero Public Listening Ports",
+        "desc": "Hides your server IP address completely from port scanners and automated cyberattacks.",
+        "product": "Cloud Infrastructure Hardening"
+      },
+      {
+        "title": "HIPAA-Ready Security Architecture",
+        "desc": "Directly satisfies strict healthcare privacy mandates and hospital procurement audits.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "GPG-Encrypted Off-Site Disaster Recovery",
+        "desc": "Protects patient charts with automated hourly encrypted snapshots stored in isolated cloud vaults.",
+        "product": "AI Automation Suite ($497/mo)"
+      }
+    ],
+    "personalTitle": "Eliminating 3:00 AM Security Panic for HealthTech Leaders",
+    "personalStory": "The psychological burden of managing servers holding thousands of patient health records is immense. Every news report of a hospital cyberattack creates acute anxiety. Our zero-trust hardening restores peace of mind.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Urgent Security Inquiries from Hospital Partners",
+        "desc": "When hospital cybersecurity committees send demanding queries, InboxCalm drafts clear, authoritative compliance replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Zero-Trust Healthcare Explainer Videos",
+        "desc": "Turns technical security diagrams into compelling vertical video briefings that impress hospital boards.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "The Weight of Healthcare Data Responsibility",
+        "desc": "Provides a safe, confidential conversational space for executives to process high-stakes pressure and maintain focus.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "proptech-realestate/ai-agents": {
+    "businessTitle": "Capturing Every High-Value Buyer Lead While Brokers Sleep",
+    "businessStory": "Top-producing real estate brokers should not have to choose between family time and answering midnight phone calls. Our autonomous buyer agents respond to every inquiry in under 2 seconds, qualify the buyer financing, and schedule showings on your calendar automatically.",
+    "businessPillars": [
+      {
+        "title": "Sub-2s Inbound Lead Response",
+        "desc": "Engages prospective buyers immediately across voice and SMS, capturing deals before competitors.",
+        "product": "AI Customer Service ($147/mo)"
+      },
+      {
+        "title": "Automated Tour Scheduling",
+        "desc": "Fills broker calendars with qualified showings without endless back-and-forth texting.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Real-Time MLS Intelligence",
+        "desc": "Answers complex property attribute questions with verified MLS data on autopilot.",
+        "product": "AI Content Automation ($197/mo)"
+      }
+    ],
+    "personalTitle": "Protecting Real Estate Brokers from 24/7 Phone Fatigue & Burnout",
+    "personalStory": "Real estate brokers know the exhausting anxiety of hearing their phone buzz during dinner with family, knowing that missing the call could mean losing a $20,000 commission. Our autonomous agents handle the intake so you can enjoy your life.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Unreasonable Client Escalations & Demands",
+        "desc": "When anxious sellers or aggressive buyers send tense messages, InboxCalm drafts calm, diplomatic, professional replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Property Walkthrough Video Shorts",
+        "desc": "Transforms horizontal property tour footage into engaging 9:16 vertical video reels for Instagram and TikTok.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "The Stress of Feast-or-Famine Commission Cycles",
+        "desc": "Provides a safe, confidential conversational space for brokers to decompress from market pressure and stay focused.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "proptech-realestate/web-app-engineering": {
+    "businessTitle": "Delivering the Blazing Speed That Commercial Investors Demand",
+    "businessStory": "Commercial real estate investors and high-net-worth buyers expect instantaneous speed when analyzing property listings. Our Next.js web engineering delivers blistering sub-30ms performance and silky-smooth map navigation that turns casual visitors into serious clients.",
+    "businessPillars": [
+      {
+        "title": "Sub-30ms Property Search Speed",
+        "desc": "Renders complex spatial search queries from edge CDN nodes with zero delay.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Fluid 60 FPS Map Interactions",
+        "desc": "Hardware-accelerated vector mapping that never freezes or crashes mobile devices.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "Automated Lead Capture Funnels",
+        "desc": "Gates high-value pro-forma underwriting sheets behind verified investor contact forms.",
+        "product": "AI Content Automation ($197/mo)"
+      }
+    ],
+    "personalTitle": "Freeing Real Estate Technology Leaders from UI Performance Complaints",
+    "personalStory": "There is nothing more frustrating for a PropTech founder than hearing complaints from brokers and clients that their map search froze or took too long to load. We build hardened web architectures that operate flawlessly under heavy load.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Demanding Broker & Investor Feedback",
+        "desc": "When high-profile partners send blunt criticisms regarding website speed, InboxCalm drafts composed, solution-oriented replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Architectural & Property Feature Video Shorts",
+        "desc": "Turns drone videos and architectural photos into stunning vertical video clips for Instagram and LinkedIn.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "The Pressure of Real Estate Development Cycles",
+        "desc": "Provides a safe, confidential space for executives to decompress from market stress and maintain clarity.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "proptech-realestate/outbound-infrastructure": {
+    "businessTitle": "Sourcing Lucrative Off-Market Deals Without Domain Blacklist Risks",
+    "businessStory": "Finding off-market commercial properties and motivated sellers requires consistent outreach. Our dedicated outbound infrastructure sources proprietary deals at scale while keeping your core brokerage domain 100% protected from spam filters.",
+    "businessPillars": [
+      {
+        "title": "Zero-Risk Domain Isolation",
+        "desc": "Protects client transaction and escrow correspondence by running all outreach on secondary domains.",
+        "product": "AI Lead Generation ($297/mo)"
+      },
+      {
+        "title": "Automated Property Owner Scraping",
+        "desc": "Identifies commercial building owners and managing principals with verified direct emails.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Steady Off-Market Dealflow",
+        "desc": "Generates consistent conversations with motivated property owners and prospective tenants.",
+        "product": "AI Content Automation ($197/mo)"
+      }
+    ],
+    "personalTitle": "Freeing Real Estate Principals from Tedious Cold Calling",
+    "personalStory": "Real estate principals and acquisition directors should spend their time touring properties and negotiating terms, not cold-calling outdated phone lists and getting hung up on.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Aggressive Property Owner Responses",
+        "desc": "When property owners reply with skepticism or abrasive questions, InboxCalm drafts calm, respectful, professional replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Commercial Asset Showcase Videos",
+        "desc": "Transforms property financial sheets and drone footage into compelling vertical video briefs for investors.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "The Stress of Capital Deployment Deadlines",
+        "desc": "Provides a safe, confidential conversational space for principals to process high-stakes transaction pressure.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "proptech-realestate/composio-integrations": {
+    "businessTitle": "Unifying Fragmented Real Estate Tools with Autonomous Agent Bridges",
+    "businessStory": "Real estate brokerages juggle half a dozen disconnected platforms: MLS feeds, Follow Up Boss, Yardi, and DocuSign. Composio unites these tools into a single coherent interface, empowering autonomous agents to update records, schedule tours, and verify listing details in seconds.",
+    "businessPillars": [
+      {
+        "title": "Unified Multi-Platform Tool Execution",
+        "desc": "Enables AI agents to query MLS listings, check showing slots, and update CRMs in one step.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Strict Contractual Guardrails",
+        "desc": "Guarantees that agents never dispatch binding legal contracts without broker authorization.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "Automated Client Record Synchronization",
+        "desc": "Keeps buyer showing notes and property inquiries synchronized across all team platforms.",
+        "product": "AI Customer Service ($147/mo)"
+      }
+    ],
+    "personalTitle": "Ending the Exhaustion of Juggling Disconnected Real Estate Software",
+    "personalStory": "Brokerage managers and team leads waste hours every day copy-pasting client notes between CRMs and showing calendars. Composio automates this busywork, letting you focus on mentoring brokers and closing transactions.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Tense Vendor Inquiries Over MLS Feed Syncing",
+        "desc": "When portal partners send demanding technical emails, InboxCalm drafts calm, objective explanations of system status.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Technology Feature Videos for Recruiting Brokers",
+        "desc": "Transforms your automated brokerage tech stack into impressive vertical video tours that attract top producing agents.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "The Stress of Managing Brokerage Operations",
+        "desc": "Provides a safe, confidential conversational space for leaders to decompress from operational friction and reset.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "proptech-realestate/whop-monetization": {
+    "businessTitle": "Monetizing Real Estate Dealflow and Underwriting on Autopilot",
+    "businessStory": "Running an elite real estate investment syndicate or educational mastermind should be profitable, not an endless administrative headache of chasing annual dues and resetting passwords. Whop provides an enterprise-ready monetization infrastructure that automates billing, access gating, and customer retention.",
+    "businessPillars": [
+      {
+        "title": "Frictionless Investor Checkout",
+        "desc": "Converts prospective members into paying subscribers with one-click payment flows.",
+        "product": "AI Content Automation ($197/mo)"
+      },
+      {
+        "title": "Zero-Touch Deal Room Gating",
+        "desc": "Automatically grants and revokes portal and community access based on live billing status.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Automated Dunning & Retention",
+        "desc": "Recovers failed card charges without manual administrative follow-ups.",
+        "product": "AI Lead Generation ($297/mo)"
+      }
+    ],
+    "personalTitle": "Freeing Real Estate Sponsors from Invoicing Administrative Drudgery",
+    "personalStory": "Real estate sponsors and syndicate operators should spend their time finding profitable commercial assets and raising capital, not chasing past-due invoices or arguing with members over billing errors.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Demanding Investor Billing Inquiries",
+        "desc": "When corporate investors send frustrating invoice requests, InboxCalm drafts clear, professional replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Commercial Real Estate Deal Breakdown Videos",
+        "desc": "Transforms complex underwriting spreadsheets into compelling vertical video summaries for social channels.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "Capital Deployment & Closing Stress",
+        "desc": "Provides a safe, confidential space for sponsors to decompress from market stress and maintain clarity.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "proptech-realestate/cloud-vps-hardening": {
+    "businessTitle": "Defending Proprietary Property Data from Competitor Scrapers",
+    "businessStory": "PropTech founders spend months building proprietary real estate databases, only to watch competitor bots scrape the data in minutes. By closing all public ports behind Cloudflare Zero Trust and deploying advanced bot mitigation, we protect your intellectual property and ensure 100% platform uptime.",
+    "businessPillars": [
+      {
+        "title": "Zero Public Listening Ports",
+        "desc": "Hides your server IP address completely from port scanners and automated cyberattacks.",
+        "product": "Cloud Infrastructure Hardening"
+      },
+      {
+        "title": "98% Scraper Mitigation",
+        "desc": "Blocks malicious automated bots from scraping proprietary property valuations and photos.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "GPG-Encrypted Off-Site Disaster Recovery",
+        "desc": "Protects spatial property databases with automated hourly encrypted snapshots stored in isolated cloud vaults.",
+        "product": "Production Architecture Retainer"
+      }
+    ],
+    "personalTitle": "Eliminating 3:00 AM Server Panic for PropTech Engineering Leaders",
+    "personalStory": "The psychological burden of managing servers holding valuable property data is immense. Every server alert during high-traffic weekends creates acute anxiety. Our zero-trust hardening restores peace of mind.",
+    "personalPillars": [
+      {
+        "icon": "🛡️",
+        "title": "Urgent Security Inquiries from Brokerage Partners",
+        "desc": "When major brokerage partners send demanding cybersecurity queries, InboxCalm drafts clear, authoritative compliance replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🎬",
+        "title": "Infrastructure Security Explainer Videos",
+        "desc": "Turns technical security architecture diagrams into compelling vertical video briefings that impress enterprise brokerage boards.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "🕊️",
+        "title": "The Weight of Platform Responsibility",
+        "desc": "Provides a safe, confidential conversational space for executives to process high-stakes pressure and maintain focus.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "legaltech-professional/pseo-engine": {
+    "businessTitle": "Ending the $150/Click Google Ads Treadmill for Law Firms",
+    "businessStory": "Law firms burn hundreds of thousands on paid search ads competing against mega-firms with massive budgets. Programmatic SEO creates a permanent organic inbound pipeline that captures corporate retainers and high-value litigation cases at zero marginal advertising cost.",
+    "businessPillars": [
+      {
+        "title": "Permanent High-Value Client Inbound",
+        "desc": "Captures clients actively researching commercial litigation, patent filing, and corporate restructuring.",
+        "product": "AI Content Automation ($197/mo)"
+      },
+      {
+        "title": "100% Bar Ethics-Compliant Copy",
+        "desc": "Ensures every published page strictly adheres to state bar advertising and disclosure rules.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "Sub-40ms Edge Global Speed",
+        "desc": "Delivers instantaneous page transitions that convey institutional authority and prestige.",
+        "product": "AI Automation Suite ($497/mo)"
+      }
+    ],
+    "personalTitle": "Protecting Law Firm Partners from Late-Night Business Development Stress",
+    "personalStory": "Managing partners spend 60+ hours a week handling active legal matters, leaving zero energy for business development. Our programmatic engine fills your consultation calendar on autopilot.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Aggressive Opposing Counsel Email Escalations",
+        "desc": "When opposing counsel sends hostile, contentious emails, InboxCalm filters emotional triggers and drafts objective, strategic responses.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Legal Precedent & Case Law Breakdown Videos",
+        "desc": "Transforms complex legal rulings into authoritative vertical video explainers for corporate executives on LinkedIn.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Stress of Billable Hour Quotas & Firm Overhead",
+        "desc": "Provides a safe, confidential space for managing partners to decompress from partnership pressures and regain clarity.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "legaltech-professional/web-app-engineering": {
+    "businessTitle": "Delivering the Flawless Confidentiality That Corporate Clients Demand",
+    "businessStory": "Corporate general counsels expect their outside law firms to maintain institutional-grade security. Our Next.js client portals combine sub-35ms speed with client-side encryption, proving your firm commitment to protecting sensitive client matters.",
+    "businessPillars": [
+      {
+        "title": "Sub-35ms Encrypted File Speed",
+        "desc": "Renders matter documents and filings instantaneously while maintaining zero-knowledge encryption.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Ironclad Ethical Wall Enforcement",
+        "desc": "Isolates client matter files behind strict permissions, preventing accidental internal conflict leaks.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "Frictionless Client Intake Funnels",
+        "desc": "Captures verified client intake and conflict data in minutes, accelerating retainer execution.",
+        "product": "AI Content Automation ($197/mo)"
+      }
+    ],
+    "personalTitle": "Freeing Managing Partners from Data Security Paranoia",
+    "personalStory": "The nightmare of accidentally exposing a client confidential deal memo or waiving privilege keeps legal partners awake at night. We build hardened web architectures that eliminate data leaks permanently.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Tense Client Inquiries Over File Security",
+        "desc": "When corporate clients send demanding cybersecurity questionnaires, InboxCalm drafts clear, authoritative compliance replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Legal Thought Leadership Video Briefings",
+        "desc": "Transforms lengthy legal memos into crisp, professional vertical video insights for corporate boards.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Weight of High-Stakes Legal Representation",
+        "desc": "Provides a safe, confidential space for managing partners to decompress from litigation pressure and stay grounded.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "legaltech-professional/outbound-infrastructure": {
+    "businessTitle": "Securing Six-Figure Corporate Retainers Without Domain Risks",
+    "businessStory": "Growing a high-ticket legal or consulting practice requires establishing relationships with corporate general counsels. Our dedicated outbound infrastructure sources enterprise retainers at scale while keeping your core law firm domain 100% safe from spam filters.",
+    "businessPillars": [
+      {
+        "title": "Zero-Risk Domain Isolation",
+        "desc": "Protects court filings and client communications by running all outreach on isolated secondary domains.",
+        "product": "AI Lead Generation ($297/mo)"
+      },
+      {
+        "title": "Verified General Counsel Outreach",
+        "desc": "Directly reaches corporate legal decision-makers with timely, regulatory-driven insights.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Predictable Enterprise Dealflow",
+        "desc": "Generates steady incoming consultation calls with corporate legal executives seeking outside counsel.",
+        "product": "AI Content Automation ($197/mo)"
+      }
+    ],
+    "personalTitle": "Freeing Legal Partners from Uncomfortable Business Development",
+    "personalStory": "Attorneys are trained to practice law, not to spend hours sending awkward cold emails or attending boring networking mixers. Our outbound engine delivers pre-qualified corporate opportunities straight to your inbox.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Demanding Prospective Client Fee Negotiations",
+        "desc": "When corporate procurement directors push for aggressive fee discounts, InboxCalm drafts calm, firm, value-driven counter-proposals.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Statutory Update Video Briefings for Clients",
+        "desc": "Transforms dry statutory amendments into crisp, professional vertical video briefings for corporate clients.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Stress of Retainer Acquisition Pressure",
+        "desc": "Provides a safe, confidential conversational space for partners to decompress from firm business development goals.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "legaltech-professional/composio-integrations": {
+    "businessTitle": "Connecting AI Agents to Law Firm Practice Software with Zero Privilege Risk",
+    "businessStory": "Attorneys spend thousands of hours manually searching document repositories and copy-pasting conflict check data. Composio provides the secure, auditable tool-calling bridge that empowers AI agents to research case law, draft filings, and check conflicts without risking client privilege.",
+    "businessPillars": [
+      {
+        "title": "Strict Matter-Scoped Tool Execution",
+        "desc": "Guarantees that agents access only files associated with the active matter, protecting ethical walls.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Encrypted Credential Protection",
+        "desc": "Shields practice management API keys in an isolated vault so LLMs never see raw credentials.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "State Bar-Ready Audit Trails",
+        "desc": "Generates immutable cryptographic logs that prove adherence to client confidentiality mandates.",
+        "product": "AI Customer Service ($147/mo)"
+      }
+    ],
+    "personalTitle": "Ending the Weekend Exhaustion of Manual Legal Document Assembly",
+    "personalStory": "Attorneys should spend their time formulating legal strategy and advising clients, not spending late nights manually compiling discovery exhibits and cross-referencing practice management records.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Tense Inquiries from Opposing Litigation Teams",
+        "desc": "When opposing counsel sends provocative correspondence, InboxCalm drafts calm, objective, strategically sound replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Complex Case Theory Video Walkthroughs",
+        "desc": "Transforms intricate legal theories into compelling vertical video briefs for corporate client boards.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "Mental Overload from High-Stakes Litigation",
+        "desc": "Provides a safe, confidential conversational space for attorneys to decompress from trial pressure and reset.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "legaltech-professional/whop-monetization": {
+    "businessTitle": "Breaking Free from the Billable Hour with Scalable Legal Products",
+    "businessStory": "Law firm partners should not have to trade every hour of their life for revenue. Productizing contract templates and launching corporate mastermind clubs creates a predictable recurring revenue baseline that scales independently of billable hours.",
+    "businessPillars": [
+      {
+        "title": "Frictionless Corporate Checkout",
+        "desc": "Converts business clients into paying template subscribers with one-click payment flows.",
+        "product": "AI Content Automation ($197/mo)"
+      },
+      {
+        "title": "Zero-Touch Access Gating",
+        "desc": "Automatically grants and revokes document vault and community access based on live billing status.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Automated Dunning & Retention",
+        "desc": "Recovers failed corporate card charges without manual administrative follow-ups.",
+        "product": "AI Lead Generation ($297/mo)"
+      }
+    ],
+    "personalTitle": "Freeing Attorneys from the Grind of the 80-Hour Billable Week",
+    "personalStory": "The pressure to bill 2,000+ hours a year takes a devastating personal toll on attorneys and their families. Building recurring subscription income restores control over your calendar and personal life.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Demanding Template Licensing Questions",
+        "desc": "When corporate clients send complex licensing questions, InboxCalm drafts clear, professional replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Legal Masterclass Video Highlights",
+        "desc": "Transforms legal webinars into polished vertical video snippets for LinkedIn and Twitter.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Psychological Burden of Firm Billable Expectations",
+        "desc": "Provides a safe, confidential space for attorneys to decompress from partnership pressures and regain mental peace.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "legaltech-professional/cloud-vps-hardening": {
+    "businessTitle": "Fortifying Law Firm Digital Vaults Against Hostile Intruders",
+    "businessStory": "Managing partners and litigation chairs cannot risk client confidences leaking to digital adversaries or ransomware syndicates. Our zero-trust server hardening wraps your practice management systems, case transcripts, and billing ledgers in a private cryptographic shell that closes all public entryways.",
+    "businessPillars": [
+      {
+        "title": "Impenetrable Zero-Exposure Perimeter",
+        "desc": "Drops all external internet probes by terminating connections at private Cloudflare edge enclaves.",
+        "product": "Cloud Infrastructure Hardening"
+      },
+      {
+        "title": "Tamper-Proof Case Evidence Storage",
+        "desc": "Isolates deposition audio, scanned exhibits, and litigation hold files on encrypted volumes.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "Disaster-Resilient Matter Restoration",
+        "desc": "Streams continuous cryptographic database journals to cold storage for instant point-in-time recovery.",
+        "product": "AI Automation Suite ($497/mo)"
+      }
+    ],
+    "personalTitle": "Protecting Legal Partners from 3:00 AM Cybersecurity Panic",
+    "personalStory": "The weight of personal liability and state bar discipline keeps legal partners awake at night worrying about digital espionage. Our hardened server enclave gives you unwavering confidence in your firm's confidentiality.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Demanding General Counsel Security Inquiries",
+        "desc": "When corporate clients demand proof of cybersecurity safeguards, InboxCalm drafts clear, authoritative compliance memos.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Ethical Wall Security Video Briefings",
+        "desc": "Turns complex technical security architecture into polished vertical video summaries for firm executive committees.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Mental Exhaustion of Trial Deadlines",
+        "desc": "Provides a safe, confidential space for trial lawyers to decompress from intense courtroom battles and reset.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "venture-capital-private-equity/pseo-engine": {
+    "businessTitle": "Generating Proprietary Dealflow Outside Banker Auctions",
+    "businessStory": "Top-performing private equity and venture capital funds win by finding founders before an investment banker ever writes a pitch book. Programmatic SEO creates a permanent organic inbound pipeline that attracts high-caliber founders actively exploring partnership options.",
+    "businessPillars": [
+      {
+        "title": "Proprietary Founder Inbound",
+        "desc": "Captures founders searching for industry-specific growth capital and succession planning.",
+        "product": "AI Content Automation ($197/mo)"
+      },
+      {
+        "title": "SEC Marketing Rule Compliance",
+        "desc": "Ensures every published route adheres to SEC guidelines regarding past performance disclosures.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "Sub-45ms Edge Global Speed",
+        "desc": "Delivers instantaneous page transitions that convey institutional prestige and technical acumen.",
+        "product": "AI Automation Suite ($497/mo)"
+      }
+    ],
+    "personalTitle": "Freeing Investment Partners from Frantic Dry Powder Deployment Pressure",
+    "personalStory": "Investment partners carry intense pressure from Limited Partners to deploy capital into quality assets. Sourcing proprietary deals organically removes the anxiety of relying on broker auctions with compressed margins.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Demanding LP Quarterly Performance Inquiries",
+        "desc": "When Limited Partners send anxious questions regarding capital deployment velocity, InboxCalm drafts composed, data-driven updates.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Portfolio Company Growth Case Study Videos",
+        "desc": "Transforms portfolio exit case studies into engaging vertical video briefs for LP annual meetings.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Stress of Investment Committee Deadlines",
+        "desc": "Provides a safe, confidential space for partners to decompress from high-stakes deal deliberations and reset.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "venture-capital-private-equity/ai-agents": {
+    "businessTitle": "Reviewing 500 Decks a Week with Flawless Speed and Precision",
+    "businessStory": "Elite investment firms win through volume and velocity. Our autonomous screening agents process every inbound deck in minutes, extracting revenue metrics and founder histories so your team can evaluate 10x more opportunities without adding headcount.",
+    "businessPillars": [
+      {
+        "title": "Sub-3min Deck & CIM Summaries",
+        "desc": "Extracts financial tables, ARR metrics, and unit economics into standardized briefs instantly.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Zero-Data-Retention Security",
+        "desc": "Protects proprietary founder deal data with enterprise zero-retention model endpoints.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "Automated CRM Deal Enrichment",
+        "desc": "Pipes founder career histories and competitor maps directly into Affinity or DealCloud.",
+        "product": "AI Customer Service ($147/mo)"
+      }
+    ],
+    "personalTitle": "Freeing Investment Associates from Late-Night Pitch Deck Grunts",
+    "personalStory": "Junior associates spend grueling 80-hour weeks summarizing low-quality pitch decks late into the night. Autonomous screening agents eliminate this tedious busywork, allowing associates to focus on high-impact strategic research and partner networking.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Demanding Founder Rejection Inquiries",
+        "desc": "When founders send defensive emails after deal rejections, InboxCalm drafts polite, constructive, diplomatic replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Portfolio Founder Interview Video Highlights",
+        "desc": "Transforms long founder interview recordings into engaging vertical video shorts for firm social branding.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Stress of Fast-Moving Deal Cycles",
+        "desc": "Provides a safe, confidential space for investors to decompress from competitive term sheet pressure.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "venture-capital-private-equity/web-app-engineering": {
+    "businessTitle": "Delivering the Flawless Digital Experience Demanded by Institutional LPs",
+    "businessStory": "Limited Partners evaluate fund management quality not only by investment returns, but also by the professionalism and speed of reporting. Our Next.js LP portals deliver sub-35ms performance and institutional-grade security that impresses even the most discerning sovereign wealth funds.",
+    "businessPillars": [
+      {
+        "title": "Sub-35ms Portfolio Telemetry Speed",
+        "desc": "Renders fund IRR and capital distribution metrics from edge CDN nodes with zero delay.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Ironclad Virtual Deal Rooms",
+        "desc": "Protects proprietary M&A diligence files with dynamic watermarking and strict access control.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "Automated Quarterly Reporting",
+        "desc": "Consolidates portfolio company financial data into clean executive reports automatically.",
+        "product": "AI Content Automation ($197/mo)"
+      }
+    ],
+    "personalTitle": "Freeing Chief Financial Officers from Quarterly LP Reporting Panic",
+    "personalStory": "Preparing for quarterly LP reporting and annual investor meetings creates intense pressure for private equity CFOs. We build automated portal architectures that eliminate reporting chaos permanently.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Tense LP Inquiries Over Capital Calls",
+        "desc": "When institutional investors send urgent questions regarding capital calls, InboxCalm drafts clear, authoritative, professional replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Annual General Meeting Video Highlights",
+        "desc": "Transforms lengthy investor presentations into engaging vertical video briefs for Limited Partner updates.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Stress of Capital Raising & LP Audits",
+        "desc": "Provides a safe, confidential space for fund managers to decompress from fundraising pressure and reset.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "venture-capital-private-equity/composio-integrations": {
+    "businessTitle": "Unifying Fragmented Deal Intelligence with Autonomous Agent Bridges",
+    "businessStory": "Private capital teams waste hundreds of hours manually cross-referencing PitchBook, Crunchbase, Affinity, and Carta. Composio connects all these tools to autonomous agents that compile complete company profiles, funding histories, and cap tables in seconds.",
+    "businessPillars": [
+      {
+        "title": "Unified Multi-Database Tool Execution",
+        "desc": "Empowers AI agents to query PitchBook, check CRM notes, and verify cap tables in one unified step.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Strict Information Boundary Safeguards",
+        "desc": "Guarantees that agents access only permitted market data without risking master key leaks.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "Automated Deal Record Synchronization",
+        "desc": "Keeps company research notes and pipeline stages synchronized across all team platforms.",
+        "product": "AI Customer Service ($147/mo)"
+      }
+    ],
+    "personalTitle": "Ending the Manual Data Entry Grind for Private Capital Deal Teams",
+    "personalStory": "Investment professionals should spend their time evaluating business models and building founder relationships, not copying revenue numbers from PitchBook into CRM spreadsheets late at night.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Tense Inquiries from Syndication Partners",
+        "desc": "When co-investors send demanding diligence requests, InboxCalm drafts calm, objective explanations with verified data.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Industry Sector Breakdown Videos for Founders",
+        "desc": "Transforms market thesis reports into engaging vertical video briefs that build your firm reputation with founders.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Stress of Fast-Paced M&A Deal Closings",
+        "desc": "Provides a safe, confidential conversational space for dealmakers to decompress from high-stakes closing pressure.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "venture-capital-private-equity/whop-monetization": {
+    "businessTitle": "Capital Allocation Portals Engineered for Modern General Partners",
+    "businessStory": "Leading venture capitalists and angel syndicate leads shouldn't waste precious dealmaking hours on tedious dues reconciliation or manual wire follow-ups. We engineer frictionless investor membership portals that automate capital calls, subscription renewals, and co-investment access while maintaining absolute deal confidentiality.",
+    "businessPillars": [
+      {
+        "title": "One-Touch Accredited LP Onboarding",
+        "desc": "Seamless subscription onboarding with identity validation hooks and instant deal room entry.",
+        "product": "AI Content Automation ($197/mo)"
+      },
+      {
+        "title": "Automated SPV Carry & Dues Protection",
+        "desc": "Enforces continuous membership validation before distributing allocations or pitch decks.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Smart Corporate Wire & Card Recovery",
+        "desc": "Proactively resolves declined institutional payment cards and tracks corporate dues.",
+        "product": "AI Lead Generation ($297/mo)"
+      }
+    ],
+    "personalTitle": "Shielding Fund Managers from Operational Fatigue and Diligence Burnout",
+    "personalStory": "Managing partners should concentrate on scouting unicorn founders and negotiating term sheets, not wrestling with administrative billing spreadsheets or answering late-night invoice inquiries from limited partners.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Demanding LP Invoicing Demands",
+        "desc": "When institutional investors submit urgent accounting inquiries, InboxCalm drafts clear, professional replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Portfolio Founder Spotlight Videos",
+        "desc": "Converts technical venture memos into captivating vertical video showcases for LP updates.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Psychological Pressure of Fund Performance",
+        "desc": "Provides a safe, confidential conversational space for fund managers to process market volatility and reset.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "venture-capital-private-equity/cloud-vps-hardening": {
+    "businessTitle": "Protecting High-Stakes M&A Diligence Rooms from Espionage",
+    "businessStory": "When private equity sponsors evaluate eight-figure buyouts, confidential financial models and executive background checks become prime targets for malicious hackers. We deploy air-tight cloud server perimeters that hide origin servers completely, ensuring sensitive transaction data remains strictly between deal principals.",
+    "businessPillars": [
+      {
+        "title": "Dark Server Architecture with Zero Open Ports",
+        "desc": "Cloaks deal room servers completely from internet scanners using outbound-only encrypted tunnels.",
+        "product": "Cloud Infrastructure Hardening"
+      },
+      {
+        "title": "FIDO2 Hardware Key Enforced Access",
+        "desc": "Mandates cryptographic physical security tokens for all administrative interactions.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "Immutable M&A Data Room Journaling",
+        "desc": "Creates tamper-evident, encrypted archives of all diligence documents with verifiable audit trails.",
+        "product": "AI Automation Suite ($497/mo)"
+      }
+    ],
+    "personalTitle": "Ending the Anxiety of Diligence Data Leaks During Major Transactions",
+    "personalStory": "Deal principals and investment committee members shoulder intense reputational risks during live mergers and acquisitions. Our hardened infrastructure ensures your sensitive valuation spreadsheets never fall into the wrong hands.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Urgent Security Inquiries from Portfolio Boards",
+        "desc": "When corporate board members raise cybersecurity concerns, InboxCalm drafts thorough, authoritative compliance replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Zero-Trust Diligence Architecture Briefings",
+        "desc": "Translates complex cryptographic protocols into polished executive video summaries for LP advisory committees.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Relentless Pressure of High-Stakes Closings",
+        "desc": "Offers an empathetic, private outlet for partners to decompress from intense negotiation marathons and regain mental clarity.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "edtech/ai-agents": {
+    "businessTitle": "Doubling Course Completion Rates with 24/7 Autonomous Tutoring",
+    "businessStory": "EdTech academies live or die by student completion rates and word-of-mouth recommendations. When students get instant, empathetic answers at 11:00 PM, frustration evaporates and completion rates soar. Our autonomous tutoring agents provide every student with a dedicated personal mentor.",
+    "businessPillars": [
+      {
+        "title": "Sub-2s Student Help Desk",
+        "desc": "Resolves coding and conceptual roadblocks instantly, preventing student drop-off.",
+        "product": "AI Customer Service ($147/mo)"
+      },
+      {
+        "title": "Automated Rubric Grading",
+        "desc": "Delivers detailed, constructive feedback on student assignments in seconds.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Proactive Retention Telemetry",
+        "desc": "Identifies struggling students before they drop out, alerting human counselors.",
+        "product": "AI Lead Generation ($297/mo)"
+      }
+    ],
+    "personalTitle": "Freeing EdTech Founders & Deans from Instructor Staffing Crises",
+    "personalStory": "Managing an online academy with hundreds of enrolled students and burning through teaching assistants who quit under grading pressure is an exhausting cycle. Our autonomous agents restore operational stability.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Angry Student & Parent Refund Demands",
+        "desc": "When frustrated students send demanding refund emails, InboxCalm drafts empathetic, constructive, de-escalating replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Curriculum Teaser Video Shorts",
+        "desc": "Transforms recorded lecture highlights into engaging vertical video snippets that attract new student enrollments.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Stress of Cohort Enrollment Cycles",
+        "desc": "Provides a safe, confidential conversational space for academy leaders to decompress from launch pressure.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "edtech/web-app-engineering": {
+    "businessTitle": "Delivering the Blazing Speed That Modern Online Learners Expect",
+    "businessStory": "Students accustomed to Netflix and TikTok will not tolerate sluggish, buffering online course portals. Our Next.js web engineering delivers instantaneous lesson transitions and fluid video playback that keeps learners engaged and raving about your academy.",
+    "businessPillars": [
+      {
+        "title": "Sub-30ms Lesson Load Speed",
+        "desc": "Renders course modules and quizzes from edge CDN nodes with zero delay.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Adaptive Video Streaming",
+        "desc": "Buffers video smoothly on any cellular connection without frustrating pauses.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "100% WCAG 2.1 Accessible Design",
+        "desc": "Ensures your platform is fully inclusive, unlocking institutional university partnerships.",
+        "product": "AI Content Automation ($197/mo)"
+      }
+    ],
+    "personalTitle": "Freeing EdTech Founders from Technical Glitch Embarrassment",
+    "personalStory": "There is nothing more stressful than watching your live cohort student chat blow up with complaints about broken videos and crashing quizzes during an onboarding week. We build hardened web architectures that eliminate technical downtime.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Frustrated Student Technical Complaints",
+        "desc": "When students encounter navigation confusion, InboxCalm drafts clear, step-by-step, supportive guidance messages.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Course Module Sneak Peek Video Shorts",
+        "desc": "Turns course video lessons into viral vertical teasers that drive new student signups on social media.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Stress of Cohort Launch Deadlines",
+        "desc": "Provides a safe, confidential space for academy leaders to decompress from launch anxiety and regain clarity.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "edtech/outbound-infrastructure": {
+    "businessTitle": "Securing Enterprise L&D Contracts Without Burning Student Domains",
+    "businessStory": "Signing enterprise corporate training contracts and university licensing deals is the fastest way to scale an EdTech business. Our dedicated outbound infrastructure builds institutional partnerships at scale while keeping your student communication domain 100% safe from spam filters.",
+    "businessPillars": [
+      {
+        "title": "Zero-Risk Domain Isolation",
+        "desc": "Protects student transactional emails by running all outreach on isolated secondary domains.",
+        "product": "AI Lead Generation ($297/mo)"
+      },
+      {
+        "title": "Verified Academic & L&D Outreach",
+        "desc": "Directly reaches university deans and corporate training heads with evidence-based curriculum proposals.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Predictable Enterprise Dealflow",
+        "desc": "Generates steady incoming partnership discovery calls on your calendar every week.",
+        "product": "AI Content Automation ($197/mo)"
+      }
+    ],
+    "personalTitle": "Freeing EdTech Founders from the Grind of Cold Business Development",
+    "personalStory": "EdTech founders should spend their time perfecting curriculum and mentoring educators, not typing manual LinkedIn messages to corporate HR managers who never reply. Our outbound engine delivers pre-qualified enterprise meetings straight to your calendar.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Demanding Institutional Contract Negotiations",
+        "desc": "When university procurement officers push for complex contract concessions, InboxCalm drafts calm, firm, value-driven counter-proposals.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Curriculum Impact Video Summaries",
+        "desc": "Transforms student outcome data into compelling vertical video briefs that impress corporate training committees.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Stress of Enterprise Sales Quotas",
+        "desc": "Provides a safe, confidential conversational space for founders to decompress from business development pressure.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "edtech/composio-integrations": {
+    "businessTitle": "Connecting Educational AI Agents to LMS Platforms with Total Security",
+    "businessStory": "Teaching assistants spend hundreds of hours manually updating gradebooks, creating Zoom links, and emailing completion certificates. Composio provides the secure, auditable tool-calling bridge that automates administrative tasks while keeping student records 100% compliant with FERPA privacy rules.",
+    "businessPillars": [
+      {
+        "title": "Unified Multi-LMS Tool Execution",
+        "desc": "Empowers AI agents to query syllabi, update assignment submissions, and issue badges in one unified step.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Strict Student Privacy Guardrails",
+        "desc": "Guarantees that agents access only permitted course materials without risking master key leaks.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "Automated Credentialing Synchronization",
+        "desc": "Issues digital badges and verified completion certificates immediately upon course passing.",
+        "product": "AI Customer Service ($147/mo)"
+      }
+    ],
+    "personalTitle": "Ending the Manual Administrative Drag for Academic Directors",
+    "personalStory": "Academic directors and professors should spend their time mentoring students and developing groundbreaking research, not copy-pasting grades between spreadsheets and Zoom attendance logs.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Tense Student Inquiries Over Grade Syncing",
+        "desc": "When students send anxious questions regarding missing assignment grades, InboxCalm drafts calm, objective status updates.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Course Accreditation Explainer Videos",
+        "desc": "Transforms technical curriculum standards into engaging vertical video briefs for prospective corporate sponsors.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Stress of Academic Term Deadlines",
+        "desc": "Provides a safe, confidential conversational space for educators to decompress from grading pressure and reset.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "edtech/whop-monetization": {
+    "businessTitle": "Scaling Course Enrollments with Frictionless Global Checkout",
+    "businessStory": "Launching an online cohort or digital academy should be exhilarating, not an administrative nightmare of tracking down wire transfers and emailing Discord invite links. Whop provides an enterprise-ready monetization infrastructure that automates billing, access gating, and student retention.",
+    "businessPillars": [
+      {
+        "title": "Frictionless Global Student Checkout",
+        "desc": "Converts prospective students into enrolled learners with one-click Apple Pay and card checkouts.",
+        "product": "AI Content Automation ($197/mo)"
+      },
+      {
+        "title": "Zero-Touch Community & Portal Gating",
+        "desc": "Automatically grants and revokes course access and Discord roles based on live billing status.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Automated Installment Recovery",
+        "desc": "Recovers failed student installment charges without manual administrative chasing.",
+        "product": "AI Lead Generation ($297/mo)"
+      }
+    ],
+    "personalTitle": "Freeing Online Course Creators from Invoicing Administrative Drudgery",
+    "personalStory": "Educators should spend their time teaching and inspiring students, not chasing past-due installment payments or manually resetting passwords in student support queues.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Demanding Student Refund Inquiries",
+        "desc": "When students request refunds outside official policy windows, InboxCalm drafts calm, polite, firm replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Student Success & Graduation Video Highlights",
+        "desc": "Transforms student testimonial recordings into inspiring vertical video reels for TikTok and Instagram.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Stress of Course Launch Enrollment Cycles",
+        "desc": "Provides a safe, confidential space for educators to decompress from launch pressure and maintain clarity.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "edtech/cloud-vps-hardening": {
+    "businessTitle": "Sleeping Soundly During High-Stakes Final Exam Weeks",
+    "businessStory": "There is nothing more terrifying for an online academy founder than watching your website crash during final exam week. By closing all public ports behind Cloudflare Zero Trust and deploying edge microcaching, we ensure your platform remains responsive under extreme traffic surges.",
+    "businessPillars": [
+      {
+        "title": "Zero Public Listening Ports",
+        "desc": "Hides your server IP address completely from port scanners and automated cyberattacks.",
+        "product": "Cloud Infrastructure Hardening"
+      },
+      {
+        "title": "100% Exam Day Uptime Guarantee",
+        "desc": "Absorbs extreme student traffic surges with edge caching and isolated server architecture.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "GPG-Encrypted Off-Site Disaster Recovery",
+        "desc": "Protects student grades with automated hourly encrypted snapshots stored in isolated cloud vaults.",
+        "product": "AI Automation Suite ($497/mo)"
+      }
+    ],
+    "personalTitle": "Eliminating the Exam-Week Server Panic for EdTech Technical Leaders",
+    "personalStory": "The psychological burden of managing servers holding thousands of student exam submissions is immense. Every server notification during exam week creates acute anxiety. Our zero-trust hardening restores peace of mind.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Urgent Student Exam Inquiries During Peak Hours",
+        "desc": "When students send anxious questions regarding exam deadlines, InboxCalm drafts clear, authoritative, reassuring replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "LMS Infrastructure Security Explainer Videos",
+        "desc": "Turns technical security architecture diagrams into compelling vertical video briefings that impress university enterprise boards.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Weight of Educational Platform Stewardship",
+        "desc": "Provides a safe, confidential conversational space for educators to process high-stakes pressure and maintain focus.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "cybersecurity/pseo-engine": {
+    "businessTitle": "Ending the $110/Click Google Ads Treadmill for Cybersecurity Vendors",
+    "businessStory": "Enterprise cybersecurity vendors burn millions on Google Ads competing for CISO attention. Programmatic SEO creates a permanent organic search pipeline capturing DevSecOps and security architects at the exact moment they search for CVE remediation and compliance architectures.",
+    "businessPillars": [
+      {
+        "title": "Permanent Technical Inbound Pipeline",
+        "desc": "Captures security engineers searching for CVE patch scripts and compliance framework teardowns.",
+        "product": "AI Content Automation ($197/mo)"
+      },
+      {
+        "title": "Instant Zero-Day Inbound Visibility",
+        "desc": "Deploys authoritative mitigation landing pages within hours of major CVE disclosures.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "Sub-40ms Edge Global Speed",
+        "desc": "Delivers instantaneous page transitions that convey technical authority and rigorous engineering.",
+        "product": "AI Automation Suite ($497/mo)"
+      }
+    ],
+    "personalTitle": "Freeing Cybersecurity Founders from Stagnant Pipeline Anxiety",
+    "personalStory": "Building advanced cybersecurity software is challenging, but struggling to get enterprise CISOs to notice your product is agonizing. Our programmatic engine fills your sales calendar with qualified security engineering leaders.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Demanding Enterprise Vendor Risk Inquiries",
+        "desc": "When corporate security procurement teams send exhausting security questionnaires, InboxCalm drafts clear, authoritative technical answers.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Vulnerability Breakdown Video Shorts",
+        "desc": "Transforms technical CVE patch write-ups into compelling vertical video briefs for LinkedIn and Twitter.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Stress of Enterprise Security Sales Cycles",
+        "desc": "Provides a safe, confidential conversational space for founders to decompress from long sales cycles and stay grounded.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "cybersecurity/ai-agents": {
+    "businessTitle": "Eliminating SOC Alert Fatigue and Accelerating Threat Containment",
+    "businessStory": "Enterprise security teams cannot protect corporate perimeters when analysts are overwhelmed by 10,000 false-positive alerts a day. Our autonomous SOC agents handle the frontline triage in milliseconds, allowing human security architects to focus on strategic threat hunting and defense hardening.",
+    "businessPillars": [
+      {
+        "title": "Sub-Second SIEM Alert Triage",
+        "desc": "Classifies and scores security events instantly, eliminating the manual alert review backlog.",
+        "product": "AI Customer Service ($147/mo)"
+      },
+      {
+        "title": "Instant Automated Pod Isolation",
+        "desc": "Quarantines compromised containers in milliseconds, preventing lateral network movement.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "SOC2-Ready Incident Telemetry",
+        "desc": "Generates tamper-proof cryptographic audit trails that streamline regulatory security reviews.",
+        "product": "Production Architecture Retainer"
+      }
+    ],
+    "personalTitle": "Freeing CISOs and Security Directors from 2:00 AM Alert Exhaustion",
+    "personalStory": "Security leaders live with constant insomnia, dreading the middle-of-the-night phone call that a ransomware attack has paralyzed their corporate network. Autonomous agents restore calm by stopping threats before they escalate.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Urgent Board Inquiries During Cyber Outages",
+        "desc": "When corporate board members send panicked emails during industry security crises, InboxCalm drafts composed, authoritative technical updates.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Security Incident Post-Mortem Video Briefs",
+        "desc": "Transforms dry post-incident reports into clear, professional vertical video briefings that reassure executive stakeholders.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Psychological Burden of Corporate Cyber Defense",
+        "desc": "Provides a safe, confidential conversational space for security executives to decompress from high-stakes pressure.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "cybersecurity/web-app-engineering": {
+    "businessTitle": "Delivering the Flawless Security That Enterprise CISOs Expect",
+    "businessStory": "Cybersecurity buyers evaluate your product with extreme skepticism. When your web application loads with sub-25ms speed and demonstrates ironclad security headers and WebAuthn authentication, prospective CISOs immediately recognize you as an elite engineering organization.",
+    "businessPillars": [
+      {
+        "title": "Sub-25ms Telemetry Speed",
+        "desc": "Renders vulnerability feeds and compliance status from edge CDN nodes with zero delay.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "A+ Security Header Hardening",
+        "desc": "Protects customer sessions against XSS and session hijacking with strict CSP policies.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "FIDO2 / WebAuthn Hardware Authentication",
+        "desc": "Enforces hardware security keys for admin accounts, eliminating credential-stuffing risks.",
+        "product": "AI Content Automation ($197/mo)"
+      }
+    ],
+    "personalTitle": "Freeing Cybersecurity Founders from Vendor Audit Humiliation",
+    "personalStory": "There is nothing more humiliating for a cybersecurity founder than failing a prospective enterprise customer security questionnaire. We build hardened web architectures that pass enterprise audits with flying colors.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Demanding Enterprise Vendor Risk Inquiries",
+        "desc": "When corporate security procurement teams send demanding technical questions, InboxCalm drafts clear, authoritative compliance replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Product Architecture Explainer Video Shorts",
+        "desc": "Transforms technical security architecture diagrams into compelling vertical video briefs that impress enterprise boards.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Stress of Enterprise Security Sales Cycles",
+        "desc": "Provides a safe, confidential conversational space for founders to decompress from long sales cycles and stay focused.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "cybersecurity/outbound-infrastructure": {
+    "businessTitle": "Booking Discovery Calls with Enterprise CISOs Without Domain Blacklists",
+    "businessStory": "Enterprise CISOs are notoriously difficult to reach. Our dedicated outbound infrastructure uses timely threat intelligence triggers and technical peer copy to book discovery meetings with top security leaders while keeping your primary corporate domain 100% safe from spam filters.",
+    "businessPillars": [
+      {
+        "title": "Zero-Risk Domain Isolation",
+        "desc": "Protects corporate client correspondence by running all outreach on isolated secondary domains.",
+        "product": "AI Lead Generation ($297/mo)"
+      },
+      {
+        "title": "Verified CISO & Security Leader Outreach",
+        "desc": "Directly reaches security decision-makers with technical, threat-driven value propositions.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Predictable Enterprise Dealflow",
+        "desc": "Generates steady incoming consultation calls on your sales engineering calendar every week.",
+        "product": "AI Content Automation ($197/mo)"
+      }
+    ],
+    "personalTitle": "Freeing Cybersecurity Founders from Awkward Cold Prospecting",
+    "personalStory": "Security founders are deeply technical engineers who hate sending pushy sales pitches. Our automated outbound infrastructure delivers pre-qualified technical conversations straight to your calendar.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Skeptical CISO Technical Questioning",
+        "desc": "When prospective CISOs send demanding technical challenges, InboxCalm drafts calm, authoritative, evidence-backed replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Cyber Threat Vector Explainer Videos",
+        "desc": "Transforms technical vulnerability analysis into compelling vertical video briefs that build your firm reputation with security leaders.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Stress of Enterprise Sales Quotas",
+        "desc": "Provides a safe, confidential conversational space for founders to decompress from business development pressure.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "cybersecurity/composio-integrations": {
+    "businessTitle": "Connecting Security AI Agents to Enterprise Toolsets with Total Governance",
+    "businessStory": "Security analysts waste hundreds of hours manually copying incident notes between Splunk, Jira, and CrowdStrike. Composio provides the secure, auditable tool-calling bridge that automates triage while keeping internal security data 100% protected.",
+    "businessPillars": [
+      {
+        "title": "Unified Multi-Tool SecOps Execution",
+        "desc": "Empowers AI agents to query alerts, enrich threats, and update tickets in one unified step.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Strict Infrastructure Guardrails",
+        "desc": "Guarantees that agents never execute unauthorized server isolations without human confirmation.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "Automated Incident Response Synchronization",
+        "desc": "Keeps incident statuses and audit notes synchronized across Jira, PagerDuty, and Splunk in real time.",
+        "product": "AI Customer Service ($147/mo)"
+      }
+    ],
+    "personalTitle": "Ending the Manual Tab-Switching Chaos for Security Operations Leads",
+    "personalStory": "Security operations managers should spend their time designing proactive defense strategies, not copy-pasting alert hashes across five different disconnected browser tabs during an incident.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Tense Inquiries from Corporate Risk Committees",
+        "desc": "When executive risk committees demand incident updates during an ongoing breach, InboxCalm drafts calm, objective status summaries.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Incident Post-Mortem Video Walkthroughs",
+        "desc": "Transforms dry post-incident analysis into crisp vertical video briefs that reassure enterprise corporate boards.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Stress of High-Stakes Incident Response",
+        "desc": "Provides a safe, confidential conversational space for security leaders to decompress from active crisis pressure.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "cybersecurity/whop-monetization": {
+    "businessTitle": "Monetizing Proprietary Threat Intelligence on Autopilot",
+    "businessStory": "Publishing high-value zero-day advisories and ethical hacking courses should be profitable, not an endless administrative headache of chasing corporate invoices and resetting API tokens. Whop provides an enterprise-ready monetization infrastructure that automates billing, access gating, and subscriber retention.",
+    "businessPillars": [
+      {
+        "title": "Frictionless Corporate Checkout",
+        "desc": "Converts security engineers into paying subscribers with one-click payment flows.",
+        "product": "AI Content Automation ($197/mo)"
+      },
+      {
+        "title": "Zero-Touch Access Gating",
+        "desc": "Automatically grants and revokes API tokens and community access based on live billing status.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Automated Dunning & Retention",
+        "desc": "Recovers failed corporate card charges without manual administrative follow-ups.",
+        "product": "AI Lead Generation ($297/mo)"
+      }
+    ],
+    "personalTitle": "Freeing Security Researchers from Invoicing Administrative Drudgery",
+    "personalStory": "Security researchers should spend their time discovering zero-day vulnerabilities and reverse-engineering malware, not chasing past-due corporate invoices or arguing with customers over billing errors.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Demanding Subscriber Inquiries Regarding Zero-Days",
+        "desc": "When corporate subscribers send urgent inquiries regarding threat disclosures, InboxCalm drafts clear, authoritative, professional replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Vulnerability Exploitation Video Teasers",
+        "desc": "Transforms technical research write-ups into polished vertical video snippets for social channels.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Stress of Responsible Disclosure Deadlines",
+        "desc": "Provides a safe, confidential space for researchers to decompress from vulnerability disclosure pressure.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "agency-consultancy/ai-agents": {
+    "businessTitle": "Protecting Agency Profit Margins from Administrative Drag and Scope Creep",
+    "businessStory": "Agency founders start their businesses to do great creative and strategic work, but quickly get bogged down in administrative quicksand: chasing clients for logins, copy-pasting numbers into slide decks, and battling scope creep. Our autonomous operations agents handle the busywork so your team can focus on client growth.",
+    "businessPillars": [
+      {
+        "title": "Sub-2min Automated Client Intake",
+        "desc": "Onboards new clients smoothly, verifying tracking tags and collecting assets without human chasing.",
+        "product": "AI Customer Service ($147/mo)"
+      },
+      {
+        "title": "One-Click Executive ROI Reports",
+        "desc": "Consolidates multi-channel ad spend and revenue into branded client slide decks automatically.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Proactive Scope Creep Defense",
+        "desc": "Alerts account directors when clients request out-of-scope work, protecting agency margins.",
+        "product": "AI Lead Generation ($297/mo)"
+      }
+    ],
+    "personalTitle": "Freeing Agency Founders from the Weekend Reporting Grind",
+    "personalStory": "Agency founders and account directors know the misery of spending Sunday night building PowerPoint decks before Monday morning client calls. Autonomous reporting agents eliminate this soul-draining weekend grind permanently.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Unreasonable Client Escalations in Slack",
+        "desc": "When demanding clients send frantic messages over minor metric fluctuations, InboxCalm drafts calm, data-backed de-escalating replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Agency Case Study & Campaign Breakdown Shorts",
+        "desc": "Transforms client campaign results into compelling vertical video teardowns that attract new high-ticket retainers.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Stress of Retainer Churn & Client Volatility",
+        "desc": "Provides a safe, confidential conversational space for agency leaders to decompress from client pressure and reset.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "agency-consultancy/web-app-engineering": {
+    "businessTitle": "Delivering the White-Glove Portal Experience That Commands $20k Retainers",
+    "businessStory": "High-ticket consulting and marketing clients judge agency value by the professionalism of the delivery experience. Our Next.js client portals combine sub-28ms speed with elegant white-label branding, giving your agency an unmistakable aura of operational excellence.",
+    "businessPillars": [
+      {
+        "title": "Sub-28ms Deliverable Load Speed",
+        "desc": "Renders campaign creative assets and reporting grids from edge CDN nodes with zero delay.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "One-Click Client Creative Sign-Off",
+        "desc": "Streamlines feedback and approval, eliminating endless email chains and launch delays.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "White-Label Subdomain Branding",
+        "desc": "Gives every client a dedicated branded portal that elevates your agency perceived value.",
+        "product": "AI Content Automation ($197/mo)"
+      }
+    ],
+    "personalTitle": "Ending the Daily Chaos of Where is That File Slack Messages",
+    "personalStory": "Agency owners should spend their time winning clients and providing strategic guidance, not searching through Google Drive folders to resend a logo file to a client for the fourth time.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Demanding Client Requests Over Deliverable Deadlines",
+        "desc": "When anxious clients send impatient messages regarding delivery dates, InboxCalm drafts calm, professional, reassuring updates.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Agency Service Teardown & Case Study Videos",
+        "desc": "Transforms successful client campaigns into compelling vertical video teardowns that attract inbound enterprise clients.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Stress of Feast-or-Famine Agency Cash Flow",
+        "desc": "Provides a safe, confidential conversational space for agency founders to decompress and maintain strategic focus.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "agency-consultancy/outbound-infrastructure": {
+    "businessTitle": "Ending the Feast-or-Famine Cycle with Predictable Retainer Outbound",
+    "businessStory": "Agencies cannot build sustainable enterprise value on word-of-mouth referrals alone. When a major client churns unexpectedly, you need a predictable pipeline of qualified prospects. Our dedicated outbound engine delivers consistent discovery calls every week without risking your core domain.",
+    "businessPillars": [
+      {
+        "title": "Zero-Risk Domain Isolation",
+        "desc": "Protects client correspondence and invoicing by running all outreach on isolated secondary domains.",
+        "product": "AI Lead Generation ($297/mo)"
+      },
+      {
+        "title": "Verified Marketing Leader Outreach",
+        "desc": "Directly reaches CMOs and growth directors with creative teardowns and performance insights.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Consistent High-Ticket Dealflow",
+        "desc": "Generates steady incoming consultation calls with brands seeking $10k+ monthly agency retainers.",
+        "product": "AI Content Automation ($197/mo)"
+      }
+    ],
+    "personalTitle": "Freeing Agency Owners from Late-Night Cash Flow Panic",
+    "personalStory": "Waking up at 2:00 AM wondering how you will make payroll because a large client paused their retainer is the ultimate agency nightmare. A predictable outbound engine restores confidence and financial stability.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Demanding Retainer Fee Negotiations",
+        "desc": "When prospective enterprise clients push for aggressive retainer discounts, InboxCalm drafts calm, firm, value-driven counter-proposals.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Agency Case Study Teardown Videos",
+        "desc": "Transforms successful client campaigns into compelling vertical video briefs that attract high-paying retainers on LinkedIn.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Stress of Retainer Churn & Payroll Pressure",
+        "desc": "Provides a safe, confidential conversational space for agency leaders to decompress from financial pressure and reset.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "agency-consultancy/composio-integrations": {
+    "businessTitle": "Connecting Agency AI Agents to Advertising Platforms with Zero Risk",
+    "businessStory": "Media buyers and account managers waste hundreds of hours manually checking ad accounts, updating task boards, and copy-pasting numbers. Composio provides the secure, auditable tool-calling bridge that automates fulfillment while protecting client ad budgets.",
+    "businessPillars": [
+      {
+        "title": "Unified Multi-Platform Ad Execution",
+        "desc": "Empowers AI agents to query campaign ROAS, create ClickUp tasks, and update client records in one step.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Strict Budget Protection Guardrails",
+        "desc": "Guarantees that agents never execute unauthorized budget increases without media buyer confirmation.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "Automated Client Task Synchronization",
+        "desc": "Keeps client onboarding milestones and campaign tasks synchronized across GoHighLevel and ClickUp.",
+        "product": "AI Customer Service ($147/mo)"
+      }
+    ],
+    "personalTitle": "Ending the Manual Data Entry Grind for Agency Operations Leads",
+    "personalStory": "Agency operations managers should spend their time optimizing client retention and team fulfillment, not copying numbers from Meta Ads Manager into project management boards late at night.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Tense Client Inquiries Over Campaign ROAS",
+        "desc": "When clients send anxious questions regarding temporary ad performance dips, InboxCalm drafts calm, objective explanations.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Agency Workflow Automation Explainer Videos",
+        "desc": "Transforms complex agency automation diagrams into compelling vertical video briefs that impress prospective clients.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Stress of Managing Agency Client Retainers",
+        "desc": "Provides a safe, confidential conversational space for agency leaders to decompress from operational pressure.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "agency-consultancy/whop-monetization": {
+    "businessTitle": "Breaking Free from the Retainer Treadmill with Digital Products",
+    "businessStory": "Agency founders should not have to trade every hour of their life for client retainers. Productizing internal SOPs and launching an agency mastermind creates a predictable recurring revenue baseline that scales independently of client fulfillment hours.",
+    "businessPillars": [
+      {
+        "title": "Frictionless Global Checkout",
+        "desc": "Converts prospective agency owners into paying subscribers with one-click payment flows.",
+        "product": "AI Content Automation ($197/mo)"
+      },
+      {
+        "title": "Zero-Touch Access Gating",
+        "desc": "Automatically grants and revokes SOP vault and community access based on live billing status.",
+        "product": "AI Automation Suite ($497/mo)"
+      },
+      {
+        "title": "Automated Dunning & Retention",
+        "desc": "Recovers failed card charges without manual administrative follow-ups.",
+        "product": "AI Lead Generation ($297/mo)"
+      }
+    ],
+    "personalTitle": "Freeing Agency Owners from the Burnout of 24/7 Client Service",
+    "personalStory": "The pressure to keep client retainers happy 24/7 takes a devastating personal toll on agency owners. Building recurring subscription income restores control over your calendar and personal peace.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Demanding Subscriber Inquiries Regarding SOPs",
+        "desc": "When mastermind members send complex operational questions, InboxCalm drafts clear, professional replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Agency Mastermind Video Highlights",
+        "desc": "Transforms recorded mastermind coaching calls into polished vertical video snippets for social channels.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Psychological Burden of Agency Ownership",
+        "desc": "Provides a safe, confidential space for agency founders to decompress from client pressure and reset.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  },
+  "agency-consultancy/cloud-vps-hardening": {
+    "businessTitle": "Sleeping Soundly with Ironclad Multi-Tenant Agency Hosting",
+    "businessStory": "Agency founders should not have to stay awake worrying that a hacked WordPress plugin on one client site will take down their entire hosting infrastructure. By closing all public ports behind Cloudflare Zero Trust and isolating container runtimes, we turn your agency hosting into an impenetrable fortress.",
+    "businessPillars": [
+      {
+        "title": "Zero Public Listening Ports",
+        "desc": "Hides your server IP address completely from port scanners and automated cyberattacks.",
+        "product": "Cloud Infrastructure Hardening"
+      },
+      {
+        "title": "Complete Multi-Tenant Isolation",
+        "desc": "Guarantees that a security incident on one client site cannot spread to any other client account.",
+        "product": "Production Architecture Retainer"
+      },
+      {
+        "title": "GPG-Encrypted Off-Site Disaster Recovery",
+        "desc": "Protects client websites with automated hourly encrypted snapshots stored in isolated cloud vaults.",
+        "product": "AI Automation Suite ($497/mo)"
+      }
+    ],
+    "personalTitle": "Eliminating 3:00 AM Client Hosting Panic for Agency Leaders",
+    "personalStory": "The psychological burden of managing servers holding dozens of client websites is immense. Every server downtime notification creates acute panic and dread. Our zero-trust hardening restores peace of mind.",
+    "personalPillars": [
+      {
+        "icon": "??️",
+        "title": "Urgent Client Inquiries Regarding Site Downtime",
+        "desc": "When clients send panicked emails during unexpected technical issues, InboxCalm drafts clear, authoritative, reassuring status replies.",
+        "product": "InboxCalm (Automated Email Firewall)",
+        "url": "https://inboxcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??",
+        "title": "Agency Hosting Security Explainer Videos",
+        "desc": "Turns technical security architecture diagrams into compelling vertical video briefs that impress prospective high-ticket retainers.",
+        "product": "ClipCalm AI (Viral Video Repurposing)",
+        "url": "https://clipcalm.adorisedigital.com"
+      },
+      {
+        "icon": "??️",
+        "title": "The Weight of Managing Client Infrastructure",
+        "desc": "Provides a safe, confidential conversational space for agency leaders to decompress from operational pressure.",
+        "product": "DearMee AI (Empathetic Companion)",
+        "url": "https://dearmee.adorisedigital.com"
+      }
+    ]
+  }
+}

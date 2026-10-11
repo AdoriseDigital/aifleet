@@ -1,6 +1,6 @@
 {
   "sla_target_daily_pages": 10,
-  "total_lifetime_submitted": 24,
+  "total_lifetime_submitted": 34,
   "daily_history": {
     "2026-09-12": {
       "date": "2026-09-12",
@@ -9,9 +9,49 @@
       "sla_met": true,
       "error_count": 0,
       "status": "active"
+    },
+    "2026-10-11": {
+      "date": "2026-10-11",
+      "pages_submitted": 10,
+      "sla_target": 10,
+      "sla_met": true,
+      "error_count": 0,
+      "status": "active"
     }
   },
   "recent_submissions": [
+    {
+      "timestamp": "2026-10-11T15:08:40.289Z",
+      "mode": "live_submission",
+      "batch_count": 10,
+      "slugs": [
+        "/solutions/cybersecurity/web-app-engineering",
+        "/solutions/cybersecurity/outbound-infrastructure",
+        "/solutions/cybersecurity/composio-integrations",
+        "/solutions/cybersecurity/whop-monetization",
+        "/solutions/agency-consultancy/ai-agents",
+        "/solutions/agency-consultancy/web-app-engineering",
+        "/solutions/agency-consultancy/outbound-infrastructure",
+        "/solutions/agency-consultancy/composio-integrations",
+        "/solutions/agency-consultancy/whop-monetization",
+        "/solutions/agency-consultancy/cloud-vps-hardening"
+      ],
+      "sla_met": true,
+      "index_now_summary": [
+        {
+          "endpoint": "IndexNow.org",
+          "statusCode": 200,
+          "success": true,
+          "response": ""
+        },
+        {
+          "endpoint": "Bing IndexNow",
+          "statusCode": 200,
+          "success": true,
+          "response": ""
+        }
+      ]
+    },
     {
       "timestamp": "2026-09-12T11:17:21.717Z",
       "mode": "live_submission",
